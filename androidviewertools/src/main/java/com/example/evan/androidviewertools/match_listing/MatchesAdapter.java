@@ -88,8 +88,8 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
                 Integer matchNumber = Integer.valueOf((Integer) Utils.getObjectField(match, "number"));
                 matchTextView.setText(matchNumber.toString());
             }
-            List<Object> redTeams = Arrays.asList(Utils.getObjectField(match, "redAllianceTeamNumbers"));
-            List<Object> blueTeams = Arrays.asList(Utils.getObjectField(match, "blueAllianceTeamNumbers"));
+            List<Object> redTeams = Arrays.asList(Utils.getObjectField(match, "redTeams"));
+            List<Object> blueTeams = Arrays.asList(Utils.getObjectField(match, "blueTeams"));
             List<Integer> tempRedAllianceTeams = (List<Integer>) (Object) redTeams.get(0);
             List<Integer> tempBlueAllianceTeams = (List<Integer>) (Object) blueTeams.get(0);
             List<Integer> teamsInMatch = new ArrayList<>();
@@ -154,9 +154,9 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
                 TextView redScoreTextView = (TextView) rowView.findViewById(R.id.redScore);
                 TextView blueScoreTextView = (TextView) rowView.findViewById(R.id.blueScore);
 
-                if (match.redScore != null || match.blueScore != null) {
-                    redScoreTextView.setText((match.redScore != null) ? match.redScore.toString() : "???");
-                    blueScoreTextView.setText((match.blueScore != null) ? match.blueScore.toString() : "???");
+                if (match.redActualScore != null || match.blueActualScore != null) {
+                    redScoreTextView.setText((match.redActualScore != null) ? match.redActualScore.toString() : "???");
+                    blueScoreTextView.setText((match.blueActualScore != null) ? match.blueActualScore.toString() : "???");
                     redScoreTextView.setTextColor(Color.argb(255, 255, 0, 0));
                     blueScoreTextView.setTextColor(Color.argb(255, 0, 0, 255));
                 } else {
@@ -215,8 +215,8 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
     public boolean filter(Match value, String scope) {
         List<Integer> teamsInMatch = new ArrayList<>();
         try {
-            List<Object> redTeams = Arrays.asList(Utils.getObjectField(value, "redAllianceTeamNumbers"));
-            List<Object> blueTeams = Arrays.asList(Utils.getObjectField(value, "blueAllianceTeamNumbers"));
+            List<Object> redTeams = Arrays.asList(Utils.getObjectField(value, "redTeams"));
+            List<Object> blueTeams = Arrays.asList(Utils.getObjectField(value, "blueTeams"));
             List<Integer> tempRedAllianceTeams = (List<Integer>) (Object) redTeams.get(0);
             List<Integer> tempBlueAllianceTeams = (List<Integer>) (Object) blueTeams.get(0);
             for (int i = 0; i < tempRedAllianceTeams.size(); i++) {
@@ -291,8 +291,8 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         for (int p = 0; p < Constants.highlightedMatches.size(); p++) {
             Match match = (Match) FirebaseLists.matchesList.getFirebaseObjectByKey(Constants.highlightedMatches.get(p).toString());
             List<Integer> teamsInMatch = new ArrayList<>();
-            List<Object> redTeams = Arrays.asList(Utils.getObjectField(match, "redAllianceTeamNumbers"));
-            List<Object> blueTeams = Arrays.asList(Utils.getObjectField(match, "blueAllianceTeamNumbers"));
+            List<Object> redTeams = Arrays.asList(Utils.getObjectField(match, "redTeams"));
+            List<Object> blueTeams = Arrays.asList(Utils.getObjectField(match, "blueTeams"));
             List<Integer> tempRedAllianceTeams = (List<Integer>) (Object) redTeams.get(0);
             List<Integer> tempBlueAllianceTeams = (List<Integer>) (Object) blueTeams.get(0);
             for (int i = 0; i < tempRedAllianceTeams.size(); i++) {
@@ -315,8 +315,8 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
     public boolean onOpponentAlliance(Integer team) {
         String matchNumber = Constants.matchNumber.toString();
         Match match = (Match) FirebaseLists.matchesList.getFirebaseObjectByKey(matchNumber);
-        List<Object> redTeams = Arrays.asList(Utils.getObjectField(match, "redAllianceTeamNumbers"));
-        List<Object> blueTeams = Arrays.asList(Utils.getObjectField(match, "blueAllianceTeamNumbers"));
+        List<Object> redTeams = Arrays.asList(Utils.getObjectField(match, "redTeams"));
+        List<Object> blueTeams = Arrays.asList(Utils.getObjectField(match, "blueTeams"));
         List<Integer> tempRedAllianceTeams = (List<Integer>) (Object) redTeams.get(0);
         List<Integer> tempBlueAllianceTeams = (List<Integer>) (Object) blueTeams.get(0);
         for (int i = 0; i < tempRedAllianceTeams.size(); i++) {
@@ -427,9 +427,9 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
             Constants.matchNumber = Integer.parseInt(matchNumberTextView.getText().toString());
             Match match = (Match) FirebaseLists.matchesList.getFirebaseObjectByKey(matchNumberTextView.getText().toString());
             List<Integer> teamsInMatch = new ArrayList<>();
-            List<Object> redTeams = Arrays.asList(Utils.getObjectField(match, "redAllianceTeamNumbers"));
+            List<Object> redTeams = Arrays.asList(Utils.getObjectField(match, "redTeams"));
             List<Integer> tempRedAllianceTeams = (List<Integer>) (Object) redTeams.get(0);
-            List<Object> blueTeams = Arrays.asList(Utils.getObjectField(match, "blueAllianceTeamNumbers"));
+            List<Object> blueTeams = Arrays.asList(Utils.getObjectField(match, "blueTeams"));
             List<Integer> tempBlueAllianceTeams = (List<Integer>) (Object) blueTeams.get(0);
 
             for (int i = 0; i < tempRedAllianceTeams.size(); i++) {

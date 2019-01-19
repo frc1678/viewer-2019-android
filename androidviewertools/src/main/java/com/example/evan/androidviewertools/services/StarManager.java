@@ -106,7 +106,7 @@ public abstract class StarManager extends Service {
             //we only notify if scores were both null and now are not both null
             Boolean isNewChange;
             if (previousMatch != null) {
-                isNewChange = ((previousMatch.redScore == null) && (previousMatch.blueScore == null));
+                isNewChange = ((previousMatch.redActualScore == null) && (previousMatch.blueActualScore == null));
             } else {
                 isNewChange = true;
             }
@@ -275,8 +275,8 @@ public abstract class StarManager extends Service {
         notificationRemoteViews.setTextViewText(R.id.matchNumber, match.number.toString());
 
         List<Integer> teams = new ArrayList<>();
-        teams.addAll(match.redAllianceTeamNumbers);
-        teams.addAll(match.blueAllianceTeamNumbers);
+        teams.addAll(match.redTeams);
+        teams.addAll(match.blueTeams);
 
         int[] teamTextViewIDs = {R.id.teamOne, R.id.teamTwo, R.id.teamThree, R.id.teamFour, R.id.teamFive, R.id.teamSix};
         for (int i = 0; i < 6; i++) {
@@ -286,9 +286,9 @@ public abstract class StarManager extends Service {
             }
         }
 
-        if (match.redScore != null || match.blueScore != null) {
-            notificationRemoteViews.setTextViewText(R.id.redScore, (match.redScore != null) ? match.redScore + "" : "???");
-            notificationRemoteViews.setTextViewText(R.id.blueScore, (match.blueScore != null) ? match.blueScore + "" : "???");
+        if (match.redActualScore != null || match.blueActualScore != null) {
+            notificationRemoteViews.setTextViewText(R.id.redScore, (match.redActualScore != null) ? match.redActualScore + "" : "???");
+            notificationRemoteViews.setTextViewText(R.id.blueScore, (match.blueActualScore != null) ? match.blueActualScore + "" : "???");
             notificationRemoteViews.setTextColor(R.id.redScore, Color.argb(255, 255, 0, 0));
             notificationRemoteViews.setTextColor(R.id.blueScore, Color.argb(255, 0, 0, 255));
         } else {
