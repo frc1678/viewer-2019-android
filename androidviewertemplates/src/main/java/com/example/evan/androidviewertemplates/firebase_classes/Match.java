@@ -18,4 +18,20 @@ import java.util.Map;
 public class Match extends com.example.evan.androidviewertools.firebase_classes.Match {
     public CalculatedMatchData calculatedData;
     //Make sure all variables are public
+    public Map<String, String> cargoShipPreload;
+    public List<Integer> blueTeams;
+    public List<Integer> redTeams;
+    public List<Integer> noShowTeams;
+
+    public Integer blueActualScore;
+    public Integer redActualScore;
+    public Integer blueFoulPoints;
+    public Integer redFoulPoints;
+    public Integer blueActualRPs;
+    public Integer redActualRPs;
+
+    public Boolean blueDidRocketRP;
+    public Boolean redDidRocketRP;
+    public Boolean blueDidClimbRP;
+    public Boolean redDidClimbRP;
 }

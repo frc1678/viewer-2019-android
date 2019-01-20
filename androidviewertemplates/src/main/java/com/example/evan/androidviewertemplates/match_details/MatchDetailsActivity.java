@@ -86,17 +86,17 @@ public class MatchDetailsActivity extends ViewerActivity {
         allTeamNumbers.clear();
         Match match = (Match) FirebaseLists.matchesList.getFirebaseObjectByKey(matchNumber.toString());
         int[] teamCellIDs = {R.id.redTeamCell1, R.id.redTeamCell2, R.id.redTeamCell3, R.id.blueTeamCell1, R.id.blueTeamCell2, R.id.blueTeamCell3};
-        allTeamNumbers.addAll(match.redAllianceTeamNumbers);
-        allTeamNumbers.addAll(match.blueAllianceTeamNumbers);
+        allTeamNumbers.addAll(match.redTeams);
+        allTeamNumbers.addAll(match.blueTeams);
         Log.e("allTeamNumbers", allTeamNumbers.toString());
 
         for (int i = 0; i < teamCellIDs.length; i++) {
             MatchDetailsTeamCell matchDetailsTeamCell = (MatchDetailsTeamCell) findViewById(teamCellIDs[i]);
             if (onStarredMatches(allTeamNumbers.get(i))) {
-                if (match.redAllianceTeamNumbers.contains(allTeamNumbers.get(i))) {
+                if (match.redTeams.contains(allTeamNumbers.get(i))) {
                     matchDetailsTeamCell.setBackgroundColor(Color.parseColor("#FFC2C2"));
                 }
-                if (match.blueAllianceTeamNumbers.contains(allTeamNumbers.get(i))) {
+                if (match.blueTeams.contains(allTeamNumbers.get(i))) {
                     matchDetailsTeamCell.setBackgroundColor(Color.parseColor("#B7DAFF"));
                 }
             }
@@ -117,7 +117,7 @@ public class MatchDetailsActivity extends ViewerActivity {
         TextView redAlliancePredictedScoreTextView = (TextView) findViewById(R.id.matchDetailsRedAlliancePredictedScore);
         TextView redAllianceWinChanceTextView = (TextView) findViewById(R.id.matchDetailsRedAllianceWinChance);
 
-        redAllianceScoreTextView.setText(Utils.getMatchDisplayValue(match, "redScore"));
+        redAllianceScoreTextView.setText(Utils.getMatchDisplayValue(match, "redActualScore"));
         redAlliancePredictedScoreTextView.setText(Utils.getMatchDisplayValue(match, "calculatedData.predictedRedScore"));
         redAllianceWinChanceTextView.setText(Utils.dataPointToPercentage((Float) Utils.getObjectField(match, "calculatedData.redWinChance"), 0));
 

@@ -13,6 +13,15 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CalculatedMatchData extends Object {
     //Make sure all variables are public
+    public Integer blueChanceRocketRP;
+    public Integer redChanceRocketRP;
+    public Integer blueChanceClimbRP;
+    public Integer redChanceClimbRP;
+    public Integer blueChanceWin;
+    public Integer redChanceWin;
 
-
+    public Float bluePredictedScore;
+    public Float redPredictedScore;
+    public Float redPredictedClimbPoints;
+    public Float bluePredictedClimbPoints;
 }
