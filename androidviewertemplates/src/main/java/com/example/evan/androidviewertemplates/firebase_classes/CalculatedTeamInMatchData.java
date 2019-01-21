@@ -26,6 +26,7 @@ public class CalculatedTeamInMatchData extends Object {
     public Integer orangeSuccessL1;
     public Integer orangeSuccessL2;
     public Integer orangeSuccessL3;
+    public Integer lemonsSpilled;
 
     public Float lemonCycleAll;
     public Float lemonCycleL1;
