@@ -58,7 +58,7 @@ public class SpecificConstants extends Constants {
                     put("timeIncap","time incap (s)");
                     put("timeImpaired","time impaired (s)");
                     put("timeClimbing","time climbing (s)");
-
+                    put("lemonsSpilled","panels spilled");
 //              Teams
                     put("pitWidth","width");
                     put("pitLength","length");
@@ -77,6 +77,7 @@ public class SpecificConstants extends Constants {
                     put("pitCanBuddyStartLevel2","can start with another robot L2");
                     put("pitSandstormNavigationType","sandstorm navigation");
                     put("pitHasOrangeShooter","has cargo shooter");
+                    put("pitSEALsNotes","SEALsNotes");
                     put("number","team #");
                     put("name","team name");
                     put("actualRPs","total # RP");
@@ -107,6 +108,7 @@ public class SpecificConstants extends Constants {
                     put("lemonAbility","panel ability");
                     put("firstPickAbility","first pick ability");
                     put("secondPickAbility","second pick ability");
+                    put("avgLemonsSpilled","avg panels spilled");
         //lfm
                     put("lfmAvgOrangesScored","avg cargo scored");
                     put("lfmAvgLemonsScored","avg panel scored");
@@ -143,6 +145,7 @@ public class SpecificConstants extends Constants {
                     put("lfmPercentIncap","% incap");
                     put("lfmPercentImpaired","% impaired");
                     put("lfmPercentNoShow","% no show");
+                    put("lfmAvgLemonsSpilled","avg panels spilled");
             //sd
                     put("sdAvgOrangesScored","avg cargo scored");
                     put("sdAvgLemonsScored","avg hatch scored");
@@ -179,6 +182,8 @@ public class SpecificConstants extends Constants {
                     put("sdPercentIncap","% incap");
                     put("sdPercentImpaired","% impaired");
                     put("sdPercentNoShow","% no show");
+                    put("sdAvgLemonsSpilled","avg panels spilled");
+            //p75
                     put("p75avgOrangesScored","avg cargo scored");
                     put("p75avgLemonsScored","avg panels scored");
                     put("p75avgOrangeFouls","avg cargo foul out of field");
@@ -212,6 +217,7 @@ public class SpecificConstants extends Constants {
                     put("p75percentIncap","% incap");
                     put("p75percentImpaired","% impaired");
                     put("p75percentNoShow","% no show");
+                    put("p75AvgLemonsSpilled","avg panels spilled");
 //              Matches
                     put("cargoShipPreload","cargo ship preload");
                     put("blueTeams","blue alliance teams");
