@@ -30,7 +30,7 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     static String[] sectionTitles = {
             //May need to change depending on game
             "Matches",
-            "Auto",
+            "Sandstorm",
             "Teleop",
             "Super Data",
             "Pit Data"

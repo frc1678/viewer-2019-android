@@ -35,14 +35,13 @@ public class LastFourMatchesSectionAdapter extends TeamSectionAdapter {
     };
 
     static String[] createListOnClick = {
-            "fullcomp"
+
     };
 
     static String[] notClickableFields = {
     };
 
     static String[] shouldDisplayAsFurtherInformation = {
-            "fullcomp"
     };
 
     static String[] shouldDisplayAsLongText = {
@@ -57,14 +56,16 @@ public class LastFourMatchesSectionAdapter extends TeamSectionAdapter {
 
     static String[] sectionTitles = {
             //May need to change depending on game
-            "Auto",
+            "Sandstorm",
             "Teleop",
+            ""
     };
 
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
-            {},
-            {},
+            {"calculatedData.lfmAvgOrangesScored, calculatedData.lfmAvgLemonsScored, calculatedData.lfmAvgOrangeFouls, calculatedData.lfmLemonLoadSuccess, calculatedData.lfmOrangeCycleAll,calculatedData.lfmLemonCycleAll,calculatedData.lfmOrangeSuccessDefended,calculatedData.lfmOrangeSuccessL2,calculatedData.lfmOrangeSuccessL3,calculatedData.lfmLemonSuccessDefended,calculatedData.lfmLemonSuccessL2, calculatedData.lfmLemonSuccessL3"},
+            {"calculatedData.lfmHabLineSuccessL1,calculatedData.lfmHabLineSuccessL2,calculatedData.lfmAvgTimeClimbing"},
+            {"calculatedData.lfmPercentIncap,calculatedData.lfmAvgTimeIncap,calculatedData.lfmPercentImpaired,calculatedData.lfmAvgTimeImpaired, calculatedData.lfmPercentNoShow,calculatedData.lfmAvgGoodDecisions,calculatedData.lfmAvgBadDecisions"}
     };
 
 
