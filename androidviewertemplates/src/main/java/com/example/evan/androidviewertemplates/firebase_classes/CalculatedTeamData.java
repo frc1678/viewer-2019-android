@@ -115,6 +115,7 @@ public class CalculatedTeamData extends Object {
     public Float orangeAbility;
     public Float firstPickAbility;
     public Float secondPickAbility;
+    public Float avgLemonsSpilled;
     public Float lfmAvgOrangesScored;
     public Float lfmAvgLemonsScored;
     public Float lfmAvgOrangeFouls;
@@ -128,6 +129,7 @@ public class CalculatedTeamData extends Object {
     public Float lfmLemonCycleL3;
     public Float lfmAvgGoodDecisions;
     public Float lfmAvgBadDecisions;
+    public Float lfmAvgLemonsSpilled;
     public Float sdAvgOrangesScored;
     public Float sdAvgLemonsScored;
     public Float sdAvgOrangeFouls;
@@ -144,6 +146,7 @@ public class CalculatedTeamData extends Object {
     public Float sdAvgTimeIncap;
     public Float sdAvgTimeImpaired;
     public Float sdAvgTimeClimbing;
+    public Float sdAvgLemonsSpilled;
     public Float p75avgOrangesScored;
     public Float p75avgLemonsScored;
     public Float p75avgOrangeFouls;
@@ -160,6 +163,7 @@ public class CalculatedTeamData extends Object {
     public Float p75avgTimeIncap;
     public Float p75avgTimeImpaired;
     public Float p75avgTimeClimbing;
+    public Float p75avgLemonsSpilled;
 
     public Boolean hasOrangeGroundIntake;
     public Boolean hasLemonGroundIntake;
