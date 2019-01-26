@@ -48,8 +48,9 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
     static String[] sectionTitles = {
             //May need to change depending on game
             "Information",
-            "Auto",
+            "Sandstorm",
             "Tele",
+            "Status",
             "Super Data",
 
     };
@@ -57,8 +58,11 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
             {"teamNumber", "matchNumber"},
-            {},
-            {},
+            {"startingLevel,crossedHabLine,startingLocation,preload"},
+            {"calculatedData.orangesScored,calculatedData.lemonsScored,calculatedData.orangeFouls,calculatedData.lemonLoadSuccess,calculatedData.orangeSuccessDefended," +
+                    "calculatedData.orangeSuccessL2,calculatedData.orangeSuccessL3,calculatedData.lemonSuccessDefended,calculatedData.lemonSuccessL2,calculatedData.lemonSuccessL3," +
+                    "calculatedData.lemonsSpilled"},
+            {"calculatedData.timeIncap,calculatedData.timeImpaired,calculatedData.timeClimbing"},
             {},
     };
 
