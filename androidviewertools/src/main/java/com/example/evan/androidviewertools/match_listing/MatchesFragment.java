@@ -24,7 +24,7 @@ public abstract class MatchesFragment extends SearchableListFragment {
         super.onListItemClick(l, v, position, id);
 
         SearchableFirebaseListAdapter<Match> adapter = (SearchableFirebaseListAdapter)getListAdapter();
-        int matchNumberClicked = adapter.filteredValues.get(position - getListView().getHeaderViewsCount()).number;
+        int matchNumberClicked = adapter.filteredValues.get(position - getListView().getHeaderViewsCount()).matchNumber;
 
         Intent matchDetailsActivityIntent = getMatchDetailsActivityIntent();
         matchDetailsActivityIntent.putExtra("matchNumber", matchNumberClicked);

@@ -43,6 +43,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
 
     }
 
+
     @Override
     public boolean isEnabled(int position) {
         return false;
@@ -70,11 +71,12 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         if (rowView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             rowView = inflater.inflate(R.layout.schedule_cell, parent, false);
+
         }
         try {
             Match match = (Match) getItem(position);
 
-            if (StarManager.isImportantMatch(match.number) && !Constants.highlightTeamSchedule) {
+            if (StarManager.isImportantMatch(match.matchNumber) && !Constants.highlightTeamSchedule) {
                 rowView.setBackgroundColor(Constants.STAR_COLOR);
             } else {
                 rowView.setBackgroundColor(Color.TRANSPARENT);
@@ -82,11 +84,11 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
 
             TextView matchTextView = (TextView) rowView.findViewById(R.id.matchNumber);
             if (selectedScope.equals("Match")) {
-                Integer matchNumber = Integer.valueOf((Integer) Utils.getObjectField(match, "number"));
-                matchTextView.setText(Utils.highlightTextInString(matchNumber.toString(), searchString));
+                Integer matchNumber = Integer.valueOf((Integer) Utils.getObjectField(match, "teamNumber"));
+                matchTextView.setText(Utils.highlightTextInString(String.valueOf(matchNumber), searchString));
             } else {
-                Integer matchNumber = Integer.valueOf((Integer) Utils.getObjectField(match, "number"));
-                matchTextView.setText(matchNumber.toString());
+                Integer matchNumber = Integer.valueOf((Integer) Utils.getObjectField(match, "matchNumber"));
+                matchTextView.setText(String.valueOf(matchNumber));
             }
             List<Object> redTeams = Arrays.asList(Utils.getObjectField(match, "redTeams"));
             List<Object> blueTeams = Arrays.asList(Utils.getObjectField(match, "blueTeams"));
@@ -101,7 +103,8 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
             }
 
             int[] teamTextViewIDs = {R.id.teamOne, R.id.teamTwo, R.id.teamThree, R.id.teamFour, R.id.teamFive, R.id.teamSix};
-            for (int i = 0; i < 6; i++) {
+            int teamTextViewIDsSize = teamTextViewIDs.length;
+            for (int i = 0; i < teamTextViewIDsSize; i++) {
                 TextView teamTextView = (TextView) rowView.findViewById(teamTextViewIDs[i]);
 
                 if (selectedScope.equals("Team")) {
@@ -245,7 +248,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
                     }
                 }
             } else if (scope.equals("Match")) {
-                found = value.number.toString().indexOf(searchString) == 0;
+                found = value.matchNumber.toString().indexOf(searchString) == 0;
             }
         }
 
@@ -460,7 +463,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         @Override
         public void onClick(View v) {
             TextView matchNumberTextView = (TextView)v.findViewById(R.id.matchNumber);
-            Integer matchNumberClicked = Integer.parseInt(matchNumberTextView.getText().toString());
+            Integer matchNumberClicked = Integer.parseInt((matchNumberTextView.getText()).toString());
 
             Intent matchDetailsActivityIntent = getMatchDetailsActivityIntent();
             matchDetailsActivityIntent.putExtra("matchNumber", matchNumberClicked);

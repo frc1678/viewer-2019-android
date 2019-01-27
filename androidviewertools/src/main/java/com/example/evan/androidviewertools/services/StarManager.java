@@ -70,8 +70,8 @@ public abstract class StarManager extends Service {
                     return;
                 }
                 Log.e("previousValue", previousValue.toString());
-                Log.e("previousValue.number", previousValue.number + "");
-                if (previousValue.number.equals(currentMatchNumber)) {
+                Log.e("previousValue.number", previousValue.matchNumber + "");
+                if (previousValue.matchNumber.equals(currentMatchNumber)) {
                     notifyOfNewMatchIfNeeded(previousValue);
                 }
             }
@@ -272,7 +272,7 @@ public abstract class StarManager extends Service {
         } else {
             notificationRemoteViews.setTextViewText(R.id.matchNotificationTitleTextView, "Don't miss Q" + Integer.toString((Integer) (Utils.getObjectField(match, "number"))) + ", starting in " + matchesFromNow.toString() + " matches!");
         }
-        notificationRemoteViews.setTextViewText(R.id.matchNumber, match.number.toString());
+        notificationRemoteViews.setTextViewText(R.id.matchNumber, match.matchNumber.toString());
 
         List<Integer> teams = new ArrayList<>();
         teams.addAll(match.redTeams);
@@ -317,7 +317,7 @@ public abstract class StarManager extends Service {
         mBuilder.setContentIntent(resultPendingIntent);
         mBuilder.setPriority(NotificationCompat.PRIORITY_MAX);
         mBuilder.setAutoCancel(true);
-        mBuilder.setContentTitle("Don't miss match " + match.number + ", happening " + matchesFromNow.toString() + " matches from now!");
+        mBuilder.setContentTitle("Don't miss match " + match.matchNumber + ", happening " + matchesFromNow.toString() + " matches from now!");
         mBuilder.setVibrate(new long[] {100, 100, 100, 100, 100});
         NotificationManager mNotificationManager =
                 (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);

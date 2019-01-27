@@ -111,7 +111,7 @@ public class MatchDetailsActivity extends ViewerActivity {
 
 
         TextView matchDetailsMatchTitleTextView = (TextView) findViewById(R.id.matchDetailsMatchTitleTextView);
-        matchDetailsMatchTitleTextView.setText("Q" + match.number.toString());
+        matchDetailsMatchTitleTextView.setText("Q" + match.matchNumber.toString());
 
         TextView redAllianceScoreTextView = (TextView) findViewById(R.id.matchDetailsRedAllianceScore);
         TextView redAlliancePredictedScoreTextView = (TextView) findViewById(R.id.matchDetailsRedAlliancePredictedScore);
