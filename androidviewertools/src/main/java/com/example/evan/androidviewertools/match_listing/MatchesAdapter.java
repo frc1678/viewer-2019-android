@@ -43,7 +43,6 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
 
     }
 
-
     @Override
     public boolean isEnabled(int position) {
         return false;
@@ -71,7 +70,6 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         if (rowView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             rowView = inflater.inflate(R.layout.schedule_cell, parent, false);
-
         }
         try {
             Match match = (Match) getItem(position);
