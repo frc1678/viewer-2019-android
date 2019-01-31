@@ -82,7 +82,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
 
             TextView matchTextView = (TextView) rowView.findViewById(R.id.matchNumber);
             if (selectedScope.equals("Match")) {
-                Integer matchNumber = Integer.valueOf((Integer) Utils.getObjectField(match, "teamNumber"));
+                Integer matchNumber = Integer.valueOf((Integer) Utils.getObjectField(match, "matchNumber"));
                 matchTextView.setText(Utils.highlightTextInString(String.valueOf(matchNumber), searchString));
             } else {
                 Integer matchNumber = Integer.valueOf((Integer) Utils.getObjectField(match, "matchNumber"));
