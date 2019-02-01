@@ -12,7 +12,7 @@ public class SpecificConstants extends Constants {
     public static Map<String, String> KEYS_TO_TITLES;
     public static Map<String, String> DATA_TO_GRAPH;
     //todo
-    public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Function"};
+    public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Settings", "Data Comparison"};
 
     public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-chezy-2018.firebaseio.com/";
 
