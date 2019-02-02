@@ -118,16 +118,16 @@ public class MatchDetailsActivity extends ViewerActivity {
         TextView redAllianceWinChanceTextView = (TextView) findViewById(R.id.matchDetailsRedAllianceWinChance);
 
         redAllianceScoreTextView.setText(Utils.getMatchDisplayValue(match, "redActualScore"));
-        redAlliancePredictedScoreTextView.setText(Utils.getMatchDisplayValue(match, "calculatedData.predictedRedScore"));
-        redAllianceWinChanceTextView.setText(Utils.dataPointToPercentage((Float) Utils.getObjectField(match, "calculatedData.redWinChance"), 0));
+        redAlliancePredictedScoreTextView.setText(Utils.getMatchDisplayValue(match, "calculatedData.redPredictedScore"));
+        redAllianceWinChanceTextView.setText(Utils.getMatchDisplayValue(match, "calculatedData.redChanceWin"));
 
         TextView blueAllianceScoreTextView = (TextView) findViewById(R.id.matchDetailsBlueAllianceScore);
         TextView blueAlliancePredictedScoreTextView = (TextView) findViewById(R.id.matchDetailsBlueAlliancePredictedScore);
         TextView blueAllianceWinChanceTextView = (TextView) findViewById(R.id.matchDetailsBlueAllianceWinChance);
 
-        blueAllianceScoreTextView.setText(Utils.getMatchDisplayValue(match, "blueScore"));
-        blueAlliancePredictedScoreTextView.setText(Utils.getMatchDisplayValue(match, "calculatedData.predictedBlueScore"));
-        blueAllianceWinChanceTextView.setText(Utils.dataPointToPercentage((Float) Utils.getObjectField(match, "calculatedData.blueWinChance"), 0));
+        blueAllianceScoreTextView.setText(Utils.getMatchDisplayValue(match, "blueActualScore"));
+        blueAlliancePredictedScoreTextView.setText(Utils.getMatchDisplayValue(match, "calculatedData.bluePredictedScore"));
+        blueAllianceWinChanceTextView.setText(Utils.getMatchDisplayValue(match, "calculatedData.blueChanceWin"));
         //todo
 
 
