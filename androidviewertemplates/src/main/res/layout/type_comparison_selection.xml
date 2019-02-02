@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select the type of comparison."
+        android:textSize="24dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/Black" />
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="match_parent">
+
+        <Button
+            android:text="TIMD DATA"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/DarkGray"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/TIMDComparison"/>
+        <Button
+            android:text="TEAM DATA"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@color/DarkGray"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/TEAMSComparison"/>
+
+
+    </LinearLayout>
+</LinearLayout>

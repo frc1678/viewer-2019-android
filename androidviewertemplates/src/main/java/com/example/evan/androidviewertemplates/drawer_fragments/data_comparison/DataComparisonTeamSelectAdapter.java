@@ -68,7 +68,7 @@ public class DataComparisonTeamSelectAdapter extends BaseAdapter {
 
         teamNumber.setText(currentTeam);
         teamName.setText(generateTeamNameAndSeed(currentTeam));
-        teamPosition.setText(String.valueOf(position));
+        teamPosition.setText(String.valueOf(position + 1));
 
         if (String.valueOf(DataComparisonFragment.selectedTeamsList.size()).equals("1")) {
             if (DataComparisonFragment.selectedTeam.equals(currentTeam)) {

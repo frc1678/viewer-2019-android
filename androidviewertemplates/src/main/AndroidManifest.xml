@@ -9,6 +9,10 @@
         android:name="com.example.evan.androidviewertemplates.ViewerApplication">
         <activity android:name="com.example.evan.androidviewertemplates.MainActivity">
         </activity>
+        <activity android:name=".drawer_fragments.data_comparison.DataComparisonGraphingActivityTEAMS"/>
+        <activity android:name=".drawer_fragments.data_comparison.DataComparisonDatapointSelectActivityTIMD"/>
+        <activity android:name=".drawer_fragments.data_comparison.DataComparisonDatapointSelectActivityTEAMS"/>
+
     </application>
 
 </manifest>

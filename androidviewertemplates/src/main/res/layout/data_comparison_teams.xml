@@ -8,29 +8,30 @@
         android:layout_alignParentTop="true"
         android:id="@+id/topFrameLayout"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="60dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/undoButton"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@color/LightGreen"
-            android:text="RESTART"
-            />
+            <Spinner
+                android:id="@+id/typeSelectionSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:hint="Type" />
 
         </LinearLayout>
 
     </FrameLayout>
 
+
     <ListView
         android:layout_below="@+id/topFrameLayout"
         android:layout_above="@+id/bottomFrameLayout"
-        android:id="@+id/teamListView"
+        android:id="@+id/datapointListView"
         android:dividerHeight="1dp"
         android:background="@color/white"
         android:divider="@color/LightGrey"
@@ -54,36 +55,8 @@
 
             <TextView
                 android:text="\?"
-                android:textStyle="bold"
                 android:gravity="center"
-                android:id="@+id/teamOneTextView"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                />
-
-            <TextView
-                android:text="\?"
-                android:gravity="center"
-                android:id="@+id/teamTwoTextView"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                />
-
-            <TextView
-                android:text="\?"
-                android:gravity="center"
-                android:id="@+id/teamThreeTextView"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                />
-
-            <TextView
-                android:text="\?"
-                android:gravity="center"
-                android:id="@+id/teamFourTextView"
+                android:id="@+id/datapointTextView"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"

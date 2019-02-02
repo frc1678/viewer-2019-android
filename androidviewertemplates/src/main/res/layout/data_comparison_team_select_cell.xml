@@ -30,9 +30,9 @@
 
         <TextView
             android:id="@+id/teamName"
+            android:textColor="@color/KateGray"
             android:layout_width="wrap_content"
             android:textSize="18dp"
-            android:text="Citrus Circuits | Seed 1"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
