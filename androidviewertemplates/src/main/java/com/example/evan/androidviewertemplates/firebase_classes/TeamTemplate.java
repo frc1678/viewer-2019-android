@@ -24,6 +24,7 @@ public CalculatedTeamData calculatedData;
     public Integer actualRPs;
     public Integer matchesPlayed;
 
+
     public String pitWheelDiameter;
     public String pitDriveTrain;
     public String pitProgrammingLanguage;
@@ -31,7 +32,7 @@ public CalculatedTeamData calculatedData;
     public String name;
     public String pitSEALsNotes;
 
-    public Map<Integer, Integer> pitClimbType;
+    public Map<Object, Integer> pitClimbType;
 
     public Boolean pitHasCamera;
     public Boolean pitHasVision;
