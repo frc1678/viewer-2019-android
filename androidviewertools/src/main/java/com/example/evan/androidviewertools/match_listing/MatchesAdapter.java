@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.example.evan.androidviewertools.ViewerActivity;
 import com.example.evan.androidviewertools.firebase_classes.Team;
 import com.example.evan.androidviewertools.utils.Constants;
@@ -154,44 +153,45 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
                 TextView redScoreTextView = (TextView) rowView.findViewById(R.id.redScore);
                 TextView blueScoreTextView = (TextView) rowView.findViewById(R.id.blueScore);
 
-                if (match.redActualScore != null || match.blueActualScore != null) {
-                    redScoreTextView.setText((match.redActualScore != null) ? match.redActualScore.toString() : "???");
-                    blueScoreTextView.setText((match.blueActualScore != null) ? match.blueActualScore.toString() : "???");
-                    redScoreTextView.setTextColor(Color.argb(255, 255, 0, 0));
-                    blueScoreTextView.setTextColor(Color.argb(255, 0, 0, 255));
-                } else {
-                    redScoreTextView.setTextColor(Color.argb(75, 255, 0, 0));
-                    blueScoreTextView.setTextColor(Color.argb(75, 0, 0, 255));
-                    redScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.predictedRedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.predictedRedScore"), 2, "???") : "???");
-                    blueScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.predictedBlueScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.predictedBlueScore"), 2, "???") : "???");
-                }
-
+                //these are created in order to get Red/Blue scores using a key and value instead of value (match.redScore/blueScore)
+                Integer redScore = Integer.parseInt(Utils.getMatchDisplayValue(match, "redActualScore"));
+                Integer blueScore = Integer.parseInt(Utils.getMatchDisplayValue(match,"blueActualScore"));
+        if (redScore != null || blueScore != null) {
+            redScoreTextView.setText((redScore != null) ? redScore.toString() : "???");
+            blueScoreTextView.setText((blueScore != null) ? blueScore.toString() : "???");
+            redScoreTextView.setTextColor(Color.argb(255, 255, 0, 0));
+            blueScoreTextView.setTextColor(Color.argb(255, 0, 0, 255));
+        } else {
+            redScoreTextView.setTextColor(Color.argb(75, 255, 0, 0));
+            blueScoreTextView.setTextColor(Color.argb(75, 0, 0, 255));
+            redScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.redPredictedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.redPredictedScore"), 2, "???") : "???");
+            blueScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.bluePredictedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.bluePredictedScore"), 2, "???") : "???");
+        }
                 TextView rankingPointDisplayBlue = (TextView) rowView.findViewById(R.id.rankingPointDisplayBlue);
                 TextView rankingPointDisplayRed = (TextView) rowView.findViewById(R.id.rankingPointDisplayRed);
 
-
-
-         Boolean blueDidAutoQuest = Boolean.valueOf(Utils.getObjectField(match, "blueDidAutoQuest").toString());
-         Boolean blueDidFaceBoss = Boolean.valueOf(Utils.getObjectField(match, "blueDidFaceBoss").toString());
-         Boolean redDidAutoQuest = Boolean.valueOf(Utils.getObjectField(match, "redDidAutoQuest").toString());
-         Boolean redDidFaceBoss = Boolean.valueOf(Utils.getObjectField(match, "redDidFaceBoss").toString());
-
-//todo Add predicted RPs?
-            if (blueDidAutoQuest && blueDidFaceBoss) {
-             rankingPointDisplayBlue.setText("● ●");
-         } if (blueDidAutoQuest && !blueDidFaceBoss) {
-             rankingPointDisplayBlue.setText("●  ");
-         } if (!blueDidAutoQuest && blueDidFaceBoss) {
-             rankingPointDisplayBlue.setText("    ●");
-         }
-
-        if (redDidAutoQuest && redDidFaceBoss) {
-            rankingPointDisplayRed.setText("● ●");
-        } if (redDidAutoQuest && !redDidFaceBoss) {
-            rankingPointDisplayRed.setText("●  ");
-        } if (!redDidAutoQuest && redDidFaceBoss) {
-            rankingPointDisplayRed.setText("    ●");
-        }
+//         Boolean blueDidAutoQuest = Boolean.valueOf(Utils.getObjectField(match, "blueDidAutoQuest").toString());
+//         Boolean blueDidFaceBoss = Boolean.valueOf(Utils.getObjectField(match, "blueDidFaceBoss").toString());
+//         Boolean redDidAutoQuest = Boolean.valueOf(Utils.getObjectField(match, "redDidAutoQuest").toString());
+//         Boolean redDidFaceBoss = Boolean.valueOf(Utils.getObjectField(match, "redDidFaceBoss").toString());
+//
+////todo Add predicted RPs?
+//            if (blueDidAutoQuest && blueDidFaceBoss) {
+//             rankingPointDisplayBlue.setText("● ●");
+//         } if (blueDidAutoQuest && !blueDidFaceBoss) {
+//             rankingPointDisplayBlue.setText("●  ");
+//         } if (!blueDidAutoQuest && blueDidFaceBoss) {
+//             rankingPointDisplayBlue.setText("    ●");
+//         }
+//
+//        if (redDidAutoQuest && redDidFaceBoss) {
+//            rankingPointDisplayRed.setText("● ●");
+//        } if (redDidAutoQuest && !redDidFaceBoss) {
+//            rankingPointDisplayRed.setText("●  ");
+//        } if (!redDidAutoQuest && redDidFaceBoss) {
+//            rankingPointDisplayRed.setText("    ●");
+//        }
+>>>>>>> 55a29ac... Fix Match Schedule information
 
 
 
