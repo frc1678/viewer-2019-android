@@ -25,7 +25,7 @@ public CalculatedTeamData calculatedData;
     public Integer matchesPlayed;
 
     public String pitWheelDiameter;
-    public String pitDriveTrain;
+    public String pitDrivetrain;
     public String pitProgrammingLanguage;
     public String pitSandstormNavigationType;
     public String name;
@@ -38,6 +38,6 @@ public CalculatedTeamData calculatedData;
     public Boolean pitHasPid;
     public Boolean pitHasGyro;
     public Boolean pitHasEncoders;
-    public Boolean pitCaBuddyStartLevel2;
+    public Boolean pitCanBuddyStartLevel2;
     public Boolean pitHasOrangeShooter;
 }

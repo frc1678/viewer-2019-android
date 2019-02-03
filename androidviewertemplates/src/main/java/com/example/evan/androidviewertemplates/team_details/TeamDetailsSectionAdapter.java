@@ -42,13 +42,13 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
             {"matches", "VIEWER.matchesUntilNextMatchForTeam", "lfm"},
-            {"habLineSuccessL1,habLineSuccessL2,"},
-            {"hasOrangeGroundIntake,hasLemonGroundIntake,avgOrangesScored,avgLemonsScored,avgOrangeFouls,avgLemonsSpilled"},
-            {"avgTimeClimbing,"},
-            {"avgTimeIncap,percentIncap,percentImpaired,percentNoShow"},
-            {"predictedSoloPoints,sdAvgOrangesScored,sdAvgLemonsScored"},
-            {"avgGoodDecisions,avgBadDecisions"},
-            {"pitLength,pitWidth,pitWeight,pitWheelDiameter,pitDrivetrain,pitProgrammingLanguage,pitClimbType,pitHasCamera,pitHasVision,pitHasGyro,pitHasEncoders,pitCanBuddyStartLevel2,pitSandstormNavigationType,pitSEALsNotes"}
+            {"calculatedData.habLineSuccessL1","calculatedData.habLineSuccessL2",},
+            {"calculatedData.hasOrangeGroundIntake","calculatedData.hasLemonGroundIntake","calculatedData.avgOrangesScored","calculatedData.avgLemonsScored","calculatedData.avgOrangeFouls","calculatedData.avgLemonsSpilled"},
+            {"calculatedData.avgTimeClimbing",},
+            {"calculatedData.avgTimeIncap","calculatedData.percentIncap","calculatedData.percentImpaired","calculatedData.percentNoShow"},
+            {"calculatedData.predictedSoloPoints","calculatedData.sdAvgOrangesScored","calculatedData.sdAvgLemonsScored"},
+            {"calculatedData.avgGoodDecisions","calculatedData.avgBadDecisions"},
+            {"pitLength","pitWidth","pitWeight","pitWheelDiameter","pitDrivetrain","pitProgrammingLanguage","pitClimbType","pitHasCamera","pitHasVision","pitHasGyro","pitHasEncoders","pitCanBuddyStartLevel2","pitSandstormNavigationType","pitSEALsNotes"}
     };
 
     static String[] shouldDisplayAsPercentage = {
@@ -57,12 +57,17 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     static String[] displayAsUnranked = {
             "matches",
             "VIEWER.matchesUntilNextMatchForTeam",
+            "pitClimbType",
+            "pitSEALsNotes",
+            "pitSandstormNavigationType",
     };
 
     static String[] shouldDisplayAsLongText = {
             //These variables should always be displayed as long text. These variables are non year specific variables
             "pitNotes",
             "superNotes",
+            "pitClimbType",
+            "pitSEALsNotes",
     };
 
     static String[] shouldDisplayAsFurtherInformation = {
