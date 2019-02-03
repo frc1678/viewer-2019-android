@@ -5,8 +5,56 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart1"
+        android:layout_above="@+id/linearlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:id="@+id/linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:id="@+id/teamOne"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textSize="24dp"
+            android:gravity="center"
+            android:id="@+id/teamTwo"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textSize="24dp"
+            android:gravity="center"
+            android:id="@+id/teamThree"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textSize="24dp"
+            android:gravity="center"
+            android:id="@+id/teamFour"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <View
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>

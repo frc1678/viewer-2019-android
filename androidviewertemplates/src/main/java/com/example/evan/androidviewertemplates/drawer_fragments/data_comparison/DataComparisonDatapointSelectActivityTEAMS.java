@@ -170,7 +170,6 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
             dataComparisonAdapter.notifyDataSetChanged();
             typeSelection="Normal";
         }
-
         datapointListView.onRestoreInstanceState(state);
     }
 
@@ -193,6 +192,9 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
                         .setFrame(Style.FRAME_LOLLIPOP)
                         .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_BLUE))
                         .setAnimations(Style.ANIMATIONS_POP).show();
+
+                disableButton();
+                datapointTextView.setText("");
             }
 
             @Override
@@ -224,21 +226,25 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
                     initListView("Normal");
                     String datapoint = datapointsList_NORMAL.get(i);
                     selectedDatapoint = datapoint;
+                    datapointTextView.setText(selectedDatapoint);
                 }
                 if (typeSelection.equals("Last Four Matches")) {
                     initListView("Last Four Matches");
                     String datapoint = datapointsList_LFM.get(i);
                     selectedDatapoint = datapoint;
+                    datapointTextView.setText(selectedDatapoint);
                 }
                 if (typeSelection.equals("Standard Deviation")) {
                     initListView("Standard Deviation");
                     String datapoint = datapointsList_SD.get(i);
                     selectedDatapoint = datapoint;
+                    datapointTextView.setText(selectedDatapoint);
                 }
                 if (typeSelection.equals("75th Percentile")) {
                     initListView("75th Percentile");
                     String datapoint = datapointsList_P75.get(i);
                     selectedDatapoint = datapoint;
+                    datapointTextView.setText(selectedDatapoint);
                 }
                 Log.e("DATAORPOA",selectedDatapoint);
                 onSelectedMode = true;
@@ -313,6 +319,8 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
 
          if (datapoint.equals(DataComparisonDatapointSelectActivityTEAMS.selectedDatapoint)) {
              convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.MediumSpringGreen));
+         } else {
+             convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.White));
          }
 
 

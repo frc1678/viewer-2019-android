@@ -7,6 +7,7 @@ import android.text.style.BackgroundColorSpan;
 import android.util.Log;
 
 import com.example.evan.androidviewertools.firebase_classes.Match;
+import com.example.evan.androidviewertools.firebase_classes.Team;
 import com.example.evan.androidviewertools.firebase_classes.TeamInMatchData;
 import com.example.evan.androidviewertools.utils.firebase.FirebaseLists;
 import com.google.gson.Gson;
@@ -36,7 +37,9 @@ public class Utils {
     }
 
     private static Object getDirectField(Object object, String field) throws Exception {
-        if (object instanceof List) {return ((List)object).get(Integer.parseInt(field));}
+        if (object instanceof List) {
+            return ((List)object).get(Integer.parseInt(field));
+        }
         return findFieldInInheritedFields(object.getClass(), field).get(object);
     }
 
@@ -149,6 +152,24 @@ public class Utils {
 
         Collections.sort(teamInMatchDatas, new ObjectFieldComparator("matchNumber", true));
         return teamInMatchDatas;
+    }//DRINK BLEACH//DRINK BLEACH
+
+    public static List<Team> getTeamDatasForTeamNumber(Integer teamNumber) {
+        List<Team> teamDataList = new ArrayList<>();
+        for (Team teamData : FirebaseLists.teamsList.getValues()) {
+            Log.e("teamNumber", Integer.toString(teamNumber));
+            Integer number = (Integer) Utils.getObjectField(teamData,"teamNumber");
+            try {
+                if (number.equals(teamNumber)) {
+                    teamDataList.add(teamData);
+                }
+            }catch (NullPointerException NPE){
+                Log.e("team Number", "NULL");
+            }
+        }
+
+        Collections.sort(teamDataList, new ObjectFieldComparator("matchNumber", true));
+        return teamDataList;
     }//DRINK BLEACH//DRINK BLEACH
 
     public static List<Integer> getMatchNumbersForTeamNumber(Integer teamNumber) {
