@@ -24,7 +24,6 @@ public CalculatedTeamData calculatedData;
     public Integer actualRPs;
     public Integer matchesPlayed;
 
-
     public String pitWheelDiameter;
     public String pitDriveTrain;
     public String pitProgrammingLanguage;
