@@ -30,8 +30,11 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     static String[] sectionTitles = {
             //May need to change depending on game
             "Matches",
-            "Auto",
+            "Sandstorm",
             "Teleop",
+            "End Game",
+            "Status",
+            "High Level",
             "Super Data",
             "Pit Data"
     };
@@ -39,10 +42,13 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
             {"matches", "VIEWER.matchesUntilNextMatchForTeam", "lfm"},
-            {},
-            {},
-            {},
-            {}
+            {"habLineSuccessL1,habLineSuccessL2,"},
+            {"hasOrangeGroundIntake,hasLemonGroundIntake,avgOrangesScored,avgLemonsScored,avgOrangeFouls,avgLemonsSpilled"},
+            {"avgTimeClimbing,"},
+            {"avgTimeIncap,percentIncap,percentImpaired,percentNoShow"},
+            {"predictedSoloPoints,sdAvgOrangesScored,sdAvgLemonsScored"},
+            {"avgGoodDecisions,avgBadDecisions"},
+            {"pitLength,pitWidth,pitWeight,pitWheelDiameter,pitDrivetrain,pitProgrammingLanguage,pitClimbType,pitHasCamera,pitHasVision,pitHasGyro,pitHasEncoders,pitCanBuddyStartLevel2,pitSandstormNavigationType,pitSEALsNotes"}
     };
 
     static String[] shouldDisplayAsPercentage = {
