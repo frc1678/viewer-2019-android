@@ -129,6 +129,9 @@ public class CalculatedTeamData extends Object {
     public Float lfmLemonCycleL3;
     public Float lfmAvgGoodDecisions;
     public Float lfmAvgBadDecisions;
+    public Float lfmAvgTimeIncap;
+    public Float lfmAvgTimeImpaired;
+    public Float lfmAvgTimeClimbing;
     public Float lfmAvgLemonsSpilled;
     public Float sdAvgOrangesScored;
     public Float sdAvgLemonsScored;
