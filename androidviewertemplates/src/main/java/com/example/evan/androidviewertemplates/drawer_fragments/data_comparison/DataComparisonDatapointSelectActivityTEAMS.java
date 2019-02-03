@@ -57,6 +57,7 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
         super.onCreate(savedInstanceState);
         setContentView(R.layout.data_comparison_teams);
         setTitle("TEAMS Datapoint Selection");
+        selectedDatapoint = "";
         getExtras();
         getDatapoints();
         initXml();

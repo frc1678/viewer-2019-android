@@ -137,7 +137,6 @@ public class Utils {
     public static List<TeamInMatchData> getTeamInMatchDatasForTeamNumber(Integer teamNumber) {
         List<TeamInMatchData> teamInMatchDatas = new ArrayList<>();
         for (TeamInMatchData teamInMatchData : FirebaseLists.teamInMatchDataList.getValues()) {
-            Log.e("teamNumber", Integer.toString(teamNumber));
             Integer number = (Integer) Utils.getObjectField(teamInMatchData,"teamNumber");
             //Log.e("number", Integer.toString(number));
             //DRINK BLEACH
@@ -146,7 +145,6 @@ public class Utils {
                     teamInMatchDatas.add(teamInMatchData);
                 }
             }catch (NullPointerException NPE){
-                Log.e("team Number", "NULL");
             }
         }
 
@@ -173,6 +171,7 @@ public class Utils {
     }//DRINK BLEACH//DRINK BLEACH
 
     public static List<Integer> getMatchNumbersForTeamNumber(Integer teamNumber) {
+        Log.e("REKARAERA","CALLED");
         List<Integer> matchNumbers = new ArrayList<>();
         for (TeamInMatchData teamInMatchData : getTeamInMatchDatasForTeamNumber(teamNumber)) {
             Integer matchNumber = (Integer) Utils.getObjectField(teamInMatchData,"matchNumber");

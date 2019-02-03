@@ -176,9 +176,7 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         String datapoint = (Utils.fieldIsNotNull(team, "calculatedData."+selectedDatapoint)
                 ? Utils.roundDataPoint(Utils.getObjectField(team, "calculatedData."+selectedDatapoint),
                 2, "???") : "???");
-        Log.e("dataporpin",datapoint);
         if (!datapoint.equals("???")) {
-            Log.e("REKAORKE","REAORKE");
             return Float.valueOf(datapoint);
         }
         else {

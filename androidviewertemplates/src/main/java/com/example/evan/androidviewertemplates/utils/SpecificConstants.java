@@ -24,7 +24,7 @@ public class SpecificConstants extends Constants {
     //todo
     public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Settings", "Data Comparison"};
 
-    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-chezy-2018.firebaseio.com/";
+    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2018-temp.firebaseio.com/";
 
     public static String ROOT_FIREBASE_PATH = ORIGINAL_ROOT_FIREBASE_PATH;
     public static String MATCHES_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Matches";
@@ -420,12 +420,6 @@ public class SpecificConstants extends Constants {
         };
         Map<String, String> initialDataComparisonDatapointsTIMD = new HashMap<String, String>() {
             {
-                      put("startingLevel","starting level");
-                      put("crossedHabLine"," crossed HAB line");
-                      put("startingLocation","starting location");
-                      put("preload","preloaded game piece");
-                      put("driverStation","driver station ");
-                      put("isNoShow","did not show up to match");
                       put("orangesScored","# cargo scored");
                       put("lemonsScored","# panel scored");
                       put("orangeFouls","cargo fouls out of field");

@@ -75,6 +75,12 @@ public class DataComparisonDatapointSelectAdapter extends BaseAdapter {
         datapointDescription.setText(datapointDescriptionList.get(position));
         teamPosition.setText(String.valueOf(position + 1));
 
+        if (datapoint.equals(DataComparisonDatapointSelectActivityTIMD.selectedDatapoint)) {
+            convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.MediumSpringGreen));
+        } else {
+            convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.White));
+        }
+
 
         return convertView;
     }
