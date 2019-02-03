@@ -191,9 +191,6 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
 //        } if (!redDidAutoQuest && redDidFaceBoss) {
 //            rankingPointDisplayRed.setText("    ●");
 //        }
->>>>>>> 55a29ac... Fix Match Schedule information
-
-
 
         }catch (NullPointerException NPE){
         }
