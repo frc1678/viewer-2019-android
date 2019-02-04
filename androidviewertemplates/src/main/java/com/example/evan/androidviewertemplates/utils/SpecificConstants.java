@@ -26,6 +26,7 @@ public class SpecificConstants extends Constants {
 
     public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2018-temp.firebaseio.com/";
 
+
     public static String ROOT_FIREBASE_PATH = ORIGINAL_ROOT_FIREBASE_PATH;
     public static String MATCHES_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Matches";
     public static String TEAMS_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Teams";

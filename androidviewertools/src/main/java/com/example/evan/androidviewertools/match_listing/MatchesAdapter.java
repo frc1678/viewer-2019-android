@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.example.evan.androidviewertools.ViewerActivity;
 import com.example.evan.androidviewertools.firebase_classes.Team;
 import com.example.evan.androidviewertools.utils.Constants;
@@ -74,7 +73,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         try {
             Match match = (Match) getItem(position);
 
-            if (StarManager.isImportantMatch(match.number) && !Constants.highlightTeamSchedule) {
+            if (StarManager.isImportantMatch(match.matchNumber) && !Constants.highlightTeamSchedule) {
                 rowView.setBackgroundColor(Constants.STAR_COLOR);
             } else {
                 rowView.setBackgroundColor(Color.TRANSPARENT);
@@ -82,11 +81,11 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
 
             TextView matchTextView = (TextView) rowView.findViewById(R.id.matchNumber);
             if (selectedScope.equals("Match")) {
-                Integer matchNumber = Integer.valueOf((Integer) Utils.getObjectField(match, "number"));
-                matchTextView.setText(Utils.highlightTextInString(matchNumber.toString(), searchString));
+                Integer matchNumber = Integer.valueOf((Integer) Utils.getObjectField(match, "matchNumber"));
+                matchTextView.setText(Utils.highlightTextInString(String.valueOf(matchNumber), searchString));
             } else {
-                Integer matchNumber = Integer.valueOf((Integer) Utils.getObjectField(match, "number"));
-                matchTextView.setText(matchNumber.toString());
+                Integer matchNumber = Integer.valueOf((Integer) Utils.getObjectField(match, "matchNumber"));
+                matchTextView.setText(String.valueOf(matchNumber));
             }
             List<Object> redTeams = Arrays.asList(Utils.getObjectField(match, "redTeams"));
             List<Object> blueTeams = Arrays.asList(Utils.getObjectField(match, "blueTeams"));
@@ -101,7 +100,8 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
             }
 
             int[] teamTextViewIDs = {R.id.teamOne, R.id.teamTwo, R.id.teamThree, R.id.teamFour, R.id.teamFive, R.id.teamSix};
-            for (int i = 0; i < 6; i++) {
+            int teamTextViewIDsSize = teamTextViewIDs.length;
+            for (int i = 0; i < teamTextViewIDsSize; i++) {
                 TextView teamTextView = (TextView) rowView.findViewById(teamTextViewIDs[i]);
 
                 if (selectedScope.equals("Team")) {
@@ -154,46 +154,44 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
                 TextView redScoreTextView = (TextView) rowView.findViewById(R.id.redScore);
                 TextView blueScoreTextView = (TextView) rowView.findViewById(R.id.blueScore);
 
-                if (match.redActualScore != null || match.blueActualScore != null) {
-                    redScoreTextView.setText((match.redActualScore != null) ? match.redActualScore.toString() : "???");
-                    blueScoreTextView.setText((match.blueActualScore != null) ? match.blueActualScore.toString() : "???");
-                    redScoreTextView.setTextColor(Color.argb(255, 255, 0, 0));
-                    blueScoreTextView.setTextColor(Color.argb(255, 0, 0, 255));
-                } else {
-                    redScoreTextView.setTextColor(Color.argb(75, 255, 0, 0));
-                    blueScoreTextView.setTextColor(Color.argb(75, 0, 0, 255));
-                    redScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.predictedRedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.predictedRedScore"), 2, "???") : "???");
-                    blueScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.predictedBlueScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.predictedBlueScore"), 2, "???") : "???");
-                }
-
+                //these are created in order to get Red/Blue scores using a key and value instead of value (match.redScore/blueScore)
+                Integer redScore = Integer.parseInt(Utils.getMatchDisplayValue(match, "redActualScore"));
+                Integer blueScore = Integer.parseInt(Utils.getMatchDisplayValue(match,"blueActualScore"));
+        if (redScore != null || blueScore != null) {
+            redScoreTextView.setText((redScore != null) ? redScore.toString() : "???");
+            blueScoreTextView.setText((blueScore != null) ? blueScore.toString() : "???");
+            redScoreTextView.setTextColor(Color.argb(255, 255, 0, 0));
+            blueScoreTextView.setTextColor(Color.argb(255, 0, 0, 255));
+        } else {
+            redScoreTextView.setTextColor(Color.argb(75, 255, 0, 0));
+            blueScoreTextView.setTextColor(Color.argb(75, 0, 0, 255));
+            redScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.redPredictedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.redPredictedScore"), 2, "???") : "???");
+            blueScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.bluePredictedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.bluePredictedScore"), 2, "???") : "???");
+        }
                 TextView rankingPointDisplayBlue = (TextView) rowView.findViewById(R.id.rankingPointDisplayBlue);
                 TextView rankingPointDisplayRed = (TextView) rowView.findViewById(R.id.rankingPointDisplayRed);
 
-
-
-         Boolean blueDidAutoQuest = Boolean.valueOf(Utils.getObjectField(match, "blueDidAutoQuest").toString());
-         Boolean blueDidFaceBoss = Boolean.valueOf(Utils.getObjectField(match, "blueDidFaceBoss").toString());
-         Boolean redDidAutoQuest = Boolean.valueOf(Utils.getObjectField(match, "redDidAutoQuest").toString());
-         Boolean redDidFaceBoss = Boolean.valueOf(Utils.getObjectField(match, "redDidFaceBoss").toString());
-
-//todo Add predicted RPs?
-            if (blueDidAutoQuest && blueDidFaceBoss) {
-             rankingPointDisplayBlue.setText("● ●");
-         } if (blueDidAutoQuest && !blueDidFaceBoss) {
-             rankingPointDisplayBlue.setText("●  ");
-         } if (!blueDidAutoQuest && blueDidFaceBoss) {
-             rankingPointDisplayBlue.setText("    ●");
-         }
-
-        if (redDidAutoQuest && redDidFaceBoss) {
-            rankingPointDisplayRed.setText("● ●");
-        } if (redDidAutoQuest && !redDidFaceBoss) {
-            rankingPointDisplayRed.setText("●  ");
-        } if (!redDidAutoQuest && redDidFaceBoss) {
-            rankingPointDisplayRed.setText("    ●");
-        }
-
-
+//         Boolean blueDidAutoQuest = Boolean.valueOf(Utils.getObjectField(match, "blueDidAutoQuest").toString());
+//         Boolean blueDidFaceBoss = Boolean.valueOf(Utils.getObjectField(match, "blueDidFaceBoss").toString());
+//         Boolean redDidAutoQuest = Boolean.valueOf(Utils.getObjectField(match, "redDidAutoQuest").toString());
+//         Boolean redDidFaceBoss = Boolean.valueOf(Utils.getObjectField(match, "redDidFaceBoss").toString());
+//
+////todo Add predicted RPs?
+//            if (blueDidAutoQuest && blueDidFaceBoss) {
+//             rankingPointDisplayBlue.setText("● ●");
+//         } if (blueDidAutoQuest && !blueDidFaceBoss) {
+//             rankingPointDisplayBlue.setText("●  ");
+//         } if (!blueDidAutoQuest && blueDidFaceBoss) {
+//             rankingPointDisplayBlue.setText("    ●");
+//         }
+//
+//        if (redDidAutoQuest && redDidFaceBoss) {
+//            rankingPointDisplayRed.setText("● ●");
+//        } if (redDidAutoQuest && !redDidFaceBoss) {
+//            rankingPointDisplayRed.setText("●  ");
+//        } if (!redDidAutoQuest && redDidFaceBoss) {
+//            rankingPointDisplayRed.setText("    ●");
+//        }
 
         }catch (NullPointerException NPE){
         }
@@ -245,7 +243,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
                     }
                 }
             } else if (scope.equals("Match")) {
-                found = value.number.toString().indexOf(searchString) == 0;
+                found = value.matchNumber.toString().indexOf(searchString) == 0;
             }
         }
 
@@ -460,7 +458,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         @Override
         public void onClick(View v) {
             TextView matchNumberTextView = (TextView)v.findViewById(R.id.matchNumber);
-            Integer matchNumberClicked = Integer.parseInt(matchNumberTextView.getText().toString());
+            Integer matchNumberClicked = Integer.parseInt((matchNumberTextView.getText()).toString());
 
             Intent matchDetailsActivityIntent = getMatchDetailsActivityIntent();
             matchDetailsActivityIntent.putExtra("matchNumber", matchNumberClicked);
