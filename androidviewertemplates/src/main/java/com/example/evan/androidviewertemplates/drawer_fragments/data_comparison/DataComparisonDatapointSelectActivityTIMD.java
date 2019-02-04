@@ -3,6 +3,7 @@ package com.example.evan.androidviewertemplates.drawer_fragments.data_comparison
 import android.app.ActivityOptions;
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
@@ -43,6 +44,7 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.data_comparison_datapoint_select);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setTitle("TIMD Datapoint Selection");
         getDatapoints();
         getExtras();

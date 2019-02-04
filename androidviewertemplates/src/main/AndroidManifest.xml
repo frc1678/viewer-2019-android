@@ -13,6 +13,8 @@
         <activity android:name=".drawer_fragments.data_comparison.DataComparisonGraphingActivityTIMD"/>
         <activity android:name=".drawer_fragments.data_comparison.DataComparisonDatapointSelectActivityTIMD"/>
         <activity android:name=".drawer_fragments.data_comparison.DataComparisonDatapointSelectActivityTEAMS"/>
+        <activity android:name=".drawer_fragments.data_comparison.DataComparisonHorizontalGraphingActivityTIMD"/>
+
 
 
     </application>

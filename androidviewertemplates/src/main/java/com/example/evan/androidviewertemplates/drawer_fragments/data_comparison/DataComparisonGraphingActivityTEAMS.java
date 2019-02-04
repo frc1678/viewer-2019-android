@@ -1,6 +1,7 @@
 package com.example.evan.androidviewertemplates.drawer_fragments.data_comparison;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -57,6 +58,7 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.graphing_data_comparison_teams);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         getExtras();
         initChart();
         initBarLabels();
