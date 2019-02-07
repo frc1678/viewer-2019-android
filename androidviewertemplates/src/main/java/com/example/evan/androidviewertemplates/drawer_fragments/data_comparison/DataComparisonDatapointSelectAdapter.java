@@ -62,15 +62,15 @@ public class DataComparisonDatapointSelectAdapter extends BaseAdapter {
 
         String datapoint = (String) getItem(position);
 
-        TextView datapointName = (TextView)
-                convertView.findViewById(R.id.teamNumberTextView);
         TextView datapointDescription = (TextView)
+                convertView.findViewById(R.id.teamNumberTextView);
+        TextView datapointName = (TextView)
                 convertView.findViewById(R.id.teamName);
         TextView teamPosition = (TextView)
                 convertView.findViewById(R.id.rankPosition);
 
-        datapointName.setTextSize(20);
-        datapointDescription.setTextSize(14);
+        datapointDescription.setTextSize(20);
+        datapointName.setTextSize(14);
         datapointName.setText(datapoint);
         datapointDescription.setText(datapointDescriptionList.get(position));
         teamPosition.setText(String.valueOf(position + 1));

@@ -48,7 +48,6 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
         setTitle("TIMD Datapoint Selection");
         getDatapoints();
         getExtras();
-
         initXml();
         initListView();
         datapointChosenListener();
@@ -130,7 +129,7 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
         });
     }
     public void initiateGraphingIntent() {
-        Intent GraphingActivity = new Intent(DataComparisonDatapointSelectActivityTIMD.this, DataComparisonGraphingActivityTIMD.class);
+        Intent GraphingActivity = new Intent(DataComparisonDatapointSelectActivityTIMD.this, DataComparisonHorizontalGraphingActivityTIMD.class);
         GraphingActivity.putExtra("teamOne", teamOne);
         GraphingActivity.putExtra("teamTwo", teamTwo);
         GraphingActivity.putExtra("teamThree", teamThree);
