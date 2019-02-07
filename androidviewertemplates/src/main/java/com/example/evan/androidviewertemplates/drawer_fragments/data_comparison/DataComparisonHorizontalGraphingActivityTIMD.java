@@ -15,6 +15,7 @@ import com.example.evan.androidviewertools.utils.Utils;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import static com.example.evan.androidviewertools.utils.Utils.getMatchNumbersForTeamNumber;
 import static com.example.evan.androidviewertools.utils.Utils.getTeamInMatchDatasForTeamNumber;
@@ -116,6 +118,9 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends AppCompatActiv
 
         barChart.setDragEnabled(true);
         barChart.setVisibleXRangeMaximum(10);
+        barChart.getAxisLeft().setAxisMinimum(0f);
+        barChart.getAxisRight().setAxisMinimum(0f);
+
 
         float groupSpace = 0.125f;
         float barSpace = 0.0f;
@@ -129,44 +134,86 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends AppCompatActiv
 
         barChart.getDescription().setEnabled(false);
         barChart.setDrawGridBackground(false);
+        barChart.getAxisLeft().setDrawGridLines(false);
+        barChart.getXAxis().setDrawGridLines(false);
         barChart.getLegend().setEnabled(true);
+        Legend legend = barChart.getLegend();
+        legend.setTextSize(32);
 
 
         XAxis xAxis = barChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
-        xAxis.setLabelCount(12);
+        xAxis.setLabelCount(10);
         xAxis.setCenterAxisLabels(true);
         xAxis.setGranularityEnabled(true);
         xAxis.setGranularity(1);
 
         xAxis.setValueFormatter(new IndexAxisValueFormatter(Matches));
+        xAxis.setTextSize(18);
         xAxis.setCenterAxisLabels(true);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
 
 
         YAxis leftAxis = barChart.getAxisLeft();
         leftAxis.setLabelCount(0, false);
         leftAxis.setSpaceTop(15f);
-        leftAxis.setDrawLabels(false); // no axis labels
-        leftAxis.setDrawAxisLine(false); // no axis line
+        leftAxis.setDrawLabels(true); // no axis labels
+        leftAxis.setDrawAxisLine(true); // no axis line
         leftAxis.setDrawGridLines(true); // no grid lines
         leftAxis.setDrawZeroLine(false); // draw a zero line
 
         YAxis rightAxis = barChart.getAxisRight();
         rightAxis.setLabelCount(0, false);
         rightAxis.setSpaceTop(15f);
-        rightAxis.setDrawLabels(false); // no axis labels
-        rightAxis.setDrawAxisLine(false); // no axis line
-        rightAxis.setDrawGridLines(true); // no grid lines
+        rightAxis.setDrawLabels(true); // no axis labels
+        rightAxis.setDrawAxisLine(true); // no axis line
+        rightAxis.setDrawGridLines(false); // no grid lines
         rightAxis.setDrawZeroLine(false); // draw a zero line
-        
+
 
         barChart.invalidate();
 
 
     }
 
+    public ArrayList<BarEntry> barEntry1() {
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            barEntries.add(new BarEntry(i+1, (float) Math.random()*7));
+        }
+
+        return barEntries;
+    }
+    public ArrayList<BarEntry> barEntry2() {
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            barEntries.add(new BarEntry(i+1, (float) Math.random()*7));
+        }
+
+        return barEntries;
+    }
+    public ArrayList<BarEntry> barEntry3() {
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            barEntries.add(new BarEntry(i+1, (float) Math.random()*7));
+        }
+
+        return barEntries;
+    }
+    public ArrayList<BarEntry> barEntry4() {
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            barEntries.add(new BarEntry(i+1, (float) Math.random()*7));
+        }
+
+        return barEntries;
+    }
     public ArrayList<BarEntry> barEntryOne() {
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         List<Float> values = new ArrayList<>();
@@ -180,6 +227,12 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends AppCompatActiv
             }
         }
         Collections.reverse(barEntries);
+        if (barEntries.size() < 10);
+        Integer barSize = barEntries.size();
+        Integer counter = 10 - barSize;
+        for (int i = 0; i < counter; i++) {
+            barEntries.add(new BarEntry(i+barSize, (float) 0.1));
+        }
         return barEntries;
     }
     public ArrayList<BarEntry> barEntryTwo() {
@@ -194,6 +247,12 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends AppCompatActiv
                 barEntries.add(new BarEntry(p+1, (float) values.get(p)));
             }        }
         Collections.reverse(barEntries);
+        if (barEntries.size() < 10);
+        Integer barSize = barEntries.size();
+        Integer counter = 10 - barSize;
+        for (int i = 0; i < counter; i++) {
+            barEntries.add(new BarEntry(i+barSize, (float) 0.1));
+        }
         return barEntries;
     }
     public ArrayList<BarEntry> barEntryThree() {
@@ -208,6 +267,12 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends AppCompatActiv
                 barEntries.add(new BarEntry(p+1, (float) values.get(p)));
             }        }
         Collections.reverse(barEntries);
+        if (barEntries.size() < 10);
+        Integer barSize = barEntries.size();
+        Integer counter = 10 - barSize;
+        for (int i = 0; i < counter; i++) {
+            barEntries.add(new BarEntry(i+barSize, (float) 0.1));
+        }
         return barEntries;
     }
     public ArrayList<BarEntry> barEntryFour() {
@@ -222,6 +287,12 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends AppCompatActiv
                 barEntries.add(new BarEntry(p+1, (float) values.get(p)));
             }        }
         Collections.reverse(barEntries);
+        if (barEntries.size() < 10);
+        Integer barSize = barEntries.size();
+        Integer counter = 10 - barSize;
+        for (int i = 0; i < counter; i++) {
+            barEntries.add(new BarEntry(i+barSize, (float) 0.1));
+        }
         return barEntries;
     }
 
@@ -244,8 +315,8 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends AppCompatActiv
 
     public List<Float> getTeamInMatchDatapointValue(String team) {
         List<Float> values;
-            values = getValues(Integer.valueOf(team), "calculatedData." + selectedDatapoint);
-                return values;
+        values = getValues(Integer.valueOf(team), "calculatedData." + selectedDatapoint);
+        return values;
     }
     private BarDataSet generateData(int cnt) {
 
