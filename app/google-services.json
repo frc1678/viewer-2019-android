@@ -4,7 +4,7 @@
     "firebase_url": "https://scouting-2018-temp.firebaseio.com",
     "project_id": "scouting-2018-temp",
     "storage_bucket": "scouting-2018-temp.appspot.com"
-  },
+ },
   "client": [
     {
       "client_info": {
