@@ -120,8 +120,8 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends AppCompatActiv
         barChart.setVisibleXRangeMaximum(10);
         barChart.getAxisLeft().setAxisMinimum(0f);
         barChart.getAxisRight().setAxisMinimum(0f);
-
-
+        barChart.setDoubleTapToZoomEnabled(false);
+        
         float groupSpace = 0.125f;
         float barSpace = 0.0f;
         data.setBarWidth(0.22f);
