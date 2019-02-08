@@ -104,6 +104,8 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
         });
     }
 
+
+
     public void initiateGraphingIntent() {
         Intent GraphingActivity = new Intent(DataComparisonGraphingActivityTIMD.this, DataComparisonHorizontalGraphingActivityTIMD.class);
         GraphingActivity.putExtra("teamOne", teamOne);
@@ -388,8 +390,8 @@ class ChartDataAdapter extends ArrayAdapter<BarData> {
 
             convertView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_item_barchart, null);
-            holder.chart = convertView.findViewById(R.id.chart);
-            holder.matchNumber = convertView.findViewById(R.id.matchNumber);
+            holder.chart = (BarChart) convertView.findViewById(R.id.chart);
+            holder.matchNumber = (TextView) convertView.findViewById(R.id.matchNumber);
 
             convertView.setTag(holder);
 

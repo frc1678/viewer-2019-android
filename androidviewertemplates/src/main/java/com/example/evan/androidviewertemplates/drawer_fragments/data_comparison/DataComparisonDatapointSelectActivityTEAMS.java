@@ -77,6 +77,7 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
         }
     }
 
+
     public void getDatapoints() {
         for (String datapoint : SpecificConstants.DATA_COMPARISON_TEAMS_NORMAL.keySet()) {
             datapointsList_NORMAL.add(datapoint);

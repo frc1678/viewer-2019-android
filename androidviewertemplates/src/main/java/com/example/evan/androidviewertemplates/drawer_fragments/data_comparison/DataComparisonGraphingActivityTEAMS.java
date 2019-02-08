@@ -84,7 +84,7 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
 
 
         chart.getAxisLeft().setDrawGridLines(false);
-        chart.animateY(2500);
+        chart.animateY(1000);
         chart.getLegend().setEnabled(false);
         xAxis.setCenterAxisLabels(true);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(barChartLabels));

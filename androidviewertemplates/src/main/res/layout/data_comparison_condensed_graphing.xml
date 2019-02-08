@@ -9,16 +9,7 @@
         android:layout_marginTop="20dp"
         android:background="@color/white"
         android:layout_marginBottom="10dp"
-        android:layout_above="@+id/trendLineGraphButton"
         android:layout_height="match_parent" />
-
-    <Button
-        android:id="@+id/trendLineGraphButton"
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:background="@color/LightGrey"
-        android:text="Trend Line Graphing"
-        android:layout_height="40dp" />
 
 
 </RelativeLayout>

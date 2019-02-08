@@ -7,8 +7,13 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -108,6 +113,8 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
         });
 
     }
+
+
     public void initListView() {
         Parcelable state = datapointListView.onSaveInstanceState();
         DataComparisonDatapointSelectAdapter dataComparisonAdapter = new DataComparisonDatapointSelectAdapter(getApplicationContext(), datapointsList, descriptionList);
@@ -129,7 +136,7 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
         });
     }
     public void initiateGraphingIntent() {
-        Intent GraphingActivity = new Intent(DataComparisonDatapointSelectActivityTIMD.this, DataComparisonHorizontalGraphingActivityTIMD.class);
+        Intent GraphingActivity = new Intent(DataComparisonDatapointSelectActivityTIMD.this, DataComparisonTIMDTabbedActivity.class);
         GraphingActivity.putExtra("teamOne", teamOne);
         GraphingActivity.putExtra("teamTwo", teamTwo);
         GraphingActivity.putExtra("teamThree", teamThree);
@@ -140,6 +147,6 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
         startActivity(GraphingActivity, options.toBundle());
 
     }
-
 }
+
 

@@ -5,12 +5,16 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.example.evan.androidviewertemplates.R;
 import com.example.evan.androidviewertools.firebase_classes.TeamInMatchData;
@@ -33,20 +37,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 import static com.example.evan.androidviewertools.utils.Utils.getMatchNumbersForTeamNumber;
-import static com.example.evan.androidviewertools.utils.Utils.getTeamInMatchDatasForTeamNumber;
 
-public class DataComparisonHorizontalGraphingActivityTIMD extends AppCompatActivity {
+public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 
     String teamOne;
     String teamTwo;
     String teamThree;
     String teamFour;
     String selectedDatapoint;
-
-    Button trendLineButton;
 
     HorizontalBarChart barChart;
 
@@ -58,40 +58,33 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends AppCompatActiv
     ArrayList<String> teamsList = new ArrayList<>();
     public static ArrayList<Float> mAllDatapointValues = new ArrayList<>();
 
-
-
-
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.data_comparison_condensed_graphing);
-        getExtras();
-        createTeamsList();
-        initTeamMatches();
-        initChart();
-        setTitle(selectedDatapoint + " Condensed Graph");
     }
 
-    public void getExtras() {
-        Intent previous = getIntent();
-        Bundle bundle = previous.getExtras();
-        if (bundle != null) {
-            teamOne = getIntent().getStringExtra("teamOne");
-            teamTwo = getIntent().getStringExtra("teamTwo");
-            teamThree = getIntent().getStringExtra("teamThree");
-            teamFour = getIntent().getStringExtra("teamFour");
-            selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
-        }
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.data_comparison_condensed_graphing, container, false);
+        getExtras(rootView);
+        createTeamsList();
+        initTeamMatches();
+        initChart(rootView);
 
-        trendLineButton = (Button) findViewById(R.id.trendLineGraphButton);
-        trendLineButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                initIntent();
-            }
-        });
+        ((DataComparisonTIMDTabbedActivity) getActivity())
+                .setActionBarTitle(selectedDatapoint + " Comparison");
 
+        return rootView;
+    }
+
+    public void getExtras(View layout) {
+        teamOne = DataComparisonTIMDTabbedActivity.teamOne;
+        teamTwo = DataComparisonTIMDTabbedActivity.teamTwo;
+        teamThree = DataComparisonTIMDTabbedActivity.teamThree;
+        teamFour = DataComparisonTIMDTabbedActivity.teamFour;
+        selectedDatapoint = DataComparisonTIMDTabbedActivity.selectedDatapoint;
     }
     public void createTeamsList() {
         teamsList.add(teamOne);
@@ -106,19 +99,19 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends AppCompatActiv
         teamFourMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamFour));
 
     }
-    public void initChart() {
+    public void initChart(View layout) {
 
-        barChart = (HorizontalBarChart) findViewById(R.id.chart);
+        barChart = (HorizontalBarChart) layout.findViewById(R.id.chart);
 
 
         BarDataSet barDataSet1 = new BarDataSet(barEntryOne(), teamOne);
-        barDataSet1.setColor(ContextCompat.getColor(DataComparisonHorizontalGraphingActivityTIMD.this, R.color.SuperBlue));
+        barDataSet1.setColor(ContextCompat.getColor(getActivity(), R.color.SuperBlue));
         BarDataSet barDataSet2 = new BarDataSet(barEntryTwo(), teamTwo);
-        barDataSet2.setColor(ContextCompat.getColor(DataComparisonHorizontalGraphingActivityTIMD.this, R.color.SuperRed));
+        barDataSet2.setColor(ContextCompat.getColor(getActivity(), R.color.SuperRed));
         BarDataSet barDataSet3 = new BarDataSet(barEntryThree(), teamThree);
-        barDataSet3.setColor(ContextCompat.getColor(DataComparisonHorizontalGraphingActivityTIMD.this, R.color.SuperOrange));
+        barDataSet3.setColor(ContextCompat.getColor(getActivity(), R.color.SuperOrange));
         BarDataSet barDataSet4 = new BarDataSet(barEntryFour(), teamFour);
-        barDataSet4.setColor(ContextCompat.getColor(DataComparisonHorizontalGraphingActivityTIMD.this, R.color.SuperGreen));
+        barDataSet4.setColor(ContextCompat.getColor(getActivity(), R.color.SuperGreen));
 
         BarData data = new BarData(barDataSet1, barDataSet2, barDataSet3, barDataSet4);
         barChart.setData(data);
@@ -353,7 +346,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends AppCompatActiv
         return d;
     }
 
-    public void initIntent() {
+   /* public void initIntent() {
         Intent GraphingActivity = new Intent(DataComparisonHorizontalGraphingActivityTIMD.this, DataComparisonTrendLineGraphingActivityTIMD.class);
         GraphingActivity.putExtra("teamOne", teamOne);
         GraphingActivity.putExtra("teamTwo", teamTwo);
@@ -363,7 +356,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends AppCompatActiv
         ActivityOptions options =
                 ActivityOptions.makeCustomAnimation(DataComparisonHorizontalGraphingActivityTIMD.this, R.anim.slide_right_in, R.anim.slide_left_out);
         startActivity(GraphingActivity, options.toBundle());
-    }
+    }*/
 
 
 
