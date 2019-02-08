@@ -17,7 +17,7 @@ import java.util.Map;
 public class TeamInMatchData extends com.example.evan.androidviewertools.firebase_classes.TeamInMatchData {
 public CalculatedTeamInMatchData calculatedData;
     //Make sure that all variables are public
-    public List<Map<Object,Object>> timeline;
+//    public List<Map<Object,Object>> timeline;
 
     public Integer driverStation;
     public Integer number;
