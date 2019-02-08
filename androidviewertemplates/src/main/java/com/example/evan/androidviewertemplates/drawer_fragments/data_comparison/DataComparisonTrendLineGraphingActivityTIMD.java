@@ -115,14 +115,10 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
             Color.parseColor("#ffffff")
     };
     private final int[] lineColors = new int[] {
-            Color.rgb(137, 230, 81),
-            Color.rgb(240, 240, 30),
-            Color.rgb(89, 199, 250),
-            Color.rgb(250, 104, 104)
-          /*Color.parseColor("#3366cc"),
-          Color.parseColor("#dc3912"),
-          Color.parseColor("#ff9900"),
-          Color.parseColor("#109618"),*/
+            Color.rgb(51,102,204),
+            Color.rgb(220,57,18),
+            Color.rgb(255,153,0),
+            Color.rgb(16,150,24)
     };
 
 
