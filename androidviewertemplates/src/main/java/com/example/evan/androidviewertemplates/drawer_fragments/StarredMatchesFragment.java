@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.evan.androidviewertemplates.match_details.MatchDetailsActivity;
 import com.example.evan.androidviewertools.firebase_classes.Match;
@@ -35,7 +36,7 @@ public class StarredMatchesFragment extends MatchesFragment {
 
         @Override
         public boolean secondaryFilter(Match value) {
-            Integer number = Integer.valueOf(String.valueOf(Utils.getObjectField(value, "number")));
+            Integer number = Integer.valueOf(String.valueOf(Utils.getObjectField(value, "teamNumber")));
             return StarManager.isImportantMatch(number);
         }
 
