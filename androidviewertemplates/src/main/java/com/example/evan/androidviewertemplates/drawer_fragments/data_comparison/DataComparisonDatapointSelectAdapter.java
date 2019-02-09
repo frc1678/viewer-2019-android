@@ -83,7 +83,7 @@ public class DataComparisonDatapointSelectAdapter extends BaseAdapter {
         teamPosition.setText(String.valueOf(position + 1));
 
         //changes color of selected cell
-        if (datapoint.equals(DataComparisonDatapointSelectActivityTEAMS.selectedDatapoint)) {
+        if (datapoint.equals(DataComparisonDatapointSelectActivityTIMD.selectedDatapoint)) {
             convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.MediumSpringGreen));
         } else {
             convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.White));
