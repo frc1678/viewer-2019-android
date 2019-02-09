@@ -154,12 +154,9 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
                 TextView redScoreTextView = (TextView) rowView.findViewById(R.id.redScore);
                 TextView blueScoreTextView = (TextView) rowView.findViewById(R.id.blueScore);
 
-                //these are created in order to get Red/Blue scores using a key and value instead of value (match.redScore/blueScore)
-                Integer redScore = Integer.parseInt(Utils.getMatchDisplayValue(match, "redActualScore"));
-                Integer blueScore = Integer.parseInt(Utils.getMatchDisplayValue(match,"blueActualScore"));
-        if (redScore != null || blueScore != null) {
-            redScoreTextView.setText((redScore != null) ? redScore.toString() : "???");
-            blueScoreTextView.setText((blueScore != null) ? blueScore.toString() : "???");
+        if (match.redActualScore != null || match.blueActualScore != null) {
+            redScoreTextView.setText((match.redActualScore != null) ? match.redActualScore.toString() : "???");
+            blueScoreTextView.setText((match.blueActualScore != null) ? match.blueActualScore.toString() : "???");
             redScoreTextView.setTextColor(Color.argb(255, 255, 0, 0));
             blueScoreTextView.setTextColor(Color.argb(255, 0, 0, 255));
         } else {
