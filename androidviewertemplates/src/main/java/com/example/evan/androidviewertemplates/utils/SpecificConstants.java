@@ -78,7 +78,7 @@ public class SpecificConstants extends Constants {
                     put("pitSandstormNavigationType","sandstorm navigation");
                     put("pitHasOrangeShooter","has cargo shooter");
                     put("pitSEALsNotes","SEALsNotes");
-                    put("number","team #");
+                    put("teamNumber","team #");
                     put("name","team name");
                     put("actualRPs","total # RP");
                     put("matchesPlayed","matches played");
