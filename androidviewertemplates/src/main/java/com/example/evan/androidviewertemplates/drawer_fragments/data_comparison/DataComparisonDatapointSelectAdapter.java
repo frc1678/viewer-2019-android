@@ -32,6 +32,7 @@ public class DataComparisonDatapointSelectAdapter extends BaseAdapter {
     private ArrayList<String> datapointList;
     private ArrayList<String> datapointDescriptionList;
 
+    //asks for context, datapointList and descriptionList,
     public DataComparisonDatapointSelectAdapter(Context context, ArrayList<String> datapointList, ArrayList<String> datapointDescriptionList) {
         mContext = context;
         this.datapointList = datapointList;
@@ -45,7 +46,9 @@ public class DataComparisonDatapointSelectAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return datapointList.get(position); //returns list item at the specified position
+        //gets the datapoint of click according to position and datapointList
+        return datapointList.get(position);
+        //returns list item at the specified position
     }
 
     @Override
@@ -59,9 +62,10 @@ public class DataComparisonDatapointSelectAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(mContext).
                     inflate(R.layout.data_comparison_team_select_cell, parent, false);
         }
-
+        //makes datapoint the selected datapoint
         String datapoint = (String) getItem(position);
 
+        //initializing the xml elements
         TextView datapointDescription = (TextView)
                 convertView.findViewById(R.id.teamNumberTextView);
         TextView datapointName = (TextView)
@@ -69,18 +73,21 @@ public class DataComparisonDatapointSelectAdapter extends BaseAdapter {
         TextView teamPosition = (TextView)
                 convertView.findViewById(R.id.rankPosition);
 
+        //makes size of datapointname be larger than description
         datapointDescription.setTextSize(20);
         datapointName.setTextSize(14);
+        //sets the text of the name and description
         datapointName.setText(datapoint);
         datapointDescription.setText(datapointDescriptionList.get(position));
+        //sets the cell position to 1 + position (1,2,3 instead of 0,1,2)
         teamPosition.setText(String.valueOf(position + 1));
 
-        if (datapoint.equals(DataComparisonDatapointSelectActivityTIMD.selectedDatapoint)) {
+        //changes color of selected cell
+        if (datapoint.equals(DataComparisonDatapointSelectActivityTEAMS.selectedDatapoint)) {
             convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.MediumSpringGreen));
         } else {
             convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.White));
         }
-
 
         return convertView;
     }
