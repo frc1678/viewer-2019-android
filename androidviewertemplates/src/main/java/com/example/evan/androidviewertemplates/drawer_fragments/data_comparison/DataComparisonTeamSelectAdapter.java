@@ -37,12 +37,14 @@ public class DataComparisonTeamSelectAdapter extends BaseAdapter {
         }
     @Override
     public int getCount() {
-        return mTeamsList.size(); //returns total of items in the list
+        return mTeamsList.size();
+        //returns total of items in the list
     }
 
     @Override
     public Object getItem(int position) {
-        return mTeamsList.get(position); //returns list item at the specified position
+        return mTeamsList.get(position);
+        //returns list item at the specified position
     }
 
     @Override
@@ -57,8 +59,10 @@ public class DataComparisonTeamSelectAdapter extends BaseAdapter {
                     inflate(R.layout.data_comparison_team_select_cell, parent, false);
         }
 
+        //makes currentTeam be the team value of the cell
         String currentTeam = (String) getItem(position);
 
+        //inits xml per according xml element
         TextView teamNumber = (TextView)
                 convertView.findViewById(R.id.teamNumberTextView);
         TextView teamName = (TextView)
@@ -66,18 +70,26 @@ public class DataComparisonTeamSelectAdapter extends BaseAdapter {
         TextView teamPosition = (TextView)
                 convertView.findViewById(R.id.rankPosition);
 
+        //sets text of the teamNumber to the current team
         teamNumber.setText(currentTeam);
+        //sets text of the teamName to the literal name of the team and the rank of the team
         teamName.setText(generateTeamNameAndSeed(currentTeam));
+        //sets text of team position to be the cell value
         teamPosition.setText(String.valueOf(position + 1));
 
+        //if there's one team in the selectedTeamsList
         if (String.valueOf(DataComparisonFragment.selectedTeamsList.size()).equals("1")) {
+            //if the cell team is equal to the selected team
             if (DataComparisonFragment.selectedTeam.equals(currentTeam)) {
+                //turn cell color to red
                 convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.CalmRed));
             } else {
+                //else, turn it to white
                 convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.White));
             }
         }
 
+        //per each team, if it's the 2,3,4 selected, turn green
         for (int i = 0; i < DataComparisonFragment.comparedAgainstTeamsList.size(); i++) {
             if (DataComparisonFragment.comparedAgainstTeamsList.get(i).equals(currentTeam)) {
                 convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.MediumSpringGreen));
@@ -86,14 +98,18 @@ public class DataComparisonTeamSelectAdapter extends BaseAdapter {
 
         return convertView;
     }
+
     public String generateTeamNameAndSeed(String teamNumber) {
         Team team = FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber);
+        //get value of actualSeed,
+        //if null, return "???"
         String teamRank = (Utils.fieldIsNotNull(team, "calculatedData.actualSeed")
                 ? Utils.roundDataPoint(Utils.getObjectField(team, "calculatedData.actualSeed"),
                 2, "???") : "???");
         String teamName = (Utils.fieldIsNotNull(team, "name")
                 ? Utils.roundDataPoint(Utils.getObjectField(team, "name"),
                 2, "???") : "???");
+        //substrings.
         String finalString = teamName + " | Rank: " + teamRank;
         return finalString;
     }

@@ -18,16 +18,6 @@ import com.github.mikephil.charting.charts.Chart;
 
 public abstract class DemoBase extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
-    protected final String[] months = new String[] {
-            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"
-    };
-
-    protected final String[] parties = new String[] {
-            "Party A", "Party B", "Party C", "Party D", "Party E", "Party F", "Party G", "Party H",
-            "Party I", "Party J", "Party K", "Party L", "Party M", "Party N", "Party O", "Party P",
-            "Party Q", "Party R", "Party S", "Party T", "Party U", "Party V", "Party W", "Party X",
-            "Party Y", "Party Z"
-    };
 
     private static final int PERMISSION_STORAGE = 0;
 
@@ -40,17 +30,20 @@ public abstract class DemoBase extends AppCompatActivity implements ActivityComp
 
     }
 
+    //used to return random values
     protected float getRandom(float range, float start) {
         return (float) (Math.random() * range) + start;
     }
 
     @Override
+    //used for backpressed
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.move_left_in_activity, R.anim.move_right_out_activity);
     }
 
     @Override
+    //requests permissions to save photos to gallery
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == PERMISSION_STORAGE) {
             if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {

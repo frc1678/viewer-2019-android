@@ -30,6 +30,7 @@ public class DataComparisonTIMDTabbedAdapter extends FragmentStatePagerAdapter {
         return fragmentListTitles[position];
     }
 
+    //Method to add the fragment to the adapter
     public void AddFragment(Fragment fragment, String title) {
         fragmentList.add(fragment);
     }

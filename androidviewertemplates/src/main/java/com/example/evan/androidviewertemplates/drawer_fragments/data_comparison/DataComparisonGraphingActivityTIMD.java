@@ -83,6 +83,8 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.data_comparison_graphing_timd);
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //forces portrait mode for graphing
+        //inits button xml with according xml element
         condensedGraphingButton = (Button) findViewById(R.id.condensedGraphingButton);
         getExtras();
         createTeamsList();
@@ -91,11 +93,13 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
         initChart();
         initBarLabels();
         initBarChart();
+        //sets title to selectedDatapoint followed by the hardcoded in "Comparison Graph"
         setTitle(selectedDatapoint + " Comparison Graph");
 
     }
 
     public void createButtonListener() {
+        //on button click, start intent
         condensedGraphingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,31 +111,31 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
 
 
     public void initiateGraphingIntent() {
+        //creates intent to activity "DataComparisonHorizontalGraphingActivityTIMD".
+        //starts the horizontal graphing activity
         Intent GraphingActivity = new Intent(DataComparisonGraphingActivityTIMD.this, DataComparisonHorizontalGraphingActivityTIMD.class);
         GraphingActivity.putExtra("teamOne", teamOne);
         GraphingActivity.putExtra("teamTwo", teamTwo);
         GraphingActivity.putExtra("teamThree", teamThree);
         GraphingActivity.putExtra("teamFour", teamFour);
         GraphingActivity.putExtra("selectedDatapoint",selectedDatapoint);
+        //adds a slick animation
         ActivityOptions options =
                 ActivityOptions.makeCustomAnimation(DataComparisonGraphingActivityTIMD.this, R.anim.slide_right_in, R.anim.slide_left_out);
         startActivity(GraphingActivity, options.toBundle());
 
     }
     public void initTeamMatches() {
+        //creates the list of each team's matches
         teamOneMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamOne));
         teamTwoMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamTwo));
         teamThreeMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamThree));
         teamFourMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamFour));
 
-        for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(Integer.valueOf(teamOne))) {
-            Object value = Utils.getObjectField(teamInMatchData, "calculatedData.predictedSoloScore");
-
-
-        }
     }
 
     public void createTeamsList() {
+        //creates the list of all the selected teams
         teamsList.add(teamOne);
         teamsList.add(teamTwo);
         teamsList.add(teamThree);
@@ -140,18 +144,22 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
 
     public void initChart() {
 
+        //inits xml with according xml element
         ListView lv = (ListView) findViewById(R.id.listView1);
         ArrayList<BarData> list = new ArrayList<>();
 
+        //creates 12 different list cells
         for (int i = 0; i < 12; i++) {
             list.add(generateData(i + 1));
         }
 
+        //inits adapter for list view using the list of data
         ChartDataAdapter cda = new ChartDataAdapter(getApplicationContext(), list);
         lv.setAdapter(cda);
     }
 
     public void getExtras() {
+        //gets data from previous activity
         Intent previous = getIntent();
         Bundle bundle = previous.getExtras();
         if (bundle != null) {
@@ -164,8 +172,10 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
     }
 
     public void initBarChart() {
-        set = new BarDataSet(barChartDataList, "TEST");
+        //creates DataSet using the data list
+        set = new BarDataSet(barChartDataList, "Viewer");
 
+        //sets the colors for the bar
         List<GradientColor> gradientColors = new ArrayList<>();
         gradientColors.add(new GradientColor(ContextCompat.getColor(this, R.color.Rausch), ContextCompat.getColor(this, R.color.Rausch)));
         gradientColors.add(new GradientColor(ContextCompat.getColor(this, R.color.DarkGray), ContextCompat.getColor(this, R.color.DarkGray)));
@@ -177,6 +187,7 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
     }
 
     public void initBarLabels() {
+        //creates the label bar
         barChartLabels.add(teamOne);
         barChartLabels.add(teamTwo);
         barChartLabels.add(teamThree);
@@ -190,15 +201,20 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
     }
 
     public List<Float> getValues(Integer teamNumber, String field) {
+        //gets the value of the team's datapoint
         List<Float> dataValues = new ArrayList<>();
         for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
             Object value = Utils.getObjectField(teamInMatchData, field);
-
+            //if integer, return value
             if (value instanceof Integer) {
                 dataValues.add(((Integer) value).floatValue());
-            } else if (value instanceof Boolean) {
+            }
+            //if boolean, return 1 for true and 0 for false
+            else if (value instanceof Boolean) {
                 dataValues.add((Boolean) value ? 1f : 0f);
-            } else if (value == (null)) {
+            }
+            //if null, return value "0.0"
+            else if (value == (null)) {
                 dataValues.add((float) 0.0);
             }
         }
@@ -207,18 +223,24 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
     }
 
     public Float getTeamInMatchDatapointValue(String team, Integer match) {
+        //gets the datapoint value for a team in a match
         List<Float> values;
         List<TeamInMatchData> teamMatches = getTeamInMatchDatasForTeamNumber(Integer.parseInt(team));
         if (teamMatches.isEmpty()) {
+            //if teamMatches is empty, return 0.0
             return (float) 0.0;
         } else {
+            //if not, values is then equal to the getValues(team, datapoint)
             values = getValues(Integer.valueOf(team), "calculatedData." + selectedDatapoint);
             if (values.isEmpty()) {
+                //if values is empty (datapoint is null), return 0.0
                 return (float) 0.0;
             } else {
+                //else, if teamMatches' size is less than or equal to match - 1, return 0.0
                 if (teamMatches.size() <= match-1) {
                     return (float) 0.0;
                 } else {
+                    //else, return values.get(match-1)
                     return values.get(match - 1);
                 }
             }
@@ -229,6 +251,7 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
 
         ArrayList<BarEntry> entries = new ArrayList<>();
 
+        //inits all datapoints for each possible match
         ArrayList<Float> matchOneNumbers = new ArrayList<>();
         ArrayList<Float> matchTwoNumbers = new ArrayList<>();
         ArrayList<Float> matchThreeNumbers = new ArrayList<>();
@@ -245,132 +268,163 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
 
 
         if (cnt == 1) {
+            //if cell is 1, get data for cell 1 for each team
             for (int i = 0; i < 4; i++) {
                 Float datapointValue = getTeamInMatchDatapointValue(teamsList.get(i), cnt);
                 matchOneNumbers.add(datapointValue);
                 allDatapointValues.add(datapointValue);
             }
+            //adds all the data to entries for match one
             for (int p = 0; p < 4; p++) {
                 entries.add(new BarEntry(p, (float) matchOneNumbers.get(p)));
             }
         } else if (cnt == 2) {
+            //if cell is 2, get data for cell 2 for each team
             for (int i = 0; i < 4; i++) {
                 Float datapointValue = getTeamInMatchDatapointValue(teamsList.get(i), cnt);
                 matchTwoNumbers.add(datapointValue);
                 allDatapointValues.add(datapointValue);
             }
+            //adds all the data to entries for match two
             for (int p = 0; p < 4; p++) {
                 entries.add(new BarEntry(p, (float) matchTwoNumbers.get(p)));
             }
         } else if (cnt == 3) {
+            //if cell is 3, get data for cell 3 for each team
             for (int i = 0; i < 4; i++) {
                 Float datapointValue = getTeamInMatchDatapointValue(teamsList.get(i), cnt);
                 matchThreeNumbers.add(datapointValue);
                 allDatapointValues.add(datapointValue);
             }
+            //adds all the data to entries for match three
             for (int p = 0; p < 4; p++) {
                 entries.add(new BarEntry(p, (float) matchThreeNumbers.get(p)));
             }
         } else if (cnt == 4) {
+            //if cell is 4, get data for cell 4 for each team
             for (int i = 0; i < 4; i++) {
                 Float datapointValue = getTeamInMatchDatapointValue(teamsList.get(i), cnt);
                 matchFourNumbers.add(datapointValue);
                 allDatapointValues.add(datapointValue);
             }
+            //adds all the data to entries for match four
             for (int p = 0; p < 4; p++) {
                 entries.add(new BarEntry(p, (float) matchFourNumbers.get(p)));
             }
         } else if (cnt == 5) {
+            //if cell is 5, get data for cell 5 for each team
             for (int i = 0; i < 4; i++) {
                 Float datapointValue = getTeamInMatchDatapointValue(teamsList.get(i), cnt);
                 matchFiveNumbers.add(datapointValue);
                 allDatapointValues.add(datapointValue);
             }
+            //adds all the data to entries for match five
             for (int p = 0; p < 4; p++) {
                 entries.add(new BarEntry(p, (float) matchFiveNumbers.get(p)));
             }
         } else if (cnt == 6) {
+            //if cell is 6, get data for cell 6 for each team
             for (int i = 0; i < 4; i++) {
                 Float datapointValue = getTeamInMatchDatapointValue(teamsList.get(i), cnt);
                 matchSixNumbers.add(datapointValue);
                 allDatapointValues.add(datapointValue);
             }
+            //adds all the data to entries for match six
             for (int p = 0; p < 4; p++) {
                 entries.add(new BarEntry(p, (float) matchSixNumbers.get(p)));
             }
         } else if (cnt == 7) {
+            //if cell is 7, get data for cell 7 for each team
             for (int i = 0; i < 4; i++) {
                 Float datapointValue = getTeamInMatchDatapointValue(teamsList.get(i), cnt);
                 matchSevenNumbers.add(datapointValue);
                 allDatapointValues.add(datapointValue);
             }
+            //adds all the data to entries for match seven
             for (int p = 0; p < 4; p++) {
                 entries.add(new BarEntry(p, (float) matchSevenNumbers.get(p)));
             }
         } else if (cnt == 8) {
+            //if cell is 8, get data for cell 8 for each team
             for (int i = 0; i < 4; i++) {
                 Float datapointValue = getTeamInMatchDatapointValue(teamsList.get(i), cnt);
                 matchEightNumbers.add(datapointValue);
                 allDatapointValues.add(datapointValue);
             }
+            //adds all the data to entries for match eight
             for (int p = 0; p < 4; p++) {
                 entries.add(new BarEntry(p, (float) matchEightNumbers.get(p)));
             }
         } else if (cnt == 9) {
+            //if cell is 9, get data for cell 9 for each team
             for (int i = 0; i < 4; i++) {
                 Float datapointValue = getTeamInMatchDatapointValue(teamsList.get(i), cnt);
                 matchNineNumbers.add(datapointValue);
                 allDatapointValues.add(datapointValue);
             }
+            //adds all the data to entries for match nine
             for (int p = 0; p < 4; p++) {
                 entries.add(new BarEntry(p, (float) matchNineNumbers.get(p)));
             }
         } else if (cnt == 10) {
+            //if cell is 10, get data for cell 10 for each team
             for (int i = 0; i < 4; i++) {
                 Float datapointValue = getTeamInMatchDatapointValue(teamsList.get(i), cnt);
                 matchTenNumbers.add(datapointValue);
                 allDatapointValues.add(datapointValue);
             }
+            //adds all the data to entries for match ten
             for (int p = 0; p < 4; p++) {
                 entries.add(new BarEntry(p, (float) matchTenNumbers.get(p)));
             }
         } else if (cnt == 11) {
+            //if cell is 11, get data for cell 11 for each team
             for (int i = 0; i < 4; i++) {
                 Float datapointValue = getTeamInMatchDatapointValue(teamsList.get(i), cnt);
                 matchElevenNumbers.add(datapointValue);
                 allDatapointValues.add(datapointValue);
             }
+            //adds all the data to entries for match eleven
             for (int p = 0; p < 4; p++) {
                 entries.add(new BarEntry(p, (float) matchElevenNumbers.get(p)));
             }
         } else if (cnt == 12) {
+            //if cell is 12, get data for cell 12 for each team
             for (int i = 0; i < 4; i++) {
                 Float datapointValue = getTeamInMatchDatapointValue(teamsList.get(i), cnt);
                 matchTwelveNumbers.add(datapointValue);
                 allDatapointValues.add(datapointValue);
             }
+            //adds all the data to entries for match twelve
             for (int p = 0; p < 4; p++) {
                 entries.add(new BarEntry(p, (float) matchTwelveNumbers.get(p)));
             }
         }
 
-
+        //creates BarDataSet using values of entries
         BarDataSet d = new BarDataSet(entries, "New DataSet " + cnt);
+        //makes colors be vordiplom colors
         d.setColors(ColorTemplate.VORDIPLOM_COLORS);
         d.setBarShadowColor(Color.rgb(203, 203, 203));
 
+        //creates BarDataSet sets and adds dataset to sets
         ArrayList<IBarDataSet> sets = new ArrayList<>();
         sets.add(d);
 
+        //makes BarData cd using sets' values
         BarData cd = new BarData(sets);
+        //adds all datapoint values to mAllDatapointValues
         mAllDatapointValues.addAll(allDatapointValues);
+        //sets width to the bars
         cd.setBarWidth(0.9f);
         return cd;
     }
 }
 
+//in file adapter
 class ChartDataAdapter extends ArrayAdapter<BarData> {
 
+    //uses the list of bar data
     ChartDataAdapter(Context context, List<BarData> objects) {
         super(context, 0, objects);
     }
@@ -399,19 +453,28 @@ class ChartDataAdapter extends ArrayAdapter<BarData> {
             holder = (ViewHolder) convertView.getTag();
         }
 
+        //if data isn't null, set the text color to black (from white)
         if (data != null) {
             data.setValueTextColor(Color.BLACK);
         }
 
 
+        //turns off description for chart
         holder.chart.getDescription().setEnabled(false);
+        //turns off background grid
         holder.chart.setDrawGridBackground(false);
+        //turns off legend
         holder.chart.getLegend().setEnabled(false);
 
+        //inits xAxis
         XAxis xAxis = holder.chart.getXAxis();
+        //forces xAxis to be at bottom
         xAxis.setPosition(XAxisPosition.BOTTOM);
+        //turns off grid lines
         xAxis.setDrawGridLines(false);
+        //allows 4 labels for 4 teams
         xAxis.setLabelCount(4);
+        //adds labels using barChartLabels
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
@@ -420,38 +483,55 @@ class ChartDataAdapter extends ArrayAdapter<BarData> {
         });
 
 
-
+        //inits the left axis
         YAxis leftAxis = holder.chart.getAxisLeft();
+        //personalizes the left axis
         leftAxis.setLabelCount(0, false);
         leftAxis.setSpaceTop(15f);
-        leftAxis.setDrawLabels(false); // no axis labels
-        leftAxis.setDrawAxisLine(false); // no axis line
-        leftAxis.setDrawGridLines(false); // no grid lines
-        leftAxis.setDrawZeroLine(false); // draw a zero line
+        leftAxis.setDrawLabels(false);
+        // no axis labels
+        leftAxis.setDrawAxisLine(false);
+        // no axis line
+        leftAxis.setDrawGridLines(false);
+        // no grid lines
+        leftAxis.setDrawZeroLine(false);
+        // draw a zero line
 
+        //inits the right axis
         YAxis rightAxis = holder.chart.getAxisRight();
+        //personalizes the right axis
         rightAxis.setLabelCount(0, false);
         rightAxis.setSpaceTop(15f);
-        rightAxis.setDrawLabels(false); // no axis labels
-        rightAxis.setDrawAxisLine(false); // no axis line
-        rightAxis.setDrawGridLines(false); // no grid lines
-        rightAxis.setDrawZeroLine(false); // draw a zero line
+        rightAxis.setDrawLabels(false);
+        // no axis labels
+        rightAxis.setDrawAxisLine(false);
+        // no axis line
+        rightAxis.setDrawGridLines(false);
+        // no grid lines
+        rightAxis.setDrawZeroLine(false);
+        // draw a zero line
 
         YAxis yAxis = holder.chart.getAxisLeft();
 
+        //makes counter be the largest value out of all datapoints (used to set the max size of the bars to set the scale)
         Float counter = (float) 0.0;
         for (int i = 0; i < DataComparisonGraphingActivityTIMD.mAllDatapointValues.size(); i++) {
             if (DataComparisonGraphingActivityTIMD.mAllDatapointValues.get(i)>counter) {
                 counter = DataComparisonGraphingActivityTIMD.mAllDatapointValues.get(i);
             }
         }
+        //sets maximum y value using the largest datapoint value
         yAxis.setAxisMaximum(counter);
 
+        //turns grid lines off for left axis
         holder.chart.getAxisLeft().setDrawGridLines(false);
+        //turns grid lines off
         holder.chart.getXAxis().setDrawGridLines(false);
+        //turns on granularity
         holder.chart.getXAxis().setGranularityEnabled(true);
+        //sets the granularity level to 1
         holder.chart.getXAxis().setGranularity(1);
-        holder.chart.getXAxis().setDrawGridLines(false);
+        //turns off double tap to zoom effect
         holder.chart.setDoubleTapToZoomEnabled(false);
 
         // set data
@@ -459,9 +539,11 @@ class ChartDataAdapter extends ArrayAdapter<BarData> {
         holder.chart.setFitBars(false);
 
         // do not forget to refresh the chart
-//            holder.chart.invalidate();
+        //adds a pretty epic animation
         holder.chart.animateY(700);
 
+        //adds the match number to the position + 1
+        //(1,2,3) instead of (0,1,2)
         holder.matchNumber.setText(String.valueOf(position+1));
 
         return convertView;

@@ -24,6 +24,7 @@ public class ValueFormatter implements IValueFormatter {
     @Override
     public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
 
+        //if value is 0.10, return "" for the value, else, return value
         if (value != 0.10f) {
             return mFormat.format(value);
         } else {
