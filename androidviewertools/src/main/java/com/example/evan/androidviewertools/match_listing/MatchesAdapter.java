@@ -37,7 +37,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
     public static Context context;
 
     public MatchesAdapter(Context context, boolean isNotReversed) {
-        super(context, new ObjectFieldComparator("number", isNotReversed));
+        super(context, new ObjectFieldComparator("teamNumber", isNotReversed));
         this.context = context;
 
     }
