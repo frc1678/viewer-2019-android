@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 
 import com.example.evan.androidviewertools.ViewerActivity;
 import com.example.evan.androidviewertools.firebase_classes.Team;
+import com.example.evan.androidviewertools.firebase_classes.TeamInMatchData;
+import com.example.evan.androidviewertools.services.RedFlags;
 import com.example.evan.androidviewertools.utils.Constants;
 import com.example.evan.androidviewertools.utils.firebase.FirebaseList;
 import com.example.evan.androidviewertools.utils.firebase.FirebaseLists;
@@ -113,40 +116,81 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
                 Integer team = Integer.parseInt(teamTextView.getText().toString());
                 //todo Add
 
-                //Only on Highlight:
-            if (onHighlightedTeams(team) && !onStarredMatches(team) && !onTeamPicklist(team)) {
-                //if (onOurAllianceList(team) && !onOpponentAllianceList(team)) {
-                //    teamTextView.setBackgroundColor(Color.parseColor("#a4ff7a"));
-                //} if (onOpponentAllianceList(team) && !onOurAllianceList(team)){
-                    teamTextView.setBackgroundColor(Color.parseColor("#b8d4fc"));
-                //} if (onOpponentAllianceList (team) && onOurAllianceList(team)) {
-                //    teamTextView.setBackgroundColor(Color.parseColor("#7df2c5"));
-                //}
-                Log.e("OpponentList",Constants.onOpponentAllianceList.toString());
-                Log.e("OurList",Constants.onOurAllianceList.toString());
+                GradientDrawable gd = new GradientDrawable();
 
-                //Only on Starred:
-            } else if (onStarredMatches(team) && !onHighlightedTeams(team) && !onTeamPicklist(team)){
-                teamTextView.setBackgroundColor(Color.parseColor("#e2f442"));
-                //Only on Picklist:
-            } else if (!onStarredMatches(team) && !onHighlightedTeams(team) && onTeamPicklist(team)){
-                teamTextView.setBackgroundColor(Color.parseColor("#f98181"));
-                //On ALL:
-            } else if (onStarredMatches(team) && onHighlightedTeams(team) && onTeamPicklist(team)) {
-                teamTextView.setBackgroundColor(Color.parseColor("#e572e1"));
-                //On Highlight && Starred
-            } else if (onStarredMatches(team) && onHighlightedTeams(team) && !onTeamPicklist(team)){
-                teamTextView.setBackgroundColor(Color.parseColor("#808000"));
-                //Only Starred && Picklist:
-            } else if (onStarredMatches(team) && !onHighlightedTeams(team) && onTeamPicklist(team)){
-                teamTextView.setBackgroundColor(Color.parseColor("#f4a142"));
-                //On Picklist && Highlight:
-            } else if (!onStarredMatches(team) && onHighlightedTeams(team) && onTeamPicklist(team)){
-                teamTextView.setBackgroundColor(Color.parseColor("#fcb8e7"));
-            }else {
-                teamTextView.setBackgroundColor(Color.TRANSPARENT);
+                //Only on Highlight:
+                if (onHighlightedTeams(team) && !onStarredMatches(team) && !onTeamPicklist(team) && isRedFlag(team)) {
+                    //teamTextView.setBackgroundColor(Color.parseColor("#b8d4fc"));
+                    gd.setColor(0xFFb8d4fc);
+                    gd.setStroke(1, 0xFFbf1212);
+                    teamTextView.setBackground(gd);
+                    //Only on Starred:
+                } else if (onStarredMatches(team) && !onHighlightedTeams(team) && !onTeamPicklist(team) && isRedFlag(team)) {
+                    //teamTextView.setBackgroundColor(Color.parseColor("#e2f442"));
+                    gd.setColor(0xFFe2f442);
+                    gd.setStroke(1, 0xFFbf1212);
+                    teamTextView.setBackground(gd);
+                    //Only on Picklist:
+                } else if (!onStarredMatches(team) && !onHighlightedTeams(team) && onTeamPicklist(team) && isRedFlag(team)) {
+                    //teamTextView.setBackgroundColor(Color.parseColor("#f98181"));
+                    gd.setColor(0xFFf98181);
+                    gd.setStroke(1, 0xFFbf1212);
+                    teamTextView.setBackground(gd);
+                    //On ALL:
+                } else if (onStarredMatches(team) && onHighlightedTeams(team) && onTeamPicklist(team) && isRedFlag(team)) {
+                    //teamTextView.setBackgroundColor(Color.parseColor("#e572e1"));
+                    gd.setColor(0xFFe572e1);
+                    gd.setStroke(1, 0xFFbf1212);
+                    teamTextView.setBackground(gd);
+                    //On Highlight && Starred
+                } else if (onStarredMatches(team) && onHighlightedTeams(team) && !onTeamPicklist(team) && isRedFlag(team)) {
+                    //teamTextView.setBackgroundColor(Color.parseColor("#808000"));
+                    gd.setColor(0xFF808000);
+                    gd.setStroke(1, 0xFFbf1212);
+                    teamTextView.setBackground(gd);
+                    //Only Starred && Picklist
+                } else if (onStarredMatches(team) && !onHighlightedTeams(team) && onTeamPicklist(team) && isRedFlag(team)) {
+                    //teamTextView.setBackgroundColor(Color.parseColor("#f4a142"));
+                    gd.setColor(0xFFf4a142);
+                    gd.setStroke(1, 0xFFbf1212);
+                    teamTextView.setBackground(gd);
+                    //On RedFlag:
+                } else if (!onStarredMatches(team) && !onHighlightedTeams(team) && !onTeamPicklist(team) && isRedFlag(team)) {
+                    //teamTextView.setBackgroundColor(Color.parseColor("#f4a142"));
+                    gd.setColor(0xFFffffff);
+                    gd.setStroke(1, 0xFFbf1212);
+                    teamTextView.setBackground(gd);
+                    //On Picklist && Highlight:
+                } else if (!onStarredMatches(team) && onHighlightedTeams(team) && onTeamPicklist(team) && isRedFlag(team)) {
+                    //teamTextView.setBackgroundColor(Color.parseColor("#fcb8e7"));
+                    gd.setColor(0xFFfcb8e7);
+                    gd.setStroke(1, 0xFFbf1212);
+                    teamTextView.setBackground(gd);
+
+                } else if (onHighlightedTeams(team) && !onStarredMatches(team) && !onTeamPicklist(team) && !isRedFlag(team)) {
+                    teamTextView.setBackgroundColor(Color.parseColor("#b8d4fc"));
+                    //Only on Starred:
+                } else if (onStarredMatches(team) && !onHighlightedTeams(team) && !onTeamPicklist(team) && !isRedFlag(team)) {
+                    teamTextView.setBackgroundColor(Color.parseColor("#e2f442"));
+                    //Only on Picklist:
+                } else if (!onStarredMatches(team) && !onHighlightedTeams(team) && onTeamPicklist(team) && !isRedFlag(team)) {
+                    teamTextView.setBackgroundColor(Color.parseColor("#f98181"));
+                    //On ALL:
+                } else if (onStarredMatches(team) && onHighlightedTeams(team) && onTeamPicklist(team) && !isRedFlag(team)) {
+                    teamTextView.setBackgroundColor(Color.parseColor("#e572e1"));
+                    //On Highlight && Starred
+                } else if (onStarredMatches(team) && onHighlightedTeams(team) && !onTeamPicklist(team) && !isRedFlag(team)) {
+                    teamTextView.setBackgroundColor(Color.parseColor("#808000"));
+                    //Only Starred && Picklist:
+                } else if (onStarredMatches(team) && !onHighlightedTeams(team) && onTeamPicklist(team) && !isRedFlag(team)) {
+                    teamTextView.setBackgroundColor(Color.parseColor("#f4a142"));
+                    //On Picklist && Highlight:
+                } else if (!onStarredMatches(team) && onHighlightedTeams(team) && onTeamPicklist(team) && !isRedFlag(team)) {
+                    teamTextView.setBackgroundColor(Color.parseColor("#fcb8e7"));
+                } else {
+                    teamTextView.setBackgroundColor(Color.TRANSPARENT);
+                }
             }
-        }
 
 
 
@@ -259,6 +303,131 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
     public List<Match> getFirebaseList() {
         return FirebaseLists.matchesList.getValues();
     }
+
+    public boolean isRedFlag(Integer teamNumber) {
+        ArrayList<String> teamsList = new ArrayList<>();
+        ArrayList<String> datapointList = new ArrayList<>();
+        List<String> datapointValuesTemp = new ArrayList<>();
+        List<String> datapointValues = new ArrayList<>();
+        List<String> datapointValuesReqs = new ArrayList<>();
+        ArrayList<String> sinCounter = new ArrayList<>();
+
+
+        for (String team : FirebaseLists.teamsList.getKeys()) {
+            teamsList.add(team);
+        }
+        for (String datapoint : RedFlags.RED_FLAG_DATAPOINT_NAMES) {
+            datapointList.add(datapoint);
+        }
+        for (String datapoint : RedFlags.RED_FLAG_DATAPOINTS_RED_VALUE) {
+            datapointValuesReqs.add(datapoint);
+        }
+        if (teamsList.contains(String.valueOf(teamNumber))) {
+            for (int i = 0; i < datapointList.size(); i++) {
+                Team team = FirebaseLists.teamsList.getFirebaseObjectByKey(String.valueOf(teamNumber));
+                String datapoint = (Utils.fieldIsNotNull(team, datapointList.get(i))
+                        ? Utils.roundDataPoint(Utils.getObjectField(team, datapointList.get(i)),
+                        2, "1000.55") : "1000.55");
+                datapointValuesTemp.add(datapoint);
+            }
+        } else {
+            for (int count = 0; count < 5; count ++) {
+                datapointValuesTemp.add("1000.55");
+            }
+        }
+
+        for (int i = 0; i < datapointValuesTemp.size(); i ++ ){
+            if (datapointValuesTemp.get(i).contains(".")) {
+                datapointValues.add(datapointValuesTemp.get(i));
+            } else
+            if (datapointValuesTemp.get(i).contains("LabVIEW")) {
+                datapointValues.add(datapointValuesTemp.get(i));
+            } else
+            if (datapointValuesTemp.get(i).contains("C++")) {
+                datapointValues.add(datapointValuesTemp.get(i));
+            } else
+            if (datapointValuesTemp.get(i).contains("Java")) {
+                datapointValues.add(datapointValuesTemp.get(i));
+            } else
+            if (datapointValuesTemp.get(i).contains("Other")) {
+                datapointValues.add(datapointValuesTemp.get(i));
+            }
+             else {
+                Integer datapointInt = Integer.valueOf(datapointValuesTemp.get(i));
+                datapointValues.add(String.valueOf(datapointInt)+".0");
+            }
+        }
+        Log.e(String.valueOf(teamNumber),String.valueOf(datapointValues));
+        if (datapointValues.contains("1000.55")) {
+            //todo ADD NULL COUNTER
+        } else {
+            for (int i = 0; i < datapointValuesReqs.size(); i++) {
+                if (datapointValuesReqs.get(i).equals("moreThanZero")) {
+                    if (Float.valueOf(datapointValues.get(i)) > 0.0) {
+                        sinCounter.add(RedFlags.RED_FLAG_DATAPOINT_NAMES[i]);
+                    }
+                } else if (datapointValuesReqs.get(i).equals("moreThanOne")) {
+                    if (Float.valueOf(datapointValues.get(i)) > 1.0) {
+                        sinCounter.add(RedFlags.RED_FLAG_DATAPOINT_NAMES[i]);
+                    }
+                } else if (datapointValuesReqs.get(i).equals("moreThanTwo")) {
+                    if (Float.valueOf(datapointValues.get(i)) > 2.0) {
+                        sinCounter.add(RedFlags.RED_FLAG_DATAPOINT_NAMES[i]);
+                    }
+                } else if (datapointValuesReqs.get(i).equals("moreThanThree")) {
+                    if (Float.valueOf(datapointValues.get(i)) > 3.0) {
+                        sinCounter.add(RedFlags.RED_FLAG_DATAPOINT_NAMES[i]);
+                    }
+                } else if (datapointValuesReqs.get(i).equals("moreThanFour")) {
+                    if (Float.valueOf(datapointValues.get(i)) > 4.0) {
+                        sinCounter.add(RedFlags.RED_FLAG_DATAPOINT_NAMES[i]);
+                    }
+                } else if (datapointValuesReqs.get(i).equals("LabVIEW")) {
+                    if (datapointValues.get(i).equals("LabVIEW")) {
+                        sinCounter.add(RedFlags.RED_FLAG_DATAPOINT_NAMES[i]);
+                    }
+                }
+            }
+        }
+
+        Constants.redFlagsPerTeam.put(String.valueOf(teamNumber), sinCounter);
+
+        if (sinCounter.size() > 0) {
+            return true;
+        }
+        return false;
+
+    }
+    public List<Float> getValues(Integer teamNumber, String field) {
+        List<Float> dataValues = new ArrayList<>();
+        //gets the datapoint values of the given team
+        for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
+            Object value = Utils.getObjectField(teamInMatchData, field);
+
+            //if integer
+            if (value instanceof Integer) {
+                dataValues.add(((Integer) value).floatValue());
+            }
+            //if boolean, return 1 if true, 0 if false
+            else if (value instanceof Boolean) {
+                dataValues.add((Boolean) value ? 1f : 0f);
+            }
+            //if null, return 0.0
+            else if (value == (null)) {
+                dataValues.add((float) 0.0);
+            }
+        }
+
+        return dataValues;
+    }
+    public List<Float> getTeamInMatchDatapointValue(String team, String selectedDatapoint) {
+        List<Float> values;
+        //returns value of datapoint per team
+        values = getValues(Integer.valueOf(team), selectedDatapoint);
+        Log.e("values",String.valueOf(values)+"");
+        return values;
+    }
+
 
     public boolean onStarredMatches(Integer team) {
         for(int i = 0; i < StarManager.starredTeams.size(); i++) {

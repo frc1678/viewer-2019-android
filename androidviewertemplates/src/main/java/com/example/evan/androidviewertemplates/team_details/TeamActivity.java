@@ -11,7 +11,9 @@ import android.os.Vibrator;
 import android.preference.PreferenceActivity;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBar;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -125,6 +127,19 @@ public class TeamActivity extends com.example.evan.androidviewertools.ViewerActi
 
         TextView teamDetailsPredictedSeedingTextView = (TextView) teamDetailsHeaderListView.findViewById(R.id.teamDetailsPredictedSeeding);
         teamDetailsPredictedSeedingTextView.setText((Utils.fieldIsNotNull(team, "calculatedData.predictedSeed")) ? Utils.roundDataPoint(Utils.getObjectField(team, "calculatedData.predictedSeed"), 2, "???") : "???");
+
+        Button redFlagButton = (Button) teamDetailsHeaderListView.findViewById(R.id.redFlagButton);
+        Log.e("redFlagsPerTeam",String.valueOf(Constants.redFlagsPerTeam.get(teamNumber)));
+        if (Constants.redFlagsPerTeam.get(teamNumber).size()>0) {
+            redFlagButton.setVisibility(View.VISIBLE);
+            redFlagButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //todo
+
+                }
+            });
+        }
     }
 
     @Override
