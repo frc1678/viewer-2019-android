@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:padding="5dp" android:clickable="false"
-    android:background="@color/white"
     android:id="@+id/teamDetailsHeaderRelativeLayout">
 
     <LinearLayout
@@ -26,13 +25,15 @@
 
         <Button
             android:id="@+id/redFlagButton"
+            style="?android:attr/borderlessButtonStyle"
             android:visibility="invisible"
             android:layout_width="50dp"
-            android:background="@color/white"
+            android:background="@color/instabug_transparent_color"
             android:textColor="#bf1212"
             android:text="!!!"
+            android:textStyle="bold"
             android:gravity="center"
-            android:textSize="34dp"
+            android:textSize="38dp"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/teamDetailsTeamNumberTextView"
             android:layout_alignBottom="@+id/teamDetailsTeamNumberTextView"

@@ -304,7 +304,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         return FirebaseLists.matchesList.getValues();
     }
 
-    public boolean isRedFlag(Integer teamNumber) {
+    public static boolean isRedFlag(Integer teamNumber) {
         ArrayList<String> teamsList = new ArrayList<>();
         ArrayList<String> datapointList = new ArrayList<>();
         List<String> datapointValuesTemp = new ArrayList<>();
@@ -357,7 +357,6 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
                 datapointValues.add(String.valueOf(datapointInt)+".0");
             }
         }
-        Log.e(String.valueOf(teamNumber),String.valueOf(datapointValues));
         if (datapointValues.contains("1000.55")) {
             //todo ADD NULL COUNTER
         } else {
@@ -389,8 +388,9 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
                 }
             }
         }
-
-        Constants.redFlagsPerTeam.put(String.valueOf(teamNumber), sinCounter);
+        if (!sinCounter.isEmpty()) {
+            Constants.redFlagsPerTeam.put(String.valueOf(teamNumber), sinCounter);
+        }
 
         if (sinCounter.size() > 0) {
             return true;
@@ -424,7 +424,6 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         List<Float> values;
         //returns value of datapoint per team
         values = getValues(Integer.valueOf(team), selectedDatapoint);
-        Log.e("values",String.valueOf(values)+"");
         return values;
     }
 
