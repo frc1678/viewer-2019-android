@@ -331,7 +331,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
                     if (teamTwoMatches.size() > matchNumber) {
                         trendLineClickContinuation(teamTwo, String.valueOf(teamTwoMatches.get(matchNumber -1)));
                     } else {
-                        SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamOne + " doesn't have a " + addNumberPrefix(matchNumber) + " match!" )
+                        SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamTwo + " doesn't have a " + addNumberPrefix(matchNumber) + " match!" )
                                 .setDuration(Style.DURATION_VERY_SHORT).setFrame(Style.FRAME_LOLLIPOP)
                                 .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED)).setAnimations(Style.ANIMATIONS_FLY).show();
                     }
@@ -339,7 +339,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
                     if (teamThreeMatches.size() > matchNumber) {
                         trendLineClickContinuation(teamThree, String.valueOf(teamThreeMatches.get(matchNumber -1)));
                     } else {
-                        SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamOne + " doesn't have a " + addNumberPrefix(matchNumber) + " match!" )
+                        SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamThree + " doesn't have a " + addNumberPrefix(matchNumber) + " match!" )
                                 .setDuration(Style.DURATION_VERY_SHORT).setFrame(Style.FRAME_LOLLIPOP)
                                 .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED)).setAnimations(Style.ANIMATIONS_FLY).show();
                     }
@@ -347,7 +347,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
                     if (teamFourMatches.size() > matchNumber) {
                         trendLineClickContinuation(teamFour, String.valueOf(teamFourMatches.get(matchNumber -1)));
                     } else {
-                        SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamOne + " doesn't have a " + addNumberPrefix(matchNumber) + " match!" )
+                        SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamFour + " doesn't have a " + addNumberPrefix(matchNumber) + " match!" )
                                 .setDuration(Style.DURATION_VERY_SHORT).setFrame(Style.FRAME_LOLLIPOP)
                                 .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED)).setAnimations(Style.ANIMATIONS_FLY).show();
                     }
