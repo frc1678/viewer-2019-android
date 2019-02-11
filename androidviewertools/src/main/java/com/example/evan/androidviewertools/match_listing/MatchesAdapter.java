@@ -157,7 +157,6 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
                     //On RedFlag:
                 } else if (!onStarredMatches(team) && !onHighlightedTeams(team) && !onTeamPicklist(team) && isRedFlag(team)) {
                     //teamTextView.setBackgroundColor(Color.parseColor("#f4a142"));
-                    gd.setColor(0xFFffffff);
                     gd.setStroke(1, 0xFFbf1212);
                     teamTextView.setBackground(gd);
                     //On Picklist && Highlight:
