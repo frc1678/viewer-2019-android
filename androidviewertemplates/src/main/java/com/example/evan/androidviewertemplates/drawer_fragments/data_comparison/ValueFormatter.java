@@ -26,7 +26,9 @@ public class ValueFormatter implements IValueFormatter {
 
         //if value is 0.10, return "" for the value, else, return value
         if (value != 0.10f) {
-            return mFormat.format(value);
+            DecimalFormat df = new DecimalFormat();
+            df.setMaximumFractionDigits(2);
+            return df.format(value);
         } else {
             return "";
         }

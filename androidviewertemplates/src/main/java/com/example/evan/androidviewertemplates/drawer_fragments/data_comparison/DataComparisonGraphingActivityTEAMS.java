@@ -88,6 +88,10 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
 
         //turns off drawn left side y axis scale drawing
         chart.getAxisLeft().setDrawGridLines(false);
+        //set text size of left scale
+        chart.getAxisLeft().setTextSize(18);
+        //set text size of right scale
+        chart.getAxisRight().setTextSize(18);
         //adds slick animation to the bars (1 second)
         chart.animateY(1000);
         //turns off legend because there's an xml added legend
@@ -97,7 +101,7 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         XAxis xAxis = chart.getXAxis();
         //makes xAxis stay on the bottom
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        //turns off the backgorund grid
+        //turns off the background grid
         xAxis.setDrawGridLines(false);
         //makes the labels centered
         xAxis.setCenterAxisLabels(true);
@@ -219,46 +223,6 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
             return Float.valueOf(0);
         }
     }
-
-
-
-    /*@Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-        tvX.setText(String.valueOf(seekBarX.getProgress()));
-        tvY.setText(String.valueOf(seekBarY.getProgress()));
-
-        ArrayList<BarEntry> values = new ArrayList<>();
-
-        for (int i = 0; i < seekBarX.getProgress(); i++) {
-            float multi = (seekBarY.getProgress() + 1);
-            float val = (float) (Math.random() * multi) + multi / 3;
-            values.add(new BarEntry(i, val));
-        }
-
-        BarDataSet set1;
-
-        if (chart.getData() != null &&
-                chart.getData().getDataSetCount() > 0) {
-            set1 = (BarDataSet) chart.getData().getDataSetByIndex(0);
-            set1.setValues(values);
-            chart.getData().notifyDataChanged();
-            chart.notifyDataSetChanged();
-        } else {
-            set1 = new BarDataSet(values, "Data Set");
-            set1.setColors(ColorTemplate.VORDIPLOM_COLORS);
-            set1.setDrawValues(false);
-
-            ArrayList<IBarDataSet> dataSets = new ArrayList<>();
-            dataSets.add(set1);
-
-            BarData data = new BarData(dataSets);
-            chart.setData(data);
-            chart.setFitBars(true);
-        }
-
-        chart.invalidate();
-    }*/
 
 
     @Override

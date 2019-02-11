@@ -174,83 +174,23 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
 
     }
     private LineData getData(String teamNumber) {
-
-        if (teamNumber.equals(teamsList.get(0))) {
             // create a dataset and give it a type
-            LineDataSet set1 = new LineDataSet(lineEntryOne(), teamNumber);
-            for (int i = 0; i < 4; i ++) {
+            LineDataSet set = new LineDataSet(lineEntryData(teamNumber), teamNumber);
+            for (int i = 0; i < 4; i++) {
                 if (teamNumber.equals(teamsList.get(i))) {
-                    set1.setColor(lineColors[i % lineColors.length]);
-                    set1.setCircleColor(lineColors[i % lineColors.length]);
+                    set.setColor(lineColors[i % lineColors.length]);
+                    set.setCircleColor(lineColors[i % lineColors.length]);
                 }
             }
-            //set specifics to the data sets
-            set1.setLineWidth(10f);
-            set1.setCircleRadius(8f);
-            set1.setDrawCircleHole(false);
-            set1.setHighLightColor(Color.BLACK);
-            set1.setDrawValues(false);
+            addPersonalization(set);
             // create a data object with the data sets
-            return new LineData(set1);
-        } else if (teamNumber.equals(teamsList.get(1))) {
-            // create a dataset and give it a type
-            LineDataSet set1 = new LineDataSet(lineEntryTwo(), teamNumber);
-            for (int i = 0; i < 4; i ++) {
-                if (teamNumber.equals(teamsList.get(i))) {
-                    set1.setColor(lineColors[i % lineColors.length]);
-                    set1.setCircleColor(lineColors[i % lineColors.length]);
-                }
-            }
-            //set specifics to the data sets
-            set1.setLineWidth(10f);
-            set1.setCircleRadius(8f);
-            set1.setDrawCircleHole(false);
-            set1.setHighLightColor(Color.BLACK);
-            set1.setDrawValues(false);
-            // create a data object with the data sets
-            return new LineData(set1);
-        } else if (teamNumber.equals(teamsList.get(2))) {
-            // create a dataset and give it a type
-            LineDataSet set1 = new LineDataSet(lineEntryThree(), teamNumber);
-            for (int i = 0; i < 4; i ++) {
-                if (teamNumber.equals(teamsList.get(i))) {
-                    set1.setColor(lineColors[i % lineColors.length]);
-                    set1.setCircleColor(lineColors[i % lineColors.length]);
-                }
-            }
-            //set specifics to the data sets
-            set1.setLineWidth(10f);
-            set1.setCircleRadius(8f);
-            set1.setDrawCircleHole(false);
-            set1.setHighLightColor(Color.BLACK);
-            set1.setDrawValues(false);
-            // create a data object with the data sets
-            return new LineData(set1);
-        } else if (teamNumber.equals(teamsList.get(3))) {
-            // create a dataset and give it a type
-            LineDataSet set1 = new LineDataSet(lineEntryFour(), teamNumber);
-            for (int i = 0; i < 4; i ++) {
-                if (teamNumber.equals(teamsList.get(i))) {
-                    set1.setColor(lineColors[i % lineColors.length]);
-                    set1.setCircleColor(lineColors[i % lineColors.length]);
-                }
-            }
-            //set specifics to the data sets
-            set1.setLineWidth(10f);
-            set1.setCircleRadius(8f);
-            set1.setDrawCircleHole(false);
-            set1.setHighLightColor(Color.BLACK);
-            set1.setDrawValues(false);
-            // create a data object with the data sets
-            return new LineData(set1);
-        }
-       return null;
+            return new LineData(set);
     }
-    public ArrayList<Entry> lineEntryOne() {
+    public ArrayList<Entry> lineEntryData(String teamNumber) {
         //first data set entry
         ArrayList<Entry> lineEntries = new ArrayList<>();
         List<Float> values = new ArrayList<>();
-        List<Float> datapointValues = getTeamInMatchDatapointValue(teamOne);
+        List<Float> datapointValues = getTeamInMatchDatapointValue(teamNumber);
         values.addAll(datapointValues);
         for (int p = 0; p < datapointValues.size(); p++) {
             //if value is null or 0.0 (empty), make the line be at 0.1 y value
@@ -263,93 +203,12 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         }
         //reverses the line entries
         Collections.reverse(lineEntries);
-        //if under 10 values, add the remaining values as 0.1 (under 10 means less than 10 matches played)
-        if (lineEntries.size() < 10);
+        //if under 13 values, add the remaining values as 0.1 (under 13 means less than 13 matches played)
+        if (lineEntries.size() < 13);
         Integer lineEntriesSize = lineEntries.size();
-        Integer counter = 10 - lineEntriesSize;
+        Integer counter = 13 - lineEntriesSize;
         for (int i = 0; i < counter; i++) {
             lineEntries.add(new Entry(i+lineEntriesSize, (float) 0.1));
-        }
-        Collections.sort(lineEntries, new EntryXComparator());
-        return lineEntries;
-    }
-    public ArrayList<Entry> lineEntryTwo() {
-        //second data set entry
-        ArrayList<Entry> lineEntries = new ArrayList<>();
-        List<Float> values = new ArrayList<>();
-        List<Float> datapointValues = getTeamInMatchDatapointValue(teamTwo);
-        values.addAll(datapointValues);
-        for (int p = 0; p < datapointValues.size(); p++) {
-            //if value is null or 0.0 (empty), make the line be at 0.1 y value
-            if (String.valueOf(values.get(p)).equals("0.0")) {
-                lineEntries.add(new Entry(p+1, (float) 0.1));
-                //else, make the line value the y value
-            } else {
-                lineEntries.add(new Entry(p+1, (float) values.get(p)));
-            }
-        }
-        //reverses the line entries
-        Collections.reverse(lineEntries);
-        //if under 10 values, add the remaining values as 0.1 (under 10 means less than 10 matches played)
-        if (lineEntries.size() < 10);
-        Integer lineEntriesSize = lineEntries.size();
-        Integer counter = 10 - lineEntriesSize;
-        for (int i = 0; i < counter; i++) {
-            lineEntries.add(new Entry(i+lineEntriesSize, (float) 0.1));
-        }
-        Collections.sort(lineEntries, new EntryXComparator());
-        return lineEntries;
-    }
-    public ArrayList<Entry> lineEntryThree() {
-        //third data set entry
-        ArrayList<Entry> lineEntries = new ArrayList<>();
-        List<Float> values = new ArrayList<>();
-        List<Float> datapointValues = getTeamInMatchDatapointValue(teamThree);
-        values.addAll(datapointValues);
-        for (int p = 0; p < datapointValues.size(); p++) {
-            //if value is null or 0.0 (empty), make the line be at 0.1 y value
-            if (String.valueOf(values.get(p)).equals("0.0")) {
-                lineEntries.add(new Entry(p + 1, (float) 0.1));
-                //else, make the line value the y value
-            } else {
-                lineEntries.add(new Entry(p + 1, (float) values.get(p)));
-            }
-        }
-        //reverses the line entries
-        Collections.reverse(lineEntries);
-        //if under 10 values, add the remaining values as 0.1 (under 10 means less than 10 matches played)
-        if (lineEntries.size() < 10) ;
-        Integer lineEntriesSize = lineEntries.size();
-        Integer counter = 10 - lineEntriesSize;
-        for (int i = 0; i < counter; i++) {
-            lineEntries.add(new Entry(i + lineEntriesSize, (float) 0.1));
-        }
-        Collections.sort(lineEntries, new EntryXComparator());
-        return lineEntries;
-    }
-    public ArrayList<Entry> lineEntryFour() {
-        //fourth data set entry
-        ArrayList<Entry> lineEntries = new ArrayList<>();
-        List<Float> values = new ArrayList<>();
-        List<Float> datapointValues = getTeamInMatchDatapointValue(teamFour);
-        values.addAll(datapointValues);
-        for (int p = 0; p < datapointValues.size(); p++) {
-            //if value is null or 0.0 (empty), make the line be at 0.1 y value
-            if (String.valueOf(values.get(p)).equals("0.0")) {
-                lineEntries.add(new Entry(p + 1, (float) 0.1));
-                //else, make the line value the y value
-            } else {
-                lineEntries.add(new Entry(p + 1, (float) values.get(p)));
-            }
-        }
-        //reverses the line entries
-        Collections.reverse(lineEntries);
-        //if under 10 values, add the remaining values as 0.1 (under 10 means less than 10 matches played)
-        if (lineEntries.size() < 10) ;
-        Integer lineEntriesSize = lineEntries.size();
-        Integer counter = 10 - lineEntriesSize;
-        for (int i = 0; i < counter; i++) {
-            lineEntries.add(new Entry(i + lineEntriesSize, (float) 0.1));
         }
         Collections.sort(lineEntries, new EntryXComparator());
         return lineEntries;
@@ -381,6 +240,15 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         List<Float> values;
         values = getValues(Integer.valueOf(team), "calculatedData." + selectedDatapoint);
         return values;
+    }
+    public LineDataSet addPersonalization(LineDataSet set) {
+        //set specifics to the data sets
+        set.setLineWidth(10f);
+        set.setCircleRadius(8f);
+        set.setDrawCircleHole(false);
+        set.setHighLightColor(Color.BLACK);
+        set.setDrawValues(false);
+        return set;
     }
 
 }
