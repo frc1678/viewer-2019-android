@@ -131,7 +131,9 @@ public class TeamActivity extends com.example.evan.androidviewertools.ViewerActi
         final Team team = FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber.toString());
 
         TextView teamDetailsTeamNumberTextView = (TextView) teamDetailsHeaderView.findViewById(R.id.teamDetailsTeamNumberTextView);
+
         teamDetailsTeamNumberTextView.setText(String.valueOf(teamNumber));
+
         teamDetailsTeamNumberTextView.setOnLongClickListener(new StarLongClickListener());
 
         TextView teamDetailsTeamNameTextView = (TextView) teamDetailsHeaderView.findViewById(R.id.teamDetailsTeamNameTextView);

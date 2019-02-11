@@ -8,9 +8,7 @@ import java.util.Map;
 public class Team {
 
 	public String name;
- 	public Integer number;
- 	public List<Match> matches;
- 	public List<TeamInMatchData> teamInMatchDatas;
+ 	public Integer teamNumber;
  	public String selectedImageUrl;
 
 }

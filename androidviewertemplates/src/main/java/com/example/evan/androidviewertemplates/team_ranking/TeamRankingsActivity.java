@@ -75,7 +75,7 @@ TeamRankingsActivity extends ViewerActivity {
         int id = item.getItemId();
         setAllSortConstantsFalse();
         if (id == R.id.byNumber) {
-            Log.e("number", "clicked");
+            Log.e("teamNumber", "clicked");
             setColorOfItem(item);
             lastMenuItem = item;
             setAllSortConstantsFalse();
@@ -84,7 +84,7 @@ TeamRankingsActivity extends ViewerActivity {
             return true;
         }
         if (id == R.id.byRank) {
-            Log.e("sort by number", String.valueOf(Constants.sortByTeamNumber));
+            Log.e("sort by teamNumber", String.valueOf(Constants.sortByTeamNumber));
             Log.e("Rank", "clicked");
             setColorOfItem(item);
             lastMenuItem = item;

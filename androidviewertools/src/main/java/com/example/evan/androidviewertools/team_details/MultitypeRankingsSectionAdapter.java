@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -230,7 +229,7 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
                 } else {
                     intent = getGraphActivityIntent();
                 }
-                intent.putExtra("team", ((Team)getObject()).number)
+                intent.putExtra("team", ((Team)getObject()).teamNumber)
                         .putExtra("field", (String) getRowItem(section, row))
                         .putExtra("displayAsPercentage", Arrays.asList(getPercentageFields()).contains(getRowItem(section, row)));
                 context.startActivity(intent);
