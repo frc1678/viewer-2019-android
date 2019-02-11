@@ -42,14 +42,14 @@ public class RecentMatchesFragment extends MatchesFragment {
 
            /*try {
                if((Integer)Utils.getObjectField(value, "blueScore") != null) {
-                   Integer number = ((Integer) Utils.getObjectField(value, "number"));
-                   Log.e("number", number + "");
-                   return number <= StarManager.getCurrentMatchNumber();
+                   Integer teamNumber = ((Integer) Utils.getObjectField(value, "teamNumber"));
+                   Log.e("teamNumber", teamNumber + "");
+                   return teamNumber <= StarManager.getCurrentMatchNumber();
                }else{
                    return false;
                }
             }catch (NullPointerException NPE){
-                Log.e("number", "IS NULL");
+                Log.e("teamNumber", "IS NULL");
             }
             finally {
                 return true;
