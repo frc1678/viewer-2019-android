@@ -16,6 +16,9 @@ import com.example.evan.androidviewertemplates.R;
 import com.example.evan.androidviewertemplates.team_in_match_details.TeamInMatchDetailsActivity;
 import com.example.evan.androidviewertools.firebase_classes.TeamInMatchData;
 import com.example.evan.androidviewertools.utils.Utils;
+import com.github.johnpersano.supertoasts.library.Style;
+import com.github.johnpersano.supertoasts.library.SuperActivityToast;
+import com.github.johnpersano.supertoasts.library.utils.PaletteUtils;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
@@ -310,33 +313,45 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
 
 
             @Override
-            public void onValueSelected(Entry e, Highlight h)
-            {
+            public void onValueSelected(Entry e, Highlight h) {
 
                 String xValue = String.valueOf(e.getX());
-                Integer match = Integer.valueOf(xValue.substring(0,xValue.indexOf(".")));
+                Integer matchNumber = Integer.valueOf(xValue.substring(0, xValue.indexOf(".")));
                 String chartString = String.valueOf(chart);
-                String actualChart = String.valueOf(chartString.substring(chartString.lastIndexOf("team"),chartString.lastIndexOf("}")));
+                String actualChart = String.valueOf(chartString.substring(chartString.lastIndexOf("team"), chartString.lastIndexOf("}")));
                 if (actualChart.equals("teamOneChart")) {
-                    DataComparisonTrendLineGraphingActivityTIMD.teamNumber = teamOne;
-                    DataComparisonTrendLineGraphingActivityTIMD.matchNumber = String.valueOf(teamOneMatches.get(match));
-                    trendLineClickContinuation(teamOne, String.valueOf(teamOneMatches.get(match)));
-                } else
-                    if (actualChart.equals("teamTwoChart")) {
-                        DataComparisonTrendLineGraphingActivityTIMD.teamNumber = teamTwo;
-                        DataComparisonTrendLineGraphingActivityTIMD.matchNumber = String.valueOf(teamTwoMatches.get(match));
-                        trendLineClickContinuation(teamTwo, String.valueOf(teamTwoMatches.get(match)));
-                    } else
-                        if (actualChart.equals("teamThreeChart")) {
-                            DataComparisonTrendLineGraphingActivityTIMD.teamNumber = teamThree;
-                            DataComparisonTrendLineGraphingActivityTIMD.matchNumber = String.valueOf(teamThreeMatches.get(match));
-                            trendLineClickContinuation(teamThree, String.valueOf(teamThreeMatches.get(match)));
-                        } else
-                            if (actualChart.equals("teamFourChart")) {
-                                DataComparisonTrendLineGraphingActivityTIMD.teamNumber = teamFour;
-                                DataComparisonTrendLineGraphingActivityTIMD.matchNumber = String.valueOf(teamFourMatches.get(match));
-                                trendLineClickContinuation(teamFour, String.valueOf(teamFourMatches.get(match)));
-                            }
+                    if (teamOneMatches.size() > matchNumber) {
+                        trendLineClickContinuation(teamOne, String.valueOf(teamOneMatches.get(matchNumber -1)));
+                    } else {
+                        SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamOne + " doesn't have a " + addNumberPrefix(matchNumber) + " match!" )
+                                .setDuration(Style.DURATION_VERY_SHORT).setFrame(Style.FRAME_LOLLIPOP)
+                                .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED)).setAnimations(Style.ANIMATIONS_FLY).show();
+                    }
+                } else if (actualChart.equals("teamTwoChart")) {
+                    if (teamTwoMatches.size() > matchNumber) {
+                        trendLineClickContinuation(teamTwo, String.valueOf(teamTwoMatches.get(matchNumber -1)));
+                    } else {
+                        SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamOne + " doesn't have a " + addNumberPrefix(matchNumber) + " match!" )
+                                .setDuration(Style.DURATION_VERY_SHORT).setFrame(Style.FRAME_LOLLIPOP)
+                                .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED)).setAnimations(Style.ANIMATIONS_FLY).show();
+                    }
+                } else if (actualChart.equals("teamThreeChart")) {
+                    if (teamThreeMatches.size() > matchNumber) {
+                        trendLineClickContinuation(teamThree, String.valueOf(teamThreeMatches.get(matchNumber -1)));
+                    } else {
+                        SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamOne + " doesn't have a " + addNumberPrefix(matchNumber) + " match!" )
+                                .setDuration(Style.DURATION_VERY_SHORT).setFrame(Style.FRAME_LOLLIPOP)
+                                .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED)).setAnimations(Style.ANIMATIONS_FLY).show();
+                    }
+                } else if (actualChart.equals("teamFourChart")) {
+                    if (teamFourMatches.size() > matchNumber) {
+                        trendLineClickContinuation(teamFour, String.valueOf(teamFourMatches.get(matchNumber -1)));
+                    } else {
+                        SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamOne + " doesn't have a " + addNumberPrefix(matchNumber) + " match!" )
+                                .setDuration(Style.DURATION_VERY_SHORT).setFrame(Style.FRAME_LOLLIPOP)
+                                .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED)).setAnimations(Style.ANIMATIONS_FLY).show();
+                    }
+                }
             }
 
             @Override
@@ -347,6 +362,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         });
     }
     public void trendLineClickContinuation(String teamNumber, String matchNumber) {
+        Log.e(teamNumber, matchNumber);
         Intent teamInMatchDataIntent = getTeamInMatchDetailsIntent();
         teamInMatchDataIntent.putExtra("team", Integer.valueOf(teamNumber));
         teamInMatchDataIntent.putExtra("match", Integer.valueOf(matchNumber));
@@ -354,6 +370,18 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
     }
     public Intent getTeamInMatchDetailsIntent() {
         return new Intent(getContext(), TeamInMatchDetailsActivity.class);
+    }
+    public String addNumberPrefix(int i) {
+        String[] sufixes = new String[] { "th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th" };
+        switch (i % 100) {
+            case 11:
+            case 12:
+            case 13:
+                return i + "th";
+            default:
+                return i + sufixes[i % 10];
+
+        }
     }
 
 }
