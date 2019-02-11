@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart1"
+        android:id="@+id/teamOneChart"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -15,7 +15,7 @@
         android:background="@color/KateGray"/>
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart2"
+        android:id="@+id/teamTwoChart"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -25,7 +25,7 @@
         android:background="@color/KateGray"/>
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart3"
+        android:id="@+id/teamThreeChart"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -35,7 +35,7 @@
         android:background="@color/KateGray"/>
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart4"
+        android:id="@+id/teamFourChart"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
@@ -43,5 +43,9 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/KateGray"/>
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/emptyTeamChart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
 
 </LinearLayout>

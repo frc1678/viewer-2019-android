@@ -52,6 +52,7 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //hardcoded name
         setTitle("TIMD Datapoint Selection");
+        selectedDatapoint="";
         getDatapoints();
         getExtras();
         initXml();

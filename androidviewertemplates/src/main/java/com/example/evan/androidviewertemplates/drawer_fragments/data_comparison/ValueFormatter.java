@@ -1,5 +1,7 @@
 package com.example.evan.androidviewertemplates.drawer_fragments.data_comparison;
 
+import android.util.Log;
+
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.BubbleEntry;
@@ -24,13 +26,13 @@ public class ValueFormatter implements IValueFormatter {
     @Override
     public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
 
-        //if value is 0.10, return "" for the value, else, return value
+        //if value is 0.1, return "" for the value, else, return value
         if (value != 0.10f) {
             DecimalFormat df = new DecimalFormat();
             df.setMaximumFractionDigits(2);
             return df.format(value);
         } else {
             return "";
-        }
+            }
     }
 }

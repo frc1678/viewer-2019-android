@@ -236,10 +236,7 @@ public class DataComparisonFragment extends Fragment {
                             //updates the team bar
                             updateTeamTextViewBar();
                         }
-                        //if there's 3 selected teams (4 total with the primary team), activate the button
-                        if (String.valueOf(comparedAgainstTeamsList.size()).equals("3")) {
                             activateButton();
-                        }
                     }
                 }
             }

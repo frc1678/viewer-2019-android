@@ -54,16 +54,35 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
     }
 
     public void getExtras() {
-        //Gets data from previous activity
-             Intent previous = getIntent();
+        //gets data from previous activity
+        Intent previous = getIntent();
         Bundle bundle = previous.getExtras();
         if (bundle != null) {
-            teamOne = getIntent().getStringExtra("teamOne");
-            teamTwo = getIntent().getStringExtra("teamTwo");
-            teamThree = getIntent().getStringExtra("teamThree");
-            teamFour = getIntent().getStringExtra("teamFour");
+            if (!getIntent().getStringExtra("teamOne").equals("?")) {
+                teamOne = getIntent().getStringExtra("teamOne");
+            } else {
+                teamOne = "null";
+            }
+            if (!getIntent().getStringExtra("teamTwo").equals("?")) {
+                teamTwo = getIntent().getStringExtra("teamTwo");
+            } else {
+                teamTwo = "null";
+            }
+            if (!getIntent().getStringExtra("teamThree").equals("?")) {
+                teamThree = getIntent().getStringExtra("teamThree");
+            } else {
+                teamThree = "null";
+            }
+            if (!getIntent().getStringExtra("teamFour").equals("?")) {
+                teamFour = getIntent().getStringExtra("teamFour");
+            } else {
+                teamFour = "null";
+            }
+
             selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
         }
+
     }
+
 
 }

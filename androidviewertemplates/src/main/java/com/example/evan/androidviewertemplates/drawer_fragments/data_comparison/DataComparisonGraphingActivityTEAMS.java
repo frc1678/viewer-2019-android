@@ -116,13 +116,29 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         Intent previous = getIntent();
         Bundle bundle = previous.getExtras();
         if (bundle != null) {
-            teamOne = getIntent().getStringExtra("teamOne");
-            teamTwo = getIntent().getStringExtra("teamTwo");
-            teamThree = getIntent().getStringExtra("teamThree");
-            teamFour = getIntent().getStringExtra("teamFour");
+            if (!getIntent().getStringExtra("teamOne").equals("?")) {
+                teamOne = getIntent().getStringExtra("teamOne");
+            } else {
+                teamOne = "null";
+            }
+            if (!getIntent().getStringExtra("teamTwo").equals("?")) {
+                teamTwo = getIntent().getStringExtra("teamTwo");
+            } else {
+                teamTwo = "null";
+            }
+            if (!getIntent().getStringExtra("teamThree").equals("?")) {
+                teamThree = getIntent().getStringExtra("teamThree");
+            } else {
+                teamThree = "null";
+            }
+            if (!getIntent().getStringExtra("teamFour").equals("?")) {
+                teamFour = getIntent().getStringExtra("teamFour");
+            } else {
+                teamFour = "null";
+            }
+
             selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
         }
-
 
     }
 
@@ -201,27 +217,47 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
 
 
         //sets the text of each label
-        teamOneTV.setText(teamOne);
-        teamTwoTV.setText(teamTwo);
-        teamThreeTV.setText(teamThree);
-        teamFourTV.setText(teamFour);
+        if (!teamOne.equals("null")) {
+            teamOneTV.setText(teamOne);
+        } else {
+            teamOneTV.setText("");
+        }
+        if (!teamTwo.equals("null")) {
+            teamTwoTV.setText(teamTwo);
+        } else {
+            teamTwoTV.setText("");
+        }
+        if (!teamThree.equals("null")) {
+            teamThreeTV.setText(teamThree);
+        } else {
+            teamThreeTV.setText("");
+        }
+        if (!teamFour.equals("null")) {
+            teamFourTV.setText(teamFour);
+        } else {
+            teamFourTV.setText("");
+        }
     }
 
     //gets the value of the given datapoint
     public Float getDatapointValue(String selectedDatapoint, String teamNumber) {
-        Team team = FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber);
-        //if datapoint is null, return "???"
-        String datapoint = (Utils.fieldIsNotNull(team, "calculatedData."+selectedDatapoint)
-                ? Utils.roundDataPoint(Utils.getObjectField(team, "calculatedData."+selectedDatapoint),
-                2, "???") : "???");
-        if (!datapoint.equals("???")) {
-            //if DATAPOINT is NOT "???", return the datapoint
-            return Float.valueOf(datapoint);
+        Log.e("teamnumberr",String.valueOf(teamNumber));
+        if (!teamNumber.equals("null")) {
+            Team team = FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber);
+            //if datapoint is null, return "???"
+            String datapoint = (Utils.fieldIsNotNull(team, "calculatedData."+selectedDatapoint)
+                    ? Utils.roundDataPoint(Utils.getObjectField(team, "calculatedData."+selectedDatapoint),
+                    2, "???") : "???");
+            if (!datapoint.equals("???")) {
+                //if DATAPOINT is NOT "???", return the datapoint
+                return Float.valueOf(datapoint);
+            }
+            else {
+                //if the datapoint IS "???", return 0 as value
+                return Float.valueOf(0);
+            }
         }
-        else {
-            //if the datapoint IS "???", return 0 as value
-            return Float.valueOf(0);
-        }
+        return Float.valueOf(0);
     }
 
 

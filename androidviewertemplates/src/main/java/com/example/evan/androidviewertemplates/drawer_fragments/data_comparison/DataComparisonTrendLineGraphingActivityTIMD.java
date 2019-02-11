@@ -34,11 +34,13 @@ import static com.example.evan.androidviewertools.utils.Utils.getMatchNumbersFor
 
 public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
 
-    String teamOne;
-    String teamTwo;
-    String teamThree;
-    String teamFour;
+    String teamOne = "null";
+    String teamTwo = "null";
+    String teamThree = "null";
+    String teamFour = "null";
     String selectedDatapoint;
+
+    LineData data;
 
     List<Integer> teamOneMatches = new ArrayList<>();
     List<Integer> teamTwoMatches = new ArrayList<>();
@@ -58,7 +60,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.data_comparison_trend_line, container, false);
-        getExtras();
+        getExtras(rootView);
         createTeamsList();
         initTeamMatches();
         initChart(rootView);
@@ -70,14 +72,23 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         return rootView;
     }
 
-    public void getExtras() {
-        //gets static data from the initial activity
-        teamOne = DataComparisonTIMDTabbedActivity.teamOne;
-        teamTwo = DataComparisonTIMDTabbedActivity.teamTwo;
-        teamThree = DataComparisonTIMDTabbedActivity.teamThree;
-        teamFour = DataComparisonTIMDTabbedActivity.teamFour;
+    public void getExtras(View layout) {
+        //gets data from previous activity
+        if (!DataComparisonTIMDTabbedActivity.teamOne.equals("null")) {
+            teamOne = DataComparisonTIMDTabbedActivity.teamOne;
+        }
+        if (!DataComparisonTIMDTabbedActivity.teamTwo.equals("null")) {
+            teamTwo = DataComparisonTIMDTabbedActivity.teamTwo;
+        }
+        if (!DataComparisonTIMDTabbedActivity.teamThree.equals("null")) {
+            teamThree = DataComparisonTIMDTabbedActivity.teamThree;
+        }
+        if (!DataComparisonTIMDTabbedActivity.teamFour.equals("null")) {
+            teamFour = DataComparisonTIMDTabbedActivity.teamFour;
+        }
         selectedDatapoint = DataComparisonTIMDTabbedActivity.selectedDatapoint;
     }
+
     public void createTeamsList() {
         //creates the teams list by adding each team to teamsList
         teamsList.add(teamOne);
@@ -86,23 +97,48 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         teamsList.add(teamFour);
     }
     public void initTeamMatches() {
-        //gets the matches each team has played using getMatchNumbersForTeamNumber();
-        teamOneMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamOne));
-        teamTwoMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamTwo));
-        teamThreeMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamThree));
-        teamFourMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamFour));
+        //retrieves all the matches of each selected team
+        if (!teamOne.equals("null")) {
+            teamOneMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamOne));
+        }
+        if (!teamTwo.equals("null")) {
+            teamTwoMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamTwo));
+        }
+        if (!teamThree.equals("null")) {
+            teamThreeMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamThree));
+        }
+        if (!teamFour.equals("null")) {
+            teamFourMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamFour));
+        }
     }
     public void initChart(View layout) {
         //inits the chart layouts
 
-        charts[0] = (LineChart) layout.findViewById(R.id.chart1);
-        charts[1] = (LineChart) layout.findViewById(R.id.chart2);
-        charts[2] = (LineChart) layout.findViewById(R.id.chart3);
-        charts[3] = (LineChart) layout.findViewById(R.id.chart4);
+        if (!teamThree.equals("null") && !teamFour.equals("null")) {
+            charts[0] = (LineChart) layout.findViewById(R.id.teamOneChart);
+            charts[1] = (LineChart) layout.findViewById(R.id.teamTwoChart);
+            charts[2] = (LineChart) layout.findViewById(R.id.teamThreeChart);
+            charts[3] = (LineChart) layout.findViewById(R.id.teamFourChart);
+        } else
+            if (!teamThree.equals("null") && teamFour.equals("null")) {
+                charts[0] = (LineChart) layout.findViewById(R.id.teamOneChart);
+                charts[1] = (LineChart) layout.findViewById(R.id.teamTwoChart);
+                charts[2] = (LineChart) layout.findViewById(R.id.teamThreeChart);
+                charts[3] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
+            } else
+                if (teamThree.equals("null") && teamFour.equals("null")) {
+                    charts[0] = (LineChart) layout.findViewById(R.id.teamOneChart);
+                    charts[1] = (LineChart) layout.findViewById(R.id.teamTwoChart);
+                    charts[2] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
+                    charts[3] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
+
+                }
 
         for (int i = 0; i < charts.length; i++) {
             //gets the data of each chart using the getData() method.
-            LineData data = getData(teamsList.get(i));
+            if (!teamsList.get(i).equals("null")) {
+                data = getData(teamsList.get(i));
+            }
 
             // add some transparency to the color with "& 0x90FFFFFF"
             if (data != null) {
@@ -211,6 +247,15 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
             lineEntries.add(new Entry(i+lineEntriesSize, (float) 0.1));
         }
         Collections.sort(lineEntries, new EntryXComparator());
+        return lineEntries;
+    }
+    public ArrayList<Entry> emptyLineData() {
+        //first data set entry
+        ArrayList<Entry> lineEntries = new ArrayList<>();
+        for (int i = 0; i < 13; i++) {
+            lineEntries.add(new Entry(i+1, (float) 0));
+        }
+
         return lineEntries;
     }
 
