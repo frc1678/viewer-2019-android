@@ -26,13 +26,17 @@ public class ValueFormatter implements IValueFormatter {
     @Override
     public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
 
-        //if value is 0.1, return "" for the value, else, return value
-        if (value != 0.10f) {
+        //if value is 0.04, return "0" for the value, else, return value unless it's actually 0. if it's 0 (null), then return ""
+        if (value == 0.04f) {
+            return "";
+        } else if (value == 0.2f) {
+            return "0";
+        } else if (value != 0.0f) {
             DecimalFormat df = new DecimalFormat();
             df.setMaximumFractionDigits(2);
             return df.format(value);
-        } else {
-            return "";
-            }
+        }
+        return "";
     }
 }
+

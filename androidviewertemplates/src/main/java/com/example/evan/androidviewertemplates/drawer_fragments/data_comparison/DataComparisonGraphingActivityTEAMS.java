@@ -5,10 +5,13 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.example.evan.androidviewertemplates.MainActivity;
 import com.example.evan.androidviewertemplates.R;
+import com.example.evan.androidviewertemplates.team_details.TeamDetailsActivity;
 import com.example.evan.androidviewertools.firebase_classes.Team;
 import com.example.evan.androidviewertools.firebase_classes.TeamInMatchData;
 import com.example.evan.androidviewertools.utils.Utils;
@@ -21,9 +24,12 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.model.GradientColor;
 
 import java.util.ArrayList;
@@ -40,12 +46,14 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
     String teamFour;
     String selectedDatapoint;
 
-    TextView teamOneTV;
-    TextView teamTwoTV;
-    TextView teamThreeTV;
-    TextView teamFourTV;
+    ArrayList<String> teamsList = new ArrayList<>();
 
-    ArrayList<BarEntry> barChartDataList = new ArrayList<>();
+    TextView teamOneFourTeamTV, teamTwoFourTeamTV, teamThreeFourTeamTV, teamFourFourTeamTV;
+	TextView teamOneThreeTeamTV, teamTwoThreeTeamTV, teamThreeThreeTeamTV;
+	TextView teamOneTwoTeamTV, teamTwoTwoTeamTV;
+
+
+	ArrayList<BarEntry> barChartDataList = new ArrayList<>();
     List<String> barChartLabels = new ArrayList<>();
     ArrayList<IBarDataSet> dataSets = new ArrayList<>();
     BarDataSet set;
@@ -78,6 +86,8 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         chart.getDescription().setEnabled(false);
         //turns off ability to double tap to zoom
         chart.setDoubleTapToZoomEnabled(false);
+        //enables touch
+	    chart.setTouchEnabled(true);
 
         //turns off zoom ability
         chart.setPinchZoom(false);
@@ -118,21 +128,25 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         if (bundle != null) {
             if (!getIntent().getStringExtra("teamOne").equals("?")) {
                 teamOne = getIntent().getStringExtra("teamOne");
+                teamsList.add(teamOne);
             } else {
                 teamOne = "null";
             }
             if (!getIntent().getStringExtra("teamTwo").equals("?")) {
                 teamTwo = getIntent().getStringExtra("teamTwo");
+                teamsList.add(teamTwo);
             } else {
                 teamTwo = "null";
             }
             if (!getIntent().getStringExtra("teamThree").equals("?")) {
                 teamThree = getIntent().getStringExtra("teamThree");
+                teamsList.add(teamThree);
             } else {
                 teamThree = "null";
             }
             if (!getIntent().getStringExtra("teamFour").equals("?")) {
                 teamFour = getIntent().getStringExtra("teamFour");
+                teamsList.add(teamFour);
             } else {
                 teamFour = "null";
             }
@@ -145,14 +159,29 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
     public void initBarChart() {
         //initializes barChartData
 
-        //adds data from teamOne
-        barChartDataList.add(new BarEntry(1, getDatapointValue(selectedDatapoint, teamOne)));
-        //adds data from teamTwo
-        barChartDataList.add(new BarEntry(2, getDatapointValue(selectedDatapoint, teamTwo)));
-        //adds data from teamThree
-        barChartDataList.add(new BarEntry(3, getDatapointValue(selectedDatapoint, teamThree)));
-        //adds data from teamFour
-        barChartDataList.add(new BarEntry(4, getDatapointValue(selectedDatapoint, teamFour)));
+        if (!teamThree.equals("null") && !teamFour.equals("null")) {
+            //adds data from teamOne
+            barChartDataList.add(new BarEntry(1, getDatapointValue(selectedDatapoint, teamOne)));
+            //adds data from teamTwo
+            barChartDataList.add(new BarEntry(2, getDatapointValue(selectedDatapoint, teamTwo)));
+            //adds data from teamThree
+            barChartDataList.add(new BarEntry(3, getDatapointValue(selectedDatapoint, teamThree)));
+            //adds data from teamFour
+            barChartDataList.add(new BarEntry(4, getDatapointValue(selectedDatapoint, teamFour)));
+        } else
+            if (!teamThree.equals("null") && teamFour.equals("null")) {
+                //adds data from teamOne
+                barChartDataList.add(new BarEntry(1, getDatapointValue(selectedDatapoint, teamOne)));
+                //adds data from teamTwo
+                barChartDataList.add(new BarEntry(2, getDatapointValue(selectedDatapoint, teamTwo)));
+                //adds data from teamThree
+                barChartDataList.add(new BarEntry(3, getDatapointValue(selectedDatapoint, teamThree)));
+            } else if (teamThree.equals("null") && teamFour.equals("null")) {
+                //adds data from teamOne
+                barChartDataList.add(new BarEntry(1, getDatapointValue(selectedDatapoint, teamOne)));
+                //adds data from teamTwo
+                barChartDataList.add(new BarEntry(2, getDatapointValue(selectedDatapoint, teamTwo)));
+            }
 
         //adds color to each bar
         List<GradientColor> gradientColors = new ArrayList<>();
@@ -175,10 +204,11 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         BarData data = new BarData(dataSets);
 
         //adds personalization to the data
-        data.setValueTextSize(10f);
+        data.setValueTextSize(18f);
         data.setValueTypeface(tfLight);
         data.setBarWidth(0.9f);
 
+		addClickListener(chart);
         chart.setData(data);
         // set the data and list of lables into chart<br />
 
@@ -191,52 +221,37 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         barChartLabels.add(teamThree);
         barChartLabels.add(teamFour);
 
+        
+        //todo
         //inits the xml to its according xml elements
-        teamOneTV = (TextView) findViewById(R.id.teamOne);
-        teamTwoTV = (TextView) findViewById(R.id.teamTwo);
-        teamThreeTV = (TextView) findViewById(R.id.teamThree);
-        teamFourTV = (TextView) findViewById(R.id.teamFour);
+        teamOneFourTeamTV = (TextView) findViewById(R.id.teamOneFourTeam);
+        teamTwoFourTeamTV = (TextView) findViewById(R.id.teamTwoFourTeam);
+        teamThreeFourTeamTV = (TextView) findViewById(R.id.teamThreeFourTeam);
+        teamFourFourTeamTV = (TextView) findViewById(R.id.teamFourFourTeam);
 
+	    teamOneThreeTeamTV = (TextView) findViewById(R.id.teamOneThreeTeam);
+	    teamTwoThreeTeamTV = (TextView) findViewById(R.id.teamTwoThreeTeam);
+	    teamThreeThreeTeamTV = (TextView) findViewById(R.id.teamThreeThreeTeam);
+	    
+	    teamOneTwoTeamTV = (TextView) findViewById(R.id.teamOneTwoTeam);
+	    teamTwoTwoTeamTV = (TextView) findViewById(R.id.teamTwoTwoTeam);
+	    
+	    if (!teamThree.equals("null") && !teamFour.equals("null")) {
+	    	teamOneFourTeamTV.setText(teamOne);
+	    	teamTwoFourTeamTV.setText(teamTwo);
+	    	teamThreeFourTeamTV.setText(teamThree);
+	    	teamFourFourTeamTV.setText(teamFour);
+	    } else
+	    	if (!teamThree.equals("null") && teamFour.equals("null")) {
+			    teamOneThreeTeamTV.setText(teamOne);
+			    teamTwoThreeTeamTV.setText(teamTwo);
+			    teamThreeThreeTeamTV.setText(teamThree);
+		    } else
+		    	if (teamThree.equals("null") && teamFour.equals("null")) {
+				    teamOneTwoTeamTV.setText(teamOne);
+				    teamTwoTwoTeamTV.setText(teamTwo);
+			    }
 
-        /*if (getDatapointValue(selectedDatapoint, teamOne).toString().equals(Float.valueOf(0).toString())) {
-            teamOne = teamOne + "(!)";
-            teamOneTV.setTextColor(ContextCompat.getColor(this, R.color.Rausch));
-        }
-        if (getDatapointValue(selectedDatapoint, teamTwo).toString().equals(Float.valueOf(0).toString())) {
-            teamTwo = teamTwo + "(!)";
-            teamTwoTV.setTextColor(ContextCompat.getColor(this, R.color.Rausch));
-        }
-        if (getDatapointValue(selectedDatapoint, teamThree).toString().equals(Float.valueOf(0).toString())) {
-            teamThree = teamThree + "(!)";
-            teamThreeTV.setTextColor(ContextCompat.getColor(this, R.color.Rausch));
-        }
-        if (getDatapointValue(selectedDatapoint, teamFour).toString().equals(Float.valueOf(0).toString())) {
-            teamFour = teamFour + "(!)";
-            teamFourTV.setTextColor(ContextCompat.getColor(this, R.color.Rausch));
-        }*/ //todo CARL empty team value = red
-
-
-        //sets the text of each label
-        if (!teamOne.equals("null")) {
-            teamOneTV.setText(teamOne);
-        } else {
-            teamOneTV.setText("");
-        }
-        if (!teamTwo.equals("null")) {
-            teamTwoTV.setText(teamTwo);
-        } else {
-            teamTwoTV.setText("");
-        }
-        if (!teamThree.equals("null")) {
-            teamThreeTV.setText(teamThree);
-        } else {
-            teamThreeTV.setText("");
-        }
-        if (!teamFour.equals("null")) {
-            teamFourTV.setText(teamFour);
-        } else {
-            teamFourTV.setText("");
-        }
     }
 
     //gets the value of the given datapoint
@@ -266,6 +281,39 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         saveToGallery(chart, "AnotherBarActivity");
     }
 
+	public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK)
+		{
+			Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			return true;
+		}
+		return super.onKeyLongPress(keyCode, event);
+	}
+	public void addClickListener(BarChart chart) {
+		chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener()
+		{
+			@Override
+			public void onValueSelected(Entry e, Highlight h)
+			{
+				float x=e.getX();
+				String team = teamsList.get(((int) x)-1);
+				Intent teamDetailsViewIntent = getTeamDetailsActivityIntent();
+				teamDetailsViewIntent.putExtra("teamNumber", Integer.valueOf(team));
+				teamDetailsViewIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				DataComparisonGraphingActivityTEAMS.this.startActivity(teamDetailsViewIntent);
+			}
 
+			@Override
+			public void onNothingSelected()
+			{
+
+			}
+		});
+	}
+	public Intent getTeamDetailsActivityIntent() {
+		return new Intent(DataComparisonGraphingActivityTEAMS.this, TeamDetailsActivity.class);
+	}
 }
 

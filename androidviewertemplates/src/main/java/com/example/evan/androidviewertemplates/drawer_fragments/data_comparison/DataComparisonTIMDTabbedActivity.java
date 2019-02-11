@@ -8,7 +8,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 
+import com.example.evan.androidviewertemplates.MainActivity;
 import com.example.evan.androidviewertemplates.R;
 
 public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
@@ -82,6 +84,17 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
             selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
         }
 
+    }
+
+    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            return true;
+        }
+        return super.onKeyLongPress(keyCode, event);
     }
 
 

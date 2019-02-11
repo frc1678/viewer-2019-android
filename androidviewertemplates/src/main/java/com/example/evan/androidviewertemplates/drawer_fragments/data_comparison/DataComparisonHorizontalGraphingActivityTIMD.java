@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.example.evan.androidviewertemplates.R;
+import com.example.evan.androidviewertemplates.team_details.TeamDetailsActivity;
 import com.example.evan.androidviewertools.firebase_classes.TeamInMatchData;
 import com.example.evan.androidviewertools.utils.Utils;
 import com.github.mikephil.charting.charts.BarChart;
@@ -31,7 +32,9 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -292,7 +295,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 		leftAxis.setDrawLabels(true);
 		// no axis labels
 		leftAxis.setDrawAxisLine(true);
-		// no axis line
+		// yes axis line
 		leftAxis.setDrawGridLines(true);
 		// no grid lines
 		leftAxis.setDrawZeroLine(false);
@@ -327,8 +330,10 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 		values.addAll(datapointValues);
 		for (int p = 0; p < datapointValues.size(); p++) {
 			//if the value is 0.0, return 0.1 to be shown on graph
-			if (String.valueOf(values.get(p)).equals("0.0")) {
-				barEntries.add(new BarEntry(p + 1, (float) 0.1));
+			if (String.valueOf(values.get(p)).equals("5000.0")) {
+				barEntries.add(new BarEntry(p + 1, (float) 0.04));
+			} else if (String.valueOf(values.get(p)).equals("0.0")) {
+				barEntries.add(new BarEntry(p + 1, (float) 0.2));
 			} else {
 				//else, add the value to barEntries
 				barEntries.add(new BarEntry(p + 1, (float) values.get(p)));
@@ -338,9 +343,9 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 		if (barEntries.size() < 13) {
 			Integer barSize = barEntries.size();
 			Integer counter = 13 - barSize;
-			//if the size of the entries is under 13 (under 13 matches), add a 0.1 value
+			//if the size of the entries is under 13 (under 13 matches), add a 0 value
 			for (int i = 0; i < counter; i++) {
-				barEntries.add(new BarEntry(i + barSize + 1, (float) 0.1));
+				barEntries.add(new BarEntry(i + barSize + 1, (float) 0.04));
 			}
 		}
 
@@ -376,7 +381,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 			}
 			//if "null", return 0.0
 			else if (value == (null)) {
-				dataValues.add((float) 0.0);
+				dataValues.add((float) 5000.0);
 			}
 		}
 

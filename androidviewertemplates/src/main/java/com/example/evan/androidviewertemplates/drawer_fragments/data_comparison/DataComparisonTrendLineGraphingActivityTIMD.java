@@ -1,5 +1,6 @@
 package com.example.evan.androidviewertemplates.drawer_fragments.data_comparison;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -12,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.evan.androidviewertemplates.R;
+import com.example.evan.androidviewertemplates.team_in_match_details.TeamInMatchDetailsActivity;
 import com.example.evan.androidviewertools.firebase_classes.TeamInMatchData;
 import com.example.evan.androidviewertools.utils.Utils;
+import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -21,8 +24,10 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.EntryXComparator;
 
@@ -41,6 +46,8 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
     String selectedDatapoint;
 
     LineData data;
+    public static String teamNumber;
+    public static String matchNumber;
 
     List<Integer> teamOneMatches = new ArrayList<>();
     List<Integer> teamTwoMatches = new ArrayList<>();
@@ -208,6 +215,8 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         //make the chart beautiful
         chart.setBackgroundColor(color);
 
+        addClickListener(chart);
+
     }
     private LineData getData(String teamNumber) {
             // create a dataset and give it a type
@@ -294,6 +303,57 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         set.setHighLightColor(Color.BLACK);
         set.setDrawValues(false);
         return set;
+    }
+    public void addClickListener(final LineChart chart) {
+        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener()
+        {
+
+
+            @Override
+            public void onValueSelected(Entry e, Highlight h)
+            {
+
+                String xValue = String.valueOf(e.getX());
+                Integer match = Integer.valueOf(xValue.substring(0,xValue.indexOf(".")));
+                String chartString = String.valueOf(chart);
+                String actualChart = String.valueOf(chartString.substring(chartString.lastIndexOf("team"),chartString.lastIndexOf("}")));
+                if (actualChart.equals("teamOneChart")) {
+                    DataComparisonTrendLineGraphingActivityTIMD.teamNumber = teamOne;
+                    DataComparisonTrendLineGraphingActivityTIMD.matchNumber = String.valueOf(teamOneMatches.get(match));
+                    trendLineClickContinuation(teamOne, String.valueOf(teamOneMatches.get(match)));
+                } else
+                    if (actualChart.equals("teamTwoChart")) {
+                        DataComparisonTrendLineGraphingActivityTIMD.teamNumber = teamTwo;
+                        DataComparisonTrendLineGraphingActivityTIMD.matchNumber = String.valueOf(teamTwoMatches.get(match));
+                        trendLineClickContinuation(teamTwo, String.valueOf(teamTwoMatches.get(match)));
+                    } else
+                        if (actualChart.equals("teamThreeChart")) {
+                            DataComparisonTrendLineGraphingActivityTIMD.teamNumber = teamThree;
+                            DataComparisonTrendLineGraphingActivityTIMD.matchNumber = String.valueOf(teamThreeMatches.get(match));
+                            trendLineClickContinuation(teamThree, String.valueOf(teamThreeMatches.get(match)));
+                        } else
+                            if (actualChart.equals("teamFourChart")) {
+                                DataComparisonTrendLineGraphingActivityTIMD.teamNumber = teamFour;
+                                DataComparisonTrendLineGraphingActivityTIMD.matchNumber = String.valueOf(teamFourMatches.get(match));
+                                trendLineClickContinuation(teamFour, String.valueOf(teamFourMatches.get(match)));
+                            }
+            }
+
+            @Override
+            public void onNothingSelected()
+            {
+
+            }
+        });
+    }
+    public void trendLineClickContinuation(String teamNumber, String matchNumber) {
+        Intent teamInMatchDataIntent = getTeamInMatchDetailsIntent();
+        teamInMatchDataIntent.putExtra("team", Integer.valueOf(teamNumber));
+        teamInMatchDataIntent.putExtra("match", Integer.valueOf(matchNumber));
+        getActivity().startActivity(teamInMatchDataIntent);
+    }
+    public Intent getTeamInMatchDetailsIntent() {
+        return new Intent(getContext(), TeamInMatchDetailsActivity.class);
     }
 
 }
