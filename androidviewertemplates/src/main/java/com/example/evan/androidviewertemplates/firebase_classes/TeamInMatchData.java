@@ -30,4 +30,5 @@ public CalculatedTeamInMatchData calculatedData;
 
     public String startingLocation;
     public String preload;
+    public String superNotes;
 }

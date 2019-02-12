@@ -90,7 +90,12 @@ public class CalculatedTeamData extends Object {
     public Integer p75percentIncap;
     public Integer p75percentImpaired;
     public Integer p75percentNoShow;
+    public Integer percentIncapEntireMatch;
+    public Integer p75percentIncapEntireMatch;
+    public Integer sdPercentIncapEntireMatch;
+    public Integer lfmPercentIncapEntireMatch;
 
+    public Float agilityZScore;
     public Float predictedRPs;
     public Float avgOrangesScored;
     public Float avgLemonsScored;
@@ -167,9 +172,12 @@ public class CalculatedTeamData extends Object {
     public Float p75avgTimeImpaired;
     public Float p75avgTimeClimbing;
     public Float p75avgLemonsSpilled;
+    public Float speedZScore;
 
     public Boolean hasOrangeGroundIntake;
     public Boolean hasLemonGroundIntake;
     public Boolean didPreloadOrange;
     public Boolean didPreloadLemon;
+
+    public List<String> totalSuperNotes;
 }
