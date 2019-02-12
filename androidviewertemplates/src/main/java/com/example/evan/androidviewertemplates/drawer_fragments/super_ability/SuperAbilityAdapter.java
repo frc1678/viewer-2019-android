@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
+
+import com.example.evan.androidviewertemplates.firebase_classes.CalculatedTeamData;
+import com.example.evan.androidviewertemplates.firebase_classes.TeamTemplate;
 
 /**
  * Created by colinunger on 1/31/16.
