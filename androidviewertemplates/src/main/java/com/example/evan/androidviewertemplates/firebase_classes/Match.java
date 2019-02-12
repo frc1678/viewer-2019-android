@@ -22,7 +22,7 @@ public class Match extends com.example.evan.androidviewertools.firebase_classes.
     public List<Integer> blueTeams;
     public List<Integer> redTeams;
     public List<Integer> noShowTeams;
-    
+
     public Integer blueFoulPoints;
     public Integer redFoulPoints;
     public Integer blueActualRPs;
