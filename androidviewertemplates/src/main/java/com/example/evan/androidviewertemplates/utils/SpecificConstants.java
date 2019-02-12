@@ -251,7 +251,7 @@ public class SpecificConstants extends Constants {
 
 //            SuperData
                     put("calculatedData.speedZScore","Speed Z Score");
-
+                    put("calculatedData.agilityZScore","Agility Z Score");
 //                put("EXAMPLE_DATA_POINT", "EXAMPLE_DATA_TITLE");
 //                Look at past years' SpecificConstants for further formatting
             }
