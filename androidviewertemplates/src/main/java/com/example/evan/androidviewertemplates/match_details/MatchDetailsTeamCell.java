@@ -75,7 +75,7 @@ public class MatchDetailsTeamCell extends LinearLayout {
 
     public void updateUI() {
         TextView teamNumberTextView = (TextView) findViewById(R.id.matchDetailsTeamCellTeamNumberTextView);
-        teamNumberTextView.setText(teamNumber.toString());
+        teamNumberTextView.setText(String.valueOf(teamNumber));
         teamNumberTextView.setTextColor((isRed) ? Color.RED : Color.BLUE);
         teamNumberTextView.setOnClickListener(new MatchDetailsTeamClickedListener());
 
