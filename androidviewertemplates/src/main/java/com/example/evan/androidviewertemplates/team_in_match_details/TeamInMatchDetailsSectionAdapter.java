@@ -58,17 +58,25 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
             {"teamNumber", "matchNumber"},
-            {"startingLevel,crossedHabLine,startingLocation,preload"},
-            {"calculatedData.orangesScored,calculatedData.lemonsScored,calculatedData.orangeFouls,calculatedData.lemonLoadSuccess,calculatedData.orangeSuccessDefended," +
-                    "calculatedData.orangeSuccessL2,calculatedData.orangeSuccessL3,calculatedData.lemonSuccessDefended,calculatedData.lemonSuccessL2,calculatedData.lemonSuccessL3," +
-                    "calculatedData.lemonsSpilled"},
-            {"calculatedData.timeIncap,calculatedData.timeImpaired,calculatedData.timeClimbing"},
-            {},
+            {"startingLevel","crossedHabLine","startingLocation","preload"},
+            {"calculatedData.orangesScored","calculatedData.lemonsScored","calculatedData.orangeFouls","calculatedData.lemonLoadSuccess",
+                    "calculatedData.orangeSuccessDefended","calculatedData.orangeSuccessL2","calculatedData.orangeSuccessL3",
+                    "calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL3","calculatedData.lemonsSpilled"},
+            {"calculatedData.timeIncap","calculatedData.timeImpaired","calculatedData.timeClimbing"},
+            {"superNotes"},
     };
 
-    static String[] shouldDisplayAsPercentage = {};
+    static String[] shouldDisplayAsPercentage = {
+
+    };
 
     static String[] displayAsUnranked = {
+            "teamNumber",
+            "matchNumber",
+            "startingLevel",
+            "crossedHabLine",
+            "startingLocation",
+            "preload"
     };
 
     static String[] shouldDisplayAsLongText = {

@@ -25,7 +25,7 @@ public CalculatedTeamInMatchData calculatedData;
     public Integer teamNumber;
     public Integer startingLevel;
 
-    public Boolean crossedHABLine;
+    public Boolean crossedHabLine;
     public Boolean isNoShow;
 
     public String startingLocation;
