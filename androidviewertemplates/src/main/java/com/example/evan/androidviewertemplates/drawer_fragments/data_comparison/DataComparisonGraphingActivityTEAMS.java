@@ -278,7 +278,8 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
 
     @Override
     protected void saveToGallery() {
-        saveToGallery(chart, "AnotherBarActivity");
+        saveToGallery(chart
+		        , "AnotherBarActivity");
     }
 
 	public boolean onKeyLongPress(int keyCode, KeyEvent event) {

@@ -130,6 +130,8 @@ public class DataComparisonFragment extends Fragment {
                             .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_GREEN))
                             .setAnimations(Style.ANIMATIONS_FLY).show();
                     initComparisonSelect();
+                } else {
+                    restartComparisonSelection();
                 }
             }
         });
@@ -198,10 +200,13 @@ public class DataComparisonFragment extends Fragment {
         }
         //if two others teams are selected, then set the third text view to the third team
         else if (listSize.toString().equals("2")) {
+            teamTwoTextView.setText(comparedAgainstTeamsList.get(0));
             teamThreeTextView.setText(comparedAgainstTeamsList.get(1));
         }
         //if three others teams are selected, then set the fourth text view to the fourth team
         else if (listSize.toString().equals("3")) {
+            teamTwoTextView.setText(comparedAgainstTeamsList.get(0));
+            teamThreeTextView.setText(comparedAgainstTeamsList.get(1));
             teamFourTextView.setText(comparedAgainstTeamsList.get(2));
         }
     }
@@ -222,11 +227,11 @@ public class DataComparisonFragment extends Fragment {
                 String comparisonTeam = teamsList.get(i);
                 //checks to see if the selected cell was already the cell of the primary team
                 if (!comparisonTeam.equals(selectedTeam)) {
+                    String localComparisonTeam = teamsList.get(i);
                     //then checks to see if the selected cell contains a value that was already selected in general
                     if (!comparedAgainstTeamsList.contains(comparisonTeam)) {
                         // if the compared size is 3, it won't work
                         if (comparedAgainstTeamsList.size() < 3) {
-                            String localComparisonTeam = teamsList.get(i);
                             //adds the selected team to the comparison teams list
                             comparedAgainstTeamsList.add(localComparisonTeam);
                             //updates button color
@@ -236,8 +241,21 @@ public class DataComparisonFragment extends Fragment {
                             //updates the team bar
                             updateTeamTextViewBar();
                         }
-                            activateButton();
+                        activateButton();
+                    } else {
+                        //if it's already on the list, remove on click
+                        comparedAgainstTeamsList.remove(localComparisonTeam);
+                        //update button color
+                        updateButtonColor();
+                        //update cell colors
+                        initListView();
+                        //update team bar
+                        clearTeamTextViewBar();
+                        updateTeamTextViewBar();
+
                     }
+                } else {
+                    restartComparisonSelection();
                 }
             }
         });
