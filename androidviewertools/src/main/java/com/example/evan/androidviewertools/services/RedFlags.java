@@ -14,20 +14,18 @@ public class RedFlags {
             "calculatedData.avgBadDecisions",
             "calculatedData.percentNoShow",
             "calculatedData.percentImpaired",
-            "pitProgrammingLanguage",
 
     };
     public static String[] RED_FLAG_DATAPOINTS_RED_VALUE = {
 
             //SUBSTRINGS:
-            //"moreThanZero", "moreThanOne", "moreThanTwo", "moreThanThree", "moreThanFour", "LabVIEW", "
+            //"moreThanZero", "moreThanOne", "moreThanTwo", "moreThanThree", "moreThanFour",
 
             "moreThanTwo",
             "moreThanZero",
             "moreThanFour",
             "moreThanZero",
             "moreThanZero",
-            "LabVIEW"
     };
     static {
         Map<String, String> redFlagDatapoints = new HashMap<String, String>() {
@@ -37,7 +35,6 @@ public class RedFlags {
                 put("calculatedData.avgBadDecisions", "avg bad decisions");
                 put("calculatedData.percentNoShow", "% no show");
                 put("calculatedData.percentImpaired", "% impaired");
-                put("pitProgrammingLanguage", "programming language");
 
             }
         };
