@@ -116,6 +116,7 @@ public class SpecificConstants extends Constants {
                     put("firstPickAbility","first pick ability");
                     put("secondPickAbility","second pick ability");
                     put("calculatedData.avgLemonsSpilled","avg panels spilled");
+                    put("calculatedData.totalSuperNotes","Total Super Notes");
         //lfm
                     put("calculatedData.lfmAvgOrangesScored","avg cargo scored");
                     put("calculatedData.lfmAvgLemonsScored","avg panel scored");
@@ -259,6 +260,14 @@ public class SpecificConstants extends Constants {
         Map<String, String> initialDatasToGraphMap = new HashMap<String, String>() {
             {
                 put("calculatedData.avgOrangesScored", "calculatedData.orangesScored");
+                put("calculatedData.avgLemonsScored","calculatedData.lemonsScored");
+                put("calculatedData.avgOrangeFouls","calculatedData.orangeFouls");
+                put("calculatedData.avgLemonsSpilled","calculatedData.lemonsFouls");
+                put("calculatedData.avgTimeClimbing","calculatedData.timeClimbing");
+                put("calculatedData.avgTimeIncap","calculatedData.timeIncap");
+                put("calculatedData.percentNoShow","isNoShow");
+                put("calculatedData.percentIncap","calculatedData.timeIncap");
+                put("calcualtedData.percentImpaired","calcualtedData.timeImpaired");
 //              put("DATA_POINT_TO_BE_GRAPHED","DATA_POINT_NEEDED_TO_GRAPH_PRIOR_DATA_POINT");
 
 

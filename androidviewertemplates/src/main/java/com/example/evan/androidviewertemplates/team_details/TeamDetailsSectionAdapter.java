@@ -47,7 +47,7 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             {"calculatedData.avgTimeClimbing",},
             {"calculatedData.avgTimeIncap","calculatedData.percentIncap","calculatedData.percentImpaired","calculatedData.percentNoShow"},
             {"calculatedData.predictedSoloPoints","calculatedData.sdAvgOrangesScored","calculatedData.sdAvgLemonsScored"},
-            {"calculatedData.avgGoodDecisions","calculatedData.avgBadDecisions"},
+            {"calculatedData.avgGoodDecisions","calculatedData.avgBadDecisions","calculatedData.totalSuperNotes"},
             {"pitLength","pitWidth","pitWeight","pitWheelDiameter","pitDrivetrain","pitProgrammingLanguage","pitClimbType","pitHasCamera","pitHasVision","pitHasGyro","pitHasEncoders","pitCanBuddyStartLevel2","pitSandstormNavigationType","pitSEALsNotes"}
     };
 
@@ -56,10 +56,26 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
 
     static String[] displayAsUnranked = {
             "matches",
+            "lfm",
             "VIEWER.matchesUntilNextMatchForTeam",
             "pitClimbType",
             "pitSEALsNotes",
             "pitSandstormNavigationType",
+            "pitLength",
+            "pitWidth",
+            "pitWeight",
+            "pitWheelDiameter",
+            "pitDrivetrain",
+            "pitProgrammingLanguage",
+            "pitClimbType",
+            "pitHasCamera",
+            "pitHasVision",
+            "pitHasGyro",
+            "pitHasEncoders",
+            "pitCanBuddyStartLevel2",
+            "pitSandstormNavigationType",
+            "pitSEALsNotes",
+            "totalSuperNotes",
     };
 
     static String[] shouldDisplayAsLongText = {
@@ -73,20 +89,46 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     static String[] shouldDisplayAsFurtherInformation = {
             "matches",
             "superNotes",
-            "lfm"
-
+            "lfm",
     };
 
     static String[] notClickableFields = {
             "VIEWER.matchesUntilNextMatchForTeam",
+            "calculatedData.sdAvgOrangesScored",
+            "calculatedData.sdAvgLemonsScored",
+            "pitClimbType",
+            "pitSEALsNotes",
+            "pitSandstormNavigationType",
+            "pitLength",
+            "pitWidth",
+            "pitWeight",
+            "pitWheelDiameter",
+            "pitDrivetrain",
+            "pitProgrammingLanguage",
+            "pitClimbType",
+            "pitHasCamera",
+            "pitHasVision",
+            "pitHasGyro",
+            "pitHasEncoders",
+            "pitCanBuddyStartLevel2",
+            "pitSandstormNavigationType",
+            "pitSEALsNotes",
     };
 
     static String[] createListOnClick = {
             "matches",
-            "lfm"
+            "lfm",
+            "totalSuperNotes",
     };
 
     static String[] rankInsteadOfGraph = {
+            "calculatedData.hasOrangeGroundIntake",
+            "calculatedData.hasLemonGroundIntake",
+            "calculatedData.predictedSoloPoints",
+            "calculatedData.avgGoodDecisions",
+            "calculatedData.avgBadDecisions",
+
+
     };
 
 
