@@ -208,30 +208,31 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
             redScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.redPredictedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.redPredictedScore"), 2, "???") : "???");
             blueScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.bluePredictedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.bluePredictedScore"), 2, "???") : "???");
         }
-                TextView rankingPointDisplayBlue = (TextView) rowView.findViewById(R.id.rankingPointDisplayBlue);
-                TextView rankingPointDisplayRed = (TextView) rowView.findViewById(R.id.rankingPointDisplayRed);
+            TextView rankingPointDisplayBlueRocketRP = (TextView) rowView.findViewById(R.id.rankingPointDisplayBlueRocketRP);
+            TextView rankingPointDisplayRedRocketRP = (TextView) rowView.findViewById(R.id.rankingPointDisplayRedRocketRP);
+            TextView rankingPointDisplayBlueHabClimb = (TextView) rowView.findViewById(R.id.rankingPointDisplayBlueHabClimb);
+            TextView rankingPointDisplayRedHabClimb = (TextView) rowView.findViewById(R.id.rankingPointDisplayRedHabClimb);
 
-//         Boolean blueDidAutoQuest = Boolean.valueOf(Utils.getObjectField(match, "blueDidAutoQuest").toString());
-//         Boolean blueDidFaceBoss = Boolean.valueOf(Utils.getObjectField(match, "blueDidFaceBoss").toString());
-//         Boolean redDidAutoQuest = Boolean.valueOf(Utils.getObjectField(match, "redDidAutoQuest").toString());
-//         Boolean redDidFaceBoss = Boolean.valueOf(Utils.getObjectField(match, "redDidFaceBoss").toString());
-//
-////todo Add predicted RPs?
-//            if (blueDidAutoQuest && blueDidFaceBoss) {
-//             rankingPointDisplayBlue.setText("● ●");
-//         } if (blueDidAutoQuest && !blueDidFaceBoss) {
-//             rankingPointDisplayBlue.setText("●  ");
-//         } if (!blueDidAutoQuest && blueDidFaceBoss) {
-//             rankingPointDisplayBlue.setText("    ●");
-//         }
-//
-//        if (redDidAutoQuest && redDidFaceBoss) {
-//            rankingPointDisplayRed.setText("● ●");
-//        } if (redDidAutoQuest && !redDidFaceBoss) {
-//            rankingPointDisplayRed.setText("●  ");
-//        } if (!redDidAutoQuest && redDidFaceBoss) {
-//            rankingPointDisplayRed.setText("    ●");
-//        }
+         Boolean blueDidRocketRP = Boolean.valueOf(String.valueOf(Utils.getObjectField(match, "blueDidRocketRP")));
+         Boolean blueDidHabClimb = Boolean.valueOf(String.valueOf(Utils.getObjectField(match, "blueDidClimbRP")));
+         Boolean redDidRocketRP = Boolean.valueOf(String.valueOf(Utils.getObjectField(match, "redDidRocketRP")));
+         Boolean redDidHabClimb = Boolean.valueOf(String.valueOf(Utils.getObjectField(match, "redDidClimbRP")));
+
+         //todo Add predicted RPs?
+
+            if (blueDidRocketRP) {
+                rankingPointDisplayBlueRocketRP.setText("●");
+            }
+            if (redDidRocketRP) {
+                rankingPointDisplayRedRocketRP.setText("●");
+            }
+            if (blueDidHabClimb) {
+                rankingPointDisplayBlueHabClimb.setText("●");
+            }
+            if (redDidHabClimb) {
+                rankingPointDisplayRedHabClimb.setText("●");
+            }
+
 
         }catch (NullPointerException NPE){
         }
