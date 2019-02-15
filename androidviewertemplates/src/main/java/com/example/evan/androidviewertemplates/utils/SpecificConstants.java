@@ -14,12 +14,12 @@ public class SpecificConstants extends Constants {
     //todo
     public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Function"};
 
-    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://dev3-2018.firebaseio.com/";
+    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://dev-1-2019.firebaseio.com/";
 
     public static String ROOT_FIREBASE_PATH = ORIGINAL_ROOT_FIREBASE_PATH;
     public static String MATCHES_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Matches";
     public static String TEAMS_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Teams";
-    public static String TEAM_IN_MATCH_DATAS_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "TeamInMatchDatas";
+    public static String TEAM_IN_MATCH_DATAS_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "TIMDs";
 
     static {
         Map<String, String> initialKeysToTitlesMap = new HashMap<String, String>() {
@@ -251,7 +251,7 @@ public class SpecificConstants extends Constants {
 
 //            SuperData
                     put("calculatedData.speedZScore","Speed Z Score");
-                    put("calculatedData.agilityZScore","Agility Z Score");
+                            put("calculatedData.agilityZScore","Agility Z Score");
 //                put("EXAMPLE_DATA_POINT", "EXAMPLE_DATA_TITLE");
 //                Look at past years' SpecificConstants for further formatting
             }
