@@ -32,7 +32,7 @@ public class SpecificConstants extends Constants {
     public static String TEAMS_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Teams";
     public static String TEAM_IN_MATCH_DATAS_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "TeamInMatchDatas";
 
-    static {
+        static {
         Map<String, String> initialKeysToTitlesMap = new HashMap<String, String>() {
             {
                     put("matches", "Matches");
@@ -93,7 +93,7 @@ public class SpecificConstants extends Constants {
                     put("pitSandstormNavigationType","sandstorm navigation");
                     put("pitHasOrangeShooter","has cargo shooter");
                     put("pitSEALsNotes","SEALsNotes");
-                    put("number","team #");
+                    put("teamNumber","team #");
                     put("name","team name");
                     put("actualRPs","total # RP");
                     put("matchesPlayed","matches played");
@@ -261,10 +261,9 @@ public class SpecificConstants extends Constants {
                     put("redPredictedClimbPoints","red predicted climb points");
 
 
-//                put("EXAMPLE_DATA_POINT", "EXAMPLE_DATA_TITLE");
-//                Look at past years' SpecificConstants for further formatting
             }
         };
+
         Map<String, String> initialDatasToGraphMap = new HashMap<String, String>() {
             {
 //              put("DATA_POINT_TO_BE_GRAPHED","DATA_POINT_NEEDED_TO_GRAPH_PRIOR_DATA_POINT");
@@ -461,8 +460,6 @@ public class SpecificConstants extends Constants {
                 "Last Four Matches",
                 "Standard Deviation",
                 "75th Percentile");
-
-
 
         KEYS_TO_TITLES = initialKeysToTitlesMap;
         DATA_TO_GRAPH = initialDatasToGraphMap;

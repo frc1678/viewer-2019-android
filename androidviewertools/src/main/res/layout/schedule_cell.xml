@@ -106,21 +106,66 @@
         android:paddingRight="3dp"
         android:text="/"/>
 
+
+    <LinearLayout
+        android:layout_alignLeft="@+id/redScore"
+        android:layout_alignBaseline="@id/redTeamsLayout"
+        android:layout_toStartOf="@+id/scoreSeparator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/rankingPointDisplayRedRocketRP"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            />
+
+        <TextView
+            android:id="@+id/rankingPointDisplayRedHabClimb"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_alignRight="@+id/blueScore"
+        android:layout_alignBaseline="@id/redTeamsLayout"
+        android:layout_toEndOf="@+id/scoreSeparator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/rankingPointDisplayBlueRocketRP"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="#0000ff"
+            />
+
+        <TextView
+            android:id="@+id/rankingPointDisplayBlueHabClimb"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="#0000ff"
+            />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/rankingPointDisplayBlue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#0000ff"
+        android:layout_alignLeft="@+id/blueScore"
         android:layout_alignStart="@+id/blueScore"/>
 
-    <TextView
-        android:id="@+id/rankingPointDisplayRed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FF0000"
-        android:paddingRight="8dp"
-        android:layout_alignStart="@+id/redScore"
-        />
 
     <TextView
         android:id="@+id/blueScore"

@@ -100,8 +100,8 @@ public abstract class SearchableFirebaseListAdapter<T> extends BaseAdapter {
         Collections.sort(filteredValues, new Comparator<T>() {
             public int compare(T obj1, T obj2) {
                 // ## Ascending order
-                Integer teamNumberOne = (Integer) Utils.getObjectField(obj1, "number");
-                Integer teamNumberTwo = (Integer) Utils.getObjectField(obj2, "number");
+                Integer teamNumberOne = (Integer) Utils.getObjectField(obj1, "teamNumber");
+                Integer teamNumberTwo = (Integer) Utils.getObjectField(obj2, "teamNumber");
                 return (teamNumberOne).compareTo(teamNumberTwo);// To compare string values
                 // ## Descending order
                 // return obj2.firstName.compareToIgnoreCase(obj1.firstName); // To compare string values

@@ -118,7 +118,7 @@ public class Utils {
             Integer redScore = (Integer)(Utils.getObjectField(match,"redScore"));
             Integer blueScore = (Integer)(Utils.getObjectField(match,"blueScore"));
             if(redScore != null || blueScore != null) {
-                lastMatch = ((Integer)(Utils.getObjectField(match,"number")));
+                lastMatch = ((Integer)(Utils.getObjectField(match,"teamNumber")));
             }
         }
 
@@ -138,7 +138,7 @@ public class Utils {
         List<TeamInMatchData> teamInMatchDatas = new ArrayList<>();
         for (TeamInMatchData teamInMatchData : FirebaseLists.teamInMatchDataList.getValues()) {
             Integer number = (Integer) Utils.getObjectField(teamInMatchData,"teamNumber");
-            //Log.e("number", Integer.toString(number));
+            //Log.e("teamNumber", Integer.toString(teamNumber));
             //DRINK BLEACH
             try {
                 if (number.equals(teamNumber)) {
