@@ -56,6 +56,7 @@ public class LastFourMatchesSectionAdapter extends TeamSectionAdapter {
 
     static String[] sectionTitles = {
             //May need to change depending on game
+
             "Teleop",
             "Sandstorm",
             "Endgame",

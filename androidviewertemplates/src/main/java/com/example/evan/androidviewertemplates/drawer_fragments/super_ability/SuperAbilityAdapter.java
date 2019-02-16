@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
+
+import com.example.evan.androidviewertemplates.firebase_classes.CalculatedTeamData;
+import com.example.evan.androidviewertemplates.firebase_classes.TeamTemplate;
 
 /**
  * Created by colinunger on 1/31/16.
@@ -13,11 +17,10 @@ public class SuperAbilityAdapter extends FragmentStatePagerAdapter {
     Context context;
     //todo
     String[] fields = {
-            "calculatedData.avgSpeed",
-            "calculatedData.avgAgility",
-            "calculatedData.avgDefense",
-            "calculatedData.totalNumGoodDecisions",
-            "calculatedData.totalNumBadDecisions"
+            "calculatedData.agilityZScore",
+            "calculatedData.speedZScore",
+            "calculatedData.avgGoodDecisions",
+            "calculatedData.avgBadDecisions"
     };
 
     public SuperAbilityAdapter(Context context, FragmentManager mgr) {

@@ -1,5 +1,4 @@
-{
-  "project_info": {
+{"project_info": {
     "project_number": "476102317375",
     "firebase_url": "https://dev3-2018.firebaseio.com",
     "project_id": "dev3-2018",
@@ -8,9 +7,40 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:476102317375:android:e42ec49e6b607cfb",
+        "mobilesdk_app_id": "1:476102317375:android:408458a8e1df33a1",
         "android_client_info": {
-          "package_name": "com.example.sam.codebaseintegration"
+          "package_name": "com.example.evan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "591931891273-krda7rnpuargete7r1gbb3m2jbp5n40u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrEwG93UEp5K_5a3TbBMqTatSD78z7dSw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476102317375:android:2829f0a89f52ae04",
+        "android_client_info": {
+          "package_name": "com.example.sam.blutoothsocketreceiver"
         }
       },
       "oauth_client": [
@@ -39,9 +69,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:476102317375:android:408458a8e1df33a1",
+        "mobilesdk_app_id": "1:476102317375:android:2829f0a89f52ae04",
         "android_client_info": {
-          "package_name": "com.example.sam.codebaseintegration"
+          "package_name": "com.example.sam.blutoothsocketreceiver"
         }
       },
       "oauth_client": [
@@ -53,6 +83,37 @@
       "api_key": [
         {
           "current_key": "AIzaSyDNNae9nnyYJ8LQ-Ii1_-Xpl9RzrD7O-GU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476102317375:android:303d5cec6874cc19",
+        "android_client_info": {
+          "package_name": "com.example.sam.codebaseintegration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "591931891273-krda7rnpuargete7r1gbb3m2jbp5n40u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrEwG93UEp5K_5a3TbBMqTatSD78z7dSw"
         }
       ],
       "services": {

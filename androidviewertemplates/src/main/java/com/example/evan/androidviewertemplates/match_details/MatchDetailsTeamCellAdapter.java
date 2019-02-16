@@ -29,6 +29,7 @@ public class MatchDetailsTeamCellAdapter extends BaseAdapter {
     //todo
     private String[] fields = {
             //format: "calculatedData.variable", "calculatedData.nextVariable",
+            "calculatedData.avgOrangesScored","calculatedData.avgLemonsScored","calculatedData.avgBadDecisions","calculatedData.percentIncap","calculatedData.avgLemonsSpilled"
     };
 
     private String[] fieldsToDisplayAsPercentages = {};

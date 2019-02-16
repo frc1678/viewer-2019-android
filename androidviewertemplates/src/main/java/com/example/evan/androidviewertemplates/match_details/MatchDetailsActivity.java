@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Vibrator;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
@@ -22,6 +23,7 @@ import com.example.evan.androidviewertemplates.R;
 import com.example.evan.androidviewertemplates.firebase_classes.Match;
 import com.example.evan.androidviewertemplates.utils.SpecificConstants;
 import com.example.evan.androidviewertools.ViewerActivity;
+import com.example.evan.androidviewertools.match_listing.MatchesAdapter;
 import com.example.evan.androidviewertools.services.StarManager;
 import com.example.evan.androidviewertools.utils.Utils;
 import com.example.evan.androidviewertools.utils.firebase.FirebaseLists;
@@ -88,16 +90,33 @@ public class MatchDetailsActivity extends ViewerActivity {
         int[] teamCellIDs = {R.id.redTeamCell1, R.id.redTeamCell2, R.id.redTeamCell3, R.id.blueTeamCell1, R.id.blueTeamCell2, R.id.blueTeamCell3};
         allTeamNumbers.addAll(match.redTeams);
         allTeamNumbers.addAll(match.blueTeams);
-        Log.e("allTeamNumbers", allTeamNumbers.toString());
-
         for (int i = 0; i < teamCellIDs.length; i++) {
             MatchDetailsTeamCell matchDetailsTeamCell = (MatchDetailsTeamCell) findViewById(teamCellIDs[i]);
             if (onStarredMatches(allTeamNumbers.get(i))) {
-                if (match.redTeams.contains(allTeamNumbers.get(i))) {
+                GradientDrawable gd = new GradientDrawable();
+                if (match.redTeams.contains(allTeamNumbers.get(i)) && MatchesAdapter.isRedFlag(allTeamNumbers.get(i))) {
+                    gd.setColor(0xFFFFC2C2);
+                    gd.setStroke(1, 0xFFbf1212);
+                    matchDetailsTeamCell.setBackground(gd);
+                } else if (match.redTeams.contains(allTeamNumbers.get(i)) && !MatchesAdapter.isRedFlag(allTeamNumbers.get(i))) {
                     matchDetailsTeamCell.setBackgroundColor(Color.parseColor("#FFC2C2"));
                 }
-                if (match.blueTeams.contains(allTeamNumbers.get(i))) {
+                if (match.blueTeams.contains(allTeamNumbers.get(i)) && MatchesAdapter.isRedFlag(allTeamNumbers.get(i))) {
+                    gd.setColor(0xFFB7DAFF);
+                    gd.setStroke(1, 0xFFbf1212);
+                    matchDetailsTeamCell.setBackground(gd);
+                } else if (match.blueTeams.contains(allTeamNumbers.get(i)) && !MatchesAdapter.isRedFlag(allTeamNumbers.get(i))) {
                     matchDetailsTeamCell.setBackgroundColor(Color.parseColor("#B7DAFF"));
+                }
+            } else {
+                GradientDrawable gd = new GradientDrawable();
+                if (match.redTeams.contains(allTeamNumbers.get(i)) && MatchesAdapter.isRedFlag(allTeamNumbers.get(i))) {
+                    gd.setStroke(1, 0xFFbf1212);
+                    matchDetailsTeamCell.setBackground(gd);
+                }
+                if (match.blueTeams.contains(allTeamNumbers.get(i)) && MatchesAdapter.isRedFlag(allTeamNumbers.get(i))) {
+                    gd.setStroke(1, 0xFFbf1212);
+                    matchDetailsTeamCell.setBackground(gd);
                 }
             }
             matchDetailsTeamCell.update(allTeamNumbers.get(i), (i < 3));

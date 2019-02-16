@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_alignParentTop="true"
+        android:id="@+id/topFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/undoButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/LightGreen"
+            android:text="RESTART"
+            />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <ListView
+        android:layout_below="@+id/topFrameLayout"
+        android:layout_above="@+id/bottomFrameLayout"
+        android:id="@+id/teamListView"
+        android:dividerHeight="1dp"
+        android:background="@color/white"
+        android:divider="@color/LightGrey"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+    <FrameLayout
+        android:id="@+id/bottomFrameLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:text="\?"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:id="@+id/teamOneTextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:text="\?"
+                android:gravity="center"
+                android:id="@+id/teamTwoTextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:text="\?"
+                android:gravity="center"
+                android:id="@+id/teamThreeTextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                />
+
+            <TextView
+                android:text="\?"
+                android:gravity="center"
+                android:id="@+id/teamFourTextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                />
+
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:text="NEXT"/>
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+</RelativeLayout>
