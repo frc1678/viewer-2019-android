@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.evan.androidviewertemplates.match_details.MatchDetailsActivity;
 import com.example.evan.androidviewertools.firebase_classes.Match;

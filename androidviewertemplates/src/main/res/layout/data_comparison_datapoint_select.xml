@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:layout_below="@+id/topFrameLayout"
+        android:layout_above="@+id/bottomFrameLayout"
+        android:id="@+id/datapointListView"
+        android:dividerHeight="1dp"
+        android:background="@color/white"
+        android:divider="@color/LightGrey"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+    <FrameLayout
+        android:id="@+id/bottomFrameLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:text="\?"
+                android:gravity="center"
+                android:id="@+id/datapointTextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                />
+
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:text="NEXT"/>
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+</RelativeLayout>

@@ -21,30 +21,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.evan.androidviewertemplates.drawer_fragments.data_comparison.DataComparisonFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.FirstPickAbilityFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.FirstPicklistFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.FunctionFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.OurScheduleHighlightFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.OverallSecondPickFragment;
-import com.example.evan.androidviewertemplates.drawer_fragments.PredictedSeedingFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.RecentMatchesFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.ScheduleFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.SeedingFrag;
-import com.example.evan.androidviewertemplates.drawer_fragments.SeedingFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.StarredMatchesFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.super_ability.SuperAbilityFragment;
-import com.example.evan.androidviewertemplates.drawer_fragments.TeamScheduleFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.UpcomingMatchesFragment;
-import com.example.evan.androidviewertemplates.firebase_classes.Match;
-import com.example.evan.androidviewertemplates.firebase_classes.TeamTemplate;
-import com.example.evan.androidviewertemplates.firebase_classes.TeamInMatchData;
 import com.example.evan.androidviewertemplates.utils.SpecificNavigationDrawerFragment;
 import com.example.evan.androidviewertemplates.utils.SpecificConstants;
 import com.example.evan.androidviewertools.ViewerActivity;
 import com.example.evan.androidviewertools.match_listing.MatchesAdapter;
 import com.example.evan.androidviewertools.utils.Constants;
 import com.example.evan.androidviewertools.utils.Utils;
-import com.example.evan.androidviewertools.utils.firebase.FirebaseLists;
 
 
 import java.util.HashMap;
@@ -194,6 +188,10 @@ public class MainActivity extends ViewerActivity
                 break;
             case 10:
                 fragment = new FunctionFragment();
+                latestFragmentId = position;
+                break;
+            case 11:
+                fragment = new DataComparisonFragment();
                 latestFragmentId = position;
                 break;
 
