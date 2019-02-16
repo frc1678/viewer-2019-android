@@ -39,7 +39,5 @@ public class CalculatedTeamInMatchData extends Object {
     public Float timeIncap;
     public Float timeImpaired;
     public Float timeClimbing;
-
-
-
+    public Float isIncapEntireMatch;
 }

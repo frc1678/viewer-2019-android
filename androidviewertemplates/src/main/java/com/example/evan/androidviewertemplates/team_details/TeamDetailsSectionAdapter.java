@@ -51,9 +51,8 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             {"calculatedData.avgTimeClimbing",},
             {"calculatedData.avgTimeIncap","calculatedData.avgTimeImpaired","calculatedData.percentIncap","calculatedData.percentImpaired","calculatedData.percentNoShow"},
             {"calculatedData.predictedSoloPoints","calculatedData.sdAvgOrangesScored","calculatedData.sdAvgLemonsScored"},
-            {"calculatedData.avgGoodDecisions","calculatedData.avgBadDecisions"},
-            {"pitLength","pitWidth","pitWeight","pitWheelDiameter","pitDrivetrain","pitProgrammingLanguage","pitClimbType","pitHasCamera",
-                    "pitHasVision","pitHasGyro","pitHasEncoders","pitCanBuddyStartLevel2","pitSandstormNavigationType","pitSEALsNotes"}
+            {"calculatedData.speedZScore","calculatedData.agilityZScore","calculatedData.avgGoodDecisions","calculatedData.avgBadDecisions"},
+            {"pitLength","pitWidth","pitWeight","pitWheelDiameter","pitDrivetrain","pitProgrammingLanguage","pitClimbType","pitHasCamera","pitHasVision","pitHasGyro","pitHasEncoders","pitCanBuddyStartLevel2","pitSandstormNavigationType","pitSEALsNotes"}
     };
 
     static String[] shouldDisplayAsPercentage = {
