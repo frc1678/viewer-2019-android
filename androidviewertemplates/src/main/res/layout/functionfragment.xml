@@ -5,69 +5,76 @@
 
     <Button style="@style/AppTheme.Button"
     android:id="@+id/teamsOfPicklist"
-    android:layout_height="60dp"
+    android:layout_height="0dp"
+    android:layout_weight="1"
     android:layout_width="match_parent"
-    android:layout_marginTop="10dp"
-    android:layout_marginLeft="10dp"
     android:text="Teams of picklist"
-    android:layout_marginRight="10dp"/>
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#262626"/>
 
     <Button style="@style/AppTheme.Button"
         android:id="@+id/clearStarredTeams"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
         android:text="clear starred teams"
-        android:layout_marginRight="10dp"/>
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#262626"/>
 
     <Button style="@style/AppTheme.Button"
         android:id="@+id/clearHighlightedTeams"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
         android:text="Clear highlighted teams"
-        android:layout_marginRight="10dp"/>
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#262626"/>
 
     <Button style="@style/AppTheme.Button"
         android:id="@+id/clearHighlightedMatches"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
         android:text="Clear highlighted matches"
-        android:layout_marginRight="10dp"/>
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#262626"/>
 
     <Button style="@style/AppTheme.Button"
         android:id="@+id/clearStarredMatches"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
         android:text="Clear starred matches"
-        android:layout_marginRight="10dp"/>
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#262626"/>
 
     <Button style="@style/AppTheme.Button"
         android:id="@+id/clearSelectedFromPicklist"
-        android:layout_height="60dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
         android:text="Clear selected teams from picklist"
-        android:layout_marginRight="10dp"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:text="Last updated: 11/1/18"/>
-    </RelativeLayout>
+        />
 
 
 </LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/separator"
+        android:layout_height="match_parent" >
+    </ListView>
+
+    <View
+        android:id="@+id/separator"
+        android:background="@color/KateGray"
+        android:layout_above="@+id/condensedGraphingButton"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <Button
+        android:id="@+id/condensedGraphingButton"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:text="Condensed Graphing"
+        android:layout_height="40dp" />
+
+</RelativeLayout>

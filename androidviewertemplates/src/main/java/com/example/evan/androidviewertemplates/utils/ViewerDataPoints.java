@@ -20,7 +20,6 @@ public class ViewerDataPoints {
         Log.e("teamNumber", teamNumber + " ");
         for (Integer matchNumber : Utils.getMatchNumbersForTeamNumber((Integer) Utils.getObjectField(team,"teamNumber"))) {
             if (matchNumber > currentMatch) {
-                Log.e("REACHED", "HERE");
                 Integer num = matchNumber - currentMatch;
                 return num;
             }else if(matchNumber < currentMatch){
