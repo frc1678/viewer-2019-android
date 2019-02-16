@@ -8,7 +8,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:591931891273:android:dc59926ecdb11491",
+        "mobilesdk_app_id": "1:476102317375:android:408458a8e1df33a1",
         "android_client_info": {
           "package_name": "citruscircuits.scout"
         }
@@ -121,7 +121,38 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:591931891273:android:303d5cec6874cc19",
+        "mobilesdk_app_id": "1:476102317375:android:2829f0a89f52ae04",
+        "android_client_info": {
+          "package_name": "com.example.sam.blutoothsocketreceiver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476102317375-5iddk0bfvpo2d6g169fev1hbcucdn4rp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNNae9nnyYJ8LQ-Ii1_-Xpl9RzrD7O-GU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476102317375:android:303d5cec6874cc19",
         "android_client_info": {
           "package_name": "com.example.sam.codebaseintegration"
         }
