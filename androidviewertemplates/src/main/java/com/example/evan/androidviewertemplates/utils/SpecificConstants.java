@@ -24,7 +24,7 @@ public class SpecificConstants extends Constants {
     //todo
     public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Settings", "Data Comparison"};
 
-    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2018-temp.firebaseio.com/";
+    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://dev3-2018.firebaseio.com/";
 
 
     public static String ROOT_FIREBASE_PATH = ORIGINAL_ROOT_FIREBASE_PATH;
@@ -49,27 +49,27 @@ public class SpecificConstants extends Constants {
                     put("orangesScored","# cargo scored");
                     put("lemonsScored","# panel scored");
                     put("orangeFouls","cargo fouls out of field");
-                    put("lemonLoadSuccess","LS intake success");
-                    put("orangeCycleAll","avg cargo in RS/CS");
+                    put("calculatedData.lemonLoadSuccess","LS intake success");
+                    put("calculatedData.orangeCycleAll","avg cargo in RS/CS");
                     put("orangeCycleL1","avg cargo L1 RS/CS");
                     put("orangeCycleL2","avg cargo L2 RS");
                     put("orangeCycleL3","avg cargo L3 RS");
-                    put("lemonCycleAll","avg hatch in RS/CS");
+                    put("calculatedData.lemonCycleAll","avg hatch in RS/CS");
                     put("lemonCycleL1","avg panel L1 RS/CS");
                     put("lemonCycleL2","avg panel L2 RS");
                     put("lemonCycleL3","avg panel L3 RS");
                     put("orangeSuccessAll","% cargo total success");
-                    put("orangeSuccessDefended","% cargo defend success");
+                    put("calculatedData.orangeSuccessDefended","% cargo defend success");
                     put("orangeSuccessUndefended","% cargo undefended success");
                     put("orangeSuccessL1","% cargo success L1 RS/CS");
-                    put("orangeSuccessL2","% cargo success L2 RS");
-                    put("orangeSuccessL3","% cargo success L3 RS");
+                    put("calculatedData.orangeSuccessL2","% cargo success L2 RS");
+                    put("calculatedData.orangeSuccessL3","% cargo success L3 RS");
                     put("lemonSuccessAll","% panel total success");
-                    put("lemonSuccessDefended","% panel defend success");
+                    put("calculatedData.lemonSuccessDefended","% panel defend success");
                     put("lemonSuccessUndefended","% panel undefended success");
-                    put("lemonSuccessL1","% panel success L1");
-                    put("lemonSuccessL2","% panel success L2");
-                    put("lemonSuccessL3","% panel success L3");
+                    put("calculatedData.lemonSuccessL1","% panel success L1");
+                    put("calculatedData.lemonSuccessL2","% panel success L2");
+                    put("calculatedData.lemonSuccessL3","% panel success L3");
                     put("timeIncap","time incap (s)");
                     put("timeImpaired","time impaired (s)");
                     put("timeClimbing","time climbing (s)");
@@ -112,7 +112,7 @@ public class SpecificConstants extends Constants {
                     put("calculatedData.avgGoodDecisions","avg good Decisions");
                     put("calculatedData.avgBadDecisions","avg bad decisions");
                     put("calculatedData.avgTimeIncap","avg incap time");
-                    put("avgTimeImpaired","avg impaired time");
+                    put("calculatedData.avgTimeImpaired","avg impaired time");
                     put("calculatedData.avgTimeClimbing","avg climbing time");
                     put("calculatedData.percentIncap","% incap");
                     put("calculatedData.percentImpaired","% impaired");
