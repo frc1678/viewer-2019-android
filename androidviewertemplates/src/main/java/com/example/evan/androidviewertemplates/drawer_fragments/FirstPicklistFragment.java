@@ -60,7 +60,7 @@ public class FirstPicklistFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View myLayout = inflater.inflate(R.layout.firstpicklist, null);
-        final ListView listView = myLayout.findViewById(R.id.listview);
+        final ListView listView = (ListView) myLayout.findViewById(R.id.listview);
         dataBase = FirebaseDatabase.getInstance();
         dref = dataBase.getReference();
         dref.child("PicklistPassword").addValueEventListener(new ValueEventListener() {
@@ -86,7 +86,7 @@ public class FirstPicklistFragment extends Fragment {
                     final Dialog passwordDialog = new Dialog(context);
                     passwordDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                     passwordDialog.setContentView(R.layout.passworddialog);
-                    final Button passwordButton = passwordDialog.findViewById(R.id.passwordButton);
+                    final Button passwordButton = (Button) passwordDialog.findViewById(R.id.passwordButton);
                     final EditText passwordEditText = (EditText) passwordDialog.findViewById(R.id.passwordEditText);
                     passwordEditText.setTransformationMethod(new AsteriskPasswordTransformationMethod());
 
