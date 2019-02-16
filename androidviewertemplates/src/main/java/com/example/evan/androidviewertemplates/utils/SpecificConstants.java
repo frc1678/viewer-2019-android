@@ -56,13 +56,13 @@ public class SpecificConstants extends Constants {
                     put("lemonCycleL2","Avg panel L2 RS");
                     put("lemonCycleL3","Avg panel L3 RS");
                     put("orangeSuccessAll","% cargo total success");
-                    put("orangeSuccessDefended","% cargo defend success");
+                    put("calculatedData.orangeSuccessDefended","% cargo defend success");
                     put("orangeSuccessUndefended","% cargo undefended success");
                     put("orangeSuccessL1","% cargo success L1 RS/CS");
-                    put("orangeSuccessL2","% cargo success L2 RS");
-                    put("orangeSuccessL3","% cargo success L3 RS");
+                    put("calculatedData.orangeSuccessL2","% cargo success L2 RS");
+                    put("calculatedData.orangeSuccessL3","% cargo success L3 RS");
                     put("lemonSuccessAll","% panel total success");
-                    put("lemonSuccessDefended","% panel defend success");
+                    put("calculatedData.lemonSuccessDefended","% panel defend success");
                     put("lemonSuccessUndefended","% panel undefended success");
                     put("lemonSuccessL1","% panel success L1");
                     put("lemonSuccessL2","% panel success L2");
