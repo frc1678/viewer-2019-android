@@ -117,7 +117,7 @@
 
         <TextView
             android:id="@+id/rankingPointDisplayRedRocketRP"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textColor="#ff0000"
@@ -125,7 +125,7 @@
 
         <TextView
             android:id="@+id/rankingPointDisplayRedHabClimb"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textColor="#ff0000"
@@ -142,7 +142,7 @@
 
         <TextView
             android:id="@+id/rankingPointDisplayBlueRocketRP"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textColor="#0000ff"
@@ -150,7 +150,7 @@
 
         <TextView
             android:id="@+id/rankingPointDisplayBlueHabClimb"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:textColor="#0000ff"

@@ -221,16 +221,16 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
          //todo Add predicted RPs?
 
             if (blueDidRocketRP) {
-                rankingPointDisplayBlueRocketRP.setText("●");
+                rankingPointDisplayBlueRocketRP.setText("\uD83D\uDE80");
             }
             if (redDidRocketRP) {
-                rankingPointDisplayRedRocketRP.setText("●");
+                rankingPointDisplayRedRocketRP.setText("\uD83D\uDE80");
             }
             if (blueDidHabClimb) {
-                rankingPointDisplayBlueHabClimb.setText("●");
+                rankingPointDisplayBlueHabClimb.setText("▬");
             }
             if (redDidHabClimb) {
-                rankingPointDisplayRedHabClimb.setText("●");
+                rankingPointDisplayRedHabClimb.setText("▬");
             }
 
 
