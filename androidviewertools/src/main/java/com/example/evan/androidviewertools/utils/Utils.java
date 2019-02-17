@@ -171,7 +171,6 @@ public class Utils {
     }//DRINK BLEACH//DRINK BLEACH
 
     public static List<Integer> getMatchNumbersForTeamNumber(Integer teamNumber) {
-        Log.e("REKARAERA","CALLED");
         List<Integer> matchNumbers = new ArrayList<>();
         for (TeamInMatchData teamInMatchData : getTeamInMatchDatasForTeamNumber(teamNumber)) {
             Integer matchNumber = (Integer) Utils.getObjectField(teamInMatchData,"matchNumber");

@@ -23,6 +23,7 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
     public static String teamThree;
     public static String teamFour;
     public static String selectedDatapoint;
+    public static Boolean isTIMD;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,6 +83,7 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
             }
 
             selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
+            isTIMD = convertBoolean(getIntent().getStringExtra("isTIMD"));
         }
 
     }
@@ -95,6 +97,16 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
             return true;
         }
         return super.onKeyLongPress(keyCode, event);
+    }
+
+    public Boolean convertBoolean(String bool) {
+        if (bool.equals("true")) {
+            return true;
+        }
+        if (bool.equals("false")) {
+            return false;
+        }
+        return null;
     }
 
 
