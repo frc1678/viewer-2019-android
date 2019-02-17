@@ -149,6 +149,7 @@ public class TeamActivity extends com.example.evan.androidviewertools.ViewerActi
         if (Constants.redFlagsPerTeam.get(String.valueOf(teamNumber))!=null) {
             if (Constants.redFlagsPerTeam.get(String.valueOf(teamNumber)).size()>0) {
                 redFlagButton.setVisibility(View.VISIBLE);
+                setTextRedFlags(redFlagButton);
                 redFlagButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -164,6 +165,14 @@ public class TeamActivity extends com.example.evan.androidviewertools.ViewerActi
                 });
             }
         }
+    }
+
+    public void setTextRedFlags(Button redFlagsButton) {
+        String text = "";
+        for (int i = 0; i < Constants.redFlagsPerTeam.get(String.valueOf(teamNumber)).size(); i++) {
+            text = text + "!";
+        }
+        redFlagsButton.setText(text);
     }
 
     @Override
