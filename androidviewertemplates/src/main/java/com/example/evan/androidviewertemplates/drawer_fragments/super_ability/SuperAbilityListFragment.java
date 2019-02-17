@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.evan.androidviewertemplates.R;
+import com.example.evan.androidviewertemplates.firebase_classes.CalculatedTeamData;
 import com.example.evan.androidviewertemplates.team_details.TeamDetailsActivity;
 import com.example.evan.androidviewertemplates.utils.SpecificConstants;
 import com.example.evan.androidviewertools.team_ranking.TeamRankingsAdapter;
@@ -55,7 +56,7 @@ public class SuperAbilityListFragment extends TeamRankingsFragment {
     public static class SuperAbilityListAdapter extends TeamRankingsAdapter {
 
         public SuperAbilityListAdapter(Context context, String field) {
-            super(context, field, field, false);
+            super(context, field, field, true);
         }
         public Intent getTeamDetailsActivityIntent() {
             return new Intent(context, TeamDetailsActivity.class);
