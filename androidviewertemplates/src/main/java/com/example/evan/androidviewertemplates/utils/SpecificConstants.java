@@ -22,7 +22,7 @@ public class SpecificConstants extends Constants {
     public static List<String> CATEGORY_LIST;
 
     //todo
-    public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Settings", "Data Comparison"};
+    public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "Data Comparison", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Settings"};
     public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://dev3-2018.firebaseio.com/";
     public static String ROOT_FIREBASE_PATH = ORIGINAL_ROOT_FIREBASE_PATH;
     public static String MATCHES_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Matches";

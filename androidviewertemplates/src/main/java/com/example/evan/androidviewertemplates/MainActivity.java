@@ -166,34 +166,35 @@ public class MainActivity extends ViewerActivity
                 fragment.setArguments(args2);
                 break;
             case 6:
+                fragment = new DataComparisonFragment();
+                latestFragmentId = position;
+                break;
+            case 7:
                 Constants.highlightTeamSchedule = false;
                 fragment = new FirstPickAbilityFragment();
                 latestFragmentId = position;
                 break;
-            case 7:
+            case 8:
                 Constants.highlightTeamSchedule = false;
                 fragment = new OverallSecondPickFragment();
                 latestFragmentId = position;
                 break;
 
-            case 8:
+            case 9:
                 Constants.highlightTeamSchedule = false;
                 fragment = new SuperAbilityFragment();
                 latestFragmentId = position;
                 break;
-            case 9:
+            case 10:
                 Constants.highlightTeamSchedule = false;
                 fragment = new FirstPicklistFragment();
                 latestFragmentId = position;
                 break;
-            case 10:
+            case 11:
                 fragment = new FunctionFragment();
                 latestFragmentId = position;
                 break;
-            case 11:
-                fragment = new DataComparisonFragment();
-                latestFragmentId = position;
-                break;
+
 
 
 
