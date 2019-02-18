@@ -223,8 +223,12 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 			float barSpace = 0.0f;
 			data.setBarWidth(0.44f);
 			//has the number value be displayed at end of bar IF not 0.1 (refer to ValueFormatter specifications)
-			data.setDrawValues(true);
-			//change size of value next to the bar
+			if (isTIMD) {
+				data.setDrawValues(true);
+			} else {
+				data.setDrawValues(false);
+			}
+				//change size of value next to the bar
 			data.setValueTextSize(18);
 			//sets the value formatter to class ValueFormatter
 			data.setValueFormatter(new ValueFormatter());
@@ -248,6 +252,9 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 			barChart.getXAxis().setAxisMinimum(0);
 			//sets the bars as GROUPS using the previously defined spacing
 		}
+
+		data.setHighlightEnabled(false);
+
 		//labels list
 		String[] Matches = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
 		//converting to List<String> type

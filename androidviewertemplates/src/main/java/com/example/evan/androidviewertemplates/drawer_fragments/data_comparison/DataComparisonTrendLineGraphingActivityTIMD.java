@@ -339,8 +339,11 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
             public void onValueSelected(Entry e, Highlight h) {
 
                 String xValue = String.valueOf(e.getX());
+                Log.e("xvaluee",String.valueOf(xValue));
                 Integer matchNumber = Integer.valueOf(xValue.substring(0, xValue.indexOf(".")));
+                Log.e("matcchch",String.valueOf(matchNumber));
                 String chartString = String.valueOf(chart);
+                Log.e("teamOnematches",String.valueOf(teamOneMatches));
                 String actualChart = String.valueOf(chartString.substring(chartString.lastIndexOf("team"), chartString.lastIndexOf("}")));
                 if (actualChart.equals("teamOneChart")) {
                     if (teamOneMatches.size() > matchNumber) {
