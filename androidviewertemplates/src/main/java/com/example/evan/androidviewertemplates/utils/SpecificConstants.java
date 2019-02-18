@@ -124,9 +124,9 @@ public class SpecificConstants extends Constants {
                     put("firstPickAbility","First pick ability");
                     put("secondPickAbility","Second pick ability");
                     put("calculatedData.avgLemonsSpilled","Avg panels spilled");
-                    put("calculatedData.avgLemonsPlacedS","Avg panels placed during Sandstorm");
-                    put("calculatedData.avgOrangesPlacedS","Avg cargo placed during Sandstorm");
-                    put("calculatedData.drivingZScore","Driving ability");
+                    put("calculatedData.avgLemonsPlacedSandstorm","Avg panels placed during Sandstorm");
+                    put("calculatedData.avgOrangesPlacedSandstorm","Avg cargo placed during Sandstorm");
+                    put("calculatedData.drivingAbility","Driving ability");
         //lfm
                     put("calculatedData.lfmAvgOrangesScored","Avg cargo scored");
                     put("calculatedData.lfmAvgLemonsScored","Avg panel scored");
