@@ -43,7 +43,7 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             //Each {}, below correlates to its sectionTitles above
             {"matches", "VIEWER.matchesUntilNextMatchForTeam", "lfm"},
 
-            {"calculatedData.habLineSuccessL1","calculatedData.habLineSuccessL2",},
+            {"calculatedData.habLineSuccessL1","calculatedData.habLineSuccessL2","calculatedData.avgLemonsPlacedS","calculateData.avgOrangesPlacedS"},
             {"calculatedData.hasOrangeGroundIntake","calculatedData.hasLemonGroundIntake","calculatedData.avgOrangesScored",
                     "calculatedData.avgLemonsScored","calculatedData.avgOrangeFouls","calculatedData.avgLemonsSpilled","calculatedData.lemonLoadSuccess",
                     "calculatedData.orangeCycleAll","calculatedData.lemonCycleAll","calculatedData.orangeSuccessDefended","calculatedData.orangeSuccessL2",
