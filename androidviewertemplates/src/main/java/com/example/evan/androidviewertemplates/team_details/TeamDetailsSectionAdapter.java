@@ -42,7 +42,6 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
             {"matches", "VIEWER.matchesUntilNextMatchForTeam", "lfm"},
-
             {"calculatedData.habLineSuccessL1","calculatedData.habLineSuccessL2",},
             {"calculatedData.hasOrangeGroundIntake","calculatedData.hasLemonGroundIntake","calculatedData.avgOrangesScored",
                     "calculatedData.avgLemonsScored","calculatedData.avgOrangeFouls","calculatedData.avgLemonsSpilled","calculatedData.lemonLoadSuccess",
