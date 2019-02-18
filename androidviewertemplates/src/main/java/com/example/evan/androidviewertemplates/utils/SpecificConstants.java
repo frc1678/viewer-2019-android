@@ -46,12 +46,12 @@ public class SpecificConstants extends Constants {
                     put("orangesScored","# cargo scored");
                     put("lemonsScored","# panel scored");
                     put("orangeFouls","Cargo fouls out of field");
-                    put("lemonLoadSuccess","LS intake success");
-                    put("orangeCycleAll","Avg cargo in RS/CS");
+                    put("calculatedData.lemonLoadSuccess","LS intake success");
+                    put("calculatedData.orangeCycleAll","Avg cargo in RS/CS");
                     put("orangeCycleL1","Avg cargo L1 RS/CS");
                     put("orangeCycleL2","Avg cargo L2 RS");
                     put("orangeCycleL3","Avg cargo L3 RS");
-                    put("lemonCycleAll","Avg hatch in RS/CS");
+                    put("calculatedData.lemonCycleAll","Avg hatch in RS/CS");
                     put("lemonCycleL1","Avg panel L1 RS/CS");
                     put("lemonCycleL2","Avg panel L2 RS");
                     put("lemonCycleL3","Avg panel L3 RS");
@@ -64,9 +64,9 @@ public class SpecificConstants extends Constants {
                     put("lemonSuccessAll","% panel total success");
                     put("calculatedData.lemonSuccessDefended","% panel defend success");
                     put("lemonSuccessUndefended","% panel undefended success");
-                    put("lemonSuccessL1","% panel success L1");
-                    put("lemonSuccessL2","% panel success L2");
-                    put("lemonSuccessL3","% panel success L3");
+                    put("calculatedData.lemonSuccessL1","% panel success L1");
+                    put("calculatedData.lemonSuccessL2","% panel success L2");
+                    put("calculatedData.lemonSuccessL3","% panel success L3");
                     put("timeIncap","Time incap (s)");
                     put("timeImpaired","Time impaired (s)");
                     put("timeClimbing","Time climbing (s)");
@@ -111,7 +111,7 @@ public class SpecificConstants extends Constants {
                     put("calculatedData.avgGoodDecisions","Avg good Decisions");
                     put("calculatedData.avgBadDecisions","Avg bad decisions");
                     put("calculatedData.avgTimeIncap","Avg incap time");
-                    put("avgTimeImpaired","Avg impaired time");
+                    put("calculatedData.avgTimeImpaired","Avg impaired time");
                     put("calculatedData.avgTimeClimbing","Avg climbing time");
                     put("calculatedData.percentIncap","% incap");
                     put("calculatedData.percentImpaired","% impaired");
@@ -385,7 +385,7 @@ public class SpecificConstants extends Constants {
                 put("lemonAbility","panel ability");
                 put("firstPickAbility","first pick ability");
                 put("secondPickAbility","second pick ability");
-                put("avgLemonsSpilled","avg panels spilled");
+                put("calculatedData.avgLemonsSpilled","avg panels spilled");
             }
         };
         Map<String, String> initialDataComparisonDatapointsTEAMSsd = new HashMap<String, String>() {

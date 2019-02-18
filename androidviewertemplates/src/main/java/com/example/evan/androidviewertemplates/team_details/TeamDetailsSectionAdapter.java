@@ -43,15 +43,16 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             //Each {}, below correlates to its sectionTitles above
             {"matches", "VIEWER.matchesUntilNextMatchForTeam", "lfm"},
             {"calculatedData.habLineSuccessL1","calculatedData.habLineSuccessL2","calculatedData.avgLemonsPlacedSandstorm","calculatedData.avgOrangesPlacedSandstorm"},
-            {"calculatedData.hasOrangeGroundIntake","calculatedData.hasLemonGroundIntake","calculatedData.avgOrangesScored",
-                    "calculatedData.avgLemonsScored","calculatedData.avgOrangeFouls","calculatedData.avgLemonsSpilled","calculatedData.lemonLoadSuccess",
+            {"calculatedData.avgOrangesScored", "calculatedData.avgLemonsScored","calculatedData.avgLemonsSpilled","calculatedData.avgOrangeFouls","calculatedData.lemonLoadSuccess",
                     "calculatedData.orangeCycleAll","calculatedData.lemonCycleAll","calculatedData.orangeSuccessDefended","calculatedData.orangeSuccessL2",
-                    "calculatedData.orangeSuccessL3","calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL3"},
+                    "calculatedData.orangeSuccessL3","calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL3",
+                    "calculatedData.hasOrangeGroundIntake","calculatedData.hasLemonGroundIntake",},
             {"calculatedData.avgTimeClimbing",},
             {"calculatedData.avgTimeIncap","calculatedData.avgTimeImpaired","calculatedData.percentIncap","calculatedData.percentImpaired","calculatedData.percentNoShow"},
             {"calculatedData.predictedSoloPoints","calculatedData.sdAvgOrangesScored","calculatedData.sdAvgLemonsScored"},
             {"calculatedData.speedZScore","calculatedData.agilityZScore","calculatedData.avgGoodDecisions","calculatedData.avgBadDecisions"},
-            {"pitLength","pitWidth","pitWeight","pitWheelDiameter","pitDrivetrain","pitProgrammingLanguage","pitClimbType","pitHasCamera","pitHasVision","pitHasGyro","pitHasEncoders","pitCanBuddyStartLevel2","pitSandstormNavigationType","pitSEALsNotes"}
+            {"pitLength","pitWidth","pitWeight","pitWheelDiameter","pitDrivetrain","pitProgrammingLanguage","pitClimbType","pitHasCamera","pitHasVision",
+                    "pitHasGyro","pitHasEncoders","pitCanBuddyStartLevel2","pitSandstormNavigationType","pitSEALsNotes"}
     };
 
     static String[] shouldDisplayAsPercentage = {
