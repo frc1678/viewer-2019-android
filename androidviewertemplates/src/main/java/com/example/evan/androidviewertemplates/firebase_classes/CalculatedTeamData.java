@@ -173,6 +173,8 @@ public class CalculatedTeamData extends Object {
     public Float p75avgTimeClimbing;
     public Float p75avgLemonsSpilled;
     public Float speedZScore;
+    public Float avgLemonsPlacedS;
+    public Float avgOrangesPlacedS;
 
     public Boolean hasOrangeGroundIntake;
     public Boolean hasLemonGroundIntake;
