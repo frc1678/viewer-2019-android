@@ -9,6 +9,7 @@ import android.util.Log;
 import com.example.evan.androidviewertools.firebase_classes.Match;
 import com.example.evan.androidviewertools.firebase_classes.Team;
 import com.example.evan.androidviewertools.firebase_classes.TeamInMatchData;
+import com.example.evan.androidviewertools.utils.firebase.FirebaseList;
 import com.example.evan.androidviewertools.utils.firebase.FirebaseLists;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
@@ -118,7 +119,7 @@ public class Utils {
 			Integer redScore = (Integer)(Utils.getObjectField(match,"redScore"));
 			Integer blueScore = (Integer)(Utils.getObjectField(match,"blueScore"));
 			if(redScore != null || blueScore != null) {
-				lastMatch = ((Integer)(Utils.getObjectField(match,"number")));
+				lastMatch = ((Integer)(Utils.getObjectField(match,"matchNumber")));
 			}
 		}
 
@@ -138,7 +139,6 @@ public class Utils {
 		List<TeamInMatchData> teamInMatchDatas = new ArrayList<>();
 		for (TeamInMatchData teamInMatchData : FirebaseLists.teamInMatchDataList.getValues()) {
 			Integer number = (Integer) Utils.getObjectField(teamInMatchData,"teamNumber");
-			//Log.e("number", Integer.toString(number));
 			//DRINK BLEACH
 			try {
 				if (number.equals(teamNumber)) {
@@ -176,7 +176,6 @@ public class Utils {
 			Integer matchNumber = (Integer) Utils.getObjectField(teamInMatchData,"matchNumber");
 			matchNumbers.add(matchNumber);
 		}
-		Log.e("matchNumbers",String.valueOf(matchNumbers)+"");
 		return matchNumbers;
 	}
 

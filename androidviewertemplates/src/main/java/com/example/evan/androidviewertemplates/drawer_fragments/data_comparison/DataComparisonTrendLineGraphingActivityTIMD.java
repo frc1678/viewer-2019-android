@@ -241,6 +241,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
     private LineData getData(String teamNumber) {
             // create a dataset and give it a type
             LineDataSet set = new LineDataSet(lineEntryData(teamNumber), teamNumber);
+            Log.e("set",String.valueOf(set));
             for (int i = 0; i < 4; i++) {
                 if (teamNumber.equals(teamsList.get(i))) {
                     set.setColor(lineColors[i % lineColors.length]);
@@ -273,7 +274,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         Integer lineEntriesSize = lineEntries.size();
         Integer counter = 13 - lineEntriesSize;
         for (int i = 0; i < counter; i++) {
-            lineEntries.add(new Entry(i+lineEntriesSize, (float) 0.1));
+            lineEntries.add(new Entry(i+lineEntriesSize+1, (float) 0.1));
         }
         Collections.sort(lineEntries, new EntryXComparator());
         return lineEntries;
@@ -311,7 +312,6 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
                 dataValues.add((float) 0.0);
             }
         }
-
         return dataValues;
     }
 
@@ -339,11 +339,8 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
             public void onValueSelected(Entry e, Highlight h) {
 
                 String xValue = String.valueOf(e.getX());
-                Log.e("xvaluee",String.valueOf(xValue));
                 Integer matchNumber = Integer.valueOf(xValue.substring(0, xValue.indexOf(".")));
-                Log.e("matcchch",String.valueOf(matchNumber));
                 String chartString = String.valueOf(chart);
-                Log.e("teamOnematches",String.valueOf(teamOneMatches));
                 String actualChart = String.valueOf(chartString.substring(chartString.lastIndexOf("team"), chartString.lastIndexOf("}")));
                 if (actualChart.equals("teamOneChart")) {
                     if (teamOneMatches.size() > matchNumber) {
@@ -388,7 +385,6 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         });
     }
     public void trendLineClickContinuation(String teamNumber, String matchNumber) {
-        Log.e(teamNumber, matchNumber);
         Intent teamInMatchDataIntent = getTeamInMatchDetailsIntent();
         teamInMatchDataIntent.putExtra("team", Integer.valueOf(teamNumber));
         teamInMatchDataIntent.putExtra("match", Integer.valueOf(matchNumber));
@@ -418,9 +414,19 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
 		if (avg != null && avg.contains("calculatedData.")) {
 			avgString = avg.substring(avg.lastIndexOf(".") + 1);
 		}
-		if (avgString != null && avgString.contains("avg")) {
-			str = avgString.replaceFirst("avg", "");
-			capString = str.substring(0, 1).toLowerCase() + str.substring(1);
+		if (avgString != null && avgString.contains("sd")) {
+            str = avgString.replaceFirst("sd", "");
+            capString = str.substring(0, 1).toLowerCase() + str.substring(1);
+        }
+		if (avgString != null && (avgString.contains("avg") || avgString.contains("Avg"))) {
+		    if (avgString.contains("avg")) {
+                str = avgString.replaceFirst("avg", "");
+                capString = str.substring(0, 1).toLowerCase() + str.substring(1);
+            } else
+                if (avgString.contains("Avg")) {
+                    str = avgString.replaceFirst("Avg", "");
+                    capString = str.substring(0, 1).toLowerCase() + str.substring(1);
+                }
 		}
 		trimmedString = "calculatedData." + capString;
 		return trimmedString;
