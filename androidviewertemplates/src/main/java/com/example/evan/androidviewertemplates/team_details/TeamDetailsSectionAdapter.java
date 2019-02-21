@@ -60,12 +60,26 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
 
     static String[] displayAsUnranked = {
             "matches",
+            "lfm",
             "VIEWER.matchesUntilNextMatchForTeam",
             "pitClimbType",
             "pitSEALsNotes",
             "pitSandstormNavigationType",
-            "pitLength","pitWidth","pitWeight","pitWheelDiameter","pitDrivetrain","pitProgrammingLanguage","pitHasCamera",
-            "pitHasVision","pitHasGyro","pitHasEncoders","pitCanBuddyStartLevel2"
+            "pitWidth",
+            "pitWeight",
+            "pitWheelDiameter",
+            "pitDrivetrain",
+            "pitProgrammingLanguage",
+            "pitClimbType",
+            "pitHasCamera",
+            "pitHasVision",
+            "pitHasGyro",
+            "pitHasEncoders",
+            "pitCanBuddyStartLevel2",
+            "pitSandstormNavigationType",
+            "pitSEALsNotes",
+            "totalSuperNotes",
+            "pitLength",
     };
 
     static String[] shouldDisplayAsLongText = {
@@ -73,6 +87,25 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "pitNotes",
             "superNotes",
             "pitClimbType",
+            "pitSEALsNotes",
+            "calculatedData.sdAvgOrangesScored",
+            "calculatedData.sdAvgLemonsScored",
+            "pitClimbType",
+            "pitSEALsNotes",
+            "pitSandstormNavigationType",
+            "pitLength",
+            "pitWidth",
+            "pitWeight",
+            "pitWheelDiameter",
+            "pitDrivetrain",
+            "pitProgrammingLanguage",
+            "pitClimbType",
+            "pitHasCamera",
+            "pitHasVision",
+            "pitHasGyro",
+            "pitHasEncoders",
+            "pitCanBuddyStartLevel2",
+            "pitSandstormNavigationType",
             "pitSEALsNotes",
     };
 
@@ -93,6 +126,11 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     };
 
     static String[] rankInsteadOfGraph = {
+            "calculatedData.hasOrangeGroundIntake",
+            "calculatedData.hasLemonGroundIntake",
+            "calculatedData.predictedSoloPoints",
+            "calculatedData.avgGoodDecisions",
+            "calculatedData.avgBadDecisions",
     };
 
 

@@ -36,16 +36,17 @@ public class SpecificConstants extends Constants {
                     put("VIEWER.matchesUntilNextMatchForTeam", "Matches Until Next Match");
 //                    put("calculatedData.numMatchesPlayed", "Num. Matches Played");
                     put("lfm", "Last Four Matches");
+                    put("matchNumber","Match Number");
 //              TIMDs
                     put("startingLevel","Starting level");
-                    put("crossedHabLine"," Crossed HAB line");
+                    put("crossedHabLine","Crossed HAB line");
                     put("startingLocation","Starting location");
                     put("preload","Preloaded game piece");
                     put("driverStation","Driver station ");
                     put("isNoShow","Did not show up to match");
-                    put("orangesScored","# cargo scored");
-                    put("lemonsScored","# panel scored");
-                    put("orangeFouls","Cargo fouls out of field");
+                    put("calculatedData.orangesScored","# cargo scored");
+                    put("calculatedData.lemonsScored","# panel scored");
+                    put("calculatedData.orangeFouls","Cargo fouls out of field");
                     put("calculatedData.lemonLoadSuccess","LS intake success");
                     put("calculatedData.orangeCycleAll","Avg cargo in RS/CS");
                     put("orangeCycleL1","Avg cargo L1 RS/CS");
@@ -67,12 +68,13 @@ public class SpecificConstants extends Constants {
                     put("calculatedData.lemonSuccessL1","% panel success L1");
                     put("calculatedData.lemonSuccessL2","% panel success L2");
                     put("calculatedData.lemonSuccessL3","% panel success L3");
-                    put("timeIncap","Time incap (s)");
-                    put("timeImpaired","Time impaired (s)");
-                    put("timeClimbing","Time climbing (s)");
-                    put("lemonsSpilled","Panels spilled");
+                    put("calculatedData.timeIncap","Time incap (s)");
+                    put("calculatedData.timeImpaired","Time impaired (s)");
+                    put("calculatedData.timeClimbing","Time climbing (s)");
+                    put("calculatedData.lemonsSpilled","Panels spilled");
                     put("calculatedData.climbSuccessL2","Climb success for HAB L2");
                     put("calculatedData.climbSuccessL3","Climb success for HAB L3");
+                    put("superNotes","Super Notes");
 //              Teams
                     put("pitWidth","Width");
                     put("pitLength","Length");
@@ -272,8 +274,15 @@ public class SpecificConstants extends Constants {
         Map<String, String> initialDatasToGraphMap = new HashMap<String, String>() {
             {
 //              put("DATA_POINT_TO_BE_GRAPHED","DATA_POINT_NEEDED_TO_GRAPH_PRIOR_DATA_POINT");
-
-
+                put("calculatedData.avgOrangesScored", "calculatedData.orangesScored");
+                put("calculatedData.avgLemonsScored","calculatedData.lemonsScored");
+                put("calculatedData.avgOrangeFouls","calculatedData.orangeFouls");
+                put("calculatedData.avgLemonsSpilled","calculatedData.lemonsFouls");
+                put("calculatedData.avgTimeClimbing","calculatedData.timeClimbing");
+                put("calculatedData.avgTimeIncap","calculatedData.timeIncap");
+                put("calculatedData.percentNoShow","isNoShow");
+                put("calculatedData.percentIncap","calculatedData.timeIncap");
+                put("calculatedData.percentImpaired","calculatedData.timeImpaired");
             }
         };
 
