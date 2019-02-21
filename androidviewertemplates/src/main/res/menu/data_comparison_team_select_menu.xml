@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/picklistRank"
+        android:orderInCategory="100"
+        android:title="Rank by Picklist"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/firstPickRank"
+        android:orderInCategory="200"
+        android:title="Rank by First Pick"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/secondPickRank"
+        android:orderInCategory="100"
+        android:title="Rank by Second Pick"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/seedingRank"
+        android:orderInCategory="200"
+        android:title="Rank by Seeding"
+        app:showAsAction="never" />
+</menu>

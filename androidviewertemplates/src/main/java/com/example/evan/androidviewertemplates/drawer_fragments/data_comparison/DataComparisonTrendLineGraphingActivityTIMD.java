@@ -47,6 +47,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
     String teamThree = "null";
     String teamFour = "null";
     String selectedDatapoint;
+    Boolean isTIMD;
 
     LineData data;
     public static String teamNumber;
@@ -76,8 +77,13 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         initChart(rootView);
 
         //sets the header name
-        ((DataComparisonTIMDTabbedActivity) getActivity())
-                .setActionBarTitle(selectedDatapoint + " Comparison");
+	    if (isTIMD) {
+		    ((DataComparisonTIMDTabbedActivity) getActivity())
+				    .setActionBarTitle(selectedDatapoint + " Comparison");
+	    } else {
+		    ((DataComparisonTIMDTabbedActivity) getActivity())
+				    .setActionBarTitle(selectedDatapoint + " breakdown for " + teamOne);
+	    }
 
         return rootView;
     }
@@ -97,6 +103,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
             teamFour = DataComparisonTIMDTabbedActivity.teamFour;
         }
         selectedDatapoint = DataComparisonTIMDTabbedActivity.selectedDatapoint;
+        isTIMD = DataComparisonTIMDTabbedActivity.isTIMD;
     }
 
     public void createTeamsList() {
@@ -124,26 +131,36 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
     public void initChart(View layout) {
         //inits the chart layouts
 
-        if (!teamThree.equals("null") && !teamFour.equals("null")) {
+        if (!teamTwo.equals("null") && !teamThree.equals("null") && !teamFour.equals("null")) {
             charts[0] = (LineChart) layout.findViewById(R.id.teamOneChart);
             charts[1] = (LineChart) layout.findViewById(R.id.teamTwoChart);
             charts[2] = (LineChart) layout.findViewById(R.id.teamThreeChart);
             charts[3] = (LineChart) layout.findViewById(R.id.teamFourChart);
         } else
-            if (!teamThree.equals("null") && teamFour.equals("null")) {
+            if (!teamTwo.equals("null") && !teamThree.equals("null") && teamFour.equals("null")) {
                 charts[0] = (LineChart) layout.findViewById(R.id.teamOneChart);
                 charts[1] = (LineChart) layout.findViewById(R.id.teamTwoChart);
                 charts[2] = (LineChart) layout.findViewById(R.id.teamThreeChart);
                 charts[3] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
             } else
-                if (teamThree.equals("null") && teamFour.equals("null")) {
+                if (!teamTwo.equals("null") && teamThree.equals("null") && teamFour.equals("null")) {
                     charts[0] = (LineChart) layout.findViewById(R.id.teamOneChart);
                     charts[1] = (LineChart) layout.findViewById(R.id.teamTwoChart);
                     charts[2] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
                     charts[3] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
-
-                }
-
+                } else
+                    if (teamTwo.equals("null") && teamThree.equals("null") && teamFour.equals("null")) {
+                        charts[0] = (LineChart) layout.findViewById(R.id.teamOneChart);
+                        charts[1] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
+                        charts[2] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
+                        charts[3] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
+                    }
+        if (!isTIMD) {
+	        charts[0] = (LineChart) layout.findViewById(R.id.teamOneChart);
+	        charts[1] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
+	        charts[2] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
+	        charts[3] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
+        }
         for (int i = 0; i < charts.length; i++) {
             //gets the data of each chart using the getData() method.
             if (!teamsList.get(i).equals("null")) {
@@ -224,6 +241,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
     private LineData getData(String teamNumber) {
             // create a dataset and give it a type
             LineDataSet set = new LineDataSet(lineEntryData(teamNumber), teamNumber);
+            Log.e("set",String.valueOf(set));
             for (int i = 0; i < 4; i++) {
                 if (teamNumber.equals(teamsList.get(i))) {
                     set.setColor(lineColors[i % lineColors.length]);
@@ -256,7 +274,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         Integer lineEntriesSize = lineEntries.size();
         Integer counter = 13 - lineEntriesSize;
         for (int i = 0; i < counter; i++) {
-            lineEntries.add(new Entry(i+lineEntriesSize, (float) 0.1));
+            lineEntries.add(new Entry(i+lineEntriesSize+1, (float) 0.1));
         }
         Collections.sort(lineEntries, new EntryXComparator());
         return lineEntries;
@@ -272,11 +290,17 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
     }
 
     public List<Float> getValues(Integer teamNumber, String field) {
+    	String datapoint = field;
+	    if (!isTIMD) {
+		    if (field.contains("avg")) {
+			    datapoint = convertFromAvg(field);
+		    }
+	    }
         //creates the initial dataValues list
         List<Float> dataValues = new ArrayList<>();
         for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
-            //gets value of datapoint (field)
-            Object value = Utils.getObjectField(teamInMatchData, field);
+            //gets value of datapoint
+            Object value = Utils.getObjectField(teamInMatchData, datapoint);
             //checks for integer
             if (value instanceof Integer) {
                 dataValues.add(((Integer) value).floatValue());
@@ -288,7 +312,6 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
                 dataValues.add((float) 0.0);
             }
         }
-
         return dataValues;
     }
 
@@ -362,7 +385,6 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         });
     }
     public void trendLineClickContinuation(String teamNumber, String matchNumber) {
-        Log.e(teamNumber, matchNumber);
         Intent teamInMatchDataIntent = getTeamInMatchDetailsIntent();
         teamInMatchDataIntent.putExtra("team", Integer.valueOf(teamNumber));
         teamInMatchDataIntent.putExtra("match", Integer.valueOf(matchNumber));
@@ -383,6 +405,32 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
 
         }
     }
+	public String convertFromAvg(String avg) {
+		String avgString = "";
+		String str;
+		String trimmedString;
+		String capString = "";
+		//turns 'calculatedData.avgSomethingScored' into 'calculatedData.somethingScored'
+		if (avg != null && avg.contains("calculatedData.")) {
+			avgString = avg.substring(avg.lastIndexOf(".") + 1);
+		}
+		if (avgString != null && avgString.contains("sd")) {
+            str = avgString.replaceFirst("sd", "");
+            capString = str.substring(0, 1).toLowerCase() + str.substring(1);
+        }
+		if (avgString != null && (avgString.contains("avg") || avgString.contains("Avg"))) {
+		    if (avgString.contains("avg")) {
+                str = avgString.replaceFirst("avg", "");
+                capString = str.substring(0, 1).toLowerCase() + str.substring(1);
+            } else
+                if (avgString.contains("Avg")) {
+                    str = avgString.replaceFirst("Avg", "");
+                    capString = str.substring(0, 1).toLowerCase() + str.substring(1);
+                }
+		}
+		trimmedString = "calculatedData." + capString;
+		return trimmedString;
+	}
 
 }
 

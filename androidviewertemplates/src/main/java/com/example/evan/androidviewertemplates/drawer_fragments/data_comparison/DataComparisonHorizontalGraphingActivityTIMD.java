@@ -18,6 +18,8 @@ import android.widget.RelativeLayout;
 
 import com.example.evan.androidviewertemplates.R;
 import com.example.evan.androidviewertemplates.team_details.TeamDetailsActivity;
+import com.example.evan.androidviewertemplates.utils.Util;
+import com.example.evan.androidviewertools.firebase_classes.Team;
 import com.example.evan.androidviewertools.firebase_classes.TeamInMatchData;
 import com.example.evan.androidviewertools.utils.Utils;
 import com.github.mikephil.charting.charts.BarChart;
@@ -43,6 +45,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static com.example.evan.androidviewertools.utils.Utils.getMatchNumbersForTeamNumber;
+import static com.example.evan.androidviewertools.utils.Utils.getTeamDatasForTeamNumber;
 
 public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 
@@ -51,6 +54,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 	String teamThree = "null";
 	String teamFour = "null";
 	String selectedDatapoint;
+	Boolean isTIMD;
 
 	HorizontalBarChart barChart;
 
@@ -106,6 +110,8 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 			teamFour = DataComparisonTIMDTabbedActivity.teamFour;
 		}
 		selectedDatapoint = DataComparisonTIMDTabbedActivity.selectedDatapoint;
+		isTIMD = DataComparisonTIMDTabbedActivity.isTIMD;
+		Log.e("isTimd", isTIMD.toString());
 	}
 
 	public void createTeamsList() {
@@ -141,13 +147,24 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 			barDataSet1 = new BarDataSet(barEntryData(teamOne), teamOne);
 			//sets the color of barDataSet1 to blue
 			barDataSet1.setColor(ContextCompat.getColor(getActivity(), R.color.SuperBlue));
+
 		}
 		if (!teamTwo.equals("null")) {
-			//makes barDataSet2 be of barEntryTwo() with the label being the second team
-			barDataSet2 = new BarDataSet(barEntryData(teamTwo), teamTwo);
-			//sets the color of barDataSet2 to red
-			barDataSet2.setColor(ContextCompat.getColor(getActivity(), R.color.SuperRed));
-			}
+			//makes barDataSet2 be of barEntryTwo() with the label being the second team if timd, else, make label ""
+			if (isTIMD) {
+				barDataSet2 = new BarDataSet(barEntryData(teamTwo), teamTwo);
+			} else
+				if (!isTIMD) {
+					barDataSet2 = new BarDataSet(barEntryData(teamTwo), "");
+				}
+			//sets the color of barDataSet2 to red if datacomparison. else, sets color to same as previous
+			if (isTIMD) {
+				barDataSet2.setColor(ContextCompat.getColor(getActivity(), R.color.SuperRed));
+			} else
+				if (!isTIMD) {
+					barDataSet2.setColor(ContextCompat.getColor(getActivity(), R.color.SuperBlue));
+				}
+		}
 		if (!teamThree.equals("null")) {
 			//makes barDataSet3 be of barEntryThree() with the label being the third team
 			barDataSet3 = new BarDataSet(barEntryData(teamThree), teamThree);
@@ -164,7 +181,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 		emptyBarData = new BarDataSet(emptyBarData(), "");
 
 		//creates BarData using all the datasets
-		if (barDataSet3!=null && barDataSet4!=null) {
+		if (barDataSet2 != null && barDataSet3 != null && barDataSet4 != null) {
 			data = new BarData(barDataSet1, barDataSet2, barDataSet3, barDataSet4);
 			barChart.setData(data);
 			//hardcoded in PERCENT sizes
@@ -181,8 +198,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 			barChart.getXAxis().setAxisMinimum(0);
 			//sets the bars as GROUPS using the previously defined spacing
 			barChart.groupBars(0, groupSpace, barSpace);
-		} else
-		if (barDataSet3!=null && barDataSet4==null) {
+		} else if (barDataSet2 != null && barDataSet3 != null && barDataSet4 == null) {
 			data = new BarData(barDataSet1, barDataSet2, barDataSet3);
 			barChart.setData(data);
 			//hardcoded in PERCENT sizes
@@ -199,14 +215,33 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 			barChart.getXAxis().setAxisMinimum(0);
 			//sets the bars as GROUPS using the previously defined spacing
 			barChart.groupBars(0, groupSpace, barSpace);
-		} else
-		if (barDataSet3==null && barDataSet4==null) {
+		} else if (barDataSet2 != null && barDataSet3 == null && barDataSet4 == null) {
 			data = new BarData(barDataSet1, barDataSet2);
 			barChart.setData(data);
 			//hardcoded in PERCENT sizes
 			float groupSpace = 0.125f;
 			float barSpace = 0.0f;
 			data.setBarWidth(0.44f);
+			//has the number value be displayed at end of bar IF not 0.1 (refer to ValueFormatter specifications)
+			if (isTIMD) {
+				data.setDrawValues(true);
+			} else {
+				data.setDrawValues(false);
+			}
+				//change size of value next to the bar
+			data.setValueTextSize(18);
+			//sets the value formatter to class ValueFormatter
+			data.setValueFormatter(new ValueFormatter());
+			//sets axis minimum to 0
+			barChart.getXAxis().setAxisMinimum(0);
+			//sets the bars as GROUPS using the previously defined spacing
+			barChart.groupBars(0, groupSpace, barSpace);
+		}
+		if (barDataSet2 == null && barDataSet3 == null && barDataSet4 == null) {
+			data = new BarData(barDataSet1);
+			barChart.setData(data);
+			//hardcoded in PERCENT sizes
+			data.setBarWidth(0.80f);
 			//has the number value be displayed at end of bar IF not 0.1 (refer to ValueFormatter specifications)
 			data.setDrawValues(true);
 			//change size of value next to the bar
@@ -216,8 +251,10 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 			//sets axis minimum to 0
 			barChart.getXAxis().setAxisMinimum(0);
 			//sets the bars as GROUPS using the previously defined spacing
-			barChart.groupBars(0, groupSpace, barSpace);
 		}
+
+		data.setHighlightEnabled(false);
+
 		//labels list
 		String[] Matches = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
 		//converting to List<String> type
@@ -251,8 +288,13 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 		legend.setTextSize(32);
 		//sets the icon of the color to be a circle
 		legend.setForm(Legend.LegendForm.CIRCLE);
-		//sets the circle size to be 18
-		legend.setFormSize(18);
+		//sets the circle size to be 18 if timd, else, make 0 (invisible)
+		if (isTIMD) {
+			legend.setFormSize(18);
+		} else
+			if (!isTIMD) {
+				legend.setFormSize(0);
+			}
 		//sets the spacing between each value be 36
 		legend.setXEntrySpace(36);
 		//sets the y spacing between each value to be 20
@@ -262,7 +304,6 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 		legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
 		legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
 		legend.setDrawInside(false);
-
 
 		//creates x axis
 		XAxis xAxis = barChart.getXAxis();
@@ -316,12 +357,12 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 		// draw a zero line
 		rightAxis.setTextSize(18);
 
-		barChart.moveViewTo(0,13, YAxis.AxisDependency.LEFT);
+		barChart.moveViewTo(0, 13, YAxis.AxisDependency.LEFT);
 		barChart.invalidate();
 
 	}
 
-	//calculates and returns the values for the team
+	//calculates and returns the values for the timd team data
 	public ArrayList<BarEntry> barEntryData(String team) {
 		ArrayList<BarEntry> barEntries = new ArrayList<>();
 		List<Float> values = new ArrayList<>();
@@ -359,18 +400,23 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 		//first data set entry
 		ArrayList<BarEntry> barEntries = new ArrayList<>();
 		for (int i = 0; i < 13; i++) {
-			barEntries.add(new BarEntry(i+1, (float) 0));
+			barEntries.add(new BarEntry(i + 1, (float) 0));
 		}
 
 		return barEntries;
 	}
 
 	public List<Float> getValues(Integer teamNumber, String field) {
+		String datapoint = field;
 		List<Float> dataValues = new ArrayList<>();
+		if (!isTIMD) {
+			if (field.contains("avg")) {
+				datapoint = convertFromAvg(field);
+			}
+		}
 		//gets the datapoint values of the given team
 		for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
-			Object value = Utils.getObjectField(teamInMatchData, field);
-
+			Object value = Utils.getObjectField(teamInMatchData, datapoint);
 			//if integer
 			if (value instanceof Integer) {
 				dataValues.add(((Integer) value).floatValue());
@@ -384,7 +430,6 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 				dataValues.add((float) 5000.0);
 			}
 		}
-
 		return dataValues;
 	}
 
@@ -410,6 +455,23 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 
 		mAllDatapointValues.addAll(allDatapointValues);
 		return d;
+	}
+
+	public String convertFromAvg(String avg) {
+		String avgString = "";
+		String str;
+		String trimmedString;
+		String capString = "";
+		//turns 'calculatedData.avgSomethingScored' into 'calculatedData.somethingScored'
+		if (avg != null && avg.contains("calculatedData.")) {
+			avgString = avg.substring(avg.lastIndexOf(".") + 1);
+		}
+		if (avgString != null && avgString.contains("avg")) {
+			str = avgString.replaceFirst("avg", "");
+			capString = str.substring(0, 1).toLowerCase() + str.substring(1);
+		}
+		trimmedString = "calculatedData." + capString;
+		return trimmedString;
 	}
 }
 
