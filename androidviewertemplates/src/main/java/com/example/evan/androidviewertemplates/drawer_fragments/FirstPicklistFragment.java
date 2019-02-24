@@ -48,7 +48,7 @@ import java.util.Objects;
 public class FirstPicklistFragment extends Fragment {
     public static Boolean picklistValue = false;
     public static DatabaseReference dref;
-      FirebaseDatabase dataBase;
+    FirebaseDatabase dataBase;
     Context context;
     public static String picklistPassword = "";
     public static Map<Integer, String> teams = new HashMap<>();
