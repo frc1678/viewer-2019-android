@@ -148,6 +148,7 @@ public abstract class RankingsAdapter<T extends Object> extends SearchableFireba
         }
     }
 
+//todo Use if the seeding is reversed instead of the code the formatRank code below
 /*    private String formatRank(Integer rank) {
         if (rank != null) {
             //return rank + 1 + "";
@@ -158,7 +159,6 @@ public abstract class RankingsAdapter<T extends Object> extends SearchableFireba
             return "?";
         }
     }*/
-//todo Use if the seeding is reversed instead of the code below
 
     private String formatRank(Integer rank) {
         if (rank != null) {

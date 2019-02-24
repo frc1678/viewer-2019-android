@@ -48,7 +48,7 @@ import java.util.Objects;
 public class FirstPicklistFragment extends Fragment {
     public static Boolean picklistValue = false;
     public static DatabaseReference dref;
-    FirebaseDatabase dataBase;
+      FirebaseDatabase dataBase;
     Context context;
     public static String picklistPassword = "";
     public static Map<Integer, String> teams = new HashMap<>();
@@ -62,6 +62,7 @@ public class FirstPicklistFragment extends Fragment {
         final View myLayout = inflater.inflate(R.layout.firstpicklist, null);
         final ListView listView = (ListView) myLayout.findViewById(R.id.listview);
         dataBase = FirebaseDatabase.getInstance();
+        dataBase.setPersistenceEnabled(true);
         dref = dataBase.getReference();
         dref.child("PicklistPassword").addValueEventListener(new ValueEventListener() {
             @Override
