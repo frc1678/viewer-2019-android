@@ -374,35 +374,52 @@ public class FunctionFragment extends Fragment {
 			}
 		});
 	}
+
+	//turns the layout that it's given and makes its visibility visible
     public void turnVisible(LinearLayout layout) {
 	    if (layout.getVisibility() == View.GONE) {
 		    layout.startAnimation(fadeIn);
 		    layout.setVisibility(View.VISIBLE);
 	    }
     }
-    public void turnInvisible(LinearLayout layout) {
+
+	//turns the layout that it's given and makes its visibility invisible
+	public void turnInvisible(LinearLayout layout) {
 	    if (layout.getVisibility() == View.VISIBLE) {
 		    layout.startAnimation(fadeOut);
 		    layout.setVisibility(View.GONE);
 	    }
     }
+
+    //turns the view that it's given and makes it turn from the nonhidden color to the hidden color (ex light gray -> white)
+	//takes 250 milliseconds to occur
     public void makeViewInvisible(View view) {
 	    TransitionDrawable transition = (TransitionDrawable) view.getBackground();
 	    transition.startTransition(250);
-	}
+
+    //turns the view that it's given and makes it turn from the non hidden color to the hidden color (ex white -> light gray)
+    //takes 250 milliseconds to occur
+    }
     public void makeViewVisible(View view) {
 	    TransitionDrawable transition = (TransitionDrawable) view.getBackground();
 	    transition.reverseTransition(250);
+
+    //turns the button it's given and makes it turn from the non hidden color to the hidden color
+    //takes 250 milliseconds to occur
 	}
     public void grayOutButton(Button button) {
 	    TransitionDrawable transition = (TransitionDrawable) button.getBackground();
 	    transition.startTransition(250);
     }
+
+    //reverses the color change from the previous method
+	//takes 250 milliseconds to occur
     public void reverseGrayButton(Button button) {
 	    TransitionDrawable transition = (TransitionDrawable) button.getBackground();
 	    transition.reverseTransition(250);
     }
 
+    //inflates the layouts of the framelayouts to prevent creating 6 different layouts for each section rather than one
     public void inflateLayout(FrameLayout layout, int layout_id, String title, String description) {
 	    inflater.inflate(layout_id, layout, false);
 	    TextView titleTV = (TextView) layout.findViewById(R.id.title);
@@ -410,13 +427,18 @@ public class FunctionFragment extends Fragment {
 	    titleTV.setText(title);
 	    descriptionTV.setText(description);
     }
+
+    //makes the layout visible and everything that has to change color change color
     public void enableView(LinearLayout layout, FrameLayout fl, View view, Button oppositeButton, String title, String description) {
 	    turnVisible(layout);
 	    makeViewInvisible(view);
 	    grayOutButton(oppositeButton);
 
+	    //inflates the layout of framelayout with the description box
 	    inflateLayout(fl, R.layout.function_fragment_description_box, title, description);
     }
+
+    //makes everything disappear or turn back to the original color
     public void disableView(View view, Button oppositeButton) {
 
 	    if (topSquaresDescriptionBox.getVisibility() != View.GONE) {
@@ -431,12 +453,15 @@ public class FunctionFragment extends Fragment {
 	    makeViewVisible(view);
 	    reverseGrayButton(oppositeButton);
 
+	    //restarts activity to prevent inflater overlay
 	    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 	    Fragment fragment = new FunctionFragment();
 	    fragmentManager.beginTransaction()
 			    .replace(R.id.container, fragment)
 			    .commit();
     }
+
+    //method to check if any other button is being focused
     public Boolean trueBesidesBoolean(Boolean bool) {
 	    if (isTeamsOfPicklist) {
 		    if (isTeamsOfPicklist.equals(bool)) {
