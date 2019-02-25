@@ -2,8 +2,8 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" shape="rectangle">
     <!--this is to give gradient effect -->
     <gradient
-        android:startColor="@color/turq"
-        android:endColor="@color/turq"
+        android:startColor="@color/CarlRed"
+        android:endColor="@color/CarlRed"
         />
 
 

@@ -162,6 +162,8 @@
         <color name="SuperRed">#dc3912</color>
         <color name="SuperOrange">#ff9900</color>
         <color name="SuperGreen">#109618</color>
+        <color name="TransparentGray">#E6D3D3D3</color>
+        <color name="TransparentWhite">#E6FFFFFF</color>
 
 
 

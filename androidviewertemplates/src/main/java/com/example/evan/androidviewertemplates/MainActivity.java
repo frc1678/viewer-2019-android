@@ -12,6 +12,7 @@ import android.os.Looper;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -117,7 +118,6 @@ public class MainActivity extends ViewerActivity
         }
     }
 
-
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
@@ -212,6 +212,13 @@ public class MainActivity extends ViewerActivity
         mTitle = SpecificConstants.DRAWER_TITLES[number];
 
     }
+/*	public static void restartFunction() {
+		FragmentManager fragmentManager = MainActivity.getSupportFragmentManager();
+		Fragment fragment = new FunctionFragment();
+		fragmentManager.beginTransaction()
+				.replace(R.id.container, fragment)
+				.commit();
+	}*/
 
 
     public void restoreActionBar(int titleIndex) {

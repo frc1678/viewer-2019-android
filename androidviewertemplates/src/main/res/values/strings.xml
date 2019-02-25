@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">AndroidViewerTemplates</string>
     <string name="dash">-</string>
+    <string name="function_message">"*Long click to execute action*"</string>
 </resources>

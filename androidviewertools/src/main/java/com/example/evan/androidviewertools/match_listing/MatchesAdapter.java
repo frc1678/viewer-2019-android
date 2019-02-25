@@ -106,7 +106,6 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
             int teamTextViewIDsSize = teamTextViewIDs.length;
             for (int i = 0; i < teamTextViewIDsSize; i++) {
                 TextView teamTextView = (TextView) rowView.findViewById(teamTextViewIDs[i]);
-
                 if (selectedScope.equals("Team")) {
                     teamTextView.setText(Utils.highlightTextInString(teamsInMatch.get(i).toString(), searchString));
                 } else {
