@@ -83,6 +83,7 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
         }
     }
 
+
     @Override
     public Object getRowItem(int section, int row) {
         return getFieldsToDisplay()[section][row];
@@ -156,7 +157,6 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
         return getKeysToTitles().get(getRowItem(section, row));
     }
 
-    //take lines 139 to 144, check if it needs to be cached, if needs to be recached, recache. If not, reference line 114 (has almost exactly what you need to do)
     @Override
     public String getValueOfRowInSection(int section, int row) {
         String fieldKey = (String)getRowItem(section, row);

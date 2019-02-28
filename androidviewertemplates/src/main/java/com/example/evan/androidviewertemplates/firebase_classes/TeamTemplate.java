@@ -28,7 +28,6 @@ public CalculatedTeamData calculatedData;
     public String pitDrivetrain;
     public String pitProgrammingLanguage;
     public String pitSandstormNavigationType;
-    public String name;
     public String pitSEALsNotes;
 
     public Map<Object, Integer> pitClimbType;

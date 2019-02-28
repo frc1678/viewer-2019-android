@@ -62,6 +62,7 @@ public class FirstPicklistFragment extends Fragment {
         final View myLayout = inflater.inflate(R.layout.firstpicklist, null);
         final ListView listView = (ListView) myLayout.findViewById(R.id.listview);
         dataBase = FirebaseDatabase.getInstance();
+        dataBase.setPersistenceEnabled(true);
         dref = dataBase.getReference();
         dref.child("PicklistPassword").addValueEventListener(new ValueEventListener() {
             @Override
