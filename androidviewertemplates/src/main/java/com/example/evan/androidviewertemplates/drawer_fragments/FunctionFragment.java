@@ -280,7 +280,7 @@ public class FunctionFragment extends Fragment {
 				if (!isTeamsOfPicklist && !isClearedStarredTeams && !isClearHighlightedTeams && !isClearHighlightedMatches && !isClearStarredMatches && !isClearSelectedTeamsFromPicklist) {
 					enableView(topSquaresDescriptionBox, topSquaresFL, topSeparator, clearedStarredTeams,
 							"Highlighted Picklist Teams",
-							"description");
+							"Highlights 'n' number of teams in all instances of that team in all schedule views throughout the viewer");
 					isTeamsOfPicklist = true;
 				} else if (trueBesidesBoolean(isTeamsOfPicklist))
 				{} else {
