@@ -61,9 +61,11 @@ public class FirstPicklistFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View myLayout = inflater.inflate(R.layout.firstpicklist, null);
         final ListView listView = (ListView) myLayout.findViewById(R.id.listview);
-        dataBase = FirebaseDatabase.getInstance();
-        dataBase.setPersistenceEnabled(true);
-        dref = dataBase.getReference();
+        if (dref == null) {
+            dataBase = FirebaseDatabase.getInstance();
+            dataBase.setPersistenceEnabled(true);
+            dref = dataBase.getReference();
+        }
         dref.child("PicklistPassword").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -73,7 +75,6 @@ public class FirstPicklistFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
         dref.child("picklist").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
