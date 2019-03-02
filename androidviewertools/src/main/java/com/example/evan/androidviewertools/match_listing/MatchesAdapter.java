@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Vibrator;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -221,18 +222,30 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
          //todo Add predicted RPs?
 
             if (blueDidRocketRP) {
+	            rankingPointDisplayBlueRocketRP.setVisibility(View.VISIBLE);
 //                \uD83D\uDE80 is the unicode for a rocket emoji
                 rankingPointDisplayBlueRocketRP.setText("\uD83D\uDE80");
+            } else {
+                rankingPointDisplayBlueRocketRP.setVisibility(View.INVISIBLE);
             }
             if (redDidRocketRP) {
+	            rankingPointDisplayRedRocketRP.setVisibility(View.VISIBLE);
 //                \uD83D\uDE80 is the unicode for a rocket emoji
                 rankingPointDisplayRedRocketRP.setText("\uD83D\uDE80");
+            } else {
+	            rankingPointDisplayRedRocketRP.setVisibility(View.INVISIBLE);
             }
             if (blueDidHabClimb) {
-                rankingPointDisplayBlueHabClimb.setText("▬");
+	            rankingPointDisplayBlueHabClimb.setVisibility(View.VISIBLE);
+	            rankingPointDisplayBlueHabClimb.setText("▬");
+            } else {
+	            rankingPointDisplayBlueHabClimb.setVisibility(View.INVISIBLE);
             }
             if (redDidHabClimb) {
-                rankingPointDisplayRedHabClimb.setText("▬");
+	            rankingPointDisplayRedHabClimb.setVisibility(View.VISIBLE);
+	            rankingPointDisplayRedHabClimb.setText("▬");
+            } else {
+	            rankingPointDisplayRedHabClimb.setVisibility(View.INVISIBLE);
             }
 
 

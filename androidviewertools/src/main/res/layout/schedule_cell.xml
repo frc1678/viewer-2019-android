@@ -121,6 +121,7 @@
 
 
         <TextView
+            android:visibility="visible"
             android:id="@+id/rankingPointDisplayRedRocketRP"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -129,6 +130,7 @@
             />
 
         <TextView
+            android:visibility="visible"
             android:id="@+id/rankingPointDisplayRedHabClimb"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -146,6 +148,7 @@
 
 
         <TextView
+            android:visibility="visible"
             android:id="@+id/rankingPointDisplayBlueRocketRP"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -154,6 +157,7 @@
             />
 
         <TextView
+            android:visibility="visible"
             android:id="@+id/rankingPointDisplayBlueHabClimb"
             android:layout_width="wrap_content"
             android:layout_weight="1"

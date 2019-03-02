@@ -21,8 +21,6 @@ public CalculatedTeamInMatchData calculatedData;
 
     public Integer driverStation;
     public Integer number;
-    public Integer matchNumber;
-    public Integer teamNumber;
     public Integer startingLevel;
 
     public Boolean crossedHabLine;
