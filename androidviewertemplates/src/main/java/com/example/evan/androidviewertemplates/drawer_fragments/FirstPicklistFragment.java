@@ -25,6 +25,7 @@ import com.example.evan.androidviewertemplates.R;
 import com.example.evan.androidviewertemplates.team_details.TeamDetailsActivity;
 import com.example.evan.androidviewertools.utils.AsteriskPasswordTransformationMethod;
 import com.example.evan.androidviewertools.utils.Constants;
+import com.example.evan.androidviewertools.utils.firebase.FirebaseList;
 import com.example.evan.androidviewertools.utils.firebase.FirebaseLists;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -66,10 +67,14 @@ public class FirstPicklistFragment extends Fragment {
             dataBase.setPersistenceEnabled(true);
             dref = dataBase.getReference();
         }
-        dref.child("PicklistPassword").addValueEventListener(new ValueEventListener() {
+        dref.child("constants").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                picklistPassword = dataSnapshot.getValue().toString();
+	            for (DataSnapshot child : dataSnapshot.getChildren()) {
+	            	if (String.valueOf(child.getKey()).equals("picklistPassword")) {
+			            picklistPassword = child.getValue().toString();
+		            }
+	            }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -82,7 +87,6 @@ public class FirstPicklistFragment extends Fragment {
                 final Integer teamPicklistPosition = Integer.parseInt(dataSnapshot.getKey());
 
                 putIntoPicklistMaps(teamNumber, teamPicklistPosition);
-
                 if (checkTeamsListSize(Constants.picklistMap)) {
                     Constants.rankedTeamsListByActualSeed = Constants.picklistMap;
                     final Dialog passwordDialog = new Dialog(context);
@@ -91,6 +95,7 @@ public class FirstPicklistFragment extends Fragment {
                     final Button passwordButton = (Button) passwordDialog.findViewById(R.id.passwordButton);
                     final EditText passwordEditText = (EditText) passwordDialog.findViewById(R.id.passwordEditText);
                     passwordEditText.setTransformationMethod(new AsteriskPasswordTransformationMethod());
+                    Log.e("REACHED","7");
 
     if (!Constants.alreadyEnteredPasswordInCurrentSession) {
         passwordDialog.show();
@@ -272,7 +277,7 @@ public class FirstPicklistFragment extends Fragment {
             String extraValue = onClickMap.get(otherTeam);
             Constants.picklistMap.put(otherTeam, onClickMap.get(myTeam));
             Constants.picklistMap.put(myTeam, extraValue);
-            if (myTeam < 65) {
+            if (myTeam < FirebaseLists.teamsList.getKeys().size()) {
                 dref.child("picklist").child(myTeam.toString()).setValue(Integer.parseInt(Constants.picklistMap.get(myTeam)));
                 dref.child("picklist").child(otherTeam.toString()).setValue(Integer.parseInt(Constants.picklistMap.get(otherTeam)));
             }
