@@ -2,6 +2,7 @@ package com.example.evan.androidviewertools.team_ranking;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.example.evan.androidviewertools.utils.Constants;
 import com.example.evan.androidviewertools.utils.firebase.FirebaseLists;
@@ -18,7 +19,6 @@ public abstract class TeamRankingsAdapter extends RankingsAdapter<Team> {
 
     @Override
     public boolean filter(Team value, String scope) {
-
             String teamNumberString = value.teamNumber.toString();
             return teamNumberString.indexOf(searchString) == 0;
     }
