@@ -7,10 +7,12 @@ import android.view.View;
 import android.widget.AdapterView;
 
 
+import com.example.evan.androidviewertemplates.firebase_classes.CalculatedTeamData;
 import com.example.evan.androidviewertemplates.graphing.RankingsActivity;
 import com.example.evan.androidviewertemplates.team_ranking.TeamRankingsActivity;
 import com.example.evan.androidviewertemplates.utils.SpecificConstants;
 import com.example.evan.androidviewertemplates.utils.ViewerDataPoints;
+import com.example.evan.androidviewertools.firebase_classes.Team;
 import com.example.evan.androidviewertools.team_details.MultitypeRankingsSectionAdapter;
 import com.example.evan.androidviewertools.utils.Constants;
 import com.example.evan.androidviewertools.utils.Utils;
@@ -26,7 +28,6 @@ import java.util.Map;
  */
 public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     //todo
-
     static String[] sectionTitles = {
             //May need to change depending on game
             "Matches",
@@ -47,7 +48,7 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
                     "calculatedData.orangeCycleAll","calculatedData.lemonCycleAll","calculatedData.orangeSuccessDefended","calculatedData.orangeSuccessL2",
                     "calculatedData.orangeSuccessL3","calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL3",
                     "calculatedData.hasOrangeGroundIntake","calculatedData.hasLemonGroundIntake",},
-            {"calculatedData.avgTimeClimbing","calculatedData.climbSuccessL2","calculatedData.climbSuccessL3"},
+            {"calculatedData.avgTimeClimbing","calculatedData.climbSuccessL2","calculatedData.climbSuccessL3",},
             {"calculatedData.avgTimeIncap","calculatedData.avgTimeImpaired","calculatedData.percentIncap","calculatedData.percentImpaired","calculatedData.percentNoShow"},
             {"calculatedData.predictedSoloPoints","calculatedData.sdAvgOrangesScored","calculatedData.sdAvgLemonsScored"},
             {"calculatedData.speedZScore","calculatedData.agilityZScore","calculatedData.avgGoodDecisions","calculatedData.avgBadDecisions"},
