@@ -120,8 +120,10 @@
         android:layout_height="wrap_content">
 
 
-        <TextView
+        <ImageView
             android:visibility="visible"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="false"
             android:id="@+id/rankingPointDisplayRedRocketRP"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -147,8 +149,10 @@
         android:layout_height="wrap_content">
 
 
-        <TextView
+        <ImageView
             android:visibility="visible"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="false"
             android:id="@+id/rankingPointDisplayBlueRocketRP"
             android:layout_width="wrap_content"
             android:layout_weight="1"
