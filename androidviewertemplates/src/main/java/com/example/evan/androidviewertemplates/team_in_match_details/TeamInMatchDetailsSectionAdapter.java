@@ -50,6 +50,7 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
             "Information",
             "Sandstorm",
             "Tele",
+            "End Game",
             "Status",
             "Super Data",
 
@@ -61,7 +62,10 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
             {"startingLevel","crossedHabLine","startingLocation","preload"},
             {"calculatedData.orangesScored","calculatedData.lemonsScored","calculatedData.orangeFouls","calculatedData.lemonLoadSuccess",
                     "calculatedData.orangeSuccessDefended","calculatedData.orangeSuccessL2","calculatedData.orangeSuccessL3",
-                    "calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL3","calculatedData.lemonsSpilled"},
+                    "calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL3","calculatedData.lemonsSpilled",
+                    "calculatedData.lvl_1_lemons_teleop","calculatedData.lvl_2_lemons_teleop","calculatedData.lvl_3_lemons_teleop",
+                    "calculatedData.lvl_1_oranges_teleop","calculatedData.lvl_2_oranges_teleop","calculatedData.lvl_3_oranges_teleop",},
+            {"calculatedData.selfClimbLevel","calculatedData.robot1ClimbLevel","calculatedData.robot2ClimbLevel"},
             {"calculatedData.timeIncap","calculatedData.timeImpaired","calculatedData.timeClimbing"},
             {"superNotes"},
     };
