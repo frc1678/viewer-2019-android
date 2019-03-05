@@ -6,12 +6,14 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
+import android.media.Image;
 import android.os.Vibrator;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.evan.androidviewertools.ViewerActivity;
@@ -209,8 +211,8 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
             redScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.redPredictedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.redPredictedScore"), 2, "???") : "???");
             blueScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.bluePredictedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.bluePredictedScore"), 2, "???") : "???");
         }
-            TextView rankingPointDisplayBlueRocketRP = (TextView) rowView.findViewById(R.id.rankingPointDisplayBlueRocketRP);
-            TextView rankingPointDisplayRedRocketRP = (TextView) rowView.findViewById(R.id.rankingPointDisplayRedRocketRP);
+            ImageView rankingPointDisplayBlueRocketRP = (ImageView) rowView.findViewById(R.id.rankingPointDisplayBlueRocketRP);
+            ImageView rankingPointDisplayRedRocketRP = (ImageView) rowView.findViewById(R.id.rankingPointDisplayRedRocketRP);
             TextView rankingPointDisplayBlueHabClimb = (TextView) rowView.findViewById(R.id.rankingPointDisplayBlueHabClimb);
             TextView rankingPointDisplayRedHabClimb = (TextView) rowView.findViewById(R.id.rankingPointDisplayRedHabClimb);
 
@@ -224,14 +226,14 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
             if (blueDidRocketRP) {
 	            rankingPointDisplayBlueRocketRP.setVisibility(View.VISIBLE);
 //                \uD83D\uDE80 is the unicode for a rocket emoji
-                rankingPointDisplayBlueRocketRP.setText("\uD83D\uDE80");
+                rankingPointDisplayBlueRocketRP.setBackground(context.getResources().getDrawable(R.drawable.rocket_rp));
             } else {
                 rankingPointDisplayBlueRocketRP.setVisibility(View.INVISIBLE);
             }
             if (redDidRocketRP) {
 	            rankingPointDisplayRedRocketRP.setVisibility(View.VISIBLE);
 //                \uD83D\uDE80 is the unicode for a rocket emoji
-                rankingPointDisplayRedRocketRP.setText("\uD83D\uDE80");
+                rankingPointDisplayRedRocketRP.setBackground(context.getResources().getDrawable(R.drawable.rocket_rp));
             } else {
 	            rankingPointDisplayRedRocketRP.setVisibility(View.INVISIBLE);
             }
