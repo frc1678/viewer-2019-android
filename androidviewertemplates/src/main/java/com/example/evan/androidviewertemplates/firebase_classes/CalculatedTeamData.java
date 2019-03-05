@@ -94,6 +94,10 @@ public class CalculatedTeamData extends Object {
     public Integer p75percentIncapEntireMatch;
     public Integer sdPercentIncapEntireMatch;
     public Integer lfmPercentIncapEntireMatch;
+    public Integer pitRampAbility;
+    public Integer climbSuccessL1;
+    public Integer climbSuccessL2;
+    public Integer climbSuccessL3;
 
     public Float agilityZScore;
     public Float predictedRPs;
