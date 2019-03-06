@@ -72,9 +72,16 @@ public class SpecificConstants extends Constants {
                     put("calculatedData.timeImpaired","Time impaired (s)");
                     put("calculatedData.timeClimbing","Time climbing (s)");
                     put("calculatedData.lemonsSpilled","Panels spilled");
-                    put("calculatedData.climbSuccessL2","Climb success for HAB L2");
-                    put("calculatedData.climbSuccessL3","Climb success for HAB L3");
+                    put("calculatedData.selfClimbLevel","Climb Level");
                     put("superNotes","Super Notes");
+                    put("calculatedData.robot1ClimbLevel","1st Robot Climb Level");
+                    put("calculatedData.robot2ClimbLevel","2nd Robot Climb Level");
+                    put("calculatedData.lvl_1_lemons_teleop","Lvl 1 panels placed");
+                    put("calculatedData.lvl_2_lemons_teleop","Lvl 2 panels placed");
+                    put("calculatedData.lvl_3_lemons_teleop","Lvl 3 panels placed");
+                    put("calculatedData.lvl_1_oranges_teleop","Lvl 1 cargo placed");
+                    put("calculatedData.lvl_2_oranges_teleop","Lvl 2 cargo placed");
+                    put("calculatedData.lvl_3_oranges_teleop","Lvl 3 cargo placed");
 //              Teams
                     put("pitWidth","Width");
                     put("pitLength","Length");
@@ -129,6 +136,10 @@ public class SpecificConstants extends Constants {
                     put("calculatedData.avgLemonsPlacedSandstorm","Avg panels placed during Sandstorm");
                     put("calculatedData.avgOrangesPlacedSandstorm","Avg cargo placed during Sandstorm");
                     put("calculatedData.drivingAbility","Driving ability");
+                    put("calculatedData.climbSuccessL1","% Climb success for HAB L1");
+                    put("calculatedData.climbSuccessL2","% Climb success for HAB L2");
+                    put("calculatedData.climbSuccessL3","% Climb success for HAB L3");
+                    put("calculatedData.pitRampAbility","Ramp Ability");
         //lfm
                     put("calculatedData.lfmAvgOrangesScored","Avg cargo scored");
                     put("calculatedData.lfmAvgLemonsScored","Avg panel scored");
