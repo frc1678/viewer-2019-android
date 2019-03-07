@@ -58,7 +58,7 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
 
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
-            {"teamNumber", "matchNumber"},
+            {"teamNumber", "matchNumber","blueFoulPoints","redFoulPoints"},
             {"startingLevel","crossedHabLine","startingLocation","preload"},
             {"calculatedData.orangesScored","calculatedData.lemonsScored","calculatedData.orangeFouls","calculatedData.lemonLoadSuccess",
                     "calculatedData.orangeSuccessDefended","calculatedData.orangeSuccessL2","calculatedData.orangeSuccessL3",

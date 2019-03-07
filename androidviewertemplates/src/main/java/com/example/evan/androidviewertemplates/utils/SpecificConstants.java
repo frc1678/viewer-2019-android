@@ -256,8 +256,8 @@ public class SpecificConstants extends Constants {
                     put("noShowTeams","No show teams");
                     put("blueActualScore","Blue score");
                     put("redActualScore","Red score");
-                    put("blueFoulPoints","Blue fouls points");
-                    put("redFoulPoints","Red fouls points");
+                    put("blueFoulPoints","Blue fouls points gained");
+                    put("redFoulPoints","Red fouls points gained");
                     put("blueActualRPs","Blue total RP");
                     put("redActualRPs","Red total RP");
                     put("blueDidRocketRP","Blue rocket RP");
