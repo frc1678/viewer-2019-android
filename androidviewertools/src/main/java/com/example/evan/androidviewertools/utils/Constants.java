@@ -98,7 +98,7 @@ public class Constants {
             "calculatedData.lfmAvgSpeed",
             "calculatedData.lfmAvgDefense",
             "calculatedData.lfmAvgAgility",
-            "calculatedData.lfmAvgDrivingAbility"
+            "calculatedData.lfmAvgDriverAbility"
 
     ));
 }

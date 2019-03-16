@@ -43,15 +43,15 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
             {"matches", "VIEWER.matchesUntilNextMatchForTeam", "lfm"},
-            {"calculatedData.habLineSuccessL1","calculatedData.habLineSuccessL2","calculatedData.avgLemonsPlacedSandstorm","calculatedData.avgOrangesPlacedSandstorm"},
+            {"calculatedData.habLineSuccessL1","calculatedData.habLineSuccessL2","calculatedData.avgLemonsScoredSandstorm","calculatedData.avgOrangesScoredSandstorm"},
             {"calculatedData.avgOrangesScored", "calculatedData.avgLemonsScored","calculatedData.avgLemonsSpilled","calculatedData.avgOrangeFouls","calculatedData.lemonLoadSuccess",
-                    "calculatedData.orangeCycleAll","calculatedData.lemonCycleAll","calculatedData.orangeSuccessDefended","calculatedData.orangeSuccessL2",
+                    "calculatedData.orangeSuccessDefended","calculatedData.orangeSuccessL2",
                     "calculatedData.orangeSuccessL3","calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL3",
                     "calculatedData.hasOrangeGroundIntake","calculatedData.hasLemonGroundIntake",},
-            {"calculatedData.avgTimeClimbing","calculatedData.climbSuccessL2","calculatedData.climbSuccessL3","calculatedData.pitRampAbility"},
+            {"calculatedData.avgTimeClimbing","calculatedData.climbSuccessL1","calculatedData.climbSuccessL2","calculatedData.climbSuccessL3","calculatedData.pitRampAbility"},
             {"calculatedData.avgTimeIncap","calculatedData.avgTimeImpaired","calculatedData.percentIncap","calculatedData.percentImpaired","calculatedData.percentNoShow"},
             {"calculatedData.predictedSoloPoints","calculatedData.sdAvgOrangesScored","calculatedData.sdAvgLemonsScored"},
-            {"calculatedData.speedZScore","calculatedData.agilityZScore","calculatedData.avgGoodDecisions","calculatedData.avgBadDecisions"},
+            {"calculatedData.speedZScore","calculatedData.agilityZScore","calculatedData.driverAbility","calculatedData.avgGoodDecisions","calculatedData.avgBadDecisions"},
             {"pitLength","pitWidth","pitWeight","pitWheelDiameter","pitDrivetrain","pitProgrammingLanguage","pitClimbType","pitHasCamera","pitHasVision",
                     "pitHasGyro","pitHasEncoders","pitCanBuddyStartLevel2","pitSandstormNavigationType","pitSEALsNotes"}
     };

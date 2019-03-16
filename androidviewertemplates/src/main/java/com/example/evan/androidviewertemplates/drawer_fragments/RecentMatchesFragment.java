@@ -39,22 +39,7 @@ public class RecentMatchesFragment extends MatchesFragment {
 
         @Override
         public boolean secondaryFilter(Match value) {
-
-           /*try {
-               if((Integer)Utils.getObjectField(value, "blueScore") != null) {
-                   Integer teamNumber = ((Integer) Utils.getObjectField(value, "teamNumber"));
-                   Log.e("teamNumber", teamNumber + "");
-                   return teamNumber <= StarManager.getCurrentMatchNumber();
-               }else{
-                   return false;
-               }
-            }catch (NullPointerException NPE){
-                Log.e("teamNumber", "IS NULL");
-            }
-            finally {
-                return true;
-            }*/
-            return (Integer) Utils.getObjectField(value, "blueScore") != null;
+            return (Integer) Utils.getObjectField(value, "blueActualScore") != null;
         }
 
         @Override
