@@ -140,6 +140,12 @@ public class SpecificConstants extends Constants {
                     put("calculatedData.climbSuccessL2","% Climb success for HAB L2");
                     put("calculatedData.climbSuccessL3","% Climb success for HAB L3");
                     put("calculatedData.pitSEALsRampRanking","Ramp Ability");
+                    put("calculatedData.climbAttemptsL1","Climb Attempt L1");
+                    put("calculatedData.climbAttemptsL2","Climb Attempt L2");
+                    put("calculatedData.climbAttemptsL3","Climb Attempt L3");
+                    put("calculatedData.orangesScoredL1","Cargo Scored in L1");
+                    put("calculatedData.percentDysfunctional","% dysfunctional");
+                    put("pitIsLemonSpecialist","Is Lemon Specialist");
         //lfm
                     put("calculatedData.lfmAvgOrangesScored","Avg cargo scored");
                     put("calculatedData.lfmAvgLemonsScored","Avg panel scored");
@@ -277,6 +283,7 @@ public class SpecificConstants extends Constants {
 //            SuperData
                     put("calculatedData.speedZScore","Speed Z Score");
                     put("calculatedData.agilityZScore","Agility Z Score");
+                    put("calculatedData.defenseAbility","Defense Ability");
 //                put("EXAMPLE_DATA_POINT", "EXAMPLE_DATA_TITLE");
 //                Look at past years' SpecificConstants for further formatting
             }
