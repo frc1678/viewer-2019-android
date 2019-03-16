@@ -139,7 +139,7 @@ public class SpecificConstants extends Constants {
                     put("calculatedData.climbSuccessL1","% Climb success for HAB L1");
                     put("calculatedData.climbSuccessL2","% Climb success for HAB L2");
                     put("calculatedData.climbSuccessL3","% Climb success for HAB L3");
-                    put("calculatedData.pitRampAbility","Ramp Ability");
+                    put("calculatedData.pitSEALsRampRanking","Ramp Ability");
         //lfm
                     put("calculatedData.lfmAvgOrangesScored","Avg cargo scored");
                     put("calculatedData.lfmAvgLemonsScored","Avg panel scored");

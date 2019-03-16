@@ -40,4 +40,5 @@ public CalculatedTeamData calculatedData;
     public Boolean pitHasEncoders;
     public Boolean pitCanBuddyStartLevel2;
     public Boolean pitHasOrangeShooter;
+    public Boolean pitIsLemonSpecialist;
 }
