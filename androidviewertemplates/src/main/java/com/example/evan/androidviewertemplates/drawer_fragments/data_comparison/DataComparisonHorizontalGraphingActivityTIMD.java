@@ -54,6 +54,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 	String teamThree = "null";
 	String teamFour = "null";
 	String selectedDatapoint;
+	String selectedDatapointName;
 	Boolean isTIMD;
 
 	HorizontalBarChart barChart;
@@ -90,7 +91,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 
 		//makes the title be the selectedDatapoint followed by the hardcoded "Comparison"
 		((DataComparisonTIMDTabbedActivity) getActivity())
-				.setActionBarTitle(selectedDatapoint + " Comparison");
+				.setActionBarTitle(selectedDatapointName + " Comparison");
 
 		return rootView;
 	}
@@ -110,8 +111,8 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 			teamFour = DataComparisonTIMDTabbedActivity.teamFour;
 		}
 		selectedDatapoint = DataComparisonTIMDTabbedActivity.selectedDatapoint;
+		selectedDatapointName = DataComparisonTIMDTabbedActivity.selectedDatapointName;
 		isTIMD = DataComparisonTIMDTabbedActivity.isTIMD;
-		Log.e("isTimd", isTIMD.toString());
 	}
 
 	public void createTeamsList() {

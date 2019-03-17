@@ -43,6 +43,7 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
     String teamThree;
     String teamFour;
     public static String selectedDatapoint;
+    public static String selectedDatapointName;
 
 
     @Override
@@ -53,6 +54,7 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
         //hardcoded name
         setTitle("TIMD Datapoint Selection");
         selectedDatapoint="";
+        selectedDatapointName="";
         getDatapoints();
         getExtras();
         initXml();
@@ -145,6 +147,7 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     String datapoint = datapointsList.get(i);
                     selectedDatapoint = datapoint;
+                    selectedDatapointName = descriptionList.get(i);
                     datapointTextView.setText(selectedDatapoint);
                     updateButtonColor();
                     initListView();
@@ -160,6 +163,7 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
         GraphingActivity.putExtra("teamThree", teamThree);
         GraphingActivity.putExtra("teamFour", teamFour);
         GraphingActivity.putExtra("selectedDatapoint",selectedDatapoint);
+        GraphingActivity.putExtra("selectedDatapointName",selectedDatapointName);
         GraphingActivity.putExtra("isTIMD","true");
 
         //creates slick animationnn
