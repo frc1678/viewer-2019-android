@@ -84,11 +84,21 @@ public class Utils {
 
 	public static String dataPointToPercentage(Integer dataPoint, int decimalPlaces) {
 		if (dataPoint != null) {
-			return roundDataPoint(dataPoint * 1, decimalPlaces, "??") + "%";
+			return dataPoint + "%";
 		} else {
 			return "???";
 		}
 	}
+
+	//todo Only use the code below when the percentage datapoints are Floats and not Integers.
+//	public static String dataPointToPercentage(Float dataPoint, int decimalPlaces) {
+//		if (dataPoint != null) {
+//			return roundDataPoint(dataPoint * 100, decimalPlaces, "??") + "%";
+//		} else {
+//			return "???";
+//		}
+//	}
+//
 
 	public static String getMatchDisplayValue(Match match, String key) {
 		return roundDataPoint(getObjectField(match, key), 2, "???");
