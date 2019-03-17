@@ -174,7 +174,7 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
             }
         }
         if (new ArrayList<>(Arrays.asList(getPercentageFields())).contains(fieldKey)) {
-            return Utils.dataPointToPercentage((Float)Utils.getObjectField(getObject(), fieldKey), 1);
+            return Utils.dataPointToPercentage((Integer)Utils.getObjectField(getObject(), fieldKey), 1);
         }
         return Utils.getDisplayValue(object, fieldKey);
     }

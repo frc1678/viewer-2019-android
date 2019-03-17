@@ -80,7 +80,7 @@ public class MatchDetailsTeamCellAdapter extends BaseAdapter {
         TextView valueTextView = (TextView) rowView.findViewById(R.id.valueTextView);
         TeamTemplate team = (TeamTemplate) FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber.toString());
         if (Arrays.asList(fieldsToDisplayAsPercentages).contains(getItem(position))) {
-            valueTextView.setText(Utils.dataPointToPercentage((Float) Utils.getObjectField(team, (String) getItem(position)), 0));
+            valueTextView.setText(Utils.dataPointToPercentage((Integer) Utils.getObjectField(team, (String) getItem(position)), 0));
         } else {
             valueTextView.setText(Utils.getDisplayValue(team, (String) getItem(position)));
         }
