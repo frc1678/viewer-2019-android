@@ -36,7 +36,7 @@ public class StarredMatchesFragment extends MatchesFragment {
 
         @Override
         public boolean secondaryFilter(Match value) {
-            Integer number = Integer.valueOf(String.valueOf(Utils.getObjectField(value, "teamNumber")));
+            Integer number = Integer.valueOf(String.valueOf(Utils.getObjectField(value, "matchNumber")));
             return StarManager.isImportantMatch(number);
         }
 
