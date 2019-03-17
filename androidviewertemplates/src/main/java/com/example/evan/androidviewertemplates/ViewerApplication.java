@@ -41,7 +41,7 @@ public class ViewerApplication extends ViewerApplicationTemplate {
         //todo
         startListListeners(com.example.evan.androidviewertemplates.firebase_classes.Match.class, TeamTemplate.class, com.example.evan.androidviewertemplates.firebase_classes.TeamInMatchData.class);
         //setupFirebaseAuth(this);
-        new Instabug.Builder(this, "8acf9a491975145b686561255f5e3410")
+        new Instabug.Builder(this, "aac2f221cd0c8bd4826698da1184bc0f")
                 .setInvocationEvent(InstabugInvocationEvent.SHAKE)
                 .build();
         restoreFromSharedPreferences();
