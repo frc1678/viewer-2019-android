@@ -47,7 +47,7 @@ public class SpecificConstants extends Constants {
                     put("calculatedData.orangesScored","# cargo scored");
                     put("calculatedData.lemonsScored","# panel scored");
                     put("calculatedData.orangeFouls","Cargo fouls out of field");
-                    put("calculatedData.lemonLoadSuccess","LS intake success");
+                    put("calculatedData.lemonLoadSuccess","LS intake success %");
                     put("calculatedData.orangeCycleAll","Avg cargo in RS/CS");
                     put("orangeCycleL1","Avg cargo L1 RS/CS");
                     put("orangeCycleL2","Avg cargo L2 RS");
@@ -68,7 +68,7 @@ public class SpecificConstants extends Constants {
                     put("calculatedData.lemonSuccessL1","% panel success L1");
                     put("calculatedData.lemonSuccessL2","% panel success L2");
                     put("calculatedData.lemonSuccessL3","% panel success L3");
-                    put("calculatedData.timeIncap","Time incap (s)");
+                    put("calculatedData.timeIncap","Time incap (% of match)");
                     put("calculatedData.timeImpaired","Time impaired (s)");
                     put("calculatedData.timeClimbing","Time climbing (s)");
                     put("calculatedData.lemonsSpilled","Panels spilled");
@@ -474,7 +474,7 @@ public class SpecificConstants extends Constants {
                       put("lemonSuccessL1","% panel success L1");
                       put("lemonSuccessL2","% panel success L2");
                       put("lemonSuccessL3","% panel success L3");
-                      put("timeIncap","time incap (s)");
+                      put("timeIncap","time incap (% of match)");
                       put("timeImpaired","time impaired (s)");
                       put("timeClimbing","time climbing (s)");
                       put("lemonsSpilled","panels spilled");
