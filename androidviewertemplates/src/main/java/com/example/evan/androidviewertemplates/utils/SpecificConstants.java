@@ -23,7 +23,7 @@ public class SpecificConstants extends Constants {
 
     //todo
     public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "Data Comparison", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Settings"};
-    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2019-cvr-e4cf3.firebaseio.com/";
+    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2019-sac-2bdd7.firebaseio.com/";
     public static String ROOT_FIREBASE_PATH = ORIGINAL_ROOT_FIREBASE_PATH;
     public static String MATCHES_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Matches";
     public static String TEAMS_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Teams";
@@ -40,6 +40,7 @@ public class SpecificConstants extends Constants {
 //              TIMDs
                     put("startingLevel","Starting level");
                     put("crossedHabLine","Crossed HAB line");
+                    
                     put("startingLocation","Starting location");
                     put("preload","Preloaded game piece");
                     put("driverStation","Driver station ");
