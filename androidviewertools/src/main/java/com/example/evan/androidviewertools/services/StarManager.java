@@ -70,7 +70,6 @@ public abstract class StarManager extends Service {
                     return;
                 }
                 Log.e("previousValue", previousValue.toString());
-                Log.e("previousValue.teamNumber", previousValue.matchNumber + "");
                 if (previousValue.matchNumber.equals(currentMatchNumber)) {
                     notifyOfNewMatchIfNeeded(previousValue);
                 }
@@ -132,8 +131,9 @@ public abstract class StarManager extends Service {
     }
     public static void addImportantMatchWithoutPreferences(Integer matchNumber) {
         if (!importantMatches.contains(matchNumber)) {
-            Log.e("new important match", "added");
-            importantMatches.add(matchNumber);
+            if (matchNumber != null) {
+                importantMatches.add(matchNumber);
+            }
             Collections.sort(importantMatches);
         }
     }
@@ -179,9 +179,10 @@ public abstract class StarManager extends Service {
             matchesAddedByTeam.put(teamNumber, getNonImportantMatchesForTeam(teamNumber));
             int firstMatchNum = -1;
             for (Integer matchNumber : Utils.getMatchNumbersForTeamNumber(teamNumber)) {
-                if ((matchNumber < firstMatchNum) || (firstMatchNum == -1)) {
+                if (matchNumber != null && ((matchNumber < firstMatchNum) || (firstMatchNum == -1))) {
                     firstMatchNum = matchNumber;
                 }
+                Log.e("TEEE",String.valueOf(firstMatchNum));
                 addImportantMatchWithoutPreferences(matchNumber);
             }
             try {
@@ -205,7 +206,7 @@ public abstract class StarManager extends Service {
             List<Integer> matchesAdded = new ArrayList<>(matchesAddedByTeam.get(teamNumber));
             int firstMatchNum = -1;
             for (Integer matchNumber : matchesAdded) {
-                if ((matchNumber < firstMatchNum) || (firstMatchNum == -1)) {
+                if (matchNumber != null && ((matchNumber < firstMatchNum) || (firstMatchNum == -1))) {
                     firstMatchNum = matchNumber;
                 }
                 removeImportantMatchWithoutPreferences(matchNumber);

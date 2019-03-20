@@ -23,12 +23,12 @@ public CalculatedTeamData calculatedData;
     public Integer number;
     public Integer actualRPs;
     public Integer matchesPlayed;
+    public Integer actualSeed;
 
     public String pitWheelDiameter;
     public String pitDrivetrain;
     public String pitProgrammingLanguage;
     public String pitSandstormNavigationType;
-    public String name;
     public String pitSEALsNotes;
 
     public Map<Object, Integer> pitClimbType;

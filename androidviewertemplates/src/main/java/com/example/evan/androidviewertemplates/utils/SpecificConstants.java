@@ -23,7 +23,7 @@ public class SpecificConstants extends Constants {
 
     //todo
     public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "Data Comparison", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Settings"};
-    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://field-test-2019.firebaseio.com/";
+    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2019-cvr-e4cf3.firebaseio.com/";
     public static String ROOT_FIREBASE_PATH = ORIGINAL_ROOT_FIREBASE_PATH;
     public static String MATCHES_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Matches";
     public static String TEAMS_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Teams";
@@ -72,9 +72,16 @@ public class SpecificConstants extends Constants {
                     put("calculatedData.timeImpaired","Time impaired (s)");
                     put("calculatedData.timeClimbing","Time climbing (s)");
                     put("calculatedData.lemonsSpilled","Panels spilled");
-                    put("calculatedData.climbSuccessL2","Climb success for HAB L2");
-                    put("calculatedData.climbSuccessL3","Climb success for HAB L3");
+                    put("calculatedData.selfClimbLevel","Climb Level");
                     put("superNotes","Super Notes");
+                    put("calculatedData.robot1ClimbLevel","1st Robot Climb Level");
+                    put("calculatedData.robot2ClimbLevel","2nd Robot Climb Level");
+                    put("calculatedData.lvl_1_lemons_teleop","Lvl 1 panels placed");
+                    put("calculatedData.lvl_2_lemons_teleop","Lvl 2 panels placed");
+                    put("calculatedData.lvl_3_lemons_teleop","Lvl 3 panels placed");
+                    put("calculatedData.lvl_1_oranges_teleop","Lvl 1 cargo placed");
+                    put("calculatedData.lvl_2_oranges_teleop","Lvl 2 cargo placed");
+                    put("calculatedData.lvl_3_oranges_teleop","Lvl 3 cargo placed");
 //              Teams
                     put("pitWidth","Width");
                     put("pitLength","Length");
@@ -126,9 +133,13 @@ public class SpecificConstants extends Constants {
                     put("firstPickAbility","First pick ability");
                     put("secondPickAbility","Second pick ability");
                     put("calculatedData.avgLemonsSpilled","Avg panels spilled");
-                    put("calculatedData.avgLemonsPlacedSandstorm","Avg panels placed during Sandstorm");
-                    put("calculatedData.avgOrangesPlacedSandstorm","Avg cargo placed during Sandstorm");
-                    put("calculatedData.drivingAbility","Driving ability");
+                    put("calculatedData.avgLemonsScoredSandstorm","Avg panels placed during Sandstorm");
+                    put("calculatedData.avgOrangesScoredSandstorm","Avg cargo placed during Sandstorm");
+                    put("calculatedData.driverAbility","Driver ability");
+                    put("calculatedData.climbSuccessL1","% Climb success for HAB L1");
+                    put("calculatedData.climbSuccessL2","% Climb success for HAB L2");
+                    put("calculatedData.climbSuccessL3","% Climb success for HAB L3");
+                    put("calculatedData.pitRampAbility","Ramp Ability");
         //lfm
                     put("calculatedData.lfmAvgOrangesScored","Avg cargo scored");
                     put("calculatedData.lfmAvgLemonsScored","Avg panel scored");
@@ -245,8 +256,8 @@ public class SpecificConstants extends Constants {
                     put("noShowTeams","No show teams");
                     put("blueActualScore","Blue score");
                     put("redActualScore","Red score");
-                    put("blueFoulPoints","Blue fouls points");
-                    put("redFoulPoints","Red fouls points");
+                    put("blueFoulPoints","Blue fouls points gained");
+                    put("redFoulPoints","Red fouls points gained");
                     put("blueActualRPs","Blue total RP");
                     put("redActualRPs","Red total RP");
                     put("blueDidRocketRP","Blue rocket RP");

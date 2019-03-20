@@ -63,7 +63,9 @@ public abstract class ViewerApplicationTemplate extends Application {
         List<Integer> list = new ArrayList<>();
         try {
             for (int i = 0; i < jsonArray.length(); i++) {
-                list.add((Integer)jsonArray.get(i));
+                if (!String.valueOf(jsonArray.get(i)).equals("null")) {
+                    list.add(Integer.valueOf(String.valueOf(jsonArray.get(i))));
+                }
             }
         } catch (JSONException jsone) {
             Log.e("test", "JSON ERROR: " + jsone.getMessage());
