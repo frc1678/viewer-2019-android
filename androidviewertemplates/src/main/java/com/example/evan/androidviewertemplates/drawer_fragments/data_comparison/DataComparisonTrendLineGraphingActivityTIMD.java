@@ -77,7 +77,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         initChart(rootView);
 
         //sets the header name
-	    if (isTIMD) {
+	    if (!isTIMD) {
 		    ((DataComparisonTIMDTabbedActivity) getActivity())
 				    .setActionBarTitle(selectedDatapoint + " Comparison");
 	    } else {
@@ -155,7 +155,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
                         charts[2] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
                         charts[3] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
                     }
-        if (!isTIMD) {
+        if (isTIMD) {
 	        charts[0] = (LineChart) layout.findViewById(R.id.teamOneChart);
 	        charts[1] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
 	        charts[2] = (LineChart) layout.findViewById(R.id.emptyTeamChart);
@@ -291,7 +291,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
 
     public List<Float> getValues(Integer teamNumber, String field) {
     	String datapoint = field;
-	    if (!isTIMD) {
+	    if (isTIMD) {
 		    if (field.contains("avg")) {
 			    datapoint = convertFromAvg(field);
 		    }

@@ -54,7 +54,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 	String teamThree = "null";
 	String teamFour = "null";
 	String selectedDatapoint;
-	Boolean isTIMD;
+	Boolean isTIMD = false;
 
 	HorizontalBarChart barChart;
 
@@ -151,17 +151,17 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 		}
 		if (!teamTwo.equals("null")) {
 			//makes barDataSet2 be of barEntryTwo() with the label being the second team if timd, else, make label ""
-			if (isTIMD) {
+			if (!isTIMD) {
 				barDataSet2 = new BarDataSet(barEntryData(teamTwo), teamTwo);
 			} else
-				if (!isTIMD) {
+				if (isTIMD) {
 					barDataSet2 = new BarDataSet(barEntryData(teamTwo), "");
 				}
 			//sets the color of barDataSet2 to red if datacomparison. else, sets color to same as previous
-			if (isTIMD) {
+			if (!isTIMD) {
 				barDataSet2.setColor(ContextCompat.getColor(getActivity(), R.color.SuperRed));
 			} else
-				if (!isTIMD) {
+				if (isTIMD) {
 					barDataSet2.setColor(ContextCompat.getColor(getActivity(), R.color.SuperBlue));
 				}
 		}
@@ -223,7 +223,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 			float barSpace = 0.0f;
 			data.setBarWidth(0.44f);
 			//has the number value be displayed at end of bar IF not 0.1 (refer to ValueFormatter specifications)
-			if (isTIMD) {
+			if (!isTIMD) {
 				data.setDrawValues(true);
 			} else {
 				data.setDrawValues(false);
@@ -255,14 +255,6 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 
 		data.setHighlightEnabled(false);
 
-		//labels list
-		String[] Matches = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
-		//converting to List<String> type
-		List<String> tempMatches = Arrays.asList(Matches);
-		//reversing the List<String> type
-		Collections.reverse(tempMatches);
-		//changing it back to a String[] type
-		Matches = (String[]) tempMatches.toArray();
 		//allows scrolling
 		barChart.setDragEnabled(true);
 		//allows 10 cells to be viewed on the screen
@@ -289,10 +281,10 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 		//sets the icon of the color to be a circle
 		legend.setForm(Legend.LegendForm.CIRCLE);
 		//sets the circle size to be 18 if timd, else, make 0 (invisible)
-		if (isTIMD) {
+		if (!isTIMD) {
 			legend.setFormSize(18);
 		} else
-			if (!isTIMD) {
+			if (isTIMD) {
 				legend.setFormSize(0);
 			}
 		//sets the spacing between each value be 36
@@ -321,7 +313,26 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 		xAxis.setGranularity(1);
 
 		//creates the labels be the String[] Matches
-		xAxis.setValueFormatter(new IndexAxisValueFormatter(Matches));
+		if (!isTIMD) {
+			String[] Matches;
+				Matches = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
+				//converting to List<String> type
+				List<String> tempMatches = Arrays.asList(Matches);
+				//reversing the List<String> type because the Y Axis labeling begins from the top instead of the bottom
+				Collections.reverse(tempMatches);
+				//changing it back to a String[] type
+				Matches = (String[]) tempMatches.toArray();
+			xAxis.setValueFormatter(new IndexAxisValueFormatter(Matches));
+		} else {
+			List<String>tempMatches = new ArrayList<>();
+			for (Integer team : teamOneMatches) {
+				tempMatches.add(String.valueOf(team));
+			}
+			for (int i = 0; i < (15-tempMatches.size()); i++) {
+				tempMatches.add("?");
+			} Collections.reverse(tempMatches);
+			xAxis.setValueFormatter(new IndexAxisValueFormatter(tempMatches.toArray(new String[tempMatches.size()])));
+		}
 		//makes the text size of the labels to be 18
 		xAxis.setTextSize(18);
 		//makes the labels centered
@@ -409,7 +420,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
 	public List<Float> getValues(Integer teamNumber, String field) {
 		String datapoint = field;
 		List<Float> dataValues = new ArrayList<>();
-		if (!isTIMD) {
+		if (isTIMD) {
 			if (field.contains("avg")) {
 				datapoint = convertFromAvg(field);
 			}

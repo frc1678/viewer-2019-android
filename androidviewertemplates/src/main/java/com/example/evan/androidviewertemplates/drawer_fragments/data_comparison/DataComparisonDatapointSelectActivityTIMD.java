@@ -160,7 +160,7 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
         GraphingActivity.putExtra("teamThree", teamThree);
         GraphingActivity.putExtra("teamFour", teamFour);
         GraphingActivity.putExtra("selectedDatapoint",selectedDatapoint);
-        GraphingActivity.putExtra("isTIMD","true");
+        GraphingActivity.putExtra("isTIMD","false");
 
         //creates slick animationnn
         ActivityOptions options =
