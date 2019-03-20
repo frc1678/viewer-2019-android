@@ -56,7 +56,7 @@ public class SuperAbilityListFragment extends TeamRankingsFragment {
     public static class SuperAbilityListAdapter extends TeamRankingsAdapter {
 
         public SuperAbilityListAdapter(Context context, String field) {
-            super(context, field, field, true);
+            super(context, field, field, false);
         }
         public Intent getTeamDetailsActivityIntent() {
             return new Intent(context, TeamDetailsActivity.class);
