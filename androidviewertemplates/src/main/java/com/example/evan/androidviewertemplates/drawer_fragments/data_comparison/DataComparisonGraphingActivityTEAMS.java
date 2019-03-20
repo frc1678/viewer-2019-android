@@ -44,10 +44,10 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
     String teamTwo;
     String teamThree;
     String teamFour;
-    String selectedDatapoint;
-	String selectedDatapointName;
+    String selectedDatapoint;	
+    String selectedDatapointName;
 
-	ArrayList<String> teamsList = new ArrayList<>();
+    ArrayList<String> teamsList = new ArrayList<>();
 
     TextView teamOneFourTeamTV, teamTwoFourTeamTV, teamThreeFourTeamTV, teamFourFourTeamTV;
 	TextView teamOneThreeTeamTV, teamTwoThreeTeamTV, teamThreeThreeTeamTV;
