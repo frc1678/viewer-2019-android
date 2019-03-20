@@ -9,6 +9,7 @@ import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
     Boolean onSelectedMode = false;
     String typeSelection;
     public static String selectedDatapoint;
+    public static String selectedDatapointName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -265,6 +267,7 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
                     initListView("Normal");
                     String datapoint = datapointsList_NORMAL.get(i);
                     selectedDatapoint = datapoint;
+                    selectedDatapointName = descriptionList_NORMAL.get(i);
                     datapointTextView.setText(selectedDatapoint);
                 }
                 //if type "last four matches", then it finds the datapoint selected using position in the list of normal datapoints
@@ -272,6 +275,7 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
                     initListView("Last Four Matches");
                     String datapoint = datapointsList_LFM.get(i);
                     selectedDatapoint = datapoint;
+                    selectedDatapointName = descriptionList_LFM.get(i);
                     datapointTextView.setText(selectedDatapoint);
                 }
                 //if type "standard deviation", then it finds the datapoint selected using position in the list of normal datapoints
@@ -279,6 +283,7 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
                     initListView("Standard Deviation");
                     String datapoint = datapointsList_SD.get(i);
                     selectedDatapoint = datapoint;
+                    selectedDatapointName = descriptionList_SD.get(i);
                     datapointTextView.setText(selectedDatapoint);
                 }
                 //if type "75th percentile", then it finds the datapoint selected using position in the list of normal datapoints
@@ -286,6 +291,7 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
                     initListView("75th Percentile");
                     String datapoint = datapointsList_P75.get(i);
                     selectedDatapoint = datapoint;
+                    selectedDatapointName = descriptionList_P75.get(i);
                     datapointTextView.setText(selectedDatapoint);
                 }
                 //turns on selected mode
@@ -307,6 +313,7 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
         GraphingActivity.putExtra("teamThree", teamThree);
         GraphingActivity.putExtra("teamFour", teamFour);
         GraphingActivity.putExtra("selectedDatapoint",selectedDatapoint);
+        GraphingActivity.putExtra("selectedDatapointName",selectedDatapointName);
         //adds slick animation lol
         ActivityOptions options =
                 ActivityOptions.makeCustomAnimation(DataComparisonDatapointSelectActivityTEAMS.this, R.anim.slide_right_in, R.anim.slide_left_out);

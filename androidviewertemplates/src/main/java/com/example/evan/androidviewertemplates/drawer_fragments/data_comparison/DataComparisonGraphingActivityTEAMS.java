@@ -44,7 +44,8 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
     String teamTwo;
     String teamThree;
     String teamFour;
-    String selectedDatapoint;
+    String selectedDatapoint;	
+    String selectedDatapointName;
 
     ArrayList<String> teamsList = new ArrayList<>();
 
@@ -73,7 +74,7 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         initBarLabels();
         initBarChart();
         //sets title to the datapoint name followed by the harcoded "Comparison Graph"
-        setTitle( selectedDatapoint + " Comparison Graph");
+        setTitle( selectedDatapointName + " Comparison Graph");
 
     }
 
@@ -152,6 +153,7 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
             }
 
             selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
+	    selectedDatapointName = getIntent().getStringExtra("selectedDatapointName");
         }
 
     }

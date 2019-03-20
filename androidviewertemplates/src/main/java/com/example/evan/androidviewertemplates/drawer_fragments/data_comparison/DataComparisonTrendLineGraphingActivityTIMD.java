@@ -47,6 +47,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
     String teamThree = "null";
     String teamFour = "null";
     String selectedDatapoint;
+    String selectedDatapointName;
     Boolean isTIMD;
 
     LineData data;
@@ -79,10 +80,10 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         //sets the header name
 	    if (!isTIMD) {
 		    ((DataComparisonTIMDTabbedActivity) getActivity())
-				    .setActionBarTitle(selectedDatapoint + " Comparison");
+				    .setActionBarTitle(selectedDatapointName + " Comparison");
 	    } else {
 		    ((DataComparisonTIMDTabbedActivity) getActivity())
-				    .setActionBarTitle(selectedDatapoint + " breakdown for " + teamOne);
+				    .setActionBarTitle(selectedDatapointName + " breakdown for " + teamOne);
 	    }
 
         return rootView;
@@ -103,6 +104,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
             teamFour = DataComparisonTIMDTabbedActivity.teamFour;
         }
         selectedDatapoint = DataComparisonTIMDTabbedActivity.selectedDatapoint;
+        selectedDatapointName = DataComparisonTIMDTabbedActivity.selectedDatapointName;
         isTIMD = DataComparisonTIMDTabbedActivity.isTIMD;
     }
 

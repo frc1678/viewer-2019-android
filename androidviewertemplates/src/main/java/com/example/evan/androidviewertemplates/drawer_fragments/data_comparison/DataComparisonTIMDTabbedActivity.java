@@ -24,6 +24,7 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
     public static String teamThree;
     public static String teamFour;
     public static String selectedDatapoint;
+    public static String selectedDatapointName;
     public static Boolean isTIMD;
 
     @Override
@@ -82,8 +83,8 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
             } else {
                 teamFour = "null";
             }
-
             selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
+            selectedDatapointName = getIntent().getStringExtra("selectedDatapointName");
             isTIMD = convertBoolean(getIntent().getStringExtra("isTIMD"));
         }
 
