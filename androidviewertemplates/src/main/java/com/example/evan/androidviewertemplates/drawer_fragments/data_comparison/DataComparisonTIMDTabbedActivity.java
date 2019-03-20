@@ -88,21 +88,7 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
         }
 
     }
-/*
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent = null;
-        if (isTIMD) {
-            intent = new Intent(getApplicationContext(), TeamDetailsActivity.class);
-            intent.putExtra("teamNumber",teamOne);
-        } else {
-            intent = new Intent(getApplicationContext(), DataComparisonDatapointSelectActivityTIMD.class);
-            intent.putExtra("teamOne",teamOne); intent.putExtra("teamTwo",teamTwo);
-            intent.putExtra("teamThree",teamThree); intent.putExtra("teamFour",teamFour);
-        }
-        startActivity(intent);
-    }*/
+
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK)
         {
