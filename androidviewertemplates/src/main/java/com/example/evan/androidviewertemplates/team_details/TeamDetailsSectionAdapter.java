@@ -48,12 +48,13 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
                     "calculatedData.orangeSuccessDefended","calculatedData.orangeSuccessL2",
                     "calculatedData.orangeSuccessL3","calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL3",
                     "calculatedData.hasOrangeGroundIntake","calculatedData.hasLemonGroundIntake",},
-            {"calculatedData.avgTimeClimbing","calculatedData.climbSuccessL1","calculatedData.climbSuccessL2","calculatedData.climbSuccessL3","calculatedData.pitRampAbility"},
-            {"calculatedData.avgTimeIncap","calculatedData.avgTimeImpaired","calculatedData.percentIncap","calculatedData.percentImpaired","calculatedData.percentNoShow"},
+            {"calculatedData.avgTimeClimbing","calculatedData.climbSuccessL2","calculatedData.climbSuccessL3","calculatedData.pitSEALsRampRanking"},
+            {"calculatedData.avgTimeIncap","calculatedData.avgTimeImpaired","calculatedData.percentIncap","calculatedData.percentImpaired","calculatedData.percentNoShow",
+                    "calculatedData.percentDysfunctional"},
             {"calculatedData.predictedSoloPoints","calculatedData.sdAvgOrangesScored","calculatedData.sdAvgLemonsScored"},
             {"calculatedData.speedZScore","calculatedData.agilityZScore","calculatedData.driverAbility","calculatedData.avgGoodDecisions","calculatedData.avgBadDecisions"},
             {"pitLength","pitWidth","pitWeight","pitWheelDiameter","pitDrivetrain","pitProgrammingLanguage","pitClimbType","pitHasCamera","pitHasVision",
-                    "pitHasGyro","pitHasEncoders","pitCanBuddyStartLevel2","pitSandstormNavigationType","pitSEALsNotes"}
+                    "pitHasGyro","pitHasEncoders","pitCanBuddyStartLevel2","pitSandstormNavigationType","pitSEALsNotes","pitIsLemonSpecialist"}
     };
 
     static String[] shouldDisplayAsPercentage = {
@@ -81,6 +82,7 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "pitSEALsNotes",
             "totalSuperNotes",
             "pitLength",
+            "pitIsLemonSpecialist",
     };
 
     static String[] shouldDisplayAsLongText = {
@@ -108,6 +110,7 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "pitCanBuddyStartLevel2",
             "pitSandstormNavigationType",
             "pitSEALsNotes",
+            "pitIsLemonSpecialist",
     };
 
     static String[] shouldDisplayAsFurtherInformation = {

@@ -174,7 +174,7 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
             }
         }
         if (new ArrayList<>(Arrays.asList(getPercentageFields())).contains(fieldKey)) {
-            return Utils.dataPointToPercentage((Float)Utils.getObjectField(getObject(), fieldKey), 1);
+            return Utils.integerDataPointToPercentage((Integer)Utils.getObjectField(getObject(), fieldKey), 1);
         }
         return Utils.getDisplayValue(object, fieldKey);
     }
@@ -224,11 +224,15 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
     public void onRowItemClick(AdapterView<?> parent, View view, int section, int row, long id) {
         if(isClickable(section, row)) {
             if (respondsNormallyToClick(section, row)) {
-                Intent intent;
+                Intent intent = null;
                 if (Arrays.asList(getRankInsteadOfGraphFields()).contains(getRowItem(section, row))) {
                     intent = getRankActivityIntent();
                 } else {
                     intent = getGraphActivityIntent();
+                    intent.putExtra("selectedDatapoint",convertToWithoutCD((String) getRowItem(section, row)));
+                    intent.putExtra("teamOne", String.valueOf(((Team)getObject()).teamNumber)); intent.putExtra("teamTwo", String.valueOf(((Team)getObject()).teamNumber));
+                    intent.putExtra("teamThree", "?"); intent.putExtra("teamFour", "?");
+                    intent.putExtra("isTIMD","true");
                 }
                 intent.putExtra("team", ((Team)getObject()).teamNumber)
                         .putExtra("field", (String) getRowItem(section, row))
@@ -238,6 +242,13 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
                 handleNonDefaultClick(section, row);
             }
         }
+    }
+
+    public String convertToWithoutCD(String datapoint) {
+        if (datapoint != null && datapoint.contains("calculatedData.")) {
+            return datapoint.substring(datapoint.lastIndexOf(".") + 1);
+        }
+        return null;
     }
 
     @Override

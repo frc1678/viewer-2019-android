@@ -38,6 +38,7 @@ public class CalculatedTeamInMatchData extends Object {
     public Integer selfClimbLevel;
     public Integer robot1ClimbLevel;
     public Integer robot2ClimbLevel;
+    public Integer orangesScoredL1;
 
     public Float lemonCycleAll;
     public Float lemonCycleL1;

@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 
 import com.example.evan.androidviewertemplates.MainActivity;
 import com.example.evan.androidviewertemplates.R;
+import com.example.evan.androidviewertemplates.team_details.TeamDetailsActivity;
 
 public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
 
