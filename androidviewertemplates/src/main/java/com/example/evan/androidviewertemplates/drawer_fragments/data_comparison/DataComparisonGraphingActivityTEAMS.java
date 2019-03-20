@@ -153,7 +153,7 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
             }
 
             selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
-	        selectedDatapointName = getIntent().getStringExtra("selectedDatapointName");
+	    selectedDatapointName = getIntent().getStringExtra("selectedDatapointName");
         }
 
     }
