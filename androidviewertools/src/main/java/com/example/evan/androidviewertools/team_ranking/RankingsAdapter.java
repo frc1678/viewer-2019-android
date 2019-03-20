@@ -82,7 +82,7 @@ public abstract class RankingsAdapter<T extends Object> extends SearchableFireba
         if (!displayValueAsPercentage()) {
             valueTextView.setText(Utils.roundDataPoint(getRankCellDataPoint(value), 2, "???"));
         } else {
-            valueTextView.setText(Utils.dataPointToPercentage((Float)getRankCellDataPoint(value), 1));
+            valueTextView.setText(Utils.integerDataPointToPercentage((Integer)getRankCellDataPoint(value), 1));
         }
 
         rowView.setOnLongClickListener(new StarLongClickListener());

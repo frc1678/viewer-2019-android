@@ -82,7 +82,17 @@ public class Utils {
 		}
 	}
 
-	public static String dataPointToPercentage(Float dataPoint, int decimalPlaces) {
+	//Use integerDataPointToPercentage when the percent datapoint is an integer (ex: percentIncapacitated = 77 -> 77%). See 2019 Android Viewer Repository on Github for when it is used.
+	public static String integerDataPointToPercentage(Integer dataPoint, int decimalPlaces) {
+		if (dataPoint != null) {
+			return dataPoint + "%";
+		} else {
+			return "???";
+		}
+	}
+
+	//Use floatDataPointToPercentage when the percent datapoint is a float (ex: percentIncapacitated = 0.77 -> 77%). See 2018 Android Viewer Repository on Github for when it is used.
+	public static String floatDataPointToPercentage(Float dataPoint, int decimalPlaces) {
 		if (dataPoint != null) {
 			return roundDataPoint(dataPoint * 100, decimalPlaces, "??") + "%";
 		} else {
