@@ -83,7 +83,6 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
             } else {
                 teamFour = "null";
             }
-
             selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
             selectedDatapointName = getIntent().getStringExtra("selectedDatapointName");
             isTIMD = convertBoolean(getIntent().getStringExtra("isTIMD"));
