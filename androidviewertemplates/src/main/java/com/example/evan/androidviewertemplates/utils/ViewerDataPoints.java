@@ -16,13 +16,13 @@ public class ViewerDataPoints {
     //for data point matchesUntilNextMatchForTeam
     public static Integer getMatchesUntilNextMatchForTeam(TeamTemplate team, Intent args) {
         Integer currentMatch = Utils.getLastMatchPlayed();
-        Integer teamNumber = (Integer) Utils.getObjectField(team,"teamNumber");
+        Integer teamNumber = (Integer) Utils.getObjectField(team, "teamNumber");
         Log.e("teamNumber", teamNumber + " ");
-        for (Integer matchNumber : Utils.getMatchNumbersForTeamNumber((Integer) Utils.getObjectField(team,"teamNumber"))) {
+        for (Integer matchNumber : Utils.getMatchNumbersForTeamNumber((Integer) Utils.getObjectField(team, "teamNumber"))) {
             if (matchNumber > currentMatch) {
                 Integer num = matchNumber - currentMatch;
                 return num;
-            }else if(matchNumber < currentMatch){
+            } else if (matchNumber < currentMatch) {
                 return 0;
             }
         }

@@ -10,8 +10,7 @@ import com.google.firebase.database.ChildEventListener;
 public class Util {
 
 
-
-        public static void setAllSortConstantsFalse(){
+    public static void setAllSortConstantsFalse() {
         Constants.sortByTeamNumber = false;
         Constants.sortByRank = false;
         Constants.sortByFirstPick = false;

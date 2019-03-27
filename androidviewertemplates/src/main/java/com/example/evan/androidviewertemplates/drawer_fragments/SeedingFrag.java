@@ -75,13 +75,15 @@ public class SeedingFrag extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
-                if (Constants.seedingTeams.get(position)!= null) {
+                if (Constants.seedingTeams.get(position) != null) {
                     if (StarManager.starredTeams.contains(Integer.parseInt(Constants.seedingTeams.get(position).toString()))) {
                         StarManager.removeStarredTeam(Integer.parseInt(Constants.seedingTeams.get(position).toString()));
-                        initializeAdapter(); animation(view);
+                        initializeAdapter();
+                        animation(view);
                     } else {
                         StarManager.addStarredTeam(Integer.parseInt(Constants.seedingTeams.get(position).toString()));
-                        initializeAdapter(); animation(view);
+                        initializeAdapter();
+                        animation(view);
 
                     }
                 } else {
@@ -90,25 +92,24 @@ public class SeedingFrag extends Fragment {
                 }
                 return true;
             }
-            });
+        });
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (Constants.seedingTeams.get(position)!=null) {
+                if (Constants.seedingTeams.get(position) != null) {
                     Integer teamNumberClicked = Integer.parseInt(Constants.seedingTeams.get(position).toString());
                     Intent teamDetailsViewIntent = getTeamDetailsActivityIntent();
                     teamDetailsViewIntent.putExtra("teamNumber", teamNumberClicked);
                     teamDetailsViewIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(teamDetailsViewIntent);
-                }
-                else {
+                } else {
                     Toast.makeText(getActivity(), "This team hasn't been seeded!",
                             Toast.LENGTH_LONG).show();
                 }
             }
         });
 
-                return myLayout;
+        return myLayout;
     }
 
     public void sortSeedingList() {
@@ -123,10 +124,10 @@ public class SeedingFrag extends Fragment {
             Team teamTeam = FirebaseLists.teamsList.getFirebaseObjectByKey(team.toString());
             String teamRankString = (Utils.fieldIsNotNull(teamTeam, "calculatedData.actualSeed") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.actualSeed"), 2, "???") : "???");
             if (teamRankString.equals("???")) {
-                teamRankString = String.valueOf(Constants.unseededTeams.size()+1);
+                teamRankString = String.valueOf(Constants.unseededTeams.size() + 1);
 
             }
-            map.put(Integer.parseInt(teamRankString)-1, team);
+            map.put(Integer.parseInt(teamRankString) - 1, team);
 
         }
 
@@ -159,13 +160,16 @@ public class SeedingFrag extends Fragment {
         }
         return null;
     }
+
     public Intent getTeamDetailsActivityIntent() {
         return new Intent(getActivity(), TeamDetailsActivity.class);
     }
+
     public void initializeAdapter() {
         SeedingAdapter adapter = new SeedingAdapter(context, Constants.seedingTeams);
         listview.setAdapter(adapter);
     }
+
     public void animation(View view) {
         Animation animation = new AlphaAnimation(0, 0);
         animation.setDuration(0);

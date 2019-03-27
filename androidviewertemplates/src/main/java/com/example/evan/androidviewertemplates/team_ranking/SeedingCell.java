@@ -57,7 +57,7 @@ public class SeedingCell extends RelativeLayout {
         predictedRankingPointsTV.setTextSize(20);
         currentRankingPointsTV.setTextSize(20);
 
-        if (teamNumber!=null){
+        if (teamNumber != null) {
             Team teamTeam = FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber.toString());
             String predictedSeed = (Utils.fieldIsNotNull(teamTeam, "calculatedData.predictedSeed") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.predictedSeed"), 2, "???") : "???");
             String predictedRankingPoints = (Utils.fieldIsNotNull(teamTeam, "calculatedData.predictedTotalNumRPs") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.predictedTotalNumRPs"), 2, "???") : "???");

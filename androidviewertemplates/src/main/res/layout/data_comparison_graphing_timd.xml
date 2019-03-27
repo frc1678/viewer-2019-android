@@ -8,15 +8,14 @@
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_above="@+id/separator"
-        android:layout_height="match_parent" >
-    </ListView>
+        android:layout_height="match_parent"></ListView>
 
     <View
         android:id="@+id/separator"
         android:background="@color/KateGray"
         android:layout_above="@+id/condensedGraphingButton"
         android:layout_width="match_parent"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp" />
 
     <Button
         android:id="@+id/condensedGraphingButton"

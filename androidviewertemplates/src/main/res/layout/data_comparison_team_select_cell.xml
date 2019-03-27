@@ -26,7 +26,7 @@
             android:textSize="24dp"
             android:textColor="#000000"
             android:text="1678"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/teamName"

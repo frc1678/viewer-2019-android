@@ -109,7 +109,6 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
     }
 
 
-
     public void initiateGraphingIntent() {
         //creates intent to activity "DataComparisonHorizontalGraphingActivityTIMD".
         //starts the horizontal graphing activity
@@ -118,13 +117,14 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
         GraphingActivity.putExtra("teamTwo", teamTwo);
         GraphingActivity.putExtra("teamThree", teamThree);
         GraphingActivity.putExtra("teamFour", teamFour);
-        GraphingActivity.putExtra("selectedDatapoint",selectedDatapoint);
+        GraphingActivity.putExtra("selectedDatapoint", selectedDatapoint);
         //adds a slick animation
         ActivityOptions options =
                 ActivityOptions.makeCustomAnimation(DataComparisonGraphingActivityTIMD.this, R.anim.slide_right_in, R.anim.slide_left_out);
         startActivity(GraphingActivity, options.toBundle());
 
     }
+
     public void initTeamMatches() {
         //creates the list of each team's matches
         teamOneMatches = getMatchNumbersForTeamNumber(Integer.valueOf(teamOne));
@@ -237,7 +237,7 @@ public class DataComparisonGraphingActivityTIMD extends DemoBase {
                 return (float) 0.0;
             } else {
                 //else, if teamMatches' size is less than or equal to match - 1, return 0.0
-                if (teamMatches.size() <= match-1) {
+                if (teamMatches.size() <= match - 1) {
                     return (float) 0.0;
                 } else {
                     //else, return values.get(match-1)
@@ -478,7 +478,7 @@ class ChartDataAdapter extends ArrayAdapter<BarData> {
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                return DataComparisonGraphingActivityTIMD.barChartLabels.get((int)value);
+                return DataComparisonGraphingActivityTIMD.barChartLabels.get((int) value);
             }
         });
 
@@ -516,7 +516,7 @@ class ChartDataAdapter extends ArrayAdapter<BarData> {
         //makes counter be the largest value out of all datapoints (used to set the max size of the bars to set the scale)
         Float counter = (float) 0.0;
         for (int i = 0; i < DataComparisonGraphingActivityTIMD.mAllDatapointValues.size(); i++) {
-            if (DataComparisonGraphingActivityTIMD.mAllDatapointValues.get(i)>counter) {
+            if (DataComparisonGraphingActivityTIMD.mAllDatapointValues.get(i) > counter) {
                 counter = DataComparisonGraphingActivityTIMD.mAllDatapointValues.get(i);
             }
         }
@@ -544,7 +544,7 @@ class ChartDataAdapter extends ArrayAdapter<BarData> {
 
         //adds the match number to the position + 1
         //(1,2,3) instead of (0,1,2)
-        holder.matchNumber.setText(String.valueOf(position+1));
+        holder.matchNumber.setText(String.valueOf(position + 1));
 
         return convertView;
     }

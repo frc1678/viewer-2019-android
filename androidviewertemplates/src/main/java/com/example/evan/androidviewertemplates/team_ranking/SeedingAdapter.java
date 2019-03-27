@@ -22,7 +22,7 @@ public class SeedingAdapter extends BaseAdapter {
     Context context;
     ArrayList<Integer> seedingTeamsList;
 
-    public SeedingAdapter(Context context,ArrayList<Integer> seedingTeamList) {
+    public SeedingAdapter(Context context, ArrayList<Integer> seedingTeamList) {
 
         super();
         this.context = context;

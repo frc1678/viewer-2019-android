@@ -9,7 +9,7 @@ import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CalculatedTeamInMatchData extends Object {
-//make sure all data points are public
+    //make sure all data points are public
     public Integer lemonLoadSuccess;
     public Integer lemonsScored;
     public Integer lemonSuccessAll;

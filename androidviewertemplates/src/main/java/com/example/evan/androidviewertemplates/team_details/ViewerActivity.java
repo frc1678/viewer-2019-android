@@ -22,7 +22,9 @@ public abstract class ViewerActivity extends ActionBarActivity {
             onCreate();
         }
     }
+
     public abstract void onCreate();
+
     @Override
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {

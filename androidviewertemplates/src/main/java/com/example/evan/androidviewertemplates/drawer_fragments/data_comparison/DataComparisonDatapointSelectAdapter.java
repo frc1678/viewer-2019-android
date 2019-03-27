@@ -39,6 +39,7 @@ public class DataComparisonDatapointSelectAdapter extends BaseAdapter {
         this.datapointDescriptionList = datapointDescriptionList;
 
     }
+
     @Override
     public int getCount() {
         return datapointList.size(); //returns total of items in the list

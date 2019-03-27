@@ -28,13 +28,14 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 public class DataComparisonTeamSelectAdapter extends BaseAdapter {
 
-        private Context mContext;
-        private ArrayList<String> mTeamsList;
+    private Context mContext;
+    private ArrayList<String> mTeamsList;
 
-        public DataComparisonTeamSelectAdapter(Context context, ArrayList<String> teamsList) {
-            mContext = context;
-            mTeamsList = teamsList;
-        }
+    public DataComparisonTeamSelectAdapter(Context context, ArrayList<String> teamsList) {
+        mContext = context;
+        mTeamsList = teamsList;
+    }
+
     @Override
     public int getCount() {
         return mTeamsList.size();
@@ -114,4 +115,4 @@ public class DataComparisonTeamSelectAdapter extends BaseAdapter {
         return finalString;
     }
 
-    }
+}

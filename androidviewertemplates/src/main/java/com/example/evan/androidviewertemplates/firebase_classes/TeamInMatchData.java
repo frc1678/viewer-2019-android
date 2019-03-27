@@ -15,7 +15,7 @@ import java.util.Map;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TeamInMatchData extends com.example.evan.androidviewertools.firebase_classes.TeamInMatchData {
-public CalculatedTeamInMatchData calculatedData;
+    public CalculatedTeamInMatchData calculatedData;
     //Make sure that all variables are public
 //    public List<Map<Object,Object>> timeline;
 

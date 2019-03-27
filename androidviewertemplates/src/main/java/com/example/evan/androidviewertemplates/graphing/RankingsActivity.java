@@ -24,20 +24,20 @@ public class RankingsActivity extends AppCompatActivity {
     public Integer teamNumber;
     public static Activity context;
 
-	@Override
-	protected void onCreate(@Nullable Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		context = this;
-		teamNumber = getIntent().getIntExtra("team", 0);
-		Intent intent = new Intent(context, DataComparisonTIMDTabbedActivity.class);
-		intent.putExtra("selectedDatapoint",convertToWithoutCD(getIntent().getStringExtra("field")));
-		intent.putExtra("teamOne", String.valueOf(teamNumber));
-		intent.putExtra("teamTwo", String.valueOf(teamNumber));
-		intent.putExtra("teamThree", "?");
-		intent.putExtra("teamFour", "?");
-		intent.putExtra("isTIMD","true");
-		startActivity(intent);
-	}
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        context = this;
+        teamNumber = getIntent().getIntExtra("team", 0);
+        Intent intent = new Intent(context, DataComparisonTIMDTabbedActivity.class);
+        intent.putExtra("selectedDatapoint", convertToWithoutCD(getIntent().getStringExtra("field")));
+        intent.putExtra("teamOne", String.valueOf(teamNumber));
+        intent.putExtra("teamTwo", String.valueOf(teamNumber));
+        intent.putExtra("teamThree", "?");
+        intent.putExtra("teamFour", "?");
+        intent.putExtra("isTIMD", "true");
+        startActivity(intent);
+    }
 
     public String convertToWithoutCD(String datapoint) {
         if (datapoint != null && datapoint.contains("calculatedData.")) {
