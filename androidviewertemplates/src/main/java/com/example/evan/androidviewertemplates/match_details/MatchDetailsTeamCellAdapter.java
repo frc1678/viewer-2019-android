@@ -82,7 +82,7 @@ public class MatchDetailsTeamCellAdapter extends BaseAdapter {
         if (Arrays.asList(fieldsToDisplayAsPercentages).contains(getItem(position))) {
             valueTextView.setText(Utils.integerDataPointToPercentage((Integer) Utils.getObjectField(team, (String) getItem(position)), 0));
         } else {
-            valueTextView.setText(Utils.getDisplayValue(team, (String) getItem(position)));
+            valueTextView.setText(Utils.getDisplayValueForField(team, (String) getItem(position)));
         }
 
         rowView.setOnClickListener(new View.OnClickListener() {

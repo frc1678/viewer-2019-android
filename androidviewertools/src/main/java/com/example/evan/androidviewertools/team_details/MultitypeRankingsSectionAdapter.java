@@ -76,8 +76,9 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
                     Object object = getObject();
                     Intent intent = new Intent();
                     Pair<Integer, Integer> location = new Pair<>(section_i, row_i);
-                    String value = String.valueOf(Utils.getViewerObjectField(object, fieldName.replaceAll("VIEWER.", ""), intent, getViewerDataPointsClass()));
-                    this.valuesCache.put(location, value);
+                    Object value = Utils.getViewerObjectField(object, fieldName.replaceAll("VIEWER.", ""), intent, getViewerDataPointsClass());
+                    String strRep = Utils.getDisplayValue(value);
+                    this.valuesCache.put(location, strRep);
                 }
             }
         }
@@ -173,10 +174,11 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
                 return value;
             }
         }
-        if (new ArrayList<>(Arrays.asList(getPercentageFields())).contains(fieldKey)) {
+
+        if (Arrays.asList(getPercentageFields()).contains(fieldKey)) {
             return Utils.integerDataPointToPercentage((Integer)Utils.getObjectField(getObject(), fieldKey), 1);
         }
-        return Utils.getDisplayValue(object, fieldKey);
+        return Utils.getDisplayValueForField(object, fieldKey);
     }
 
     @Override

@@ -10,22 +10,24 @@ import com.example.evan.androidviewertools.utils.Utils;
 import org.jcodec.common.DictionaryCompressor;
 
 public class ViewerDataPoints {
-    //todo
-    //add methods here for data points local to viewer
-    //if u can understand it, follow this example:
-    //for data point matchesUntilNextMatchForTeam
-    public static Integer getMatchesUntilNextMatchForTeam(TeamTemplate team, Intent args) {
+    // Performs calculations that are done on the viewer device
+
+    private static Integer getRawMatchesUntilNextMatchForTeam(TeamTemplate team, Intent args) {
         Integer currentMatch = Utils.getLastMatchPlayed();
-        Integer teamNumber = (Integer) Utils.getObjectField(team, "teamNumber");
-        Log.e("teamNumber", teamNumber + " ");
-        for (Integer matchNumber : Utils.getMatchNumbersForTeamNumber((Integer) Utils.getObjectField(team, "teamNumber"))) {
+        for (Integer matchNumber : Utils.getMatchNumbersForTeamNumber(team.teamNumber)) {
             if (matchNumber > currentMatch) {
                 Integer num = matchNumber - currentMatch;
                 return num;
-            } else if (matchNumber < currentMatch) {
-                return 0;
             }
         }
         return null;
+    }
+
+    public static String getMatchesUntilNextMatchForTeam(TeamTemplate team, Intent args) {
+        Integer rawValue = getRawMatchesUntilNextMatchForTeam(team, args);
+        if (rawValue == null) {
+            return "none";
+        }
+        return rawValue.toString();
     }
 }
