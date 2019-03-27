@@ -31,7 +31,8 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.data_comparison_tabbed_activity);
-        initXml(); getExtras();
+        initXml();
+        getExtras();
         //Sets title to hardcoded "Comparison Graphing"
         setTitle("Comparison Graphing");
 
@@ -91,8 +92,7 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
     }
 
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK)
-        {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);

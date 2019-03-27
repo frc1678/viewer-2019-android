@@ -23,9 +23,9 @@ public class FirstPicklistAdapter extends BaseAdapter {
 
     public FirstPicklistAdapter(Context context, Map<Integer, String> teams) {
 
-            super();
-            this.context = context;
-            this.teams = teams;
+        super();
+        this.context = context;
+        this.teams = teams;
 
 
     }
@@ -54,7 +54,7 @@ public class FirstPicklistAdapter extends BaseAdapter {
         PicklistCell cell = new PicklistCell(context, teamNumber, teamPicklistPosition);
         convertView = cell;
         for (int i = 0; i < Constants.alreadySelectedOnPicklist.size(); i++) {
-            if (Constants.alreadySelectedOnPicklist.get(i).toString().equals(teamNumber)){
+            if (Constants.alreadySelectedOnPicklist.get(i).toString().equals(teamNumber)) {
                 convertView.setBackgroundColor(Color.parseColor("#FFA4A4"));
             }
         }

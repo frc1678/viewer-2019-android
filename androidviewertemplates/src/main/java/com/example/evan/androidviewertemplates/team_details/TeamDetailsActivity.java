@@ -77,10 +77,10 @@ public class TeamDetailsActivity extends TeamActivity {
             }
             DisplayMetrics metrics = new DisplayMetrics();
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
-            Float scale =  (float) metrics.widthPixels / (float)tmpBitmap.getWidth();
+            Float scale = (float) metrics.widthPixels / (float) tmpBitmap.getWidth();
             Matrix matrix = new Matrix();
             matrix.postScale(scale, scale);
-            bitmap = Bitmap.createBitmap(tmpBitmap, 0, 0,tmpBitmap.getWidth(), tmpBitmap.getHeight(), matrix, true);
+            bitmap = Bitmap.createBitmap(tmpBitmap, 0, 0, tmpBitmap.getWidth(), tmpBitmap.getHeight(), matrix, true);
 
             ImageView imageView = new ImageView(getApplicationContext());
             LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);

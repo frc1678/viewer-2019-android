@@ -326,6 +326,7 @@ public class DataComparisonFragment extends Fragment {
         startActivity(GraphingActivity, options.toBundle());
 
     }
+
     //IF TEAMS WAS SELECTED
     //creates intent to activity DataComparisonDatapointSelectActivityTEAMS
     public void initiateTEAMSIntent() {
@@ -376,6 +377,7 @@ public class DataComparisonFragment extends Fragment {
             }
         });
     }
+
     public void updateTypeComparison(Button TIMDComparison) {
         Integer leftSideColor = ((ColorDrawable) TIMDComparison.getBackground()).getColor();
         if (String.valueOf(leftSideColor).equals(String.valueOf(selectedColor))) {
@@ -391,6 +393,7 @@ public class DataComparisonFragment extends Fragment {
             Log.e("this is when we cry", "");
         }
     }
+
     public void updateIntent() {
         //if TIMD, starts TIMD intent
         if (typeComparison.equals("TIMD")) {

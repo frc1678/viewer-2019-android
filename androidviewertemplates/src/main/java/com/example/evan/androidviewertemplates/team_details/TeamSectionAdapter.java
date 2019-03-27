@@ -39,15 +39,15 @@ public abstract class TeamSectionAdapter extends MultitypeRankingsSectionAdapter
     protected Context context;
 
     public TeamSectionAdapter(Context context, Integer teamNumber,
-                       String[] rankInsteadOfGraph,
-                       String[] createListOnClick,
-                       String[] notClickableFields,
-                       String[] shouldDisplayAsLongText,
-                       String[] shouldDisplayAsFurtherInformation,
-                       String[] displayAsUnranked,
-                       String[] shouldDisplayAsPercentage,
-                       String[] sectionTitles,
-                       String[][] fieldsToDisplay) {
+                              String[] rankInsteadOfGraph,
+                              String[] createListOnClick,
+                              String[] notClickableFields,
+                              String[] shouldDisplayAsLongText,
+                              String[] shouldDisplayAsFurtherInformation,
+                              String[] displayAsUnranked,
+                              String[] shouldDisplayAsPercentage,
+                              String[] sectionTitles,
+                              String[][] fieldsToDisplay) {
         super(context);
         this.teamNumber = teamNumber;
         this.context = context;

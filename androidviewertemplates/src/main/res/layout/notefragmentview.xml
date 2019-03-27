@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent">
 
 
     <TextView
@@ -178,6 +178,7 @@
         android:paddingLeft="10dp"
         android:text=""
         android:textSize="18sp" />
+
     <TextView
         android:id="@+id/secondTeamTV"
         android:layout_width="match_parent"
@@ -188,6 +189,7 @@
         android:paddingLeft="10dp"
         android:text=""
         android:textSize="18sp" />
+
     <TextView
         android:id="@+id/thirdTeamTV"
         android:layout_width="match_parent"
@@ -198,6 +200,7 @@
         android:paddingLeft="10dp"
         android:text=""
         android:textSize="18sp" />
+
     <TextView
         android:id="@+id/fourthTeamTV"
         android:layout_width="match_parent"
@@ -208,6 +211,7 @@
         android:paddingLeft="10dp"
         android:text=""
         android:textSize="18sp" />
+
     <TextView
         android:id="@+id/fifthTeamTV"
         android:layout_width="match_parent"
@@ -218,6 +222,7 @@
         android:paddingLeft="10dp"
         android:text=""
         android:textSize="18sp" />
+
     <TextView
         android:id="@+id/sixthTeamTV"
         android:layout_width="match_parent"
@@ -228,6 +233,7 @@
         android:paddingLeft="10dp"
         android:text=""
         android:textSize="18sp" />
+
     <TextView
         android:id="@+id/seventhTeamTV"
         android:layout_width="match_parent"
@@ -238,6 +244,7 @@
         android:paddingLeft="10dp"
         android:text=""
         android:textSize="18sp" />
+
     <TextView
         android:id="@+id/eighthTeamTV"
         android:layout_width="match_parent"
@@ -248,8 +255,6 @@
         android:paddingLeft="10dp"
         android:text=""
         android:textSize="18sp" />
-
-
 
 
 </RelativeLayout>

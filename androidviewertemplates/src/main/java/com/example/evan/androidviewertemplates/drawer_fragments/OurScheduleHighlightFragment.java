@@ -51,8 +51,8 @@ public class OurScheduleHighlightFragment extends MatchesFragment {
         public boolean secondaryFilter(Match value) {
             List<Object> redTeams = Arrays.asList(Utils.getObjectField(value, "redTeams"));
             List<Object> blueTeams = Arrays.asList(Utils.getObjectField(value, "blueTeams"));
-            List<Integer> redAllianceTeams = (List<Integer>)(Object)redTeams.get(0);
-            List<Integer> blueAllianceTeams = (List<Integer>)(Object)blueTeams.get(0);
+            List<Integer> redAllianceTeams = (List<Integer>) (Object) redTeams.get(0);
+            List<Integer> blueAllianceTeams = (List<Integer>) (Object) blueTeams.get(0);
             return (redAllianceTeams.contains(teamNumber) || blueAllianceTeams.contains(teamNumber));
         }
 
@@ -69,6 +69,7 @@ public class OurScheduleHighlightFragment extends MatchesFragment {
     }
 
     private Activity context = getActivity();
+
     @Override
     public Intent getMatchDetailsActivityIntent() {
         return new Intent(context, MatchDetailsActivity.class);
