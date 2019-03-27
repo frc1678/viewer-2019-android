@@ -40,7 +40,6 @@ public class SpecificConstants extends Constants {
 //              TIMDs
                     put("startingLevel","Starting level");
                     put("crossedHabLine","Crossed HAB line");
-                    
                     put("startingLocation","Starting location");
                     put("preload","Preloaded game piece");
                     put("driverStation","Driver station ");

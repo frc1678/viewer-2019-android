@@ -126,10 +126,8 @@ public class Utils {
 	public static Integer getLastMatchPlayed() {
 		Integer lastMatch = 0;
 		for (Match match : FirebaseLists.matchesList.getValues()) {
-			Integer redScore = (Integer)(Utils.getObjectField(match,"redScore"));
-			Integer blueScore = (Integer)(Utils.getObjectField(match,"blueScore"));
-			if(redScore != null || blueScore != null) {
-				lastMatch = ((Integer)(Utils.getObjectField(match,"matchNumber")));
+			if(match.redActualScore != null || match.blueActualScore != null) {
+				lastMatch = match.matchNumber;
 			}
 		}
 
