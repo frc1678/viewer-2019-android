@@ -137,7 +137,7 @@ public class TeamActivity extends com.example.evan.androidviewertools.ViewerActi
         teamDetailsTeamNumberTextView.setOnLongClickListener(new StarLongClickListener());
 
         TextView teamDetailsTeamNameTextView = (TextView) teamDetailsHeaderView.findViewById(R.id.teamDetailsTeamNameTextView);
-        teamDetailsTeamNameTextView.setText(Utils.getDisplayValue(team, "name"));
+        teamDetailsTeamNameTextView.setText(Utils.getDisplayValueForField(team, "name"));
 
         TextView teamDetailsSeedingTextView = (TextView) teamDetailsHeaderListView.findViewById(R.id.teamDetailsSeeding);
         teamDetailsSeedingTextView.setText((Utils.fieldIsNotNull(team, "calculatedData.actualSeed")) ? Utils.roundDataPoint(Utils.getObjectField(team, "calculatedData.actualSeed"), 2, "???") : "???");

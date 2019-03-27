@@ -104,8 +104,12 @@ public class Utils {
 		return roundDataPoint(getObjectField(match, key), 2, "???");
 	}
 
-	public static String getDisplayValue(Object object, String key) {
-		return roundDataPoint(getObjectField(object, key), 2, "???");
+	public static String getDisplayValueForField(Object object, String key) {
+		return getDisplayValue(getObjectField(object, key));
+	}
+
+	public static String getDisplayValue(Object value) {
+		return roundDataPoint(value, 2, "???");
 	}
 
 	public static String roundDataPoint(Object dataPoint, int decimalPlaces, String unkownValue) {
