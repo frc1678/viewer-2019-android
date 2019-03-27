@@ -64,10 +64,10 @@ public class LastFourMatchesSectionAdapter extends TeamSectionAdapter {
 
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
-            {"calculatedData.lfmHabLineSuccessL1","calculatedData.lfmHabLineSuccessL2",},
-            {"calculatedData.lfmAvgOrangesScored","calculatedData.lfmAvgLemonsScored","calculatedData.lfmAvgOrangeFouls","calculatedData.lfmLemonLoadSuccess","calculatedData.lfmOrangeCycleAll","calculatedData.lfmLemonCycleAll","calculatedData.lfmOrangeSuccessDefended","calculatedData.lfmOrangeSuccessL2","calculatedData.lfmOrangeSuccessL3","calculatedData.lfmLemonSuccessDefended","calculatedData.lfmLemonSuccessL2", "calculatedData.lfmLemonSuccessL3"},
+            {"calculatedData.lfmHabLineSuccessL1", "calculatedData.lfmHabLineSuccessL2",},
+            {"calculatedData.lfmAvgOrangesScored", "calculatedData.lfmAvgLemonsScored", "calculatedData.lfmAvgOrangeFouls", "calculatedData.lfmLemonLoadSuccess", "calculatedData.lfmOrangeCycleAll", "calculatedData.lfmLemonCycleAll", "calculatedData.lfmOrangeSuccessDefended", "calculatedData.lfmOrangeSuccessL2", "calculatedData.lfmOrangeSuccessL3", "calculatedData.lfmLemonSuccessDefended", "calculatedData.lfmLemonSuccessL2", "calculatedData.lfmLemonSuccessL3"},
             {"calculatedData.lfmAvgTimeClimbing"},
-            {"calculatedData.lfmPercentIncap","calculatedData.lfmAvgTimeIncap","calculatedData.lfmPercentImpaired","calculatedData.lfmAvgTimeImpaired","calculatedData.lfmPercentNoShow","calculatedData.lfmAvgGoodDecisions","calculatedData.lfmAvgBadDecisions",}
+            {"calculatedData.lfmPercentIncap", "calculatedData.lfmAvgTimeIncap", "calculatedData.lfmPercentImpaired", "calculatedData.lfmAvgTimeImpaired", "calculatedData.lfmPercentNoShow", "calculatedData.lfmAvgGoodDecisions", "calculatedData.lfmAvgBadDecisions",}
     };
 
 
@@ -80,6 +80,7 @@ public class LastFourMatchesSectionAdapter extends TeamSectionAdapter {
             context.startActivity(fullcompIntent);
         }
     }
+
     @Override
     public String getUpdatedAction() {
         return Constants.TEAMS_UPDATED_ACTION;

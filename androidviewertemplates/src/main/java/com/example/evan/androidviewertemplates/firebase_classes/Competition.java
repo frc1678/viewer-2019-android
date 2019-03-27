@@ -20,5 +20,4 @@ public class Competition extends Object {
     public Integer currentMatchNum;
 
 
-
 }

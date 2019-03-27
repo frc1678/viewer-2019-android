@@ -162,7 +162,7 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
 
     public void initListView(String type) {
         //clears the type of selection
-        typeSelection="";
+        typeSelection = "";
         //makes on selected mode false and updates the button color
         onSelectedMode = false;
         updateButtonColor();
@@ -173,35 +173,35 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
             DataComparisonDatapointSelectAdapterTEAMS dataComparisonAdapter = new DataComparisonDatapointSelectAdapterTEAMS(getApplicationContext(), datapointsList_NORMAL, descriptionList_NORMAL);
             datapointListView.setAdapter(dataComparisonAdapter);
             dataComparisonAdapter.notifyDataSetChanged();
-            typeSelection="Normal";
+            typeSelection = "Normal";
         }
         //if in type lfm (you choose "last four matches"), change the list the adapter is using to the according type
         else if (type.equals("Last Four Matches")) {
             DataComparisonDatapointSelectAdapterTEAMS dataComparisonAdapter = new DataComparisonDatapointSelectAdapterTEAMS(getApplicationContext(), datapointsList_LFM, descriptionList_LFM);
             datapointListView.setAdapter(dataComparisonAdapter);
             dataComparisonAdapter.notifyDataSetChanged();
-            typeSelection="Last Four Matches";
+            typeSelection = "Last Four Matches";
         }
         //if in type sd (you choose "standard deviation"), change the list the adapter is using to the according type
         else if (type.equals("Standard Deviation")) {
             DataComparisonDatapointSelectAdapterTEAMS dataComparisonAdapter = new DataComparisonDatapointSelectAdapterTEAMS(getApplicationContext(), datapointsList_SD, descriptionList_SD);
             datapointListView.setAdapter(dataComparisonAdapter);
             dataComparisonAdapter.notifyDataSetChanged();
-            typeSelection="Standard Deviation";
+            typeSelection = "Standard Deviation";
         }
         //if in type 75th percentile (you choose "75th percentile"), change the list the adapter is using to the according type
         else if (type.equals("75th Percentile")) {
             DataComparisonDatapointSelectAdapterTEAMS dataComparisonAdapter = new DataComparisonDatapointSelectAdapterTEAMS(getApplicationContext(), datapointsList_P75, descriptionList_P75);
             datapointListView.setAdapter(dataComparisonAdapter);
             dataComparisonAdapter.notifyDataSetChanged();
-            typeSelection="75th Percentile";
+            typeSelection = "75th Percentile";
         }
         //defaults to type "normal"
         else {
             DataComparisonDatapointSelectAdapterTEAMS dataComparisonAdapter = new DataComparisonDatapointSelectAdapterTEAMS(getApplicationContext(), datapointsList_NORMAL, descriptionList_NORMAL);
             datapointListView.setAdapter(dataComparisonAdapter);
             dataComparisonAdapter.notifyDataSetChanged();
-            typeSelection="Normal";
+            typeSelection = "Normal";
         }
         datapointListView.onRestoreInstanceState(state);
     }
@@ -254,7 +254,7 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
             }
         });
 
-}
+    }
 
     public void datapointChosenListener() {
         //figures out what type the list view is in and then finds the datapoint that was selected according to the type
@@ -305,6 +305,7 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
             }
         });
     }
+
     public void initiateGraphingIntent() {
         //creates intent to DataComparisonGraphingActivityTEAMS
         Intent GraphingActivity = new Intent(DataComparisonDatapointSelectActivityTEAMS.this, DataComparisonGraphingActivityTEAMS.class);
@@ -312,8 +313,8 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
         GraphingActivity.putExtra("teamTwo", teamTwo);
         GraphingActivity.putExtra("teamThree", teamThree);
         GraphingActivity.putExtra("teamFour", teamFour);
-        GraphingActivity.putExtra("selectedDatapoint",selectedDatapoint);
-        GraphingActivity.putExtra("selectedDatapointName",selectedDatapointName);
+        GraphingActivity.putExtra("selectedDatapoint", selectedDatapoint);
+        GraphingActivity.putExtra("selectedDatapointName", selectedDatapointName);
         //adds slick animation lol
         ActivityOptions options =
                 ActivityOptions.makeCustomAnimation(DataComparisonDatapointSelectActivityTEAMS.this, R.anim.slide_right_in, R.anim.slide_left_out);
@@ -322,74 +323,74 @@ public class DataComparisonDatapointSelectActivityTEAMS extends AppCompatActivit
     }
 
     //in file secondary adapter class
- class DataComparisonDatapointSelectAdapterTEAMS extends BaseAdapter {
+    class DataComparisonDatapointSelectAdapterTEAMS extends BaseAdapter {
 
-     private Context mContext;
-     private ArrayList<String> datapointList;
-     private ArrayList<String> datapointDescriptionList;
+        private Context mContext;
+        private ArrayList<String> datapointList;
+        private ArrayList<String> datapointDescriptionList;
 
-     //asks for context, datapointList and descriptionList,
-     public DataComparisonDatapointSelectAdapterTEAMS(Context context, ArrayList<String> datapointList, ArrayList<String> datapointDescriptionList) {
-         mContext = context;
-         this.datapointList = datapointList;
-         this.datapointDescriptionList = datapointDescriptionList;
+        //asks for context, datapointList and descriptionList,
+        public DataComparisonDatapointSelectAdapterTEAMS(Context context, ArrayList<String> datapointList, ArrayList<String> datapointDescriptionList) {
+            mContext = context;
+            this.datapointList = datapointList;
+            this.datapointDescriptionList = datapointDescriptionList;
 
-     }
+        }
 
-     @Override
-     public int getCount() {
-         return datapointList.size(); //returns total of items in the list
-     }
+        @Override
+        public int getCount() {
+            return datapointList.size(); //returns total of items in the list
+        }
 
-     @Override
-     public Object getItem(int position) {
-         //gets the datapoint of click according to position and datapointList
-         return datapointList.get(position);
-         //returns list item at the specified position
-     }
+        @Override
+        public Object getItem(int position) {
+            //gets the datapoint of click according to position and datapointList
+            return datapointList.get(position);
+            //returns list item at the specified position
+        }
 
-     @Override
-     public long getItemId(int position) {
-         return position;
-     }
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
 
-     @Override
-     public View getView(int position, View convertView, ViewGroup parent) {
-         if (convertView == null) {
-             convertView = LayoutInflater.from(mContext).
-                     inflate(R.layout.data_comparison_team_select_cell, parent, false);
-         }
-         //makes datapoint the selected datapoint
-         String datapoint = (String) getItem(position);
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = LayoutInflater.from(mContext).
+                        inflate(R.layout.data_comparison_team_select_cell, parent, false);
+            }
+            //makes datapoint the selected datapoint
+            String datapoint = (String) getItem(position);
 
-         //initializing the xml elements
-         TextView datapointDescription = (TextView)
-                 convertView.findViewById(R.id.teamNumberTextView);
-         TextView datapointName = (TextView)
-                 convertView.findViewById(R.id.teamName);
-         TextView teamPosition = (TextView)
-                 convertView.findViewById(R.id.rankPosition);
+            //initializing the xml elements
+            TextView datapointDescription = (TextView)
+                    convertView.findViewById(R.id.teamNumberTextView);
+            TextView datapointName = (TextView)
+                    convertView.findViewById(R.id.teamName);
+            TextView teamPosition = (TextView)
+                    convertView.findViewById(R.id.rankPosition);
 
-         //makes size of datapointname be larger than description
-         datapointDescription.setTextSize(20);
-         datapointName.setTextSize(14);
-         //sets the text of the name and description
-         datapointName.setText(datapoint);
-         datapointDescription.setText(datapointDescriptionList.get(position));
-         //sets the cell position to 1 + position (1,2,3 instead of 0,1,2)
-         teamPosition.setText(String.valueOf(position + 1));
+            //makes size of datapointname be larger than description
+            datapointDescription.setTextSize(20);
+            datapointName.setTextSize(14);
+            //sets the text of the name and description
+            datapointName.setText(datapoint);
+            datapointDescription.setText(datapointDescriptionList.get(position));
+            //sets the cell position to 1 + position (1,2,3 instead of 0,1,2)
+            teamPosition.setText(String.valueOf(position + 1));
 
-         //changes color of selected cell
-         if (datapoint.equals(DataComparisonDatapointSelectActivityTEAMS.selectedDatapoint)) {
-             convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.MediumSpringGreen));
-         } else {
-             convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.White));
-         }
+            //changes color of selected cell
+            if (datapoint.equals(DataComparisonDatapointSelectActivityTEAMS.selectedDatapoint)) {
+                convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.MediumSpringGreen));
+            } else {
+                convertView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.White));
+            }
 
-         return convertView;
-     }
+            return convertView;
+        }
 
- }
+    }
 
 }
 

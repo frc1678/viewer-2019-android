@@ -29,6 +29,7 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
     private Integer teamNumber;
 
     private Integer matchNumber;
+
     //todo
     public TeamInMatchDetailsSectionAdapter(Context context, Integer teamNumber, Integer matchNumber) {
         super(context, teamNumber,
@@ -58,15 +59,15 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
 
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
-            {"teamNumber", "matchNumber","blueFoulPoints","redFoulPoints"},
-            {"startingLevel","crossedHabLine","startingLocation","preload"},
-            {"calculatedData.orangesScored","calculatedData.lemonsScored","calculatedData.orangeFouls","calculatedData.lemonLoadSuccess",
-                    "calculatedData.orangeSuccessDefended","calculatedData.orangeSuccessL2","calculatedData.orangeSuccessL3",
-                    "calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL3","calculatedData.lemonsSpilled",
-                    "calculatedData.lvl_1_lemons_teleop","calculatedData.lvl_2_lemons_teleop","calculatedData.lvl_3_lemons_teleop",
-                    "calculatedData.lvl_1_oranges_teleop","calculatedData.lvl_2_oranges_teleop","calculatedData.lvl_3_oranges_teleop",},
-            {"calculatedData.selfClimbLevel","calculatedData.robot1ClimbLevel","calculatedData.robot2ClimbLevel"},
-            {"calculatedData.timeIncap","calculatedData.timeImpaired","calculatedData.timeClimbing"},
+            {"teamNumber", "matchNumber", "blueFoulPoints", "redFoulPoints"},
+            {"startingLevel", "crossedHabLine", "startingLocation", "preload"},
+            {"calculatedData.orangesScored", "calculatedData.lemonsScored", "calculatedData.orangeFouls", "calculatedData.lemonLoadSuccess",
+                    "calculatedData.orangeSuccessDefended", "calculatedData.orangeSuccessL2", "calculatedData.orangeSuccessL3",
+                    "calculatedData.lemonSuccessDefended", "calculatedData.lemonSuccessL2", "calculatedData.lemonSuccessL3", "calculatedData.lemonsSpilled",
+                    "calculatedData.lvl_1_lemons_teleop", "calculatedData.lvl_2_lemons_teleop", "calculatedData.lvl_3_lemons_teleop",
+                    "calculatedData.lvl_1_oranges_teleop", "calculatedData.lvl_2_oranges_teleop", "calculatedData.lvl_3_oranges_teleop",},
+            {"calculatedData.selfClimbLevel", "calculatedData.robot1ClimbLevel", "calculatedData.robot2ClimbLevel"},
+            {"calculatedData.timeIncap", "calculatedData.timeImpaired", "calculatedData.timeClimbing"},
             {"superNotes"},
     };
 
@@ -97,9 +98,12 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
 
     @Override
     public void handleNonDefaultClick(int section, int row) {
-        String key = (String) getRowItem(section, row); }
+        String key = (String) getRowItem(section, row);
+    }
+
     @Override
-    public void onRowItemClick(AdapterView<?> parent, View view, int section, int row, long id) {}
+    public void onRowItemClick(AdapterView<?> parent, View view, int section, int row, long id) {
+    }
 
     @Override
     public String getUpdatedAction() {

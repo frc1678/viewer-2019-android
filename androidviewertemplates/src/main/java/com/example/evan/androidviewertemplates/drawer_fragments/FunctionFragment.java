@@ -105,7 +105,7 @@ public class FunctionFragment extends Fragment {
         clearStarredMatches.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            StarManager.importantMatches.clear();
+                StarManager.importantMatches.clear();
                 Toast.makeText(getActivity(), "Starred Matches have been cleared.",
                         Toast.LENGTH_LONG).show();
             }
@@ -122,14 +122,14 @@ public class FunctionFragment extends Fragment {
         return myLayout;
     }
 
-    public  void saveToSharedTeamsFromPicklist() {
+    public void saveToSharedTeamsFromPicklist() {
         ViewerActivity.myEditor.putInt("teamsFromPicklist", Constants.teamsFromPicklist);
         ViewerActivity.myEditor.apply();
     }
 
-        public static Integer getFromSharedTeamsFromPicklist() {
-            Constants.teamsFromPicklist = ViewerActivity.myPref.getInt("teamsFromPicklist",0);
-            return Constants.teamsFromPicklist;
-        }
+    public static Integer getFromSharedTeamsFromPicklist() {
+        Constants.teamsFromPicklist = ViewerActivity.myPref.getInt("teamsFromPicklist", 0);
+        return Constants.teamsFromPicklist;
+    }
 }
 

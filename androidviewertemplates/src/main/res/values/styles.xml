@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/DarkBlue</item>
         <item name="colorAccent">@color/lightblue</item>
     </style>
+
     <style name="SelectionTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/Blue</item>

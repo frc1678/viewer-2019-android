@@ -8,44 +8,49 @@
         android:id="@+id/teamOneChart"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/KateGray"/>
+        android:background="@color/KateGray" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/teamTwoChart"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/KateGray"/>
+        android:background="@color/KateGray" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/teamThreeChart"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/KateGray"/>
+        android:background="@color/KateGray" />
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/teamFourChart"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/KateGray"/>
+        android:background="@color/KateGray" />
+
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/emptyTeamChart"
         android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp" />
 
 </LinearLayout>

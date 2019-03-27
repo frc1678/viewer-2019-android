@@ -27,6 +27,7 @@ public class RedFlags {
             "moreThanZero",
             "moreThanZero",
     };
+
     static {
         Map<String, String> redFlagDatapoints = new HashMap<String, String>() {
             {

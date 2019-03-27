@@ -53,8 +53,8 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //hardcoded name
         setTitle("TIMD Datapoint Selection");
-        selectedDatapoint="";
-        selectedDatapointName="";
+        selectedDatapoint = "";
+        selectedDatapointName = "";
         getDatapoints();
         getExtras();
         initXml();
@@ -68,11 +68,12 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
             datapointsList.add(datapoint);
         }
         //gets descriptions for the TIMD datapoint list
-            for (String datapoint : SpecificConstants.DATA_COMPARISON_TIMD.keySet()) {
-                String value = SpecificConstants.DATA_COMPARISON_TIMD.get(datapoint);
-                descriptionList.add(value);
-            }
+        for (String datapoint : SpecificConstants.DATA_COMPARISON_TIMD.keySet()) {
+            String value = SpecificConstants.DATA_COMPARISON_TIMD.get(datapoint);
+            descriptionList.add(value);
+        }
     }
+
     public void getExtras() {
         //gets data from previous activity
         Intent previous = getIntent();
@@ -107,6 +108,7 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
             nextButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.LightGrey));
         }
     }
+
     public void disableButton() {
         //makes button onclick null
         nextButton.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.LightGrey));
@@ -117,6 +119,7 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
             }
         });
     }
+
     public void activateButton() {
         //makes button green and on click init intent to next activity
         nextButton.setBackgroundColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_GREEN));
@@ -140,21 +143,23 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
         //restores state of scrolling
         datapointListView.onRestoreInstanceState(state);
     }
+
     public void datapointChosenListener() {
         //on datapoint chosen, sets selectedDatapoint to datapoint and calls for methods that change according to selectedDatapoint
         datapointListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    String datapoint = datapointsList.get(i);
-                    selectedDatapoint = datapoint;
-                    selectedDatapointName = descriptionList.get(i);
-                    datapointTextView.setText(selectedDatapoint);
-                    updateButtonColor();
-                    initListView();
-                    activateButton();
+                String datapoint = datapointsList.get(i);
+                selectedDatapoint = datapoint;
+                selectedDatapointName = descriptionList.get(i);
+                datapointTextView.setText(selectedDatapoint);
+                updateButtonColor();
+                initListView();
+                activateButton();
             }
         });
     }
+
     public void initiateGraphingIntent() {
         //creates intent for DataComparisonTIMDTabbedActivity
         Intent GraphingActivity = new Intent(DataComparisonDatapointSelectActivityTIMD.this, DataComparisonTIMDTabbedActivity.class);
@@ -162,9 +167,9 @@ public class DataComparisonDatapointSelectActivityTIMD extends AppCompatActivity
         GraphingActivity.putExtra("teamTwo", teamTwo);
         GraphingActivity.putExtra("teamThree", teamThree);
         GraphingActivity.putExtra("teamFour", teamFour);
-        GraphingActivity.putExtra("selectedDatapoint",selectedDatapoint);
-        GraphingActivity.putExtra("selectedDatapointName",selectedDatapointName);
-        GraphingActivity.putExtra("isTIMD","true");
+        GraphingActivity.putExtra("selectedDatapoint", selectedDatapoint);
+        GraphingActivity.putExtra("selectedDatapointName", selectedDatapointName);
+        GraphingActivity.putExtra("isTIMD", "true");
 
         //creates slick animationnn
         ActivityOptions options =

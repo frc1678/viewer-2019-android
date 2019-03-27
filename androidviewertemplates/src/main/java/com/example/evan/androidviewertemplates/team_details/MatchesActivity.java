@@ -31,14 +31,14 @@ public class MatchesActivity extends ViewerActivity {
         fragmentManager.beginTransaction().replace(R.id.rankingsLinearLayout, fragment, "").commit();
         setActionBarColor();
     }
-    public void setActionBarColor(){
+
+    public void setActionBarColor() {
         ActionBar actionBar = getSupportActionBar();
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#65C423"));
-        if(actionBar!=null) {
+        if (actionBar != null) {
             actionBar.setBackgroundDrawable(colorDrawable);
         }
     }
-
 
 
 }
