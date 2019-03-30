@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import com.example.evan.androidviewertemplates.MainActivity;
 import com.example.evan.androidviewertemplates.R;
 import com.example.evan.androidviewertemplates.team_details.TeamDetailsActivity;
+import com.example.evan.androidviewertemplates.utils.SpecificConstants;
 
 public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
 
@@ -84,11 +85,22 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
             } else {
                 teamFour = "null";
             }
-            selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
-            selectedDatapointName = getIntent().getStringExtra("selectedDatapointName");
+
             isTIMD = convertBoolean(getIntent().getStringExtra("isTIMD"));
+            selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
+            selectedDatapointName = SpecificConstants.KEYS_TO_TITLES.get(selectedDatapoint);
+            if (isTIMD) selectedDatapoint = convertToWithoutCD(SpecificConstants.DATA_TO_GRAPH.get(selectedDatapoint));
+            Log.e("ss",selectedDatapoint+"");
+
         }
 
+    }
+
+    public String convertToWithoutCD(String datapoint) {
+        if (datapoint != null && datapoint.contains("calculatedData.")) {
+            return datapoint.substring(datapoint.lastIndexOf(".") + 1);
+        }
+        return null;
     }
 
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {

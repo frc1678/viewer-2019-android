@@ -42,7 +42,9 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.example.evan.androidviewertools.utils.Utils.getMatchNumbersForTeamNumber;
 import static com.example.evan.androidviewertools.utils.Utils.getTeamDatasForTeamNumber;
@@ -311,27 +313,12 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
         xAxis.setGranularity(1);
 
         //creates the labels be the String[] Matches
-        if (!isTIMD) {
-            String[] Matches;
-            Matches = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
-            //converting to List<String> type
-            List<String> tempMatches = Arrays.asList(Matches);
-            //reversing the List<String> type because the Y Axis labeling begins from the top instead of the bottom
-            Collections.reverse(tempMatches);
-            //changing it back to a String[] type
-            Matches = (String[]) tempMatches.toArray();
-            xAxis.setValueFormatter(new IndexAxisValueFormatter(Matches));
-        } else {
-            List<String> tempMatches = new ArrayList<>();
-            for (Integer team : teamOneMatches) {
-                tempMatches.add(String.valueOf(team));
-            }
-            for (int i = 0; i < (15 - tempMatches.size()); i++) {
-                tempMatches.add("?");
-            }
-            Collections.reverse(tempMatches);
-            xAxis.setValueFormatter(new IndexAxisValueFormatter(tempMatches.toArray(new String[tempMatches.size()])));
+        List<String> tempMatches = new ArrayList<>();
+        for (int i = 0; i < teamOneMatches.size(); i++) {
+            tempMatches.add(String.valueOf(teamOneMatches.get(i)));
         }
+        Collections.reverse(tempMatches);
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(tempMatches.toArray(new String[tempMatches.size()])));
         //makes the text size of the labels to be 18
         xAxis.setTextSize(18);
         //makes the labels centered
@@ -390,14 +377,24 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
                 barEntries.add(new BarEntry(p + 1, (float) values.get(p)));
             }
         }
+        //creates a map to check how many times a null or zero value appears in datavalues
+        Map<Float, Integer> hm = new HashMap<Float, Integer>();
 
-        if (barEntries.size() < 13) {
-            Integer barSize = barEntries.size();
-            Integer counter = 13 - barSize;
-            //if the size of the entries is under 13 (under 13 matches), add a 0 value
-            for (int i = 0; i < counter; i++) {
-                barEntries.add(new BarEntry(i + barSize + 1, (float) 0.04));
-            }
+        for (Float i : datapointValues) {
+            Integer j = hm.get(i);
+            hm.put(i, (j == null) ? 1 : j + 1);
+        }
+        int zeroCount = 0;
+        // displaying the occurrence of elements in the list
+        for (Map.Entry<Float, Integer> val : hm.entrySet()) {
+            if (val.getKey() == 0.0 || val.getKey() == 5000.0) zeroCount += val.getValue();
+        }
+        //if the amount of null values or 0.0 values is the same amount as the number of values in the team ...
+        //AKA: if all of the values are 0
+        //then fill the data with only 0 values (0.04 so it displays something) instead of some 0.04 and some 0.2 values messing up the scale
+        if (zeroCount == datapointValues.size()) {
+	        barEntries.clear();
+	        for (int i = 0; i < datapointValues.size(); i++) barEntries.add(new BarEntry(i + 1, (float) 0.04));
         }
 
         //reverses the entries
@@ -419,14 +416,11 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
     public List<Float> getValues(Integer teamNumber, String field) {
         String datapoint = field;
         List<Float> dataValues = new ArrayList<>();
-        if (isTIMD) {
-            if (field.contains("avg")) {
-                datapoint = convertFromAvg(field);
-            }
-        }
         //gets the datapoint values of the given team
         for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
             Object value = Utils.getObjectField(teamInMatchData, datapoint);
+            Log.e("a",String.valueOf(value)+"");
+
             //if integer
             if (value instanceof Integer) {
                 dataValues.add(((Integer) value).floatValue());
@@ -434,6 +428,10 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
             //if boolean, return 1 if true, 0 if false
             else if (value instanceof Boolean) {
                 dataValues.add((Boolean) value ? 1f : 0f);
+            }
+            //if float
+            else if (value instanceof Float) {
+                dataValues.add((Float) value);
             }
             //if "null", return 0.0
             else if (value == (null)) {
@@ -448,40 +446,6 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
         //returns value of datapoint per team
         values = getValues(Integer.valueOf(team), "calculatedData." + selectedDatapoint);
         return values;
-    }
-
-    private BarDataSet generateData(int cnt) {
-
-        ArrayList<BarEntry> entries = new ArrayList<>();
-
-        ArrayList<Float> allDatapointValues = new ArrayList<>();
-
-        BarDataSet d = new BarDataSet(entries, "New DataSet " + cnt);
-        d.setColors(ColorTemplate.VORDIPLOM_COLORS);
-        d.setBarShadowColor(Color.rgb(203, 203, 203));
-
-        ArrayList<IBarDataSet> sets = new ArrayList<>();
-        sets.add(d);
-
-        mAllDatapointValues.addAll(allDatapointValues);
-        return d;
-    }
-
-    public String convertFromAvg(String avg) {
-        String avgString = "";
-        String str;
-        String trimmedString;
-        String capString = "";
-        //turns 'calculatedData.avgSomethingScored' into 'calculatedData.somethingScored'
-        if (avg != null && avg.contains("calculatedData.")) {
-            avgString = avg.substring(avg.lastIndexOf(".") + 1);
-        }
-        if (avgString != null && avgString.contains("avg")) {
-            str = avgString.replaceFirst("avg", "");
-            capString = str.substring(0, 1).toLowerCase() + str.substring(1);
-        }
-        trimmedString = "calculatedData." + capString;
-        return trimmedString;
     }
 }
 

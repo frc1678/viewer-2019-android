@@ -208,7 +208,7 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
                     intent = getRankActivityIntent();
                 } else {
                     intent = getGraphActivityIntent();
-                    intent.putExtra("selectedDatapoint",convertToWithoutCD((String) getRowItem(section, row)));
+                    intent.putExtra("selectedDatapoint",((String) getRowItem(section, row)));
                     intent.putExtra("teamOne", String.valueOf(((Team)getObject()).teamNumber)); intent.putExtra("teamTwo", String.valueOf(((Team)getObject()).teamNumber));
                     intent.putExtra("teamThree", "?"); intent.putExtra("teamFour", "?");
                     intent.putExtra("isTIMD","true");
@@ -223,12 +223,6 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
         }
     }
 
-    public String convertToWithoutCD(String datapoint) {
-        if (datapoint != null && datapoint.contains("calculatedData.")) {
-            return datapoint.substring(datapoint.lastIndexOf(".") + 1);
-        }
-        return null;
-    }
 
     @Override
     public boolean isRowEnabled(int section, int row) {
