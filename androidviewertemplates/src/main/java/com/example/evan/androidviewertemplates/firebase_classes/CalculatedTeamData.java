@@ -177,7 +177,6 @@ public class CalculatedTeamData extends Object {
     public Float totalTimeDefending;
     public Float avgTimeDefending;
     public Float failedCyclesCausedPerSecond;
-    public Float driverAbility;
     public Float avgPointsPrevented;
 
     public Boolean hasOrangeGroundIntake;

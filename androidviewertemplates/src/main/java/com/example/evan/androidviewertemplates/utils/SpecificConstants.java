@@ -69,7 +69,7 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.lemonSuccessL3","% panel success L3");
                 put("calculatedData.timeIncap","Time incap (% of match)");
                 put("calculatedData.timeClimbing","Time climbing (s)");
-                put("calculatedData.pinningFouls","Panels spilled");
+                put("calculatedData.pinningFouls","Pinning Fouls");
                 put("calculatedData.selfClimbLevel","Climb Level");
                 put("notes","Super Notes");
                 put("calculatedData.robot1ClimbLevel","1st Robot Climb Level");
