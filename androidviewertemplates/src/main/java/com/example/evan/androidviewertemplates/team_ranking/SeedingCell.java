@@ -60,7 +60,7 @@ public class SeedingCell extends RelativeLayout {
         if (teamNumber != null) {
             Team teamTeam = FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber.toString());
             String predictedSeed = (Utils.fieldIsNotNull(teamTeam, "calculatedData.predictedSeed") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.predictedSeed"), 2, "?") : "?");
-            String predictedRankingPoints = (Utils.fieldIsNotNull(teamTeam, "calculatedData.predictedRPs") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.predictedRPs"), 2, "?") : "?");
+            String predictedRankingPoints = (Utils.fieldIsNotNull(teamTeam, "calculatedData.predictedRPs") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.predictedRPs"), 1, "?") : "?");
             String currentRP = (Utils.fieldIsNotNull(teamTeam, "actualRPs") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "actualRPs"), 2, "?") : "?");
             String currentSeed = (Utils.fieldIsNotNull(teamTeam, "calculatedData.actualSeed") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.actualSeed"), 2, "?") : "?");
 
