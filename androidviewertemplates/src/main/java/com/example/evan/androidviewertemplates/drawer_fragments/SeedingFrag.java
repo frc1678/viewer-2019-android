@@ -122,7 +122,7 @@ public class SeedingFrag extends Fragment {
         for (int i = 0; i < Constants.unseededTeams.size(); i++) {
             Integer team = Constants.unseededTeams.get(i);
             Team teamTeam = FirebaseLists.teamsList.getFirebaseObjectByKey(team.toString());
-            String teamRankString = (Utils.fieldIsNotNull(teamTeam, "calculatedData.actualSeed") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.actualSeed"), 2, "???") : "???");
+            String teamRankString = (Utils.fieldIsNotNull(teamTeam, "actualSeed") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "actualSeed"), 2, "???") : "???");
             if (teamRankString.equals("???")) {
                 teamRankString = String.valueOf(Constants.unseededTeams.size() + 1);
 

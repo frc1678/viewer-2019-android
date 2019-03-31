@@ -104,8 +104,8 @@ public class DataComparisonTeamSelectAdapter extends BaseAdapter {
         Team team = FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber);
         //get value of actualSeed,
         //if null, return "???"
-        String teamRank = (Utils.fieldIsNotNull(team, "calculatedData.actualSeed")
-                ? Utils.roundDataPoint(Utils.getObjectField(team, "calculatedData.actualSeed"),
+        String teamRank = (Utils.fieldIsNotNull(team, "actualSeed")
+                ? Utils.roundDataPoint(Utils.getObjectField(team, "actualSeed"),
                 2, "???") : "???");
         String teamName = (Utils.fieldIsNotNull(team, "name")
                 ? Utils.roundDataPoint(Utils.getObjectField(team, "name"),

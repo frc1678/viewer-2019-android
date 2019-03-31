@@ -12,7 +12,6 @@ import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CalculatedTeamData extends Object {
     //make sure that all variables are public
-    public Integer actualSeed;
     public Integer predictedSeed;
     public Integer lemonLoadSuccess;
     public Integer orangeSuccessAll;
@@ -31,7 +30,6 @@ public class CalculatedTeamData extends Object {
     public Integer habLineSuccessL1;
     public Integer habLineSuccessL2;
     public Integer percentIncap;
-    public Integer percentImpaired;
     public Integer percentNoShow;
     public Integer lfmLemonLoadSuccess;
     public Integer lfmOrangeSuccessAll;
@@ -50,7 +48,6 @@ public class CalculatedTeamData extends Object {
     public Integer lfmHabLineSuccessL1;
     public Integer lfmHabLineSuccessL2;
     public Integer lfmPercentIncap;
-    public Integer lfmPercentImpaired;
     public Integer lfmPercentNoShow;
     public Integer sdLemonLoadSuccess;
     public Integer sdOrangeSuccessAll;
@@ -69,7 +66,6 @@ public class CalculatedTeamData extends Object {
     public Integer sdHabLineSuccessL1;
     public Integer sdHabLineSuccessL2;
     public Integer sdPercentIncap;
-    public Integer sdPercentImpaired;
     public Integer sdPercentNoShow;
     public Integer p75lemonLoadSuccess;
     public Integer p75orangeSuccessAll;
@@ -90,18 +86,20 @@ public class CalculatedTeamData extends Object {
     public Integer p75percentIncapEntireMatch;
     public Integer sdPercentIncapEntireMatch;
     public Integer lfmPercentIncapEntireMatch;
-    public Integer pitSEALsRampRanking;
     public Integer climbSuccessL1;
     public Integer climbSuccessL2;
     public Integer climbSuccessL3;
     public Integer orangesScoredL1;
     public Integer percentDysfunctional;
+    public Integer failedCyclesCaused;
+    public Integer lastMatch;
+    public Integer matchesDefended;
 
     public Float agilityZScore;
     public Float predictedRPs;
     public Float avgOrangesScored;
     public Float avgLemonsScored;
-    public Float avgOrangeFouls;
+    public Float avgOrangesFouls;
     public Float orangeCycleAll;
     public Float orangeCycleL1;
     public Float orangeCycleL2;
@@ -113,7 +111,6 @@ public class CalculatedTeamData extends Object {
     public Float avgGoodDecisions;
     public Float avgBadDecisions;
     public Float avgTimeIncap;
-    public Float avgTimeImpaired;
     public Float avgTimeClimbing;
     public Float predictedDedicatedLemonCycles;
     public Float predictedDedicatedOrangeCycles;
@@ -122,10 +119,10 @@ public class CalculatedTeamData extends Object {
     public Float orangeAbility;
     public Float firstPickAbility;
     public Float secondPickAbility;
-    public Float avgLemonsSpilled;
+    public Float avgPinningFouls;
     public Float lfmAvgOrangesScored;
     public Float lfmAvgLemonsScored;
-    public Float lfmAvgOrangeFouls;
+    public Float lfmAvgOrangesFouls;
     public Float lfmOrangeCycleAll;
     public Float lfmOrangeCycleL1;
     public Float lfmOrangeCycleL2;
@@ -137,12 +134,11 @@ public class CalculatedTeamData extends Object {
     public Float lfmAvgGoodDecisions;
     public Float lfmAvgBadDecisions;
     public Float lfmAvgTimeIncap;
-    public Float lfmAvgTimeImpaired;
     public Float lfmAvgTimeClimbing;
-    public Float lfmAvgLemonsSpilled;
+    public Float lfmAvgPinningFouls;
     public Float sdAvgOrangesScored;
     public Float sdAvgLemonsScored;
-    public Float sdAvgOrangeFouls;
+    public Float sdAvgOrangesFouls;
     public Float sdOrangeCycleAll;
     public Float sdOrangeCycleL1;
     public Float sdOrangeCycleL2;
@@ -154,12 +150,11 @@ public class CalculatedTeamData extends Object {
     public Float sdAvgGoodDecisions;
     public Float sdAvgBadDecisions;
     public Float sdAvgTimeIncap;
-    public Float sdAvgTimeImpaired;
     public Float sdAvgTimeClimbing;
-    public Float sdAvgLemonsSpilled;
+    public Float sdAvgPinningFouls;
     public Float p75avgOrangesScored;
     public Float p75avgLemonsScored;
-    public Float p75avgOrangeFouls;
+    public Float p75avgOrangesFouls;
     public Float p75oranceCycleAll;
     public Float p75orangeCycleL1;
     public Float p75orangeCycleL2;
@@ -171,22 +166,30 @@ public class CalculatedTeamData extends Object {
     public Float p75avgGoodDecisions;
     public Float p75avgBadDecisions;
     public Float p75avgTimeIncap;
-    public Float p75avgTimeImpaired;
     public Float p75avgTimeClimbing;
-    public Float p75avgLemonsSpilled;
+    public Float p75AvgPinningFouls;
     public Float speedZScore;
     public Float avgLemonsScoredSandstorm;
     public Float avgOrangesScoredSandstorm;
     public Float driverAbility;
+    public Float avgFailedCyclesCaused;
+    public Float avgRankDefense;
+    public Float totalTimeDefending;
+    public Float avgTimeDefending;
+    public Float failedCyclesCausedPerSecond;
+    public Float driverAbility;
+    public Float avgPointsPrevented;
 
     public Boolean hasOrangeGroundIntake;
     public Boolean hasLemonGroundIntake;
     public Boolean didPreloadOrange;
     public Boolean didPreloadLemon;
 
-    public List<String> totalSuperNotes;
+    public List<String> notes;
 
     public String climbAttemptsL1;
     public String climbAttemptsL2;
     public String climbAttemptsL3;
+    public String habLineAttemptsL1;
+    public String habLineAttemptsL2;
 }

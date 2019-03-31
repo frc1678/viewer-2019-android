@@ -61,14 +61,14 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
             //Each {}, below correlates to its sectionTitles above
             {"teamNumber", "matchNumber", "blueFoulPoints", "redFoulPoints"},
             {"startingLevel", "crossedHabLine", "startingLocation", "preload"},
-            {"calculatedData.orangesScored", "calculatedData.lemonsScored", "calculatedData.orangeFouls", "calculatedData.lemonLoadSuccess",
+            {"calculatedData.orangeSuccessDefended","calculatedData.totalFailedCyclesCaused","calculatedData.orangesScored", "calculatedData.lemonsScored", "calculatedData.orangeFouls", "calculatedData.lemonLoadSuccess",
                     "calculatedData.orangeSuccessDefended", "calculatedData.orangeSuccessL2", "calculatedData.orangeSuccessL3",
-                    "calculatedData.lemonSuccessDefended", "calculatedData.lemonSuccessL2", "calculatedData.lemonSuccessL3", "calculatedData.lemonsSpilled",
-                    "calculatedData.lvl_1_lemons_teleop", "calculatedData.lvl_2_lemons_teleop", "calculatedData.lvl_3_lemons_teleop",
-                    "calculatedData.lvl_1_oranges_teleop", "calculatedData.lvl_2_oranges_teleop", "calculatedData.lvl_3_oranges_teleop",},
-            {"calculatedData.selfClimbLevel", "calculatedData.robot1ClimbLevel", "calculatedData.robot2ClimbLevel"},
-            {"calculatedData.timeIncap", "calculatedData.timeImpaired", "calculatedData.timeClimbing"},
-            {"superNotes"},
+                    "calculatedData.lemonSuccessDefended", "calculatedData.lemonSuccessL2", "calculatedData.lemonSuccessL3", "calculatedData.pinningFouls",
+                    "calculatedData.lemonsScoredTeleL1", "calculatedData.lemonsScoredTeleL2", "calculatedData.lemonsScoredTeleL3",
+                    "calculatedData.orangesScoredTeleL1", "calculatedData.orangesScoredTeleL1", "calculatedData.orangesScoredTeleL1",},
+            {"calculatedData.selfClimbLevel", "calculatedData.robot1ClimbLevel", "calculatedData.robot2ClimbLevel","calculatedData.timeDefending"},
+            {"calculatedData.timeIncap", "calculatedData.timeClimbing"},
+            {"notes"},
     };
 
     static String[] shouldDisplayAsPercentage = {
@@ -85,7 +85,7 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
     };
 
     static String[] shouldDisplayAsLongText = {
-            "superNotes",
+            "notes",
     };
     static String[] notClickableFields = {};
 

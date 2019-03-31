@@ -9,11 +9,9 @@ public class RedFlags {
     public static Map<String, String> RED_FLAG_DATAPOINTS;
 
     public static String[] RED_FLAG_DATAPOINT_NAMES = {
-            "calculatedData.avgLemonsSpilled",
-            "calculatedData.avgOrangeFouls",
-            "calculatedData.avgBadDecisions",
+            "calculatedData.avgPinningFouls",
+            "calculatedData.avgOrangesFouls",
             "calculatedData.percentNoShow",
-            "calculatedData.percentImpaired",
 
     };
     public static String[] RED_FLAG_DATAPOINTS_RED_VALUE = {
@@ -24,18 +22,13 @@ public class RedFlags {
             "moreThanTwo",
             "moreThanZero",
             "moreThanFour",
-            "moreThanZero",
-            "moreThanZero",
     };
 
     static {
         Map<String, String> redFlagDatapoints = new HashMap<String, String>() {
             {
-                put("calculatedData.avgLemonsSpilled", "avg panels spilled");
-                put("calculatedData.avgOrangeFouls", "avg cargo fouls out of field");
-                put("calculatedData.avgBadDecisions", "avg bad decisions");
+                put("calculatedData.avgPinningFouls", "avg panels spilled");
                 put("calculatedData.percentNoShow", "% no show");
-                put("calculatedData.percentImpaired", "% impaired");
 
             }
         };
