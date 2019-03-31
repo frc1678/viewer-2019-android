@@ -36,7 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
+public class DataComparisonGraphingActivityTEAMS extends DemoBase {
 
     private BarChart chart;
 
@@ -45,19 +45,19 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
     String teamThree;
     String teamFour;
     String selectedDatapoint;
+    String selectedDatapointName;
 
     ArrayList<String> teamsList = new ArrayList<>();
 
     TextView teamOneFourTeamTV, teamTwoFourTeamTV, teamThreeFourTeamTV, teamFourFourTeamTV;
-	TextView teamOneThreeTeamTV, teamTwoThreeTeamTV, teamThreeThreeTeamTV;
-	TextView teamOneTwoTeamTV, teamTwoTwoTeamTV;
+    TextView teamOneThreeTeamTV, teamTwoThreeTeamTV, teamThreeThreeTeamTV;
+    TextView teamOneTwoTeamTV, teamTwoTwoTeamTV;
 
 
-	ArrayList<BarEntry> barChartDataList = new ArrayList<>();
+    ArrayList<BarEntry> barChartDataList = new ArrayList<>();
     List<String> barChartLabels = new ArrayList<>();
     ArrayList<IBarDataSet> dataSets = new ArrayList<>();
     BarDataSet set;
-
 
 
     @Override
@@ -73,7 +73,7 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         initBarLabels();
         initBarChart();
         //sets title to the datapoint name followed by the harcoded "Comparison Graph"
-        setTitle( selectedDatapoint + " Comparison Graph");
+        setTitle(selectedDatapointName + " Comparison Graph");
 
     }
 
@@ -87,7 +87,7 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         //turns off ability to double tap to zoom
         chart.setDoubleTapToZoomEnabled(false);
         //enables touch
-	    chart.setTouchEnabled(true);
+        chart.setTouchEnabled(true);
 
         //turns off zoom ability
         chart.setPinchZoom(false);
@@ -152,6 +152,7 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
             }
 
             selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
+            selectedDatapointName = getIntent().getStringExtra("selectedDatapointName");
         }
 
     }
@@ -168,20 +169,19 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
             barChartDataList.add(new BarEntry(3, getDatapointValue(selectedDatapoint, teamThree)));
             //adds data from teamFour
             barChartDataList.add(new BarEntry(4, getDatapointValue(selectedDatapoint, teamFour)));
-        } else
-            if (!teamThree.equals("null") && teamFour.equals("null")) {
-                //adds data from teamOne
-                barChartDataList.add(new BarEntry(1, getDatapointValue(selectedDatapoint, teamOne)));
-                //adds data from teamTwo
-                barChartDataList.add(new BarEntry(2, getDatapointValue(selectedDatapoint, teamTwo)));
-                //adds data from teamThree
-                barChartDataList.add(new BarEntry(3, getDatapointValue(selectedDatapoint, teamThree)));
-            } else if (teamThree.equals("null") && teamFour.equals("null")) {
-                //adds data from teamOne
-                barChartDataList.add(new BarEntry(1, getDatapointValue(selectedDatapoint, teamOne)));
-                //adds data from teamTwo
-                barChartDataList.add(new BarEntry(2, getDatapointValue(selectedDatapoint, teamTwo)));
-            }
+        } else if (!teamThree.equals("null") && teamFour.equals("null")) {
+            //adds data from teamOne
+            barChartDataList.add(new BarEntry(1, getDatapointValue(selectedDatapoint, teamOne)));
+            //adds data from teamTwo
+            barChartDataList.add(new BarEntry(2, getDatapointValue(selectedDatapoint, teamTwo)));
+            //adds data from teamThree
+            barChartDataList.add(new BarEntry(3, getDatapointValue(selectedDatapoint, teamThree)));
+        } else if (teamThree.equals("null") && teamFour.equals("null")) {
+            //adds data from teamOne
+            barChartDataList.add(new BarEntry(1, getDatapointValue(selectedDatapoint, teamOne)));
+            //adds data from teamTwo
+            barChartDataList.add(new BarEntry(2, getDatapointValue(selectedDatapoint, teamTwo)));
+        }
 
         //adds color to each bar
         List<GradientColor> gradientColors = new ArrayList<>();
@@ -208,12 +208,13 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         data.setValueTypeface(tfLight);
         data.setBarWidth(0.9f);
 
-		addClickListener(chart);
+        addClickListener(chart);
         chart.setData(data);
         // set the data and list of lables into chart<br />
 
 
     }
+
     public void initBarLabels() {
         //adds bar labels
         barChartLabels.add(teamOne);
@@ -221,7 +222,7 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         barChartLabels.add(teamThree);
         barChartLabels.add(teamFour);
 
-        
+
         //todo
         //inits the xml to its according xml elements
         teamOneFourTeamTV = (TextView) findViewById(R.id.teamOneFourTeam);
@@ -229,45 +230,42 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
         teamThreeFourTeamTV = (TextView) findViewById(R.id.teamThreeFourTeam);
         teamFourFourTeamTV = (TextView) findViewById(R.id.teamFourFourTeam);
 
-	    teamOneThreeTeamTV = (TextView) findViewById(R.id.teamOneThreeTeam);
-	    teamTwoThreeTeamTV = (TextView) findViewById(R.id.teamTwoThreeTeam);
-	    teamThreeThreeTeamTV = (TextView) findViewById(R.id.teamThreeThreeTeam);
-	    
-	    teamOneTwoTeamTV = (TextView) findViewById(R.id.teamOneTwoTeam);
-	    teamTwoTwoTeamTV = (TextView) findViewById(R.id.teamTwoTwoTeam);
-	    
-	    if (!teamThree.equals("null") && !teamFour.equals("null")) {
-	    	teamOneFourTeamTV.setText(teamOne);
-	    	teamTwoFourTeamTV.setText(teamTwo);
-	    	teamThreeFourTeamTV.setText(teamThree);
-	    	teamFourFourTeamTV.setText(teamFour);
-	    } else
-	    	if (!teamThree.equals("null") && teamFour.equals("null")) {
-			    teamOneThreeTeamTV.setText(teamOne);
-			    teamTwoThreeTeamTV.setText(teamTwo);
-			    teamThreeThreeTeamTV.setText(teamThree);
-		    } else
-		    	if (teamThree.equals("null") && teamFour.equals("null")) {
-				    teamOneTwoTeamTV.setText(teamOne);
-				    teamTwoTwoTeamTV.setText(teamTwo);
-			    }
+        teamOneThreeTeamTV = (TextView) findViewById(R.id.teamOneThreeTeam);
+        teamTwoThreeTeamTV = (TextView) findViewById(R.id.teamTwoThreeTeam);
+        teamThreeThreeTeamTV = (TextView) findViewById(R.id.teamThreeThreeTeam);
+
+        teamOneTwoTeamTV = (TextView) findViewById(R.id.teamOneTwoTeam);
+        teamTwoTwoTeamTV = (TextView) findViewById(R.id.teamTwoTwoTeam);
+
+        if (!teamThree.equals("null") && !teamFour.equals("null")) {
+            teamOneFourTeamTV.setText(teamOne);
+            teamTwoFourTeamTV.setText(teamTwo);
+            teamThreeFourTeamTV.setText(teamThree);
+            teamFourFourTeamTV.setText(teamFour);
+        } else if (!teamThree.equals("null") && teamFour.equals("null")) {
+            teamOneThreeTeamTV.setText(teamOne);
+            teamTwoThreeTeamTV.setText(teamTwo);
+            teamThreeThreeTeamTV.setText(teamThree);
+        } else if (teamThree.equals("null") && teamFour.equals("null")) {
+            teamOneTwoTeamTV.setText(teamOne);
+            teamTwoTwoTeamTV.setText(teamTwo);
+        }
 
     }
 
     //gets the value of the given datapoint
     public Float getDatapointValue(String selectedDatapoint, String teamNumber) {
-        Log.e("teamnumberr",String.valueOf(teamNumber));
+        Log.e("teamnumberr", String.valueOf(teamNumber));
         if (!teamNumber.equals("null")) {
             Team team = FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber);
             //if datapoint is null, return "???"
-            String datapoint = (Utils.fieldIsNotNull(team, "calculatedData."+selectedDatapoint)
-                    ? Utils.roundDataPoint(Utils.getObjectField(team, "calculatedData."+selectedDatapoint),
+            String datapoint = (Utils.fieldIsNotNull(team, "calculatedData." + selectedDatapoint)
+                    ? Utils.roundDataPoint(Utils.getObjectField(team, "calculatedData." + selectedDatapoint),
                     2, "???") : "???");
             if (!datapoint.equals("???")) {
                 //if DATAPOINT is NOT "???", return the datapoint
                 return Float.valueOf(datapoint);
-            }
-            else {
+            } else {
                 //if the datapoint IS "???", return 0 as value
                 return Float.valueOf(0);
             }
@@ -279,42 +277,40 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase  {
     @Override
     protected void saveToGallery() {
         saveToGallery(chart
-		        , "AnotherBarActivity");
+                , "AnotherBarActivity");
     }
 
-	public boolean onKeyLongPress(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK)
-		{
-			Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intent);
-			return true;
-		}
-		return super.onKeyLongPress(keyCode, event);
-	}
-	public void addClickListener(BarChart chart) {
-		chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener()
-		{
-			@Override
-			public void onValueSelected(Entry e, Highlight h)
-			{
-				float x=e.getX();
-				String team = teamsList.get(((int) x)-1);
-				Intent teamDetailsViewIntent = getTeamDetailsActivityIntent();
-				teamDetailsViewIntent.putExtra("teamNumber", Integer.valueOf(team));
-				teamDetailsViewIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				DataComparisonGraphingActivityTEAMS.this.startActivity(teamDetailsViewIntent);
-			}
+    public boolean onKeyLongPress(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            return true;
+        }
+        return super.onKeyLongPress(keyCode, event);
+    }
 
-			@Override
-			public void onNothingSelected()
-			{
+    public void addClickListener(BarChart chart) {
+        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                float x = e.getX();
+                String team = teamsList.get(((int) x) - 1);
+                Intent teamDetailsViewIntent = getTeamDetailsActivityIntent();
+                teamDetailsViewIntent.putExtra("teamNumber", Integer.valueOf(team));
+                teamDetailsViewIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                DataComparisonGraphingActivityTEAMS.this.startActivity(teamDetailsViewIntent);
+            }
 
-			}
-		});
-	}
-	public Intent getTeamDetailsActivityIntent() {
-		return new Intent(DataComparisonGraphingActivityTEAMS.this, TeamDetailsActivity.class);
-	}
+            @Override
+            public void onNothingSelected() {
+
+            }
+        });
+    }
+
+    public Intent getTeamDetailsActivityIntent() {
+        return new Intent(DataComparisonGraphingActivityTEAMS.this, TeamDetailsActivity.class);
+    }
 }
 

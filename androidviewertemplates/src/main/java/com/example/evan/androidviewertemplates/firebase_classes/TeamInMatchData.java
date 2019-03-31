@@ -15,14 +15,12 @@ import java.util.Map;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TeamInMatchData extends com.example.evan.androidviewertools.firebase_classes.TeamInMatchData {
-public CalculatedTeamInMatchData calculatedData;
+    public CalculatedTeamInMatchData calculatedData;
     //Make sure that all variables are public
 //    public List<Map<Object,Object>> timeline;
 
     public Integer driverStation;
     public Integer number;
-    public Integer matchNumber;
-    public Integer teamNumber;
     public Integer startingLevel;
 
     public Boolean crossedHabLine;

@@ -29,8 +29,8 @@ public class MatchDetailsTeamCellAdapter extends BaseAdapter {
     //todo
     private String[] fields = {
             //format: "calculatedData.variable", "calculatedData.nextVariable",
-            "calculatedData.habLineSuccessL1","calculatedData.avgLemonsPlacedSandstorm","calculatedData.avgLemonsScored","calculatedData.avgOrangesScored",
-            "calculatedData.drivingAbility","calculatedData.avgBadDecisions","calculatedData.climbSuccessL2","calculatedData.climbSuccessL3","calculatedData.avgTimeIncap"
+            "calculatedData.habLineSuccessL1", "calculatedData.avgLemonsScoredSandstorm", "calculatedData.avgLemonsScored", "calculatedData.avgOrangesScored",
+            "calculatedData.driverAbility", "calculatedData.avgBadDecisions", "calculatedData.climbSuccessL1", "calculatedData.climbSuccessL2", "calculatedData.climbSuccessL3", "calculatedData.avgTimeIncap"
     };
 
     private String[] fieldsToDisplayAsPercentages = {};
@@ -80,9 +80,9 @@ public class MatchDetailsTeamCellAdapter extends BaseAdapter {
         TextView valueTextView = (TextView) rowView.findViewById(R.id.valueTextView);
         TeamTemplate team = (TeamTemplate) FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber.toString());
         if (Arrays.asList(fieldsToDisplayAsPercentages).contains(getItem(position))) {
-            valueTextView.setText(Utils.dataPointToPercentage((Float) Utils.getObjectField(team, (String) getItem(position)), 0));
+            valueTextView.setText(Utils.integerDataPointToPercentage((Integer) Utils.getObjectField(team, (String) getItem(position)), 0));
         } else {
-            valueTextView.setText(Utils.getDisplayValue(team, (String) getItem(position)));
+            valueTextView.setText(Utils.getDisplayValueForField(team, (String) getItem(position)));
         }
 
         rowView.setOnClickListener(new View.OnClickListener() {

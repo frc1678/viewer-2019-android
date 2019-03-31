@@ -19,8 +19,7 @@ public class Match extends com.example.evan.androidviewertools.firebase_classes.
     public CalculatedMatchData calculatedData;
     //Make sure all variables are public
     public Map<String, String> cargoShipPreload;
-    public List<Integer> blueTeams;
-    public List<Integer> redTeams;
+
     public List<Integer> noShowTeams;
 
     public Integer blueFoulPoints;

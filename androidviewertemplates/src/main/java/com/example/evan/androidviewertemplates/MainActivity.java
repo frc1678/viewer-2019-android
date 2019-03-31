@@ -57,26 +57,11 @@ public class MainActivity extends ViewerActivity
 
     private CharSequence mTitle;
     private Context context;
-    private Map<Integer, String> fragmentTagNames;
-    private SharedPreferences prefs;
-    private SharedPreferences.Editor editor;
-    private Fragment fragment;
-    private FragmentManager fragmentManager;
-    private Integer latestFragmentId;
-    private BroadcastReceiver starReceiver;
-
 
     @Override
     public void onCreate() {
         setContentView(R.layout.activity_main);
         context = this.getApplicationContext();
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        fragmentTagNames = new HashMap<>();
-        if (v.hasVibrator()) {
-            Log.i("Can Vibrate", "YES");
-        } else {
-            Log.i("Can Vibrate", "NO");
-        }
         //Not game-specific ~ Keep.
         if (ViewerActivity.myPref.contains("highlightedTeams")) {
             if (!MatchesAdapter.getFromSharedHighlightedTeams().isEmpty()) {
@@ -88,12 +73,10 @@ public class MainActivity extends ViewerActivity
                 Constants.teamsFromPicklist = FunctionFragment.getFromSharedTeamsFromPicklist();
             } else {
                 Constants.teamsFromPicklist = 0;
-                }
             }
+        }
         initializeDrawer();
         setActionBarColor();
-        broadcastListener();
-
     }
 
     public void initializeDrawer() {
@@ -122,39 +105,33 @@ public class MainActivity extends ViewerActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         // For AppCompat use getSupportFragmentManager
-        fragmentManager = getSupportFragmentManager();
-        fragment = new ScheduleFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment = new ScheduleFragment();
         //todo
         fragmentManager = getSupportFragmentManager();
-        prefs = getSharedPreferences("prefFile1", Context.MODE_PRIVATE);
         switch (position) {
             default:
             case 0:
                 Constants.highlightTeamSchedule = false;
                 fragment = new ScheduleFragment();
-                latestFragmentId = position;
                 break;
             case 1:
                 Constants.highlightTeamSchedule = false;
                 fragment = new UpcomingMatchesFragment();
-                latestFragmentId = position;
                 break;
             case 2:
                 Constants.highlightTeamSchedule = false;
                 fragment = new RecentMatchesFragment();
-                latestFragmentId = position;
                 break;
             case 3:
                 Constants.highlightTeamSchedule = false;
                 fragment = new StarredMatchesFragment();
-                latestFragmentId = position;
                 break;
             case 4:
                 Constants.highlightTeamSchedule = true;
                 Bundle args = new Bundle();
                 args.putInt("teamNumber", SpecificConstants.TEAM_NUMBER);
                 fragment = new OurScheduleHighlightFragment();
-                latestFragmentId = position;
                 fragment.setArguments(args);
                 break;
             case 5:
@@ -162,55 +139,42 @@ public class MainActivity extends ViewerActivity
                 Bundle args2 = new Bundle();
                 args2.putInt("teamNumber", SpecificConstants.TEAM_NUMBER);
                 fragment = new SeedingFrag();
-                latestFragmentId = position;
                 fragment.setArguments(args2);
                 break;
             case 6:
                 fragment = new DataComparisonFragment();
-                latestFragmentId = position;
                 break;
             case 7:
                 Constants.highlightTeamSchedule = false;
                 fragment = new FirstPickAbilityFragment();
-                latestFragmentId = position;
                 break;
             case 8:
                 Constants.highlightTeamSchedule = false;
                 fragment = new OverallSecondPickFragment();
-                latestFragmentId = position;
                 break;
-
             case 9:
                 Constants.highlightTeamSchedule = false;
                 fragment = new SuperAbilityFragment();
-                latestFragmentId = position;
                 break;
             case 10:
                 Constants.highlightTeamSchedule = false;
                 fragment = new FirstPicklistFragment();
-                latestFragmentId = position;
                 break;
             case 11:
                 fragment = new FunctionFragment();
-                latestFragmentId = position;
                 break;
-
-
-
-
         }
+
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
         onSectionAttached(position);
         Log.e("title position", position + "");
         restoreActionBar(position);
-
     }
 
     public void onSectionAttached(int number) {
         mTitle = SpecificConstants.DRAWER_TITLES[number];
-
     }
 /*	public static void restartFunction() {
 		FragmentManager fragmentManager = MainActivity.getSupportFragmentManager();
@@ -245,14 +209,6 @@ public class MainActivity extends ViewerActivity
     }
 
     @Override
-    public void onDestroy() {
-        /*editor.putString("key", "asdf").apply();
-        Log.e("key", "saved on kill");*/
-        super.onDestroy();
-
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -278,17 +234,5 @@ public class MainActivity extends ViewerActivity
     public Intent getMainActivityIntent() {
         return new Intent(this, this.getClass());
     }
-
-    public void broadcastListener(){
-        starReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                //Log.e("important matches", StarManager.importantMatches.toString());
-                Log.e("recent match", Utils.getLastMatchPlayed() + " ");
-            }
-        };
-        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(starReceiver, new IntentFilter(SpecificConstants.NEW_MATCH_PLAYED_ACTION));
-    }
-
 }
 

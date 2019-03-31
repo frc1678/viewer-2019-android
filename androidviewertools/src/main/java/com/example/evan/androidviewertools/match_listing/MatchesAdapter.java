@@ -6,11 +6,14 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
+import android.media.Image;
 import android.os.Vibrator;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.evan.androidviewertools.ViewerActivity;
@@ -30,6 +33,8 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -119,48 +124,40 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
 
                 //Only on Highlight:
                 if (onHighlightedTeams(team) && !onStarredMatches(team) && !onTeamPicklist(team) && isRedFlag(team)) {
-                    //teamTextView.setBackgroundColor(Color.parseColor("#b8d4fc"));
                     gd.setColor(0xFFb8d4fc);
                     gd.setStroke(1, 0xFFbf1212);
                     teamTextView.setBackground(gd);
                     //Only on Starred:
                 } else if (onStarredMatches(team) && !onHighlightedTeams(team) && !onTeamPicklist(team) && isRedFlag(team)) {
-                    //teamTextView.setBackgroundColor(Color.parseColor("#e2f442"));
                     gd.setColor(0xFFe2f442);
                     gd.setStroke(1, 0xFFbf1212);
                     teamTextView.setBackground(gd);
                     //Only on Picklist:
                 } else if (!onStarredMatches(team) && !onHighlightedTeams(team) && onTeamPicklist(team) && isRedFlag(team)) {
-                    //teamTextView.setBackgroundColor(Color.parseColor("#f98181"));
                     gd.setColor(0xFFf98181);
                     gd.setStroke(1, 0xFFbf1212);
                     teamTextView.setBackground(gd);
                     //On ALL:
                 } else if (onStarredMatches(team) && onHighlightedTeams(team) && onTeamPicklist(team) && isRedFlag(team)) {
-                    //teamTextView.setBackgroundColor(Color.parseColor("#e572e1"));
                     gd.setColor(0xFFe572e1);
                     gd.setStroke(1, 0xFFbf1212);
                     teamTextView.setBackground(gd);
                     //On Highlight && Starred
                 } else if (onStarredMatches(team) && onHighlightedTeams(team) && !onTeamPicklist(team) && isRedFlag(team)) {
-                    //teamTextView.setBackgroundColor(Color.parseColor("#808000"));
                     gd.setColor(0xFF808000);
                     gd.setStroke(1, 0xFFbf1212);
                     teamTextView.setBackground(gd);
                     //Only Starred && Picklist
                 } else if (onStarredMatches(team) && !onHighlightedTeams(team) && onTeamPicklist(team) && isRedFlag(team)) {
-                    //teamTextView.setBackgroundColor(Color.parseColor("#f4a142"));
                     gd.setColor(0xFFf4a142);
                     gd.setStroke(1, 0xFFbf1212);
                     teamTextView.setBackground(gd);
                     //On RedFlag:
                 } else if (!onStarredMatches(team) && !onHighlightedTeams(team) && !onTeamPicklist(team) && isRedFlag(team)) {
-                    //teamTextView.setBackgroundColor(Color.parseColor("#f4a142"));
                     gd.setStroke(1, 0xFFbf1212);
                     teamTextView.setBackground(gd);
                     //On Picklist && Highlight:
                 } else if (!onStarredMatches(team) && onHighlightedTeams(team) && onTeamPicklist(team) && isRedFlag(team)) {
-                    //teamTextView.setBackgroundColor(Color.parseColor("#fcb8e7"));
                     gd.setColor(0xFFfcb8e7);
                     gd.setStroke(1, 0xFFbf1212);
                     teamTextView.setBackground(gd);
@@ -191,51 +188,59 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
             }
 
 
+            TextView redScoreTextView = (TextView) rowView.findViewById(R.id.redScore);
+            TextView blueScoreTextView = (TextView) rowView.findViewById(R.id.blueScore);
 
-
-                TextView redScoreTextView = (TextView) rowView.findViewById(R.id.redScore);
-                TextView blueScoreTextView = (TextView) rowView.findViewById(R.id.blueScore);
-
-        if (match.redActualScore != null || match.blueActualScore != null) {
-            redScoreTextView.setText((match.redActualScore != null) ? match.redActualScore.toString() : "???");
-            blueScoreTextView.setText((match.blueActualScore != null) ? match.blueActualScore.toString() : "???");
-            redScoreTextView.setTextColor(Color.argb(255, 255, 0, 0));
-            blueScoreTextView.setTextColor(Color.argb(255, 0, 0, 255));
-        } else {
-            redScoreTextView.setTextColor(Color.argb(75, 255, 0, 0));
-            blueScoreTextView.setTextColor(Color.argb(75, 0, 0, 255));
-            redScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.redPredictedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.redPredictedScore"), 2, "???") : "???");
-            blueScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.bluePredictedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.bluePredictedScore"), 2, "???") : "???");
-        }
-            TextView rankingPointDisplayBlueRocketRP = (TextView) rowView.findViewById(R.id.rankingPointDisplayBlueRocketRP);
-            TextView rankingPointDisplayRedRocketRP = (TextView) rowView.findViewById(R.id.rankingPointDisplayRedRocketRP);
+            if (match.redActualScore != null || match.blueActualScore != null) {
+                redScoreTextView.setText((match.redActualScore != null) ? match.redActualScore.toString() : "???");
+                blueScoreTextView.setText((match.blueActualScore != null) ? match.blueActualScore.toString() : "???");
+                redScoreTextView.setTextColor(Color.argb(255, 255, 0, 0));
+                blueScoreTextView.setTextColor(Color.argb(255, 0, 0, 255));
+            } else {
+                redScoreTextView.setTextColor(Color.argb(75, 255, 0, 0));
+                blueScoreTextView.setTextColor(Color.argb(75, 0, 0, 255));
+                redScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.redPredictedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.redPredictedScore"), 2, "???") : "???");
+                blueScoreTextView.setText((Utils.fieldIsNotNull(match, "calculatedData.bluePredictedScore")) ? Utils.roundDataPoint(Utils.getObjectField(match, "calculatedData.bluePredictedScore"), 2, "???") : "???");
+            }
+            ImageView rankingPointDisplayBlueRocketRP = (ImageView) rowView.findViewById(R.id.rankingPointDisplayBlueRocketRP);
+            ImageView rankingPointDisplayRedRocketRP = (ImageView) rowView.findViewById(R.id.rankingPointDisplayRedRocketRP);
             TextView rankingPointDisplayBlueHabClimb = (TextView) rowView.findViewById(R.id.rankingPointDisplayBlueHabClimb);
             TextView rankingPointDisplayRedHabClimb = (TextView) rowView.findViewById(R.id.rankingPointDisplayRedHabClimb);
 
-         Boolean blueDidRocketRP = Boolean.valueOf(String.valueOf(Utils.getObjectField(match, "blueDidRocketRP")));
-         Boolean blueDidHabClimb = Boolean.valueOf(String.valueOf(Utils.getObjectField(match, "blueDidClimbRP")));
-         Boolean redDidRocketRP = Boolean.valueOf(String.valueOf(Utils.getObjectField(match, "redDidRocketRP")));
-         Boolean redDidHabClimb = Boolean.valueOf(String.valueOf(Utils.getObjectField(match, "redDidClimbRP")));
+            Boolean blueDidRocketRP = Boolean.valueOf(String.valueOf(Utils.getObjectField(match, "blueDidRocketRP")));
+            Boolean blueDidHabClimb = Boolean.valueOf(String.valueOf(Utils.getObjectField(match, "blueDidClimbRP")));
+            Boolean redDidRocketRP = Boolean.valueOf(String.valueOf(Utils.getObjectField(match, "redDidRocketRP")));
+            Boolean redDidHabClimb = Boolean.valueOf(String.valueOf(Utils.getObjectField(match, "redDidClimbRP")));
 
-         //todo Add predicted RPs?
+            //todo Add predicted RPs?
 
             if (blueDidRocketRP) {
-//                \uD83D\uDE80 is the unicode for a rocket emoji
-                rankingPointDisplayBlueRocketRP.setText("\uD83D\uDE80");
+                rankingPointDisplayBlueRocketRP.setVisibility(View.VISIBLE);
+                rankingPointDisplayBlueRocketRP.setBackground(context.getResources().getDrawable(R.drawable.rocket_rp));
+            } else {
+                rankingPointDisplayBlueRocketRP.setVisibility(View.INVISIBLE);
             }
             if (redDidRocketRP) {
-//                \uD83D\uDE80 is the unicode for a rocket emoji
-                rankingPointDisplayRedRocketRP.setText("\uD83D\uDE80");
+                rankingPointDisplayRedRocketRP.setVisibility(View.VISIBLE);
+                rankingPointDisplayRedRocketRP.setBackground(context.getResources().getDrawable(R.drawable.rocket_rp));
+            } else {
+                rankingPointDisplayRedRocketRP.setVisibility(View.INVISIBLE);
             }
             if (blueDidHabClimb) {
+                rankingPointDisplayBlueHabClimb.setVisibility(View.VISIBLE);
                 rankingPointDisplayBlueHabClimb.setText("▬");
+            } else {
+                rankingPointDisplayBlueHabClimb.setVisibility(View.INVISIBLE);
             }
             if (redDidHabClimb) {
+                rankingPointDisplayRedHabClimb.setVisibility(View.VISIBLE);
                 rankingPointDisplayRedHabClimb.setText("▬");
+            } else {
+                rankingPointDisplayRedHabClimb.setVisibility(View.INVISIBLE);
             }
 
 
-        }catch (NullPointerException NPE){
+        } catch (NullPointerException NPE) {
         }
 
         if (Constants.highlightTeamSchedule) {
@@ -250,31 +255,13 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
     }
 
 
-
     @Override
     public boolean filter(Match value, String scope) {
         List<Integer> teamsInMatch = new ArrayList<>();
-        try {
-            List<Object> redTeams = Arrays.asList(Utils.getObjectField(value, "redTeams"));
-            List<Object> blueTeams = Arrays.asList(Utils.getObjectField(value, "blueTeams"));
-            List<Integer> tempRedAllianceTeams = (List<Integer>) (Object) redTeams.get(0);
-            List<Integer> tempBlueAllianceTeams = (List<Integer>) (Object) blueTeams.get(0);
-            for (int i = 0; i < tempRedAllianceTeams.size(); i++) {
-                teamsInMatch.add(tempRedAllianceTeams.get(i));
-            }
-            for (int i = 0; i < tempBlueAllianceTeams.size(); i++) {
-                teamsInMatch.add(tempBlueAllianceTeams.get(i));
-            }
-            //Log.e("Please Reach", "Here");
-        }catch (NullPointerException NPE){
+        teamsInMatch.addAll(value.redTeams);
+        teamsInMatch.addAll(value.blueTeams);
 
-        }
         boolean found = false;
-        try{
-            //Log.e("Value", value.toString());
-        }catch (NullPointerException NPE){
-            Log.e("secondaryFilter", "NULL");
-        }
         if (secondaryFilter(value)) {
             if (searchString.length() == 0) {
                 found = true;
@@ -303,7 +290,6 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
     }
 
     public static boolean isRedFlag(Integer teamNumber) {
-        ArrayList<String> teamsList = new ArrayList<>();
         ArrayList<String> datapointList = new ArrayList<>();
         List<String> datapointValuesTemp = new ArrayList<>();
         List<String> datapointValues = new ArrayList<>();
@@ -311,9 +297,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         ArrayList<String> sinCounter = new ArrayList<>();
 
 
-        for (String team : FirebaseLists.teamsList.getKeys()) {
-            teamsList.add(team);
-        }
+        List<String> teamsList = FirebaseLists.teamsList.getKeys();
         for (String datapoint : RedFlags.RED_FLAG_DATAPOINT_NAMES) {
             datapointList.add(datapoint);
         }
@@ -329,30 +313,25 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
                 datapointValuesTemp.add(datapoint);
             }
         } else {
-            for (int count = 0; count < 5; count ++) {
+            for (int count = 0; count < 5; count++) {
                 datapointValuesTemp.add("1000.55");
             }
         }
 
-        for (int i = 0; i < datapointValuesTemp.size(); i ++ ){
+        for (int i = 0; i < datapointValuesTemp.size(); i++) {
             if (datapointValuesTemp.get(i).contains(".")) {
                 datapointValues.add(datapointValuesTemp.get(i));
-            } else
-            if (datapointValuesTemp.get(i).contains("LabVIEW")) {
+            } else if (datapointValuesTemp.get(i).contains("LabVIEW")) {
                 datapointValues.add(datapointValuesTemp.get(i));
-            } else
-            if (datapointValuesTemp.get(i).contains("C++")) {
+            } else if (datapointValuesTemp.get(i).contains("C++")) {
                 datapointValues.add(datapointValuesTemp.get(i));
-            } else
-            if (datapointValuesTemp.get(i).contains("Java")) {
+            } else if (datapointValuesTemp.get(i).contains("Java")) {
                 datapointValues.add(datapointValuesTemp.get(i));
-            } else
-            if (datapointValuesTemp.get(i).contains("Other")) {
+            } else if (datapointValuesTemp.get(i).contains("Other")) {
                 datapointValues.add(datapointValuesTemp.get(i));
-            }
-             else {
+            } else {
                 Integer datapointInt = Integer.valueOf(datapointValuesTemp.get(i));
-                datapointValues.add(String.valueOf(datapointInt)+".0");
+                datapointValues.add(String.valueOf(datapointInt) + ".0");
             }
         }
         if (datapointValues.contains("1000.55")) {
@@ -396,6 +375,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         return false;
 
     }
+
     public List<Float> getValues(Integer teamNumber, String field) {
         List<Float> dataValues = new ArrayList<>();
         //gets the datapoint values of the given team
@@ -418,6 +398,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
 
         return dataValues;
     }
+
     public List<Float> getTeamInMatchDatapointValue(String team, String selectedDatapoint) {
         List<Float> values;
         //returns value of datapoint per team
@@ -427,13 +408,14 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
 
 
     public boolean onStarredMatches(Integer team) {
-        for(int i = 0; i < StarManager.starredTeams.size(); i++) {
-            if(team.equals(StarManager.starredTeams.get(i))) {
-                return  true;
+        for (int i = 0; i < StarManager.starredTeams.size(); i++) {
+            if (team.equals(StarManager.starredTeams.get(i))) {
+                return true;
             }
         }
         return false;
     }
+
     public boolean onHighlightedTeams(Integer team) {
         for (int i = 0; i < Constants.highlightedTeams.size(); i++) {
             if (team.equals(Constants.highlightedTeams.get(i))) {
@@ -442,6 +424,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         }
         return false;
     }
+
     public boolean onTeamPicklist(Integer team) {
         for (int i = 0; i < Constants.teamsFromPicklist; i++) {
             if (team.toString().equals(Constants.picklistMap.get(i))) {
@@ -450,6 +433,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         }
         return false;
     }
+
     public void updateHighlightedTeams() {
         Constants.highlightedTeams.clear();
         for (int p = 0; p < Constants.highlightedMatches.size(); p++) {
@@ -499,30 +483,33 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         }
         return false;
     }
+
     public boolean onOurAllianceList(Integer team) {
-            for (int i = 0; i < Constants.onOurAllianceList.size(); i++) {
-                if (team.equals(Constants.onOurAllianceList.get(i))) {
-                    return true;
-                }
+        for (int i = 0; i < Constants.onOurAllianceList.size(); i++) {
+            if (team.equals(Constants.onOurAllianceList.get(i))) {
+                return true;
+            }
         }
         return false;
     }
+
     public boolean onOpponentAllianceList(Integer team) {
-            for (int i = 0; i < Constants.onOpponentAllianceList.size(); i++) {
-                if (team.equals(Constants.onOpponentAllianceList.get(i))) {
-                    return true;
-                }
+        for (int i = 0; i < Constants.onOpponentAllianceList.size(); i++) {
+            if (team.equals(Constants.onOpponentAllianceList.get(i))) {
+                return true;
             }
+        }
         return false;
     }
 
 
-    public  void saveToSharedHighlightedTeams() {
+    public void saveToSharedHighlightedTeams() {
         Gson gson = new Gson();
         String jsonText = gson.toJson(Constants.highlightedMatches);
         ViewerActivity.myEditor.putString("highlightedTeams", jsonText);
         ViewerActivity.myEditor.apply();
     }
+
     public static ArrayList<Integer> getFromSharedHighlightedTeams() {
         Gson gson = new Gson();
         String jsonText = ViewerActivity.myPref.getString("highlightedTeams", null);
@@ -560,7 +547,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
     }
 
 
-    public abstract boolean secondaryFilter (Match value);
+    public abstract boolean secondaryFilter(Match value);
 
     private class StarLongClickListener implements View.OnLongClickListener {
 
@@ -569,7 +556,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
 
             Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
             //vibrator.vibrate(75);
-            TextView matchNumberTextView = (TextView)v.findViewById(R.id.matchNumber);
+            TextView matchNumberTextView = (TextView) v.findViewById(R.id.matchNumber);
             if (StarManager.isImportantMatch(Integer.parseInt(matchNumberTextView.getText().toString()))) {
                 StarManager.removeImportantMatch(Integer.parseInt(matchNumberTextView.getText().toString()));
             } else {
@@ -580,6 +567,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         }
 
     }
+
     private class HighlightTeamListener implements View.OnLongClickListener {
 
         @Override
@@ -587,7 +575,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
 
             Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 
-            TextView matchNumberTextView = (TextView)v.findViewById(R.id.matchNumber);
+            TextView matchNumberTextView = (TextView) v.findViewById(R.id.matchNumber);
             Constants.matchNumber = Integer.parseInt(matchNumberTextView.getText().toString());
             Match match = (Match) FirebaseLists.matchesList.getFirebaseObjectByKey(matchNumberTextView.getText().toString());
             List<Integer> teamsInMatch = new ArrayList<>();
@@ -623,7 +611,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
 
         @Override
         public void onClick(View v) {
-            TextView matchNumberTextView = (TextView)v.findViewById(R.id.matchNumber);
+            TextView matchNumberTextView = (TextView) v.findViewById(R.id.matchNumber);
             Integer matchNumberClicked = Integer.parseInt((matchNumberTextView.getText()).toString());
 
             Intent matchDetailsActivityIntent = getMatchDetailsActivityIntent();

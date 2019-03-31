@@ -19,8 +19,10 @@ public class SuperAbilityAdapter extends FragmentStatePagerAdapter {
     String[] fields = {
             "calculatedData.agilityZScore",
             "calculatedData.speedZScore",
+            "calculatedData.driverAbility",
+            "calculatedData.defenseAbility",
             "calculatedData.avgGoodDecisions",
-            "calculatedData.avgBadDecisions"
+            "calculatedData.avgBadDecisions",
     };
 
     public SuperAbilityAdapter(Context context, FragmentManager mgr) {

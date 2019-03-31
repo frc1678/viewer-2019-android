@@ -133,7 +133,10 @@ public class FirebaseList<T> {
     }
 
     public T getFirebaseObjectByKey(String key) {
-        return values.get(keys.indexOf(key));
+	    if (keys.contains(key)) {
+		    return values.get(keys.indexOf(key));
+	    }
+	    return null;
     }
 
     public List<String> getKeys() {

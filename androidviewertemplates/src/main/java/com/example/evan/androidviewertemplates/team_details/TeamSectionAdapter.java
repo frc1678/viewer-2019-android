@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
+import com.example.evan.androidviewertemplates.drawer_fragments.data_comparison.DataComparisonTIMDTabbedActivity;
 import com.example.evan.androidviewertemplates.graphing.RankingsActivity;
 import com.example.evan.androidviewertemplates.team_ranking.TeamRankingsActivity;
 import com.example.evan.androidviewertemplates.utils.SpecificConstants;
@@ -38,15 +39,15 @@ public abstract class TeamSectionAdapter extends MultitypeRankingsSectionAdapter
     protected Context context;
 
     public TeamSectionAdapter(Context context, Integer teamNumber,
-                       String[] rankInsteadOfGraph,
-                       String[] createListOnClick,
-                       String[] notClickableFields,
-                       String[] shouldDisplayAsLongText,
-                       String[] shouldDisplayAsFurtherInformation,
-                       String[] displayAsUnranked,
-                       String[] shouldDisplayAsPercentage,
-                       String[] sectionTitles,
-                       String[][] fieldsToDisplay) {
+                              String[] rankInsteadOfGraph,
+                              String[] createListOnClick,
+                              String[] notClickableFields,
+                              String[] shouldDisplayAsLongText,
+                              String[] shouldDisplayAsFurtherInformation,
+                              String[] displayAsUnranked,
+                              String[] shouldDisplayAsPercentage,
+                              String[] sectionTitles,
+                              String[][] fieldsToDisplay) {
         super(context);
         this.teamNumber = teamNumber;
         this.context = context;
@@ -141,8 +142,7 @@ public abstract class TeamSectionAdapter extends MultitypeRankingsSectionAdapter
 
     @Override
     public Intent getGraphActivityIntent() {
-        Log.e("graph intent", "called");
-        return new Intent(context, RankingsActivity.class);
+        return new Intent(context, DataComparisonTIMDTabbedActivity.class);
     }
 
     @Override

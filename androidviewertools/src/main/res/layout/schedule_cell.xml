@@ -86,9 +86,16 @@
             android:layout_weight="1"/>
     </LinearLayout>
 
+    <View
+        android:id="@+id/rpSeparator"
+        android:layout_toRightOf="@+id/redTeamsLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+
     <TextView
         android:id="@+id/redScore"
-        android:layout_width="wrap_content"
+        android:layout_width="28dp"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/matchNumber"
         android:layout_toLeftOf="@+id/scoreSeparator"
@@ -106,16 +113,17 @@
         android:paddingRight="3dp"
         android:text="/"/>
 
-
     <LinearLayout
-        android:layout_alignLeft="@+id/redScore"
-        android:layout_alignBaseline="@id/redTeamsLayout"
-        android:layout_toStartOf="@+id/scoreSeparator"
-        android:layout_width="wrap_content"
+        android:layout_toRightOf="@id/rpSeparator"
+        android:layout_toLeftOf="@+id/scoreSeparator"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
-        <TextView
+        <ImageView
+            android:visibility="visible"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="false"
             android:id="@+id/rankingPointDisplayRedRocketRP"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -124,6 +132,7 @@
             />
 
         <TextView
+            android:visibility="visible"
             android:id="@+id/rankingPointDisplayRedHabClimb"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -136,11 +145,14 @@
         android:layout_alignRight="@+id/blueScore"
         android:layout_alignBaseline="@id/redTeamsLayout"
         android:layout_toEndOf="@+id/scoreSeparator"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
-        <TextView
+        <ImageView
+            android:visibility="visible"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="false"
             android:id="@+id/rankingPointDisplayBlueRocketRP"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -149,6 +161,7 @@
             />
 
         <TextView
+            android:visibility="visible"
             android:id="@+id/rankingPointDisplayBlueHabClimb"
             android:layout_width="wrap_content"
             android:layout_weight="1"
@@ -169,7 +182,8 @@
 
     <TextView
         android:id="@+id/blueScore"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="28dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/matchNumber"
         android:layout_alignParentRight="true"

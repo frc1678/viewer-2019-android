@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 
 import com.example.evan.androidviewertemplates.MainActivity;
 import com.example.evan.androidviewertemplates.R;
+import com.example.evan.androidviewertemplates.team_details.TeamDetailsActivity;
 
 public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
 
@@ -23,13 +24,15 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
     public static String teamThree;
     public static String teamFour;
     public static String selectedDatapoint;
+    public static String selectedDatapointName;
     public static Boolean isTIMD;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.data_comparison_tabbed_activity);
-        initXml(); getExtras();
+        initXml();
+        getExtras();
         //Sets title to hardcoded "Comparison Graphing"
         setTitle("Comparison Graphing");
 
@@ -81,16 +84,15 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
             } else {
                 teamFour = "null";
             }
-
             selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
+            selectedDatapointName = getIntent().getStringExtra("selectedDatapointName");
             isTIMD = convertBoolean(getIntent().getStringExtra("isTIMD"));
         }
 
     }
 
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK)
-        {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);

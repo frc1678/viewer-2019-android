@@ -40,7 +40,7 @@ public class SuperAbilityListFragment extends TeamRankingsFragment {
         super.onViewCreated(view, savedInstanceState);
 
         View secondPickTeamTitleListHeader = View.inflate(getActivity().getApplicationContext(), R.layout.second_pick_list_header, null);
-        TextView secondPickTeamTitleTextView = (TextView)secondPickTeamTitleListHeader.findViewById(R.id.secondPickTeamTitleTextView);
+        TextView secondPickTeamTitleTextView = (TextView) secondPickTeamTitleListHeader.findViewById(R.id.secondPickTeamTitleTextView);
         secondPickTeamTitleTextView.setText(SpecificConstants.KEYS_TO_TITLES.get(field));
         Log.e("super data field", field);
         getListView().addHeaderView(secondPickTeamTitleListHeader, null, false);
@@ -56,8 +56,9 @@ public class SuperAbilityListFragment extends TeamRankingsFragment {
     public static class SuperAbilityListAdapter extends TeamRankingsAdapter {
 
         public SuperAbilityListAdapter(Context context, String field) {
-            super(context, field, field, true);
+            super(context, field, field, false);
         }
+
         public Intent getTeamDetailsActivityIntent() {
             return new Intent(context, TeamDetailsActivity.class);
         }

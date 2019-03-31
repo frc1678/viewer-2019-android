@@ -86,14 +86,16 @@ public class CalculatedTeamData extends Object {
     public Integer p75lemonSuccessL3;
     public Integer p75lemonSuccesssFromSide;
     public Integer p75habLineSuccessL1;
-    public Integer p75habLineSuccessL2;
-    public Integer p75percentIncap;
-    public Integer p75percentImpaired;
-    public Integer p75percentNoShow;
-    public Integer percentIncapEntireMatch;
+    public Integer p75habLine;
     public Integer p75percentIncapEntireMatch;
     public Integer sdPercentIncapEntireMatch;
     public Integer lfmPercentIncapEntireMatch;
+    public Integer pitSEALsRampRanking;
+    public Integer climbSuccessL1;
+    public Integer climbSuccessL2;
+    public Integer climbSuccessL3;
+    public Integer orangesScoredL1;
+    public Integer percentDysfunctional;
 
     public Float agilityZScore;
     public Float predictedRPs;
@@ -173,9 +175,9 @@ public class CalculatedTeamData extends Object {
     public Float p75avgTimeClimbing;
     public Float p75avgLemonsSpilled;
     public Float speedZScore;
-    public Float avgLemonsPlacedSandstorm;
-    public Float avgOrangesPlacedSandstorm;
-    public Float drivingAbility;
+    public Float avgLemonsScoredSandstorm;
+    public Float avgOrangesScoredSandstorm;
+    public Float driverAbility;
 
     public Boolean hasOrangeGroundIntake;
     public Boolean hasLemonGroundIntake;
@@ -183,4 +185,8 @@ public class CalculatedTeamData extends Object {
     public Boolean didPreloadLemon;
 
     public List<String> totalSuperNotes;
+
+    public String climbAttemptsL1;
+    public String climbAttemptsL2;
+    public String climbAttemptsL3;
 }

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="5dp">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dp">
 
     <TextView
         android:id="@+id/rankingTextView"
@@ -9,7 +12,7 @@
         android:textSize="12sp"
         android:layout_alignParentLeft="true"
         android:paddingLeft="5dp"
-        android:text="Seed"/>
+        android:text="Seed" />
 
 
     <LinearLayout
@@ -23,8 +26,7 @@
             android:id="@+id/frameLayout1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            >
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/team"
@@ -34,51 +36,48 @@
                 android:text="Team" />
 
         </FrameLayout>
+
         <FrameLayout
             android:id="@+id/frameLayout2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            >
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/predicted_seed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Predicted Seed"
-                android:textSize="12sp"
-                />
+                android:textSize="12sp" />
 
         </FrameLayout>
+
         <FrameLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            >
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/predicted_ranking_points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Predicted RP"
-                android:textSize="12sp"
-                />
+                android:textSize="12sp" />
 
         </FrameLayout>
+
         <FrameLayout
             android:id="@+id/frameLayout4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            >
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/current_ranking_points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:text="Current RP"
-                />
+                android:text="Current RP" />
 
         </FrameLayout>
 

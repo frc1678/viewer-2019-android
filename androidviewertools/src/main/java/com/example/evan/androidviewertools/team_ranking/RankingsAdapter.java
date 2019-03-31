@@ -82,7 +82,7 @@ public abstract class RankingsAdapter<T extends Object> extends SearchableFireba
         if (!displayValueAsPercentage()) {
             valueTextView.setText(Utils.roundDataPoint(getRankCellDataPoint(value), 2, "???"));
         } else {
-            valueTextView.setText(Utils.dataPointToPercentage((Float)getRankCellDataPoint(value), 1));
+            valueTextView.setText(Utils.integerDataPointToPercentage((Integer)getRankCellDataPoint(value), 1));
         }
 
         rowView.setOnLongClickListener(new StarLongClickListener());
@@ -148,21 +148,11 @@ public abstract class RankingsAdapter<T extends Object> extends SearchableFireba
         }
     }
 
-/*    private String formatRank(Integer rank) {
+    private String formatRank(Integer rank) {
         if (rank != null) {
-            //return rank + 1 + "";
             Integer totalSize = this.rankCache.size();
             Integer newRank = totalSize - rank;
             return newRank + "";
-        } else {
-            return "?";
-        }
-    }*/
-//todo Use if the seeding is reversed instead of the code below
-
-    private String formatRank(Integer rank) {
-        if (rank != null) {
-            return rank + 1 + "";
         } else {
             return "?";
         }

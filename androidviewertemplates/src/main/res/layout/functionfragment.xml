@@ -43,6 +43,7 @@
 
     </LinearLayout>
 
+
     <View
         android:id="@+id/topSeparator"
         android:visibility="visible"
@@ -80,6 +81,7 @@
             />
 
     </LinearLayout>
+
 
     <View
         android:id="@+id/bottomSeparator"

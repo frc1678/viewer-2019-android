@@ -137,7 +137,7 @@ public class TeamActivity extends com.example.evan.androidviewertools.ViewerActi
         teamDetailsTeamNumberTextView.setOnLongClickListener(new StarLongClickListener());
 
         TextView teamDetailsTeamNameTextView = (TextView) teamDetailsHeaderView.findViewById(R.id.teamDetailsTeamNameTextView);
-        teamDetailsTeamNameTextView.setText(Utils.getDisplayValue(team, "name"));
+        teamDetailsTeamNameTextView.setText(Utils.getDisplayValueForField(team, "name"));
 
         TextView teamDetailsSeedingTextView = (TextView) teamDetailsHeaderListView.findViewById(R.id.teamDetailsSeeding);
         teamDetailsSeedingTextView.setText((Utils.fieldIsNotNull(team, "calculatedData.actualSeed")) ? Utils.roundDataPoint(Utils.getObjectField(team, "calculatedData.actualSeed"), 2, "???") : "???");
@@ -146,21 +146,21 @@ public class TeamActivity extends com.example.evan.androidviewertools.ViewerActi
         teamDetailsPredictedSeedingTextView.setText((Utils.fieldIsNotNull(team, "calculatedData.predictedSeed")) ? Utils.roundDataPoint(Utils.getObjectField(team, "calculatedData.predictedSeed"), 2, "???") : "???");
 
         Button redFlagButton = (Button) teamDetailsHeaderListView.findViewById(R.id.redFlagButton);
-        if (Constants.redFlagsPerTeam.get(String.valueOf(teamNumber))!=null) {
-            if (Constants.redFlagsPerTeam.get(String.valueOf(teamNumber)).size()>0) {
+        if (Constants.redFlagsPerTeam.get(String.valueOf(teamNumber)) != null) {
+            if (Constants.redFlagsPerTeam.get(String.valueOf(teamNumber)).size() > 0) {
                 redFlagButton.setVisibility(View.VISIBLE);
                 setTextRedFlags(redFlagButton);
                 redFlagButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            final Dialog dialog = new Dialog(TeamActivity.this);
-            dialog.setContentView(R.layout.red_flags_dialog);
-            TextView red_flag_title = (TextView) dialog.findViewById(R.id.red_flags_title);
-            ListView red_flag_listview = (ListView) dialog.findViewById(R.id.red_flags_lv);
-            red_flag_title.setText(String.valueOf(teamNumber) + "'s Red Flags");
-            RedFlagsAdapter adapter = new RedFlagsAdapter(TeamActivity.this, Constants.redFlagsPerTeam, String.valueOf(teamNumber)) ;
-            red_flag_listview.setAdapter(adapter);
-            dialog.show();
+                    @Override
+                    public void onClick(View view) {
+                        final Dialog dialog = new Dialog(TeamActivity.this);
+                        dialog.setContentView(R.layout.red_flags_dialog);
+                        TextView red_flag_title = (TextView) dialog.findViewById(R.id.red_flags_title);
+                        ListView red_flag_listview = (ListView) dialog.findViewById(R.id.red_flags_lv);
+                        red_flag_title.setText(String.valueOf(teamNumber) + "'s Red Flags");
+                        RedFlagsAdapter adapter = new RedFlagsAdapter(TeamActivity.this, Constants.redFlagsPerTeam, String.valueOf(teamNumber));
+                        red_flag_listview.setAdapter(adapter);
+                        dialog.show();
                     }
                 });
             }
@@ -198,7 +198,6 @@ class RedFlagsAdapter extends BaseAdapter {
 
 
     }
-
 
 
     @Override

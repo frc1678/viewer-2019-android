@@ -257,7 +257,7 @@ public class FunctionFragment extends Fragment {
 			    if (!isTeamsOfPicklist && !isClearStarredMatches && !isClearHighlightedTeams &&
 					    !isClearedStarredTeams && !isClearHighlightedMatches) {
 				    Constants.alreadySelectedOnPicklist.clear();
-				    makeToast("Highlighted Picklist Teams have been cleared.");
+				    makeToast("Unavailable picklist teams have been cleared.");
 			    }
 			    return true;
 		    }
@@ -280,7 +280,9 @@ public class FunctionFragment extends Fragment {
 				if (!isTeamsOfPicklist && !isClearedStarredTeams && !isClearHighlightedTeams && !isClearHighlightedMatches && !isClearStarredMatches && !isClearSelectedTeamsFromPicklist) {
 					enableView(topSquaresDescriptionBox, topSquaresFL, topSeparator, clearedStarredTeams,
 							"Highlighted Picklist Teams",
-							"Highlights 'n' number of teams in all instances of that team in all schedule views throughout the viewer");
+							"Highlights 'n' number of teams in all instances of that team in all schedule views throughout the viewer. " +
+									"The number you input when you long click will have the top *that amount* of teams from the picklist be highlighted" +
+									"in a light red color in all schedule views when they are *not* sharing any other highlight color mixes");
 					isTeamsOfPicklist = true;
 				} else if (trueBesidesBoolean(isTeamsOfPicklist))
 				{} else {
@@ -296,7 +298,8 @@ public class FunctionFragment extends Fragment {
 				if (!isTeamsOfPicklist && !isClearedStarredTeams && !isClearHighlightedTeams && !isClearHighlightedMatches && !isClearStarredMatches && !isClearSelectedTeamsFromPicklist) {
 					enableView(topSquaresDescriptionBox, topSquaresFL, topSeparator, teamsOfPicklist,
 							"Clear Starred Teams",
-							"description");
+							"Clears all of the starred teams that have been cached. All teams that appear yellow when not mixed will return to " +
+									"a clear background state, or otherwise known as a state where they are not a starred team");
 					isClearedStarredTeams = true;
 				} else if (trueBesidesBoolean(isClearedStarredTeams))
 				{} else {
@@ -312,7 +315,7 @@ public class FunctionFragment extends Fragment {
 				if (!isTeamsOfPicklist && !isClearedStarredTeams && !isClearHighlightedTeams && !isClearHighlightedMatches && !isClearStarredMatches && !isClearSelectedTeamsFromPicklist) {
 					enableView(midSquaresDescriptionBox, midSquaresFL, bottomSeparator, clearHighlightedMatches,
 							"Clear Highlighted Teams",
-							"description");
+							"Currently disabled");
 					grayOutButton(clearedStarredTeams); grayOutButton(teamsOfPicklist);
 					isClearHighlightedTeams = true;
 				} else if (trueBesidesBoolean(isClearHighlightedTeams))
@@ -330,7 +333,7 @@ public class FunctionFragment extends Fragment {
 				if (!isTeamsOfPicklist && !isClearedStarredTeams && !isClearHighlightedTeams && !isClearHighlightedMatches && !isClearStarredMatches && !isClearSelectedTeamsFromPicklist) {
 					enableView(midSquaresDescriptionBox, midSquaresFL, bottomSeparator, clearHighlightedTeams,
 							"Clear Highlighted Matches",
-							"description");
+							"Clears all of the highlighted teams from 'Our Schedule'. When highlighted, the individual teams are starred blue in all schedule views when not mixed");
 					grayOutButton(clearedStarredTeams); grayOutButton(teamsOfPicklist);
 					isClearHighlightedMatches = true;
 				} else if (trueBesidesBoolean(isClearHighlightedMatches))
@@ -348,7 +351,8 @@ public class FunctionFragment extends Fragment {
 				if (!isTeamsOfPicklist && !isClearedStarredTeams && !isClearHighlightedTeams && !isClearHighlightedMatches && !isClearStarredMatches && !isClearSelectedTeamsFromPicklist) {
 					enableView(bottomSquaresDescriptionBox, bottomSquaresFL, bottomSeparator, clearSelectedTeamsFromPicklist,
 							"Clear Starred Matches",
-							"description");
+							"Clears all of the starred matches. A match is starred when it has a yellow background in the schedule view or match details view" +
+									"A long click on this will clear all of those starred matches and default them to normal matches");
 					isClearStarredMatches = true;
 				} else if (trueBesidesBoolean(isClearStarredMatches))
 				{} else {
@@ -364,7 +368,9 @@ public class FunctionFragment extends Fragment {
 				if (!isTeamsOfPicklist && !isClearedStarredTeams && !isClearHighlightedTeams && !isClearHighlightedMatches && !isClearStarredMatches && !isClearSelectedTeamsFromPicklist) {
 					enableView(bottomSquaresDescriptionBox, bottomSquaresFL, bottomSeparator, clearStarredMatches,
 							"Clear Highlighted Picklist Teams",
-							"description");
+							"Clears the list of all of the unavailable picklist teams from the picklist fragment." +
+									"On the picklist fragment, when you select a team, you have the option to change their status to 'unavailable'," +
+									"making them red on the picklist view. Long click on this will clear all of those red teams");
 					isClearSelectedTeamsFromPicklist = true;
 				} else if (trueBesidesBoolean(isClearSelectedTeamsFromPicklist))
 				{} else {
@@ -503,5 +509,6 @@ public class FunctionFragment extends Fragment {
 	    return false;
     }
     
+
 }
 

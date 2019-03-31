@@ -5,6 +5,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -57,9 +58,9 @@ public abstract class DemoBase extends AppCompatActivity implements ActivityComp
 
     protected void requestStoragePermission(View view) {
 
-            Toast.makeText(getApplicationContext(), "Permission Required!", Toast.LENGTH_SHORT)
-                    .show();
-            ActivityCompat.requestPermissions(DemoBase.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_STORAGE);
+        Toast.makeText(getApplicationContext(), "Permission Required!", Toast.LENGTH_SHORT)
+                .show();
+        ActivityCompat.requestPermissions(DemoBase.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_STORAGE);
     }
 
     protected void saveToGallery(Chart chart, String name) {

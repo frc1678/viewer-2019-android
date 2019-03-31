@@ -25,6 +25,7 @@ import com.example.evan.androidviewertemplates.R;
 import com.example.evan.androidviewertemplates.team_details.TeamDetailsActivity;
 import com.example.evan.androidviewertools.utils.AsteriskPasswordTransformationMethod;
 import com.example.evan.androidviewertools.utils.Constants;
+import com.example.evan.androidviewertools.utils.firebase.FirebaseList;
 import com.example.evan.androidviewertools.utils.firebase.FirebaseLists;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -52,6 +53,7 @@ public class FirstPicklistFragment extends Fragment {
     Context context;
     public static String picklistPassword = "";
     public static Map<Integer, String> teams = new HashMap<>();
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getContext();
@@ -61,18 +63,25 @@ public class FirstPicklistFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View myLayout = inflater.inflate(R.layout.firstpicklist, null);
         final ListView listView = (ListView) myLayout.findViewById(R.id.listview);
-        dataBase = FirebaseDatabase.getInstance();
-        dref = dataBase.getReference();
-        dref.child("PicklistPassword").addValueEventListener(new ValueEventListener() {
+        if (dref == null) {
+            dataBase = FirebaseDatabase.getInstance();
+            dataBase.setPersistenceEnabled(true);
+            dref = dataBase.getReference();
+        }
+        dref.child("constants").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                picklistPassword = dataSnapshot.getValue().toString();
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    if (String.valueOf(child.getKey()).equals("picklistPassword")) {
+                        picklistPassword = child.getValue().toString();
+                    }
+                }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
         dref.child("picklist").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -80,7 +89,6 @@ public class FirstPicklistFragment extends Fragment {
                 final Integer teamPicklistPosition = Integer.parseInt(dataSnapshot.getKey());
 
                 putIntoPicklistMaps(teamNumber, teamPicklistPosition);
-
                 if (checkTeamsListSize(Constants.picklistMap)) {
                     Constants.rankedTeamsListByActualSeed = Constants.picklistMap;
                     final Dialog passwordDialog = new Dialog(context);
@@ -89,122 +97,126 @@ public class FirstPicklistFragment extends Fragment {
                     final Button passwordButton = (Button) passwordDialog.findViewById(R.id.passwordButton);
                     final EditText passwordEditText = (EditText) passwordDialog.findViewById(R.id.passwordEditText);
                     passwordEditText.setTransformationMethod(new AsteriskPasswordTransformationMethod());
+                    Log.e("REACHED", "7");
 
-    if (!Constants.alreadyEnteredPasswordInCurrentSession) {
-        passwordDialog.show();
-    } else {
-        FirstPicklistAdapter adapter = new FirstPicklistAdapter(context, sortByValue(Constants.picklistMap));
-        listView.setAdapter(adapter);
-        setAdapterEssentials(adapter, listView, context);
-        FirstPicklistFragment.picklistValue = true;
-    }
+                    if (!Constants.alreadyEnteredPasswordInCurrentSession) {
+                        passwordDialog.show();
+                    } else {
+                        FirstPicklistAdapter adapter = new FirstPicklistAdapter(context, sortByValue(Constants.picklistMap));
+                        listView.setAdapter(adapter);
+                        setAdapterEssentials(adapter, listView, context);
+                        FirstPicklistFragment.picklistValue = true;
+                    }
 
-    passwordButton.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        final String passwordText = passwordEditText.getText().toString();
-         if (checkPassword(passwordText)) {
-              Constants.alreadyEnteredPasswordInCurrentSession = true;
-              passwordDialog.dismiss();
-              FirstPicklistAdapter adapter = new FirstPicklistAdapter(context, sortByValue(Constants.picklistMap));
-              listView.setAdapter(adapter);
-             setAdapterEssentials(adapter, listView, context);
-             FirstPicklistFragment.picklistValue = true;
-              } else {
-         Toast.makeText(getActivity(), "hacking = bad",
-              Toast.LENGTH_LONG).show();
-         passwordEditText.getText().clear();
+                    passwordButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            final String passwordText = passwordEditText.getText().toString();
+                            if (checkPassword(passwordText)) {
+                                Constants.alreadyEnteredPasswordInCurrentSession = true;
+                                passwordDialog.dismiss();
+                                FirstPicklistAdapter adapter = new FirstPicklistAdapter(context, sortByValue(Constants.picklistMap));
+                                listView.setAdapter(adapter);
+                                setAdapterEssentials(adapter, listView, context);
+                                FirstPicklistFragment.picklistValue = true;
+                            } else {
+                                Toast.makeText(getActivity(), "hacking = bad",
+                                        Toast.LENGTH_LONG).show();
+                                passwordEditText.getText().clear();
+                            }
+                        }
+                    });
+
+
+                    listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                        @Override
+                        public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                            final Dialog longClickDialog = new Dialog(context);
+                            longClickDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                            longClickDialog.setContentView(R.layout.longclickdialog);
+
+                            TextView teamNumberDisplay = (TextView) longClickDialog.findViewById(R.id.teamNumberDisplay);
+                            Button teamDetails = (Button) longClickDialog.findViewById(R.id.teamDetailsButton);
+                            Button highlightCellButton = (Button) longClickDialog.findViewById(R.id.highlightTextButton);
+
+                            teamNumberDisplay.setText(Constants.picklistMap.get(position));
+                            longClickDialog.show();
+
+                            teamDetails.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Integer teamNumberClicked = Integer.parseInt(Constants.picklistMap.get(position));
+                                    Intent teamDetailsViewIntent = getTeamDetailsActivityIntent();
+                                    teamDetailsViewIntent.putExtra("teamNumber", teamNumberClicked);
+                                    teamDetailsViewIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    context.startActivity(teamDetailsViewIntent);
+                                    Parcelable state = listView.onSaveInstanceState();
+                                    FirstPicklistAdapter adapter = new FirstPicklistAdapter(context, sortByValue(Constants.picklistMap));
+                                    listView.setAdapter(adapter);
+                                    listView.onRestoreInstanceState(state);
+                                    longClickDialog.dismiss();
+                                }
+                            });
+
+                            highlightCellButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Integer team = Integer.parseInt(Constants.picklistMap.get(position));
+                                    if (!onAlreadySelectedOnPicklist(team)) {
+                                        Constants.alreadySelectedOnPicklist.add(team);
+                                    } else {
+                                        Constants.alreadySelectedOnPicklist.remove(team);
+                                    }
+                                    Parcelable state = listView.onSaveInstanceState();
+                                    FirstPicklistAdapter adapter = new FirstPicklistAdapter(context, sortByValue(Constants.picklistMap));
+                                    listView.setAdapter(adapter);
+                                    listView.onRestoreInstanceState(state);
+
+                                    longClickDialog.dismiss();
+                                }
+                            });
+
+                            return true;
+                        }
+                    });
+                }
             }
-        }
-    });
 
+            public Intent getTeamDetailsActivityIntent() {
+                return new Intent(getActivity(), TeamDetailsActivity.class);
+            }
 
-    listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-    @Override
-    public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-        final Dialog longClickDialog = new Dialog(context);
-        longClickDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        longClickDialog.setContentView(R.layout.longclickdialog);
-
-        TextView teamNumberDisplay = (TextView) longClickDialog.findViewById(R.id.teamNumberDisplay);
-        Button teamDetails = (Button) longClickDialog.findViewById(R.id.teamDetailsButton);
-        Button highlightCellButton = (Button) longClickDialog.findViewById(R.id.highlightTextButton);
-
-        teamNumberDisplay.setText(Constants.picklistMap.get(position));
-        longClickDialog.show();
-
-        teamDetails.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Integer teamNumberClicked = Integer.parseInt(Constants.picklistMap.get(position));
-                Intent teamDetailsViewIntent = getTeamDetailsActivityIntent();
-                teamDetailsViewIntent.putExtra("teamNumber", teamNumberClicked);
-                teamDetailsViewIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(teamDetailsViewIntent);
-                Parcelable state = listView.onSaveInstanceState();
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                final String teamNumber = dataSnapshot.getValue().toString();
+                Integer teamPicklistPosition = Integer.parseInt(dataSnapshot.getKey());
+                putIntoPicklistMaps(teamNumber, teamPicklistPosition);
                 FirstPicklistAdapter adapter = new FirstPicklistAdapter(context, sortByValue(Constants.picklistMap));
+                Parcelable state = listView.onSaveInstanceState();
                 listView.setAdapter(adapter);
                 listView.onRestoreInstanceState(state);
-                longClickDialog.dismiss();
+                final Integer teamString = Integer.parseInt(String.valueOf(Constants.tempTeamNumber));
+                Integer myTeam = getKeyByValue(Constants.picklistMap, teamString.toString());
+                listView.smoothScrollToPosition(myTeam);
+                adapter.notifyDataSetChanged();
             }
-        });
 
-        highlightCellButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Integer team =  Integer.parseInt(Constants.picklistMap.get(position));
-                if (!onAlreadySelectedOnPicklist(team)) {
-                    Constants.alreadySelectedOnPicklist.add(team);
-                } else {
-                    Constants.alreadySelectedOnPicklist.remove(team);
-                }
-                Parcelable state = listView.onSaveInstanceState();
-                FirstPicklistAdapter adapter = new FirstPicklistAdapter(context, sortByValue(Constants.picklistMap));
-                listView.setAdapter(adapter);
-                listView.onRestoreInstanceState(state);
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-                longClickDialog.dismiss();
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
-
-        return true;
-                }
-            });
-        }
-    }
-    public Intent getTeamDetailsActivityIntent() {
-         return new Intent(getActivity(), TeamDetailsActivity.class);
-    }
-    @Override
-    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-         final String teamNumber = dataSnapshot.getValue().toString();
-         Integer teamPicklistPosition = Integer.parseInt(dataSnapshot.getKey());
-         putIntoPicklistMaps(teamNumber, teamPicklistPosition);
-         FirstPicklistAdapter adapter = new FirstPicklistAdapter(context, sortByValue(Constants.picklistMap));
-        Parcelable state = listView.onSaveInstanceState();
-        listView.setAdapter(adapter);
-        listView.onRestoreInstanceState(state);
-        final Integer teamString = Integer.parseInt(String.valueOf(Constants.tempTeamNumber));
-        Integer myTeam = getKeyByValue(Constants.picklistMap, teamString.toString());
-        listView.smoothScrollToPosition(myTeam);
-         adapter.notifyDataSetChanged();
-        }
-    @Override
-    public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-        }
-
-    @Override
-    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-        }
-
-    @Override
-    public void onCancelled(DatabaseError databaseError) {
-
-        }
-    });
-    return myLayout;
+        return myLayout;
     }
 
     public static Map<Integer, String> sortByValue(Map<Integer, String> teams) {
@@ -239,18 +251,21 @@ public class FirstPicklistFragment extends Fragment {
         teams.put(teamPicklistPosition, teamNumber);
         Constants.picklistMap.put(teamPicklistPosition, teamNumber);
     }
-    public static boolean checkTeamsListSize(Map<Integer,String> map) {
+
+    public static boolean checkTeamsListSize(Map<Integer, String> map) {
         if (map.size() >= FirebaseLists.teamsList.getKeys().size()) {
             return true;
         }
         return false;
     }
+
     public static boolean checkPassword(String password) {
         if (password.equals(picklistPassword)) {
             return true;
         }
         return false;
     }
+
     public static void upButtonClick(Integer myTeam) {
         if (myTeam != 0) {
             Integer otherTeam = myTeam - 1;
@@ -264,17 +279,18 @@ public class FirstPicklistFragment extends Fragment {
             }
         }
     }
+
     public static void downButtonClick(Integer myTeam) {
-            Integer otherTeam = myTeam + 1;
-            Map<Integer, String> onClickMap = sortByValue(Constants.picklistMap);
-            String extraValue = onClickMap.get(otherTeam);
-            Constants.picklistMap.put(otherTeam, onClickMap.get(myTeam));
-            Constants.picklistMap.put(myTeam, extraValue);
-            if (myTeam < 65) {
-                dref.child("picklist").child(myTeam.toString()).setValue(Integer.parseInt(Constants.picklistMap.get(myTeam)));
-                dref.child("picklist").child(otherTeam.toString()).setValue(Integer.parseInt(Constants.picklistMap.get(otherTeam)));
-            }
+        Integer otherTeam = myTeam + 1;
+        Map<Integer, String> onClickMap = sortByValue(Constants.picklistMap);
+        String extraValue = onClickMap.get(otherTeam);
+        Constants.picklistMap.put(otherTeam, onClickMap.get(myTeam));
+        Constants.picklistMap.put(myTeam, extraValue);
+        if (myTeam < FirebaseLists.teamsList.getKeys().size()) {
+            dref.child("picklist").child(myTeam.toString()).setValue(Integer.parseInt(Constants.picklistMap.get(myTeam)));
+            dref.child("picklist").child(otherTeam.toString()).setValue(Integer.parseInt(Constants.picklistMap.get(otherTeam)));
         }
+    }
 
     public static void setAdapterEssentials(FirstPicklistAdapter adapter, final ListView listView, final Context context) {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -322,7 +338,7 @@ public class FirstPicklistFragment extends Fragment {
         return false;
     }
 
-    public void updateRankedTeamsList(Map<Integer,String> teamsMap) {
+    public void updateRankedTeamsList(Map<Integer, String> teamsMap) {
 
     }
 

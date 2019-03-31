@@ -76,12 +76,14 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
                     Object object = getObject();
                     Intent intent = new Intent();
                     Pair<Integer, Integer> location = new Pair<>(section_i, row_i);
-                    String value = String.valueOf(Utils.getViewerObjectField(object, fieldName.replaceAll("VIEWER.", ""), intent, getViewerDataPointsClass()));
-                    this.valuesCache.put(location, value);
+                    Object value = Utils.getViewerObjectField(object, fieldName.replaceAll("VIEWER.", ""), intent, getViewerDataPointsClass());
+                    String strRep = Utils.getDisplayValue(value);
+                    this.valuesCache.put(location, strRep);
                 }
             }
         }
     }
+
 
     @Override
     public Object getRowItem(int section, int row) {
@@ -111,30 +113,7 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
     public Object getSectionHeaderItem(int section) {
         return getSectionTitles()[section];
     }
-
-/*    @Override
-    public String getRankTextOfRowInSection(int section, int row) {
-        String fieldName = (String) getRowItem(section, row);
-        Object object = getObject();
-
-        if (fieldName.startsWith("VIEWER.")) {
-            Intent intent = new Intent();
-            fieldName = Utils.getViewerObjectFieldRank(fieldName.replaceFirst("VIEWER.", ""), intent, getViewerDataPointsClass());
-            Pair<Integer, Integer> location = new Pair<>(section, row);
-
-            if (!this.rankCache.containsKey(location)) {
-                recache();
-            }
-
-
-            Integer rank = this.rankCache.get(location);
-            if (rank == null) {
-                return "?";
-            } else {
-                return Integer.toString(rank + 1);
-            }
-        }
-    }*/
+    
     @Override
     public String getRankTextOfRowInSection(int section, int row) {
         Pair<Integer, Integer> location = new Pair<>(section, row);
@@ -156,7 +135,6 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
         return getKeysToTitles().get(getRowItem(section, row));
     }
 
-    //take lines 139 to 144, check if it needs to be cached, if needs to be recached, recache. If not, reference line 114 (has almost exactly what you need to do)
     @Override
     public String getValueOfRowInSection(int section, int row) {
         String fieldKey = (String)getRowItem(section, row);
@@ -173,10 +151,11 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
                 return value;
             }
         }
-        if (new ArrayList<>(Arrays.asList(getPercentageFields())).contains(fieldKey)) {
-            return Utils.dataPointToPercentage((Float)Utils.getObjectField(getObject(), fieldKey), 1);
+
+        if (Arrays.asList(getPercentageFields()).contains(fieldKey)) {
+            return Utils.integerDataPointToPercentage((Integer)Utils.getObjectField(getObject(), fieldKey), 1);
         }
-        return Utils.getDisplayValue(object, fieldKey);
+        return Utils.getDisplayValueForField(object, fieldKey);
     }
 
     @Override
@@ -224,11 +203,15 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
     public void onRowItemClick(AdapterView<?> parent, View view, int section, int row, long id) {
         if(isClickable(section, row)) {
             if (respondsNormallyToClick(section, row)) {
-                Intent intent;
+                Intent intent = null;
                 if (Arrays.asList(getRankInsteadOfGraphFields()).contains(getRowItem(section, row))) {
                     intent = getRankActivityIntent();
                 } else {
                     intent = getGraphActivityIntent();
+                    intent.putExtra("selectedDatapoint",convertToWithoutCD((String) getRowItem(section, row)));
+                    intent.putExtra("teamOne", String.valueOf(((Team)getObject()).teamNumber)); intent.putExtra("teamTwo", String.valueOf(((Team)getObject()).teamNumber));
+                    intent.putExtra("teamThree", "?"); intent.putExtra("teamFour", "?");
+                    intent.putExtra("isTIMD","true");
                 }
                 intent.putExtra("team", ((Team)getObject()).teamNumber)
                         .putExtra("field", (String) getRowItem(section, row))
@@ -238,6 +221,13 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
                 handleNonDefaultClick(section, row);
             }
         }
+    }
+
+    public String convertToWithoutCD(String datapoint) {
+        if (datapoint != null && datapoint.contains("calculatedData.")) {
+            return datapoint.substring(datapoint.lastIndexOf(".") + 1);
+        }
+        return null;
     }
 
     @Override

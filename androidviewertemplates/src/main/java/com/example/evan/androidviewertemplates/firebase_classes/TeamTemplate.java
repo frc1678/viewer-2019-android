@@ -13,7 +13,7 @@ import java.util.Map;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TeamTemplate extends com.example.evan.androidviewertools.firebase_classes.Team {
-public CalculatedTeamData calculatedData;
+    public CalculatedTeamData calculatedData;
     //Make sure that all variables are public
     public Integer pitWidth;
     public Integer pitLength;
@@ -23,12 +23,12 @@ public CalculatedTeamData calculatedData;
     public Integer number;
     public Integer actualRPs;
     public Integer matchesPlayed;
+    public Integer actualSeed;
 
     public String pitWheelDiameter;
     public String pitDrivetrain;
     public String pitProgrammingLanguage;
     public String pitSandstormNavigationType;
-    public String name;
     public String pitSEALsNotes;
 
     public Map<Object, Integer> pitClimbType;
@@ -40,4 +40,5 @@ public CalculatedTeamData calculatedData;
     public Boolean pitHasEncoders;
     public Boolean pitCanBuddyStartLevel2;
     public Boolean pitHasOrangeShooter;
+    public Boolean pitIsLemonSpecialist;
 }
