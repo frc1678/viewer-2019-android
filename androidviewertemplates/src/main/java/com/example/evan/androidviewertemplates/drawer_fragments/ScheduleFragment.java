@@ -28,7 +28,7 @@ public class ScheduleFragment extends MatchesFragment {
      */
     public static class ScheduleAdapter extends MatchesAdapter {
         public ScheduleAdapter(Context context) {
-            super(context, true);
+            super(context, true, false);
         }
 
         @Override

@@ -43,10 +43,12 @@ import static android.content.Context.MODE_PRIVATE;
 
 public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match> {
     public static Context context;
+    public static Boolean listIsReversed;
 
-    public MatchesAdapter(Context context, boolean isNotReversed) {
+    public MatchesAdapter(Context context, boolean isNotReversed, boolean listIsReversed) {
         super(context, new ObjectFieldComparator("teamNumber", isNotReversed));
         this.context = context;
+        this.listIsReversed = listIsReversed;
 
     }
 
@@ -80,6 +82,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         }
         try {
             Match match = (Match) getItem(position);
+            if (listIsReversed) match = (Match) getItem(Utils.getLastMatchPlayed() - 1 - position);
 
             if (StarManager.isImportantMatch(match.matchNumber) && !Constants.highlightTeamSchedule) {
                 rowView.setBackgroundColor(Constants.STAR_COLOR);
