@@ -87,10 +87,12 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
             }
 
             isTIMD = convertBoolean(getIntent().getStringExtra("isTIMD"));
+            Log.e("TD",isTIMD+"");
+            Log.e("TEAMS",teamOne + " " + teamTwo + " " + teamThree + " " +teamFour +"");
             selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
             selectedDatapointName = SpecificConstants.KEYS_TO_TITLES.get(selectedDatapoint);
             if (isTIMD) selectedDatapoint = convertToWithoutCD(SpecificConstants.DATA_TO_GRAPH.get(selectedDatapoint));
-            Log.e("ss",selectedDatapoint+"");
+            if (!isTIMD) selectedDatapointName = getIntent().getStringExtra("selectedDatapointName");
 
         }
 

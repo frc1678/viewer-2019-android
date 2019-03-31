@@ -313,12 +313,26 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
         xAxis.setGranularity(1);
 
         //creates the labels be the String[] Matches
-        List<String> tempMatches = new ArrayList<>();
-        for (int i = 0; i < teamOneMatches.size(); i++) {
-            tempMatches.add(String.valueOf(teamOneMatches.get(i)));
+        if (isTIMD) {
+            List<String> tempMatches = new ArrayList<>();
+            for (int i = 0; i < teamOneMatches.size(); i++) {
+                tempMatches.add(String.valueOf(teamOneMatches.get(i)));
+            }
+            Collections.reverse(tempMatches);
+            xAxis.setValueFormatter(new IndexAxisValueFormatter(tempMatches.toArray(new String[tempMatches.size()])));
+        } else {
+            int topMatchCount = 0;
+            if (topMatchCount < teamOneMatches.size()) topMatchCount = teamOneMatches.size();
+            if (topMatchCount < teamTwoMatches.size()) topMatchCount = teamTwoMatches.size();
+            if (topMatchCount < teamThreeMatches.size()) topMatchCount = teamThreeMatches.size();
+            if (topMatchCount < teamFourMatches.size()) topMatchCount = teamFourMatches.size();
+            List<String> tempMatches = new ArrayList<>();
+            for (int i = 0; i < topMatchCount; i++) {
+                tempMatches.add(String.valueOf(i + 1));
+            }
+            Collections.reverse(tempMatches);
+            xAxis.setValueFormatter(new IndexAxisValueFormatter(tempMatches.toArray(new String[tempMatches.size()])));
         }
-        Collections.reverse(tempMatches);
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(tempMatches.toArray(new String[tempMatches.size()])));
         //makes the text size of the labels to be 18
         xAxis.setTextSize(18);
         //makes the labels centered

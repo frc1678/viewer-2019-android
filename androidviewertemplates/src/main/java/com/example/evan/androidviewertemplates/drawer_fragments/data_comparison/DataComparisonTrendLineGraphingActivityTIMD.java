@@ -306,6 +306,9 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
             } else if (value instanceof Boolean) {
                 dataValues.add((Boolean) value ? 1f : 0f);
                 //checks for null. If null, value returns "0.0"
+            } else if (value instanceof Float) {
+                dataValues.add((Float) value);
+                //if float
             } else if (value == (null)) {
                 dataValues.add((float) 0.0);
             }
