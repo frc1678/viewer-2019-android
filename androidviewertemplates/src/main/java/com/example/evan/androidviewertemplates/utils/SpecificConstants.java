@@ -301,6 +301,20 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.percentNoShow", "isNoShow");
                 put("calculatedData.percentIncap", "calculatedData.timeIncap");
                 put("calculatedData.percentImpaired", "calculatedData.timeImpaired");
+                put("calculatedData.avgLemonsScoredSandstorm","calculatedData.lemonsScoredSandstorm");
+                put("calculatedData.avgOrangesScoredSandstorm","calculatedData.orangesScoredSandstorm");
+                put("calculatedData.lemonLoadSuccess","calculatedData.lemonLoadSuccess");
+                put("calculatedData.orangeSuccessDefended","calculatedData.orangeSuccessDefended");
+                put("calculatedData.orangeSuccessL2","calculatedData.orangeSuccessL2");
+                put("calculatedData.orangeSuccessL3","calculatedData.orangeSuccessL3");
+                put("calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessDefended");
+                put("calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL2");
+                put("calculatedData.lemonSuccessL3","calculatedData.lemonSuccessL3");
+                put("calculatedData.climbSuccessL2","calculatedData.selfClimbLevel");
+                put("calculatedData.climbSuccessL3","calculatedData.selfClimbLevel");
+                put("calculatedData.percentDysfunctional","calculatedData.timeIncap");
+                put("calculatedData.habLineSuccessL2","crossedHabLine");
+                put("calculatedData.habLineSuccessL1","crossedHabLine");
             }
         };
 

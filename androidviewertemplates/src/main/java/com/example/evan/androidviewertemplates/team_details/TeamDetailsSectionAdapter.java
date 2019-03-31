@@ -122,6 +122,22 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
 
     static String[] notClickableFields = {
             "VIEWER.matchesUntilNextMatchForTeam",
+            "pitLength",
+            "pitWidth", "pitWeight",
+            "pitWheelDiameter",
+            "pitDrivetrain",
+            "pitProgrammingLanguage",
+            "pitClimbType",
+            "pitHasCamera",
+            "pitHasVision",
+            "pitHasGyro",
+            "pitHasEncoders",
+            "pitCanBuddyStartLevel2",
+            "pitSandstormNavigationType",
+            "pitSEALsNotes",
+            "pitIsLemonSpecialist",
+            "calculatedData.hasOrangeGroundIntake",
+            "calculatedData.hasLemonGroundIntake",
     };
 
     static String[] createListOnClick = {
@@ -130,11 +146,13 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     };
 
     static String[] rankInsteadOfGraph = {
-            "calculatedData.hasOrangeGroundIntake",
-            "calculatedData.hasLemonGroundIntake",
             "calculatedData.predictedSoloPoints",
             "calculatedData.avgGoodDecisions",
             "calculatedData.avgBadDecisions",
+            "calculatedData.sdAvgOrangesScored",
+            "calculatedData.sdAvgLemonsScored",
+            "calculatedData.predictedSoloPoints",
+            "calculatedData.driverAbility",
     };
 
 
