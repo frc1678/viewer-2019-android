@@ -176,14 +176,6 @@ public class MainActivity extends ViewerActivity
     public void onSectionAttached(int number) {
         mTitle = SpecificConstants.DRAWER_TITLES[number];
     }
-/*	public static void restartFunction() {
-		FragmentManager fragmentManager = MainActivity.getSupportFragmentManager();
-		Fragment fragment = new FunctionFragment();
-		fragmentManager.beginTransaction()
-				.replace(R.id.container, fragment)
-				.commit();
-	}*/
-
 
     public void restoreActionBar(int titleIndex) {
         ActionBar actionBar = getSupportActionBar();
