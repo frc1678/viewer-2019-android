@@ -433,7 +433,6 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
         //gets the datapoint values of the given team
         for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
             Object value = Utils.getObjectField(teamInMatchData, datapoint);
-            Log.e("a",String.valueOf(value)+"");
 
             //if integer
             if (value instanceof Integer) {
