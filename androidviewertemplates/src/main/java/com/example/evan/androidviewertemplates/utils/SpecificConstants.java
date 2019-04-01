@@ -295,7 +295,7 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.avgOrangesScored", "calculatedData.orangesScored");
                 put("calculatedData.avgLemonsScored", "calculatedData.lemonsScored");
                 put("calculatedData.avgOrangeFouls", "calculatedData.orangeFouls");
-                put("calculatedData.avgLemonsSpilled", "calculatedData.lemonsFouls");
+                put("calculatedData.avgLemonsSpilled", "calculatedData.lemonsSpilled");
                 put("calculatedData.avgTimeClimbing", "calculatedData.timeClimbing");
                 put("calculatedData.avgTimeIncap", "calculatedData.timeIncap");
                 put("calculatedData.percentNoShow", "isNoShow");
@@ -310,11 +310,11 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessDefended");
                 put("calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL2");
                 put("calculatedData.lemonSuccessL3","calculatedData.lemonSuccessL3");
-                put("calculatedData.climbSuccessL2","calculatedData.selfClimbLevel");
-                put("calculatedData.climbSuccessL3","calculatedData.selfClimbLevel");
+//                put("calculatedData.climbSuccessL2","calculatedData.selfClimbLevel");
+//                put("calculatedData.climbSuccessL3","calculatedData.selfClimbLevel");
                 put("calculatedData.percentDysfunctional","calculatedData.timeIncap");
-                put("calculatedData.habLineSuccessL2","crossedHabLine");
-                put("calculatedData.habLineSuccessL1","crossedHabLine");
+//                put("calculatedData.habLineSuccessL2","crossedHabLine");
+//                put("calculatedData.habLineSuccessL1","crossedHabLine");
             }
         };
 

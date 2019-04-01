@@ -91,8 +91,6 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "superNotes",
             "pitClimbType",
             "pitSEALsNotes",
-            "calculatedData.sdAvgOrangesScored",
-            "calculatedData.sdAvgLemonsScored",
             "pitClimbType",
             "pitSEALsNotes",
             "pitSandstormNavigationType",
@@ -153,6 +151,12 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "calculatedData.sdAvgLemonsScored",
             "calculatedData.predictedSoloPoints",
             "calculatedData.driverAbility",
+            "calculatedData.climbSuccessL2",
+            "calculatedData.climbSuccessL3",
+            "calculatedData.habLineSuccessL2",
+            "calculatedData.habLineSuccessL1",
+            "calculatedData.speedZScore",
+            "calculatedData.agilityZScore",
     };
 
 
