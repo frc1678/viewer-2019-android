@@ -112,8 +112,6 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
 
     @Override
     public Object getObject() {
-        Log.e("TIMD TeamNumber", teamNumber.toString());
-        Log.e("TIMD MatchNumber", matchNumber.toString());
 
         return FirebaseLists.teamInMatchDataList.getFirebaseObjectByKey(teamNumber.toString() + "Q" + matchNumber.toString());
     }
@@ -121,7 +119,6 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
     @Override
     public List<Object> getObjectList() {
         List<Object> objects = new ArrayList<>();
-        Log.e("team NUMBER", String.valueOf(teamNumber));
         objects.addAll(Utils.getTeamInMatchDatasForTeamNumber(teamNumber));
         return objects;
     }

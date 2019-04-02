@@ -169,7 +169,6 @@ public class MainActivity extends ViewerActivity
                 .replace(R.id.container, fragment)
                 .commit();
         onSectionAttached(position);
-        Log.e("title position", position + "");
         restoreActionBar(position);
     }
 
@@ -183,7 +182,6 @@ public class MainActivity extends ViewerActivity
         actionBar.setDisplayShowTitleEnabled(true);
         onSectionAttached(titleIndex);
         actionBar.setTitle(mTitle);
-        Log.e("title set", mTitle.toString());
     }
 
 

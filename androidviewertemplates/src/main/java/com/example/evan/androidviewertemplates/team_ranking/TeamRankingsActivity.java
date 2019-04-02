@@ -75,7 +75,6 @@ TeamRankingsActivity extends ViewerActivity {
         int id = item.getItemId();
         setAllSortConstantsFalse();
         if (id == R.id.byNumber) {
-            Log.e("teamNumber", "clicked");
             setColorOfItem(item);
             lastMenuItem = item;
             setAllSortConstantsFalse();
@@ -84,8 +83,6 @@ TeamRankingsActivity extends ViewerActivity {
             return true;
         }
         if (id == R.id.byRank) {
-            Log.e("sort by teamNumber", String.valueOf(Constants.sortByTeamNumber));
-            Log.e("Rank", "clicked");
             setColorOfItem(item);
             lastMenuItem = item;
             setAllSortConstantsFalse();
@@ -94,7 +91,6 @@ TeamRankingsActivity extends ViewerActivity {
             return true;
         }
         if (id == R.id.byFirstPick) {
-            Log.e("first pick", "clicked");
             setColorOfItem(item);
             lastMenuItem = item;
             setAllSortConstantsFalse();
@@ -103,7 +99,6 @@ TeamRankingsActivity extends ViewerActivity {
             return true;
         }
         if (id == R.id.bySecondPick) {
-            Log.e("second pick", "clicked");
             setColorOfItem(item);
             lastMenuItem = item;
             setAllSortConstantsFalse();
@@ -112,7 +107,6 @@ TeamRankingsActivity extends ViewerActivity {
             return true;
         }
         if (id == R.id.byLfm) {
-            Log.e("LFM", "clicked");
             setColorOfItem(item);
             lastMenuItem = item;
             setAllSortConstantsFalse();
@@ -140,7 +134,6 @@ TeamRankingsActivity extends ViewerActivity {
         Fragment fragment = new TeamRankingsActivityFragment();
         Bundle arguments = new Bundle();
         arguments.putString("field", getIntent().getStringExtra("field"));
-        Log.e("field", getIntent().getStringExtra("field"));
         arguments.putInt("team", getIntent().getIntExtra("team", 0));
         arguments.putBoolean("displayValueAsPercentage", getIntent().getBooleanExtra("displayValueAsPercentage", false));
         fragment.setArguments(arguments);

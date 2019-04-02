@@ -244,7 +244,6 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
     private LineData getData(String teamNumber) {
         // create a dataset and give it a type
         LineDataSet set = new LineDataSet(lineEntryData(teamNumber), teamNumber);
-        Log.e("set", String.valueOf(set));
         for (int i = 0; i < 4; i++) {
             if (teamNumber.equals(teamsList.get(i))) {
                 set.setColor(lineColors[i % lineColors.length]);

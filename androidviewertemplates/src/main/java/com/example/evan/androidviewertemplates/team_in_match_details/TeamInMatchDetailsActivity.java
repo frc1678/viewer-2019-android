@@ -27,7 +27,6 @@ public class TeamInMatchDetailsActivity extends ViewerActivity {
         setContentView(R.layout.activity_section_listview);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setActionBarColor();
-        Log.e("intent", "success");
         teamNumber = getIntent().getIntExtra("team", 1678);
         matchNumber = getIntent().getIntExtra("match", 1);
         setTitle("TeamTemplate " + teamNumber + " In Match " + matchNumber + " Details");

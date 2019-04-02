@@ -42,7 +42,7 @@ public abstract class ViewerApplicationTemplate extends Application {
             StarManager.importantMatches = jsonArrayToIntegerList(new JSONArray(jsonImportantMatchesAsString));
             StarManager.starredTeams = jsonArrayToIntegerList(new JSONArray(jsonStarredTeamsAsString));
         } catch(JSONException jsone) {
-            Log.e("test", "ERROR: " + jsone.getMessage());
+            jsone.printStackTrace();
         }
 
         try {
@@ -55,7 +55,7 @@ public abstract class ViewerApplicationTemplate extends Application {
                 StarManager.matchesAddedByTeam.put(teamNumber, matchesAdded);
             }
         } catch (JSONException jsone) {
-            Log.e("test", "JSON ERROR: " + jsone.getMessage());
+            jsone.printStackTrace();
         }
     }
 
@@ -68,7 +68,7 @@ public abstract class ViewerApplicationTemplate extends Application {
                 }
             }
         } catch (JSONException jsone) {
-            Log.e("test", "JSON ERROR: " + jsone.getMessage());
+            jsone.printStackTrace();
         }
 
         return list;

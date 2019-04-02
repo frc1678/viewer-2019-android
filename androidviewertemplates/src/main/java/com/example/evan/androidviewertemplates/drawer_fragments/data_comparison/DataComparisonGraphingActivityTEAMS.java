@@ -255,7 +255,6 @@ public class DataComparisonGraphingActivityTEAMS extends DemoBase {
 
     //gets the value of the given datapoint
     public Float getDatapointValue(String selectedDatapoint, String teamNumber) {
-        Log.e("teamnumberr", String.valueOf(teamNumber));
         if (!teamNumber.equals("null")) {
             Team team = FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber);
             //if datapoint is null, return "???"

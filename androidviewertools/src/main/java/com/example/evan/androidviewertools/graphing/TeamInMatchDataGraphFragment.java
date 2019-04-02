@@ -28,12 +28,10 @@ public abstract class TeamInMatchDataGraphFragment extends GraphFragment {
     }
     @Override
     public void onDestroy(){
-        Log.e("on Destroy", "true");
         super.onDestroy();
     }
     @Override
     public void onPause(){
-        Log.e("on Pause", "true");
         super.onPause();
     }
 
@@ -51,7 +49,6 @@ public abstract class TeamInMatchDataGraphFragment extends GraphFragment {
         for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
             Integer matchNumber = Integer.valueOf((Integer) Utils.getObjectField(teamInMatchData,"matchNumber"));
             matchNumbersStrings.add(Integer.toString(matchNumber));
-            Log.e("getLabels", Integer.toString(matchNumber));
         }
         return matchNumbersStrings;
     }
@@ -62,19 +59,15 @@ public abstract class TeamInMatchDataGraphFragment extends GraphFragment {
         for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
             Object value =  Utils.getObjectField(teamInMatchData, field);
             if (value instanceof Integer) {
-                Log.e("value", "is integer");
                 dataValues.add(((Integer) value).floatValue());
             } else if (value instanceof Boolean) {
-                Log.e("value", "is boolean");
                 dataValues.add((Boolean) value ? 1f : 0f);
             } else {
                 if (displayAsPercentage && value != null) {
-                    Log.e("percentage", "true");
                     dataValues.add((Float) value * 100);
                     continue;
 
                 }
-                Log.e("test","end");
                 dataValues.add((Float) value);
             }
         }

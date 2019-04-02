@@ -125,7 +125,6 @@ public abstract class TeamSectionAdapter extends MultitypeRankingsSectionAdapter
             }
             String[] splitName = fieldName.split("\\.");
             Constants.rankFilterName = splitName[1];
-            Log.e("FIELD NAME", Constants.rankFilterName);
             intent.putExtra("teamNumber", teamNumber).putExtra("field", fieldName)
                     .putExtra("displayValueAsPercentage", Arrays.asList(getPercentageFields()).contains(getRowItem(section, row)));
             context.startActivity(intent);
@@ -136,7 +135,6 @@ public abstract class TeamSectionAdapter extends MultitypeRankingsSectionAdapter
 
     @Override
     public Intent getRankActivityIntent() {
-        Log.e("ranking intent", "called");
         return new Intent(context, TeamRankingsActivity.class);
     }
 

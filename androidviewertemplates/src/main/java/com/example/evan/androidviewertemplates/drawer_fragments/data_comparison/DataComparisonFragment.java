@@ -388,9 +388,6 @@ public class DataComparisonFragment extends Fragment {
             //if left side color is not SELECTEDCOLOR
             //set type to TEAMS
             typeComparison = "TEAMS";
-        } else {
-            //drink bleac
-            Log.e("this is when we cry", "");
         }
     }
 
