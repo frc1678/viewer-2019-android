@@ -53,6 +53,7 @@ public class FirstPicklistFragment extends Fragment {
     Context context;
     public static String picklistPassword = "";
     public static Map<Integer, String> teams = new HashMap<>();
+    public Boolean hasShowDialog = false;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,11 +98,11 @@ public class FirstPicklistFragment extends Fragment {
                     final Button passwordButton = (Button) passwordDialog.findViewById(R.id.passwordButton);
                     final EditText passwordEditText = (EditText) passwordDialog.findViewById(R.id.passwordEditText);
                     passwordEditText.setTransformationMethod(new AsteriskPasswordTransformationMethod());
-                    Log.e("REACHED", "7");
 
-                    if (!Constants.alreadyEnteredPasswordInCurrentSession) {
+                    if (!Constants.alreadyEnteredPasswordInCurrentSession && !hasShowDialog) {
                         passwordDialog.show();
-                    } else {
+                        hasShowDialog = true;
+                    } else if (Constants.alreadyEnteredPasswordInCurrentSession && !hasShowDialog){
                         FirstPicklistAdapter adapter = new FirstPicklistAdapter(context, sortByValue(Constants.picklistMap));
                         listView.setAdapter(adapter);
                         setAdapterEssentials(adapter, listView, context);
@@ -120,8 +121,8 @@ public class FirstPicklistFragment extends Fragment {
                                 setAdapterEssentials(adapter, listView, context);
                                 FirstPicklistFragment.picklistValue = true;
                             } else {
-                                Toast.makeText(getActivity(), "hacking = bad",
-                                        Toast.LENGTH_LONG).show();
+                                Toast.makeText(getActivity(), "Unfortunately, you have inputted the incorrect password",
+                                        Toast.LENGTH_SHORT).show();
                                 passwordEditText.getText().clear();
                             }
                         }
@@ -253,10 +254,7 @@ public class FirstPicklistFragment extends Fragment {
     }
 
     public static boolean checkTeamsListSize(Map<Integer, String> map) {
-        if (map.size() >= FirebaseLists.teamsList.getKeys().size()) {
-            return true;
-        }
-        return false;
+        return true;
     }
 
     public static boolean checkPassword(String password) {

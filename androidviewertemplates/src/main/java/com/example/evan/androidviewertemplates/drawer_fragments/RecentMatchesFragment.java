@@ -34,7 +34,7 @@ public class RecentMatchesFragment extends MatchesFragment {
     public static class RecentMatchesAdapter extends MatchesAdapter {
 
         public RecentMatchesAdapter(Context context) {
-            super(context, false);
+            super(context, false, true);
         }
 
         @Override

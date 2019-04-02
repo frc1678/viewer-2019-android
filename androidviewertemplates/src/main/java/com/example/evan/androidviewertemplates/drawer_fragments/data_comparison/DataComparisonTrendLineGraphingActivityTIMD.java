@@ -273,13 +273,6 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         }
         //reverses the line entries
         Collections.reverse(lineEntries);
-        //if under 13 values, add the remaining values as 0.1 (under 13 means less than 13 matches played)
-        if (lineEntries.size() < 13) ;
-        Integer lineEntriesSize = lineEntries.size();
-        Integer counter = 13 - lineEntriesSize;
-        for (int i = 0; i < counter; i++) {
-            lineEntries.add(new Entry(i + lineEntriesSize + 1, (float) 0.1));
-        }
         Collections.sort(lineEntries, new EntryXComparator());
         return lineEntries;
     }
@@ -313,6 +306,9 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
             } else if (value instanceof Boolean) {
                 dataValues.add((Boolean) value ? 1f : 0f);
                 //checks for null. If null, value returns "0.0"
+            } else if (value instanceof Float) {
+                dataValues.add((Float) value);
+                //if float
             } else if (value == (null)) {
                 dataValues.add((float) 0.0);
             }
@@ -349,7 +345,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
                 String chartString = String.valueOf(chart);
                 String actualChart = String.valueOf(chartString.substring(chartString.lastIndexOf("team"), chartString.lastIndexOf("}")));
                 if (actualChart.equals("teamOneChart")) {
-                    if (teamOneMatches.size() > matchNumber) {
+                    if (teamOneMatches.size() >= matchNumber) {
                         trendLineClickContinuation(teamOne, String.valueOf(teamOneMatches.get(matchNumber - 1)));
                     } else {
                         SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamOne + " doesn't have a " + addNumberPrefix(matchNumber) + " match!")
@@ -357,7 +353,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
                                 .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED)).setAnimations(Style.ANIMATIONS_FLY).show();
                     }
                 } else if (actualChart.equals("teamTwoChart")) {
-                    if (teamTwoMatches.size() > matchNumber) {
+                    if (teamTwoMatches.size() >= matchNumber) {
                         trendLineClickContinuation(teamTwo, String.valueOf(teamTwoMatches.get(matchNumber - 1)));
                     } else {
                         SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamTwo + " doesn't have a " + addNumberPrefix(matchNumber) + " match!")
@@ -365,7 +361,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
                                 .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED)).setAnimations(Style.ANIMATIONS_FLY).show();
                     }
                 } else if (actualChart.equals("teamThreeChart")) {
-                    if (teamThreeMatches.size() > matchNumber) {
+                    if (teamThreeMatches.size() >= matchNumber) {
                         trendLineClickContinuation(teamThree, String.valueOf(teamThreeMatches.get(matchNumber - 1)));
                     } else {
                         SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamThree + " doesn't have a " + addNumberPrefix(matchNumber) + " match!")
@@ -373,7 +369,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
                                 .setColor(PaletteUtils.getSolidColor(PaletteUtils.MATERIAL_RED)).setAnimations(Style.ANIMATIONS_FLY).show();
                     }
                 } else if (actualChart.equals("teamFourChart")) {
-                    if (teamFourMatches.size() > matchNumber) {
+                    if (teamFourMatches.size() >= matchNumber) {
                         trendLineClickContinuation(teamFour, String.valueOf(teamFourMatches.get(matchNumber - 1)));
                     } else {
                         SuperActivityToast.create(getActivity(), new Style(), Style.TYPE_STANDARD).setText(teamFour + " doesn't have a " + addNumberPrefix(matchNumber) + " match!")
