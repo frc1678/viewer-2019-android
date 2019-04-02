@@ -43,7 +43,7 @@ public class OurScheduleHighlightFragment extends MatchesFragment {
 
 
         public CitrusScheduleAdapter(Context context) {
-            super(context, true);
+            super(context, true, false);
             teamNumber = 1678;
         }
 
