@@ -13,6 +13,7 @@ import java.util.Map;
 public class CalculatedTeamData extends Object {
     //make sure that all variables are public
     public Integer actualSeed;
+    public Integer actualRPs;
     public Integer predictedSeed;
     public Integer lemonLoadSuccess;
     public Integer orangeSuccessAll;
