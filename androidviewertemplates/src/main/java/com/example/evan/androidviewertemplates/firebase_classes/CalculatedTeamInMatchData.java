@@ -26,17 +26,22 @@ public class CalculatedTeamInMatchData extends Object {
     public Integer orangeSuccessL1;
     public Integer orangeSuccessL2;
     public Integer orangeSuccessL3;
-    public Integer lemonsSpilled;
-    public Integer lvl_1_lemons_teleop;
-    public Integer lvl_2_lemons_teleop;
-    public Integer lvl_3_lemons_teleop;
-    public Integer lvl_1_oranges_teleop;
-    public Integer lvl_2_oranges_teleop;
-    public Integer lvl_3_oranges_teleop;
+    public Integer pinningFouls;
+    public Integer lemonsPlacedSandstorm;
+    public Integer orangesPlacedSandstorm;
+    public Integer lemonsScoredTeleL1;
+    public Integer lemonsScoredTeleL2;
+    public Integer lemonsScoredTeleL3;
+    public Integer orangesScoredTeleL1;
+    public Integer orangesScoredTeleL2;
+    public Integer orangesScoredTeleL3;
     public Integer selfClimbLevel;
     public Integer robot1ClimbLevel;
     public Integer robot2ClimbLevel;
     public Integer orangesScoredL1;
+    public Integer lemonsScoredSandstorm;
+    public Integer orangesScoredSandstorm;
+    public Integer totalFailedCyclesCaused;
 
     public Float lemonCycleAll;
     public Float lemonCycleL1;
@@ -47,8 +52,8 @@ public class CalculatedTeamInMatchData extends Object {
     public Float orangeCycleL2;
     public Float orangeCycleL3;
     public Float timeIncap;
-    public Float timeImpaired;
     public Float timeClimbing;
+    public Float timeDefending;
 
     public Boolean isIncapEntireMatch;
 }

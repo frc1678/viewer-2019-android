@@ -43,18 +43,19 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
             {"matches", "VIEWER.matchesUntilNextMatchForTeam", "lfm"},
-            {"calculatedData.habLineSuccessL1", "calculatedData.habLineSuccessL2", "calculatedData.avgLemonsScoredSandstorm", "calculatedData.avgOrangesScoredSandstorm"},
-            {"calculatedData.avgOrangesScored", "calculatedData.avgLemonsScored", "calculatedData.avgLemonsSpilled", "calculatedData.avgOrangeFouls", "calculatedData.lemonLoadSuccess",
+            {"calculatedData.habLineSuccessL1", "calculatedData.habLineSuccessL2","calculatedData.habLineAttemptsL1","calculatedData.habLineAttemptsL2", "calculatedData.avgLemonsScoredSandstorm", "calculatedData.avgOrangesScoredSandstorm"},
+            {"calculatedData.avgPointsPrevented","calculatedData.avgFailedCyclesCaused","calculatedData.avgOrangesScored", "calculatedData.avgLemonsScored", "calculatedData.avgPinningFouls", "calculatedData.avgOrangesFouls", "calculatedData.lemonLoadSuccess",
                     "calculatedData.orangeSuccessDefended", "calculatedData.orangeSuccessL2",
                     "calculatedData.orangeSuccessL3", "calculatedData.lemonSuccessDefended", "calculatedData.lemonSuccessL2", "calculatedData.lemonSuccessL3",
-                    "calculatedData.hasOrangeGroundIntake", "calculatedData.hasLemonGroundIntake",},
-            {"calculatedData.avgTimeClimbing", "calculatedData.climbSuccessL2", "calculatedData.climbSuccessL3", "calculatedData.pitSEALsRampRanking"},
-            {"calculatedData.avgTimeIncap", "calculatedData.avgTimeImpaired", "calculatedData.percentIncap", "calculatedData.percentImpaired", "calculatedData.percentNoShow",
+                    "calculatedData.hasOrangeGroundIntake", "calculatedData.hasLemonGroundIntake","calculatedData.totalTimeDefending","calculatedData.avgTimeDefending","calculatedData.failedCyclesCaused",
+                    "calculatedData.failedCyclesCausedPerSecond"},
+            {"calculatedData.avgTimeClimbing", "calculatedData.climbSuccessL2", "calculatedData.climbSuccessL3", "pitSEALsRampRanking"},
+            {"calculatedData.avgTimeIncap", "calculatedData.percentIncap", "calculatedData.percentNoShow",
                     "calculatedData.percentDysfunctional"},
             {"calculatedData.predictedSoloPoints", "calculatedData.sdAvgOrangesScored", "calculatedData.sdAvgLemonsScored"},
-            {"calculatedData.speedZScore", "calculatedData.agilityZScore", "calculatedData.driverAbility", "calculatedData.avgGoodDecisions", "calculatedData.avgBadDecisions"},
-            {"pitLength", "pitWidth", "pitWeight", "pitWheelDiameter", "pitDrivetrain", "pitProgrammingLanguage", "pitClimbType", "pitHasCamera", "pitHasVision",
-                    "pitHasGyro", "pitHasEncoders", "pitCanBuddyStartLevel2", "pitSandstormNavigationType", "pitSEALsNotes", "pitIsLemonSpecialist"}
+            {"calculatedData.avgRankDefense","calculatedData.speedZScore", "calculatedData.agilityZScore", "calculatedData.driverAbility",},
+            {"pitWeight", "pitWheelDiameter", "pitDrivetrain", "pitProgrammingLanguage", "pitClimbType", "pitHasCamera", "pitHasVision",
+                    "pitHasGyro", "pitHasEncoders", "pitSandstormNavigationType", "pitSEALsNotes", "pitIsLemonSpecialist","pitDriveTrainMotorType","pitNumDriveTrainMotors"}
     };
 
     static String[] shouldDisplayAsPercentage = {
@@ -83,39 +84,27 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "totalSuperNotes",
             "pitLength",
             "pitIsLemonSpecialist",
+            "pitDriveTrainMotorType",
+            "pitNumDriveTrainMotors"
     };
 
     static String[] shouldDisplayAsLongText = {
             //These variables should always be displayed as long text. These variables are non year specific variables
             "pitNotes",
-            "superNotes",
+            "notes",
             "pitClimbType",
             "pitSEALsNotes",
             "pitClimbType",
             "pitSEALsNotes",
-            "pitSandstormNavigationType",
-            "pitLength",
-            "pitWidth",
-            "pitWeight",
-            "pitWheelDiameter",
-            "pitDrivetrain",
-            "pitProgrammingLanguage",
             "pitClimbType",
-            "pitHasCamera",
-            "pitHasVision",
-            "pitHasGyro",
-            "pitHasEncoders",
-            "pitCanBuddyStartLevel2",
-            "pitSandstormNavigationType",
             "pitSEALsNotes",
             "pitIsLemonSpecialist",
     };
 
     static String[] shouldDisplayAsFurtherInformation = {
             "matches",
-            "superNotes",
+            "notes",
             "lfm"
-
     };
 
     static String[] notClickableFields = {

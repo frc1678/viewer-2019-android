@@ -59,11 +59,11 @@ public class SeedingCell extends RelativeLayout {
 
         if (teamNumber != null) {
             Team teamTeam = FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber.toString());
-            String predictedSeed = (Utils.fieldIsNotNull(teamTeam, "calculatedData.predictedSeed") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.predictedSeed"), 2, "?") : "?");
-            String predictedRankingPoints = (Utils.fieldIsNotNull(teamTeam, "calculatedData.predictedRPs") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.predictedRPs"), 1, "?") : "?");
-            String currentRP = (Utils.fieldIsNotNull(teamTeam, "actualRPs") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "actualRPs"), 2, "?") : "?");
-            String currentSeed = (Utils.fieldIsNotNull(teamTeam, "calculatedData.actualSeed") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.actualSeed"), 2, "?") : "?");
 
+            String predictedSeed = (Utils.fieldIsNotNull(teamTeam, "calculatedData.predictedSeed") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.predictedSeed"), 2, "???") : "???");
+            String predictedRankingPoints = (Utils.fieldIsNotNull(teamTeam, "calculatedData.predictedTotalNumRPs") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.predictedTotalNumRPs"), 2, "???") : "???");
+            String currentRP = (Utils.fieldIsNotNull(teamTeam, "calculatedData.actualNumRPs") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "calculatedData.actualNumRPs"), 2, "???") : "???");
+            String currentSeed = (Utils.fieldIsNotNull(teamTeam, "actualSeed") ? Utils.roundDataPoint(Utils.getObjectField(teamTeam, "actualSeed"), 2, "???") : "???");
 
             rankingTextView.setText(currentSeed);
             team.setText(teamNumber.toString());
@@ -83,7 +83,7 @@ public class SeedingCell extends RelativeLayout {
 
     public String generateTeamNameAndSeed(String teamNumber) {
         Team team = FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber);
-        String teamRank = (Utils.fieldIsNotNull(team, "calculatedData.actualSeed") ? Utils.roundDataPoint(Utils.getObjectField(team, "calculatedData.actualSeed"), 2, "???") : "???");
+        String teamRank = (Utils.fieldIsNotNull(team, "actualSeed") ? Utils.roundDataPoint(Utils.getObjectField(team, "actualSeed"), 2, "???") : "???");
         String teamName = (Utils.fieldIsNotNull(team, "name") ? Utils.roundDataPoint(Utils.getObjectField(team, "name"), 2, "???") : "???");
         String finalString = teamName + " | Rank: " + teamRank;
         return finalString;
