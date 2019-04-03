@@ -34,7 +34,7 @@ public class SpecificConstants extends Constants {
             {
                 put("matches", "Matches");
                 put("VIEWER.matchesUntilNextMatchForTeam", "Matches Until Next Match");
-//                    put("calculatedData.numMatchesPlayed", "Num. Matches Played");
+//                put("calculatedData.numMatchesPlayed", "Num. Matches Played");
                 put("lfm", "Last Four Matches");
                 put("matchNumber", "Match Number");
                 put("startingLevel","Starting level");
@@ -275,7 +275,6 @@ public class SpecificConstants extends Constants {
 //            SuperData
                 put("calculatedData.speedZScore", "Speed Z Score");
                 put("calculatedData.agilityZScore", "Agility Z Score");
-                put("calculatedData.defenseAbility", "Defense Ability");
 //                put("EXAMPLE_DATA_POINT", "EXAMPLE_DATA_TITLE");
 //                Look at past years' SpecificConstants for further formatting
             }
