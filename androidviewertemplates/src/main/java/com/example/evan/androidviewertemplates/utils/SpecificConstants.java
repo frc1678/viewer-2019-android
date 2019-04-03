@@ -22,8 +22,8 @@ public class SpecificConstants extends Constants {
     public static List<String> CATEGORY_LIST;
 
     //todo
-    public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "Data Comparison", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Settings"};
-    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2019-sac-2bdd7.firebaseio.com/";
+    public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "Data Comparison", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Highlighting"};
+    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2019-avr-cacf9.firebaseio.com/";
     public static String ROOT_FIREBASE_PATH = ORIGINAL_ROOT_FIREBASE_PATH;
     public static String MATCHES_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Matches";
     public static String TEAMS_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Teams";
@@ -287,11 +287,26 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.avgOrangesScored", "calculatedData.orangesScored");
                 put("calculatedData.avgLemonsScored", "calculatedData.lemonsScored");
                 put("calculatedData.avgOrangesFouls", "calculatedData.orangeFouls");
-                put("calculatedData.avgPinningFouls", "calculatedData.lemonsFouls");
+                put("calculatedData.avgPinningFouls", "calculatedData.pinningFouls");
                 put("calculatedData.avgTimeClimbing", "calculatedData.timeClimbing");
                 put("calculatedData.avgTimeIncap", "calculatedData.timeIncap");
                 put("calculatedData.percentNoShow", "isNoShow");
                 put("calculatedData.percentIncap", "calculatedData.timeIncap");
+                put("calculatedData.percentImpaired", "calculatedData.timeImpaired");
+                put("calculatedData.avgLemonsScoredSandstorm","calculatedData.lemonsScoredSandstorm");
+                put("calculatedData.avgOrangesScoredSandstorm","calculatedData.orangesScoredSandstorm");
+                put("calculatedData.lemonLoadSuccess","calculatedData.lemonLoadSuccess");
+                put("calculatedData.orangeSuccessDefended","calculatedData.orangeSuccessDefended");
+                put("calculatedData.orangeSuccessL2","calculatedData.orangeSuccessL2");
+                put("calculatedData.orangeSuccessL3","calculatedData.orangeSuccessL3");
+                put("calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessDefended");
+                put("calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL2");
+                put("calculatedData.lemonSuccessL3","calculatedData.lemonSuccessL3");
+//                put("calculatedData.climbSuccessL2","calculatedData.selfClimbLevel");
+//                put("calculatedData.climbSuccessL3","calculatedData.selfClimbLevel");
+                put("calculatedData.percentDysfunctional","calculatedData.timeIncap");
+//                put("calculatedData.habLineSuccessL2","crossedHabLine");
+//                put("calculatedData.habLineSuccessL1","crossedHabLine");
             }
         };
 
