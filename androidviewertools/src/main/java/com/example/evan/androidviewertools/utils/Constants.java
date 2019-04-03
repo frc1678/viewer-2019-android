@@ -81,8 +81,6 @@ public class Constants {
             "calculatedData.lfmAvgNumHumanPortalIntakeTele",
             "calculatedData.lfmAvgNumExchangeInputTele",
             "calculatedData.lfmAvgNumReturnIntakeTele",
-            "calculatedData.lfmAvgNumGoodDecisions",
-            "calculatedData.lfmAvgNumBadDecisions",
             "calculatedData.lfmAvgCubesSpilledAuto",
             "calculatedData.lfmAvgCubesSpilledTele",
             "calculatedData.lfmAvgCubesPlacedInScaleAuto",

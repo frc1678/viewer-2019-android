@@ -125,7 +125,6 @@ public class SpecificConstants extends Constants {
                 put("lemonSuccessFromSide", "Far side RS or side CS placements");
                 put("calculatedData.habLineSuccessL1", "% HAB line from L1 success");
                 put("calculatedData.habLineSuccessL2", "% HAB line from L2 success");
-                put("calculatedData.avgGoodDecisions", "Avg good Decisions");
                 put("calculatedData.avgTimeIncap", "Avg incap time");
                 put("calculatedData.avgTimeClimbing", "Avg climbing time");
                 put("calculatedData.percentIncap", "% incap");
@@ -381,7 +380,6 @@ public class SpecificConstants extends Constants {
                 put("lemonSuccessFromSide", "Far side RS or side CS placements");
                 put("habLineSuccessL1", "% HAB line from L1 success");
                 put("habLineSuccessL2", "% HAB line from L2 success");
-                put("avgGoodDecisions", "avg Bad Decisions");
                 put("avgTimeIncap", "avg incap time");
                 put("avgTimeClimbing", "avg climbing time");
                 put("percentIncap", "% incap");

@@ -120,8 +120,6 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "calculatedData.hasOrangeGroundIntake",
             "calculatedData.hasLemonGroundIntake",
             "calculatedData.predictedSoloPoints",
-            "calculatedData.avgGoodDecisions",
-            "calculatedData.avgBadDecisions",
     };
 
 

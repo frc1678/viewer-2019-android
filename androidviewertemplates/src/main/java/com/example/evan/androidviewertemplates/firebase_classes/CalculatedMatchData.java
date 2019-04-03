@@ -25,8 +25,6 @@ public class CalculatedMatchData extends Object {
     public Integer redActualRPs;
 
     public List<Integer> noShowTeams;
-    public List<Integer> redNoShowTeams;
-    public List<Integer> blueNoShowTeams;
 
     public Float bluePredictedScore;
     public Float redPredictedScore;

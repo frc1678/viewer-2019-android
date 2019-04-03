@@ -108,8 +108,6 @@ public class CalculatedTeamData extends Object {
     public Float lemonCycleL1;
     public Float lemonCycleL2;
     public Float lemonCycleL3;
-    public Float avgGoodDecisions;
-    public Float avgBadDecisions;
     public Float avgTimeIncap;
     public Float avgTimeClimbing;
     public Float predictedDedicatedLemonCycles;
@@ -131,8 +129,6 @@ public class CalculatedTeamData extends Object {
     public Float lfmLemonCycleL1;
     public Float lfmLemonCycleL2;
     public Float lfmLemonCycleL3;
-    public Float lfmAvgGoodDecisions;
-    public Float lfmAvgBadDecisions;
     public Float lfmAvgTimeIncap;
     public Float lfmAvgTimeClimbing;
     public Float lfmAvgPinningFouls;
@@ -147,8 +143,6 @@ public class CalculatedTeamData extends Object {
     public Float sdLemonCycleL1;
     public Float sdLemonCycleL2;
     public Float sdLemonCycleL3;
-    public Float sdAvgGoodDecisions;
-    public Float sdAvgBadDecisions;
     public Float sdAvgTimeIncap;
     public Float sdAvgTimeClimbing;
     public Float sdAvgPinningFouls;
@@ -163,8 +157,6 @@ public class CalculatedTeamData extends Object {
     public Float p75lemonCycleL1;
     public Float p75lemonCycleL2;
     public Float p75lemonCycleL3;
-    public Float p75avgGoodDecisions;
-    public Float p75avgBadDecisions;
     public Float p75avgTimeIncap;
     public Float p75avgTimeClimbing;
     public Float p75AvgPinningFouls;
