@@ -30,20 +30,13 @@ public class RankingsActivity extends AppCompatActivity {
         context = this;
         teamNumber = getIntent().getIntExtra("team", 0);
         Intent intent = new Intent(context, DataComparisonTIMDTabbedActivity.class);
-        intent.putExtra("selectedDatapoint", convertToWithoutCD(getIntent().getStringExtra("field")));
+        intent.putExtra("selectedDatapoint", (getIntent().getStringExtra("field")));
         intent.putExtra("teamOne", String.valueOf(teamNumber));
         intent.putExtra("teamTwo", String.valueOf(teamNumber));
         intent.putExtra("teamThree", "?");
         intent.putExtra("teamFour", "?");
         intent.putExtra("isTIMD", "true");
         startActivity(intent);
-    }
-
-    public String convertToWithoutCD(String datapoint) {
-        if (datapoint != null && datapoint.contains("calculatedData.")) {
-            return datapoint.substring(datapoint.lastIndexOf(".") + 1);
-        }
-        return null;
     }
 
 }

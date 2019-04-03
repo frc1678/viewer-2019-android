@@ -16,6 +16,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -61,15 +62,15 @@ public class SeedingFrag extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context = getContext();
-        if (!Constants.unseededTeams.contains(1678)) {
-            sortSeedingList();
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View myLayout = inflater.inflate(R.layout.seeding_cell, null);
         listview = (ListView) myLayout.findViewById(R.id.listview);
+	    if (!Constants.unseededTeams.contains(1678)) {
+		    sortSeedingList();
+	    }
         initializeAdapter();
         listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -134,6 +135,7 @@ public class SeedingFrag extends Fragment {
         for (int i = 0; i < Constants.unseededTeams.size(); i++) {
             Integer team = map.get(i);
             Constants.seedingTeams.add(team);
+
         }
     }
 
@@ -168,6 +170,7 @@ public class SeedingFrag extends Fragment {
     public void initializeAdapter() {
         SeedingAdapter adapter = new SeedingAdapter(context, Constants.seedingTeams);
         listview.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     public void animation(View view) {

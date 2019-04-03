@@ -31,7 +31,7 @@ public class StarredMatchesFragment extends MatchesFragment {
      */
     public static class StarredMatchesAdapter extends MatchesAdapter {
         public StarredMatchesAdapter(Context context) {
-            super(context, true);
+            super(context, true, false);
         }
 
         @Override
