@@ -27,8 +27,6 @@ public class CalculatedTeamInMatchData extends Object {
     public Integer orangeSuccessL2;
     public Integer orangeSuccessL3;
     public Integer lemonsSpilled;
-    public Integer lemonsPlacedSandstorm;
-    public Integer orangesPlacedSandstorm;
     public Integer lvl_1_lemons_teleop;
     public Integer lvl_2_lemons_teleop;
     public Integer lvl_3_lemons_teleop;
