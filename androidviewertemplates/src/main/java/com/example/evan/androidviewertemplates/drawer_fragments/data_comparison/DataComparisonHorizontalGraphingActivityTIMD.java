@@ -379,6 +379,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
         List<Float> values = new ArrayList<>();
         //gets the datapointvalues of the team
         List<Float> datapointValues = getTeamInMatchDatapointValues(team);
+        if (datapointValues.isEmpty()) { barEntries.add(new BarEntry(1, (float) 0.00)); return barEntries; }
         values.addAll(datapointValues);
         for (int p = 0; p < datapointValues.size(); p++) {
             //if the value is 0.0, return 0.1 to be shown on graph
