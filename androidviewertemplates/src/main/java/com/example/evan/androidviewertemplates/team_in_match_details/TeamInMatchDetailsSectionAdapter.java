@@ -61,7 +61,7 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
             //Each {}, below correlates to its sectionTitles above
             {"teamNumber", "matchNumber", "blueFoulPoints", "redFoulPoints"},
             {"startingLevel", "crossedHabLine", "startingLocation", "preload"},
-            {"calculatedData.orangeSuccessDefended","calculatedData.totalFailedCyclesCaused","calculatedData.orangesScored", "calculatedData.lemonsScored", "calculatedData.orangeFouls", "calculatedData.lemonLoadSuccess",
+            {"calculatedData.pointsPrevented", "calculatedData.orangePointsPrevented", "calculatedData.lemonPointsPrevented", "calculatedData.orangeSuccessDefended","calculatedData.totalFailedCyclesCaused","calculatedData.orangesScored", "calculatedData.lemonsScored", "calculatedData.orangeFouls", "calculatedData.lemonLoadSuccess",
                     "calculatedData.orangeSuccessDefended", "calculatedData.orangeSuccessL2", "calculatedData.orangeSuccessL3",
                     "calculatedData.lemonSuccessDefended", "calculatedData.lemonSuccessL2", "calculatedData.lemonSuccessL3", "calculatedData.pinningFouls",
                     "calculatedData.lemonsScoredTeleL1", "calculatedData.lemonsScoredTeleL2", "calculatedData.lemonsScoredTeleL3",

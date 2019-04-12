@@ -40,6 +40,9 @@ public class SpecificConstants extends Constants {
                 put("startingLevel","Starting level");
                 put("crossedHabLine","Crossed HAB line");
                 put("startingLocation","Starting location");
+                put("calculatedData.pointsPrevented", "Points prevented in the match");
+                put("calculatedData.orangePointsPrevented", "Cargo pts prevented in the match");
+                put("calculatedData.lemonPointsPrevented", "Panel pts prevented in the match");
                 put("preload","Preloaded game piece");
                 put("driverStation","Driver station ");
                 put("isNoShow","Did not show up to match");
@@ -91,6 +94,8 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.habLineAttemptsL1","HAB line attempts L1");
                 put("calculatedData.habLineAttemptsL2","HAB line attempts L2");
                 put("calculatedData.avgPointsPrevented","Avg Points Prevented");
+                put("calculatedData.avgOrangePointsPrevented","Avg Cargo Points Prevented");
+                put("calculatedData.avgLemonPointsPrevented","Avg Panel Points Prevented");
                 put("calculateDData.orangeSuccessDefended","orangeSuccessDefended");
 
 //              Teams
@@ -301,6 +306,11 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessDefended");
                 put("calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL2");
                 put("calculatedData.lemonSuccessL3","calculatedData.lemonSuccessL3");
+                put("calculatedData.habLineAttemptsL1", "calculatedData.habLineAttemptsL1");
+                put("calculatedData.habLineAttemptsL2", "calculatedData.habLineAttemptsL2");
+                put("calculatedData.avgPointsPrevented", "calculatedData.pointsPrevented");
+                put("calculatedData.avgOrangePointsPrevented", "calculatedData.lemonPointsPrevented");
+                put("calculatedData.avgLemonPointsPrevented", "calculatedData.orangePointsPrevented");
 //                put("calculatedData.climbSuccessL2","calculatedData.selfClimbLevel");
 //                put("calculatedData.climbSuccessL3","calculatedData.selfClimbLevel");
                 put("calculatedData.percentDysfunctional","calculatedData.timeIncap");

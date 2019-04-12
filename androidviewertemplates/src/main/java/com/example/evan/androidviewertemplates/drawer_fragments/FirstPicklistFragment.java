@@ -27,6 +27,7 @@ import com.example.evan.androidviewertools.utils.AsteriskPasswordTransformationM
 import com.example.evan.androidviewertools.utils.Constants;
 import com.example.evan.androidviewertools.utils.firebase.FirebaseList;
 import com.example.evan.androidviewertools.utils.firebase.FirebaseLists;
+import com.firebase.client.Firebase;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -66,7 +67,6 @@ public class FirstPicklistFragment extends Fragment {
         final ListView listView = (ListView) myLayout.findViewById(R.id.listview);
         if (dref == null) {
             dataBase = FirebaseDatabase.getInstance();
-            dataBase.setPersistenceEnabled(true);
             dref = dataBase.getReference();
         }
         dref.child("constants").addValueEventListener(new ValueEventListener() {

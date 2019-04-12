@@ -22,6 +22,7 @@ import com.example.evan.androidviewertemplates.utils.Util;
 import com.example.evan.androidviewertools.firebase_classes.Team;
 import com.example.evan.androidviewertools.firebase_classes.TeamInMatchData;
 import com.example.evan.androidviewertools.utils.Utils;
+import com.example.evan.androidviewertools.utils.firebase.FirebaseLists;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -387,6 +388,8 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
                 barEntries.add(new BarEntry(p + 1, (float) 0.04));
             } else if (String.valueOf(values.get(p)).equals("0.0")) {
                 barEntries.add(new BarEntry(p + 1, (float) 0.2));
+            } else if (String.valueOf(values.get(p)).equals("10000.0")) {
+                barEntries.add(new BarEntry(p + 1, (float) 0.0));
             } else {
                 //else, add the value to barEntries
                 barEntries.add(new BarEntry(p + 1, (float) values.get(p)));
@@ -402,7 +405,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
         int zeroCount = 0;
         // displaying the occurrence of elements in the list
         for (Map.Entry<Float, Integer> val : hm.entrySet()) {
-            if (val.getKey() == 0.0 || val.getKey() == 5000.0) zeroCount += val.getValue();
+            if (val.getKey() == 0.0 || val.getKey() == 5000.0 || val.getKey() == 10000.0) zeroCount += val.getValue();
         }
         //if the amount of null values or 0.0 values is the same amount as the number of values in the team ...
         //AKA: if all of the values are 0
@@ -432,6 +435,28 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
         String datapoint = field;
         List<Float> dataValues = new ArrayList<>();
         //gets the datapoint values of the given team
+
+        if (field.equals("calculatedData.habLineAttemptsL1")) {
+            for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
+            	if ((int) Utils.getObjectField(teamInMatchData, "startingLevel") == 2) {
+            		dataValues.add(10000.0f);
+	            } else {
+		            dataValues.add((Boolean) Utils.getObjectField(teamInMatchData, "crossedHabLine") ? 5f : 1f);
+	            }
+            }
+            return dataValues;
+        }
+	    if (field.equals("calculatedData.habLineAttemptsL2")) {
+		    for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
+			    if ((int) Utils.getObjectField(teamInMatchData, "startingLevel") == 1) {
+				    dataValues.add(10000.0f);
+			    } else {
+				    dataValues.add((Boolean) Utils.getObjectField(teamInMatchData, "crossedHabLine") ? 5f : 1f);
+			    }
+		    }
+		    return dataValues;
+	    }
+
         for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
             Object value = Utils.getObjectField(teamInMatchData, datapoint);
 
