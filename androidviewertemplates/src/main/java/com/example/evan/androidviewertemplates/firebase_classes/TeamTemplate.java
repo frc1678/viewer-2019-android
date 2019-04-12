@@ -23,7 +23,6 @@ public class TeamTemplate extends com.example.evan.androidviewertools.firebase_c
     public Integer matchesPlayed;
     public Integer actualSeed;
     public Integer pitNumDriveTrainMotors;
-    public Integer pitDriveTrainMotorType;
     public Integer pitSEALsRampRanking;
 
     public String pitWheelDiameter;
@@ -31,6 +30,7 @@ public class TeamTemplate extends com.example.evan.androidviewertools.firebase_c
     public String pitProgrammingLanguage;
     public String pitSandstormNavigationType;
     public String pitSEALsNotes;
+    public String pitDriveTrainMotorType;
 
     public Map<Object, Integer> pitClimbType;
 
