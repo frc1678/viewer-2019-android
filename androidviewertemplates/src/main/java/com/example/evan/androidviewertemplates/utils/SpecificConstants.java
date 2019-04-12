@@ -82,6 +82,8 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.orangesScoredTeleL3","Lvl 3 cargo placed");
                 put("calculatedData.totalFailedCyclesCaused","Total Cycles Defended");
                 put("calculatedData.avgRankDefense","Avg Rank Defense");
+                put("rankDefense","Rank Defense");
+                put("calculatedData.avgCounterDefense","Avg Counter Defense");
                 put("calculatedData.avgFailedCyclesCaused","Avg Cycles Defended");
                 put("calculatedData.timeDefending","Time defending");
                 put("calculatedData.totalTimeDefending","Total Time Defending");
@@ -306,6 +308,8 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.percentDysfunctional","calculatedData.timeIncap");
 //                put("calculatedData.habLineSuccessL2","crossedHabLine");
 //                put("calculatedData.habLineSuccessL1","crossedHabLine");
+                put("calculatedData.avgRankDefense","rankDefense");
+                put("calculatedData.avgCounterDefense","rankDefense");
             }
         };
 
