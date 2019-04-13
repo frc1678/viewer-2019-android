@@ -89,18 +89,10 @@ public class DataComparisonTIMDTabbedActivity extends AppCompatActivity {
             isTIMD = convertBoolean(getIntent().getStringExtra("isTIMD"));
             selectedDatapoint = getIntent().getStringExtra("selectedDatapoint");
             selectedDatapointName = SpecificConstants.KEYS_TO_TITLES.get(selectedDatapoint);
-            if (isTIMD) selectedDatapoint = convertToWithoutCD(SpecificConstants.DATA_TO_GRAPH.get(selectedDatapoint));
+            if (isTIMD) selectedDatapoint = (SpecificConstants.DATA_TO_GRAPH.get(selectedDatapoint));
             if (!isTIMD) selectedDatapointName = getIntent().getStringExtra("selectedDatapointName");
-
         }
 
-    }
-
-    public String convertToWithoutCD(String datapoint) {
-        if (datapoint != null && datapoint.contains("calculatedData.")) {
-            return datapoint.substring(datapoint.lastIndexOf(".") + 1);
-        }
-        return null;
     }
 
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {
