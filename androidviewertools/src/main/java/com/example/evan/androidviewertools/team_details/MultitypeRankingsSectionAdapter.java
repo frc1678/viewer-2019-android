@@ -208,6 +208,7 @@ public abstract class MultitypeRankingsSectionAdapter extends RankingsSectionAda
                     intent = getRankActivityIntent();
                 } else {
                     intent = getGraphActivityIntent();
+
                     intent.putExtra("selectedDatapoint",((String) getRowItem(section, row)));
                     intent.putExtra("teamOne", String.valueOf(((Team)getObject()).teamNumber)); intent.putExtra("teamTwo", String.valueOf(((Team)getObject()).teamNumber));
                     intent.putExtra("teamThree", "?"); intent.putExtra("teamFour", "?");

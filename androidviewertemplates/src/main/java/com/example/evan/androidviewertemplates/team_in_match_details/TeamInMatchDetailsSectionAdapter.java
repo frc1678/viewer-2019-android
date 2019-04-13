@@ -68,7 +68,7 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
                     "calculatedData.orangesScoredTeleL1", "calculatedData.orangesScoredTeleL1", "calculatedData.orangesScoredTeleL1",},
             {"calculatedData.selfClimbLevel", "calculatedData.robot1ClimbLevel", "calculatedData.robot2ClimbLevel","calculatedData.timeDefending"},
             {"calculatedData.timeIncap", "calculatedData.timeClimbing"},
-            {"notes"},
+            {"rankDefense","notes"},
     };
 
     static String[] shouldDisplayAsPercentage = {

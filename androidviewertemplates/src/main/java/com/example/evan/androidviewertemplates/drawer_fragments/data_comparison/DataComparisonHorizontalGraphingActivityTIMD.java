@@ -433,7 +433,6 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
         //gets the datapoint values of the given team
         for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
             Object value = Utils.getObjectField(teamInMatchData, datapoint);
-
             //if integer
             if (value instanceof Integer) {
                 dataValues.add(((Integer) value).floatValue());
@@ -457,7 +456,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
     public List<Float> getTeamInMatchDatapointValues(String team) {
         List<Float> values;
         //returns value of datapoint per team
-        values = getValues(Integer.valueOf(team), "calculatedData." + selectedDatapoint);
+        values = getValues(Integer.valueOf(team), selectedDatapoint);
         return values;
     }
 }
