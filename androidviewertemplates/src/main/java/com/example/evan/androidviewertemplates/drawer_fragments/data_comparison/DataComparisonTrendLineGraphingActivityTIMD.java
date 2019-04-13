@@ -319,7 +319,7 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
     public List<Float> getTeamInMatchDatapointValue(String team) {
         //returns values of selected datapoint in certain match of team
         List<Float> values;
-        values = getValues(Integer.valueOf(team), "calculatedData." + selectedDatapoint);
+        values = getValues(Integer.valueOf(team), selectedDatapoint);
         return values;
     }
 
