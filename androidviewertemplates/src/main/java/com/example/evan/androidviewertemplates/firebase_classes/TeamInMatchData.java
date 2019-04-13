@@ -22,6 +22,7 @@ public class TeamInMatchData extends com.example.evan.androidviewertools.firebas
     public Integer driverStation;
     public Integer number;
     public Integer startingLevel;
+    public Integer rankDefense;
 
     public Boolean crossedHabLine;
     public Boolean isNoShow;
@@ -29,6 +30,4 @@ public class TeamInMatchData extends com.example.evan.androidviewertools.firebas
     public String startingLocation;
     public String preload;
     public String notes;
-
-    public Float rankDefense;
 }
