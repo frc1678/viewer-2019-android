@@ -281,7 +281,7 @@ public class FunctionFragment extends Fragment {
 					enableView(topSquaresDescriptionBox, topSquaresFL, topSeparator, clearedStarredTeams,
 							"Highlighted Picklist Teams",
 							"Highlights 'n' number of teams in all instances of that team in all schedule views throughout the viewer. " +
-									"The number you input when you long click will have the top *that amount* of teams from the picklist be highlighted" +
+									"The number you input when you long click will have the top *that amount* of teams from the picklist be highlighted " +
 									"in a light red color in all schedule views when they are *not* sharing any other highlight color mixes");
 					isTeamsOfPicklist = true;
 				} else if (trueBesidesBoolean(isTeamsOfPicklist))
@@ -351,7 +351,7 @@ public class FunctionFragment extends Fragment {
 				if (!isTeamsOfPicklist && !isClearedStarredTeams && !isClearHighlightedTeams && !isClearHighlightedMatches && !isClearStarredMatches && !isClearSelectedTeamsFromPicklist) {
 					enableView(bottomSquaresDescriptionBox, bottomSquaresFL, bottomSeparator, clearSelectedTeamsFromPicklist,
 							"Clear Starred Matches",
-							"Clears all of the starred matches. A match is starred when it has a yellow background in the schedule view or match details view" +
+							"Clears all of the starred matches. A match is starred when it has a yellow background in the schedule view or match details view. " +
 									"A long click on this will clear all of those starred matches and default them to normal matches");
 					isClearStarredMatches = true;
 				} else if (trueBesidesBoolean(isClearStarredMatches))
@@ -368,8 +368,8 @@ public class FunctionFragment extends Fragment {
 				if (!isTeamsOfPicklist && !isClearedStarredTeams && !isClearHighlightedTeams && !isClearHighlightedMatches && !isClearStarredMatches && !isClearSelectedTeamsFromPicklist) {
 					enableView(bottomSquaresDescriptionBox, bottomSquaresFL, bottomSeparator, clearStarredMatches,
 							"Clear Highlighted Picklist Teams",
-							"Clears the list of all of the unavailable picklist teams from the picklist fragment." +
-									"On the picklist fragment, when you select a team, you have the option to change their status to 'unavailable'," +
+							"Clears the list of all of the unavailable picklist teams from the picklist fragment. " +
+									"On the picklist fragment, when you select a team, you have the option to change their status to 'unavailable', " +
 									"making them red on the picklist view. Long click on this will clear all of those red teams");
 					isClearSelectedTeamsFromPicklist = true;
 				} else if (trueBesidesBoolean(isClearSelectedTeamsFromPicklist))
