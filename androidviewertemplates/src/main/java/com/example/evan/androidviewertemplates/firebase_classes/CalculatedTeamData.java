@@ -94,6 +94,8 @@ public class CalculatedTeamData extends Object {
     public Integer failedCyclesCaused;
     public Integer lastMatch;
     public Integer matchesDefended;
+    public Integer actualSeed;
+    public Integer actualRPs;
 
     public Float agilityZScore;
     public Float predictedRPs;
@@ -166,6 +168,8 @@ public class CalculatedTeamData extends Object {
     public Float driverAbility;
     public Float avgFailedCyclesCaused;
     public Float avgRankDefense;
+    public Float avgOrangePointsPrevented;
+    public Float avgLemonPointsPrevented;
     public Float avgCounterDefense;
     public Float totalTimeDefending;
     public Float avgTimeDefending;
