@@ -28,12 +28,14 @@ public abstract class RankingsAdapter<T extends Object> extends SearchableFireba
     private String rankFieldName;
     private String valueFieldName;
     private Map<T, Integer> rankCache;
+    private Boolean isNotReversed;
 
     public RankingsAdapter(Context context, String rankFieldName, String valueFieldName, boolean isNotReversed) {
         super(context, new ObjectFieldComparator(rankFieldName, isNotReversed));
         this.rankFieldName = rankFieldName;
         this.valueFieldName = valueFieldName;
         this.rankCache = new HashMap<>();
+        this.isNotReversed = isNotReversed;
     }
 
     @Override
@@ -150,9 +152,7 @@ public abstract class RankingsAdapter<T extends Object> extends SearchableFireba
 
     private String formatRank(Integer rank) {
         if (rank != null) {
-            Integer totalSize = this.rankCache.size();
-            Integer newRank = totalSize - rank;
-            return newRank + "";
+            return rank + 1 + "";
         } else {
             return "?";
         }

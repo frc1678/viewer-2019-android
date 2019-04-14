@@ -23,7 +23,7 @@ public class SpecificConstants extends Constants {
 
     //todo
     public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "Data Comparison", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Highlighting"};
-    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2019-avr-cacf9.firebaseio.com/";
+    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://dev-3-2019.firebaseio.com/";
     public static String ROOT_FIREBASE_PATH = ORIGINAL_ROOT_FIREBASE_PATH;
     public static String MATCHES_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Matches";
     public static String TEAMS_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Teams";
@@ -109,12 +109,7 @@ public class SpecificConstants extends Constants {
                 put("pitProgrammingLanguage", "Programming language");
                 put("pitClimbType", "Climb type");
                 put("pitHasCamera", "Has camera");
-                put("pitHasVision", "Has vision");
                 put("pitHasPid", "Has pid");
-                put("pitHasGyro", "Has gyro");
-                put("pitHasEncoders", "Has encoders");
-                put("pitSandstormNavigationType", "Sandstorm navigation");
-                put("pitHasOrangeShooter", "Has cargo shooter");
                 put("pitSEALsNotes", "SEALsNotes");
                 put("teamNumber", "Team #");
                 put("name", "Team name");
