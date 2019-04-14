@@ -313,8 +313,8 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.habLineAttemptsL1", "calculatedData.habLineAttemptsL1");
                 put("calculatedData.habLineAttemptsL2", "calculatedData.habLineAttemptsL2");
                 put("calculatedData.avgPointsPrevented", "calculatedData.pointsPrevented");
-                put("calculatedData.avgOrangePointsPrevented", "calculatedData.lemonPointsPrevented");
-                put("calculatedData.avgLemonPointsPrevented", "calculatedData.orangePointsPrevented");
+                put("calculatedData.avgOrangePointsPrevented", "calculatedData.orangePointsPrevented");
+                put("calculatedData.avgLemonPointsPrevented", "calculatedData.lemonPointsPrevented");
                 put("calculatedData.percentDysfunctional","calculatedData.timeIncap");
 //                put("calculatedData.habLineSuccessL2","crossedHabLine");
 //                put("calculatedData.habLineSuccessL1","crossedHabLine");
