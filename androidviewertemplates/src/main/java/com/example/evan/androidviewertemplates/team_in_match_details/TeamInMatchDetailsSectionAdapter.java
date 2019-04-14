@@ -65,7 +65,7 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
                     "calculatedData.orangeSuccessDefended", "calculatedData.orangeSuccessL2", "calculatedData.orangeSuccessL3",
                     "calculatedData.lemonSuccessDefended", "calculatedData.lemonSuccessL2", "calculatedData.lemonSuccessL3", "calculatedData.pinningFouls",
                     "calculatedData.lemonsScoredTeleL1", "calculatedData.lemonsScoredTeleL2", "calculatedData.lemonsScoredTeleL3",
-                    "calculatedData.orangesScoredTeleL1", "calculatedData.orangesScoredTeleL1", "calculatedData.orangesScoredTeleL1",},
+                    "calculatedData.orangesScoredTeleL1", "calculatedData.orangesScoredTeleL1", "calculatedData.orangesScoredTeleL1","calculatedData.pointsPrevented",},
             {"calculatedData.selfClimbLevel", "calculatedData.robot1ClimbLevel", "calculatedData.robot2ClimbLevel","calculatedData.timeDefending"},
             {"calculatedData.timeIncap", "calculatedData.timeClimbing"},
             {"rankDefense","notes"},

@@ -31,7 +31,12 @@ public class LastFourMatchesSectionAdapter extends TeamSectionAdapter {
     }
 
     static String[] rankInsteadOfGraph = {
-
+            "calculatedData.lfmHabLineSuccessL1", "calculatedData.lfmHabLineSuccessL2",
+            "calculatedData.lfmAvgOrangesScored", "calculatedData.lfmAvgLemonsScored", "calculatedData.lfmAvgOrangesFouls", "calculatedData.lfmLemonLoadSuccess",
+            "calculatedData.lfmOrangeCycleAll", "calculatedData.lfmLemonCycleAll", "calculatedData.lfmOrangeSuccessDefended", "calculatedData.lfmOrangeSuccessL2",
+            "calculatedData.lfmOrangeSuccessL3", "calculatedData.lfmLemonSuccessDefended", "calculatedData.lfmLemonSuccessL2", "calculatedData.lfmLemonSuccessL3",
+            "calculatedData.lfmAvgTimeClimbing",
+            "calculatedData.lfmPercentIncap", "calculatedData.lfmAvgTimeIncap", "calculatedData.lfmPercentNoShow",
     };
 
     static String[] createListOnClick = {
