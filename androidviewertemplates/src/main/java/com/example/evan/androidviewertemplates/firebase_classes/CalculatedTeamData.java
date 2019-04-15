@@ -118,6 +118,7 @@ public class CalculatedTeamData extends Object {
     public Float lemonAbility;
     public Float orangeAbility;
     public Float firstPickAbility;
+    public Float thirdPickAbility;
     public Float secondPickAbility;
     public Float avgPinningFouls;
     public Float lfmAvgOrangesScored;
