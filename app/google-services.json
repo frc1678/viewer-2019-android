@@ -1,77 +1,41 @@
 {
   "project_info": {
-    "project_number": "987808087871",
-    "firebase_url": "https://dev-3-2019.firebaseio.com",
-    "project_id": "dev-3-2019",
-    "storage_bucket": "dev-3-2019.appspot.com"
+    "project_number": "354375974134",
+    "firebase_url": "https://scouting-2019-cmp-d43a4.firebaseio.com",
+    "project_id": "scouting-2019-cmp-d43a4",
+    "storage_bucket": "scouting-2019-cmp-d43a4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:987808087871:android:2829f0a89f52ae04",
+        "mobilesdk_app_id": "1:354375974134:android:a1bd959b93903331",
         "android_client_info": {
-          "package_name": "com.example.sam.blutoothsocketreceiver"
+          "package_name": "org.citruscircuits.qrflutter"
         }
       },
       "oauth_client": [
         {
-          "client_id": "987808087871-ij3dt2n3tt66frker602vtjrt8ljuslv.apps.googleusercontent.com",
+          "client_id": "354375974134-ivrfhj3e12kbr6l3e0o9a2b3et6b3725.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAFFBG_EeN91I_z573dlHBcWGiLfT8-MX8"
+          "current_key": "AIzaSyCeR0ofxDgRkY-vw1-CAN_vmruh6P_k9XU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "987808087871-ij3dt2n3tt66frker602vtjrt8ljuslv.apps.googleusercontent.com",
+              "client_id": "354375974134-ivrfhj3e12kbr6l3e0o9a2b3et6b3725.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "987808087871-84tdsr44eiag2gg7kundv07f0n0p7n4l.apps.googleusercontent.com",
+              "client_id": "354375974134-pskeh8h1svg54hl6b9pucs804uqm8h2r.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "org.citruscircuits.ios-viewer"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:987808087871:android:303d5cec6874cc19",
-        "android_client_info": {
-          "package_name": "com.example.sam.codebaseintegration"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "987808087871-ij3dt2n3tt66frker602vtjrt8ljuslv.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAFFBG_EeN91I_z573dlHBcWGiLfT8-MX8"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "987808087871-ij3dt2n3tt66frker602vtjrt8ljuslv.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "987808087871-84tdsr44eiag2gg7kundv07f0n0p7n4l.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "org.citruscircuits.ios-viewer"
+                "bundle_id": "org.citrusciruits.ios-viewer"
               }
             }
           ]
