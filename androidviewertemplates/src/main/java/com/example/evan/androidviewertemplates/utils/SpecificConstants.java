@@ -162,11 +162,11 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.lfmAvgLemonsScored", "Avg panel scored");
                 put("calculatedData.lfmAvgOrangesFouls", "Avg cargo fouls");
                 put("calculatedData.lfmLemonLoadSuccess", "Panel LS success");
-                put("calculatedData.lfmOrangeCycleAll", "Avg cargo RS");
+                put("calculatedData.lfmOrangeCycleAll", "Time cargo in RS");
                 put("lfmOrangeCycleL1", "Avg cargo L1 RS/CS");
                 put("lfmOrangeCycleL2", "Avg cargo L2 RS");
                 put("lfmOrangeCycleL3", "Avg cargo L3 RS");
-                put("calculatedData.lfmLemonCycleAll", "Avg panel RS");
+                put("calculatedData.lfmLemonCycleAll", "Time panels in RS");
                 put("lfmLemonCycleL1", "Avg panel L1 RS");
                 put("lfmLemonCycleL2", "Avg panel L2 RS");
                 put("lfmLemonCycleL3", "Avg panel L3 RS");
