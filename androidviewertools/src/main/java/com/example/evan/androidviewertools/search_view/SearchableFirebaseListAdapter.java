@@ -88,6 +88,9 @@ public abstract class SearchableFirebaseListAdapter<T> extends BaseAdapter {
         }else if(Constants.sortBySecondPick){
             sortBySecondPick();
             Log.e("Sorted", "by second pick");
+        }else if(Constants.sortByThirdPick){
+            sortByThirdPick();
+            Log.e("Sorted", "by third pick");
         }else if(Constants.sortByLfm){
             sortByLfm();
             Log.e("Sorted", "by lfm");
@@ -134,6 +137,18 @@ public abstract class SearchableFirebaseListAdapter<T> extends BaseAdapter {
                 // ## Ascending order
                 Float teamNumberOne = (Float) Utils.getObjectField(obj1, "calculatedData.secondPickAbility");
                 Float teamNumberTwo = (Float) Utils.getObjectField(obj2, "calculatedData.secondPickAbility");
+                return (teamNumberTwo).compareTo(teamNumberOne);// To compare string values
+                // ## Descending order
+                // return obj2.firstName.compareToIgnoreCase(obj1.firstName); // To compare string values
+            }
+        });
+    }
+    public void sortByThirdPick(){
+        Collections.sort(filteredValues, new Comparator<T>() {
+            public int compare(T obj1, T obj2) {
+                // ## Ascending order
+                Float teamNumberOne = (Float) Utils.getObjectField(obj1, "calculatedData.thirdPickAbility");
+                Float teamNumberTwo = (Float) Utils.getObjectField(obj2, "calculatedData.thirdPickAbility");
                 return (teamNumberTwo).compareTo(teamNumberOne);// To compare string values
                 // ## Descending order
                 // return obj2.firstName.compareToIgnoreCase(obj1.firstName); // To compare string values
