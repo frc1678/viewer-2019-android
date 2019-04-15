@@ -296,6 +296,27 @@ public class DataComparisonTrendLineGraphingActivityTIMD extends Fragment {
         }
         //creates the initial dataValues list
         List<Float> dataValues = new ArrayList<>();
+
+        if (field.equals("calculatedData.habLineAttemptsL1")) {
+            for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
+                if ((int) Utils.getObjectField(teamInMatchData, "startingLevel") == 2) {
+                    dataValues.add(0.1f);
+                } else {
+                    dataValues.add((Boolean) Utils.getObjectField(teamInMatchData, "crossedHabLine") ? 5f : 3f);
+                }
+            }
+            return dataValues;
+        }
+        if (field.equals("calculatedData.habLineAttemptsL2")) {
+            for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
+                if ((int) Utils.getObjectField(teamInMatchData, "startingLevel") == 1) {
+                    dataValues.add(0.1f);
+                } else {
+                    dataValues.add((Boolean) Utils.getObjectField(teamInMatchData, "crossedHabLine") ? 5f : 3f);
+                }
+            }
+            return dataValues;
+        }
         for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
             //gets value of datapoint
             Object value = Utils.getObjectField(teamInMatchData, datapoint);

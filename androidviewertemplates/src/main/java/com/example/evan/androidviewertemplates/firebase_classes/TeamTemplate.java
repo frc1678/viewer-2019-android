@@ -32,6 +32,7 @@ public class TeamTemplate extends com.example.evan.androidviewertools.firebase_c
     public String pitSEALsNotes;
     public String pitDriveTrainMotorType;
 
+
     public Map<Object, Integer> pitClimbType;
 
     public Boolean pitHasCamera;

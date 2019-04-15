@@ -40,6 +40,9 @@ public class SpecificConstants extends Constants {
                 put("startingLevel","Starting level");
                 put("crossedHabLine","Crossed HAB line");
                 put("startingLocation","Starting location");
+                put("calculatedData.pointsPrevented", "Points prevented in the match");
+                put("calculatedData.orangePointsPrevented", "Cargo pts prevented in the match");
+                put("calculatedData.lemonPointsPrevented", "Panel pts prevented in the match");
                 put("preload","Preloaded game piece");
                 put("driverStation","Driver station ");
                 put("isNoShow","Did not show up to match");
@@ -95,7 +98,9 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.avgPointsPrevented","Avg Points Prevented");
                 put("calculateDData.orangeSuccessDefended","orangeSuccessDefended");
                 put("calculatedData.pointsPrevented","Points Prevented");
-
+                put("calculatedData.avgOrangePointsPrevented","Avg Cargo Points Prevented");
+                put("calculatedData.avgLemonPointsPrevented","Avg Panel Points Prevented");
+              
 //              Teams
                 put("pitDriveTrainMotorType","Drive Train Motor Type");
                 put("pitNumDriveTrainMotors","Num. Drive Train Motors");
@@ -158,11 +163,11 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.lfmAvgLemonsScored", "Avg panel scored");
                 put("calculatedData.lfmAvgOrangesFouls", "Avg cargo fouls");
                 put("calculatedData.lfmLemonLoadSuccess", "Panel LS success");
-                put("calculatedData.lfmOrangeCycleAll", "Avg cargo RS");
+                put("calculatedData.lfmOrangeCycleAll", "Time cargo in RS");
                 put("lfmOrangeCycleL1", "Avg cargo L1 RS/CS");
                 put("lfmOrangeCycleL2", "Avg cargo L2 RS");
                 put("lfmOrangeCycleL3", "Avg cargo L3 RS");
-                put("calculatedData.lfmLemonCycleAll", "Avg panel RS");
+                put("calculatedData.lfmLemonCycleAll", "Time panels in RS");
                 put("lfmLemonCycleL1", "Avg panel L1 RS");
                 put("lfmLemonCycleL2", "Avg panel L2 RS");
                 put("lfmLemonCycleL3", "Avg panel L3 RS");
@@ -306,6 +311,11 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.lemonSuccessL3","calculatedData.lemonSuccessL3");
 //                put("calculatedData.climbSuccessL2","calculatedData.selfClimbLevel");
 //                put("calculatedData.climbSuccessL3","calculatedData.selfClimbLevel");
+                put("calculatedData.habLineAttemptsL1", "calculatedData.habLineAttemptsL1");
+                put("calculatedData.habLineAttemptsL2", "calculatedData.habLineAttemptsL2");
+                put("calculatedData.avgPointsPrevented", "calculatedData.pointsPrevented");
+                put("calculatedData.avgOrangePointsPrevented", "calculatedData.orangePointsPrevented");
+                put("calculatedData.avgLemonPointsPrevented", "calculatedData.lemonPointsPrevented");
                 put("calculatedData.percentDysfunctional","calculatedData.timeIncap");
 //                put("calculatedData.habLineSuccessL2","crossedHabLine");
 //                put("calculatedData.habLineSuccessL1","crossedHabLine");
