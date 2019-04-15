@@ -316,7 +316,6 @@ public class SpecificConstants extends Constants {
 //                put("calculatedData.habLineSuccessL1","crossedHabLine");
                 put("calculatedData.avgRankDefense","rankDefense");
                 put("calculatedData.avgCounterDefense","rankDefense");
-//                put("calculatedData.pushAbility","")
             }
         };
 
