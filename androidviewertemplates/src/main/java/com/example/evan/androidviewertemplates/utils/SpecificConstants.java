@@ -100,7 +100,8 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.pointsPrevented","Points Prevented");
                 put("calculatedData.avgOrangePointsPrevented","Avg Cargo Points Prevented");
                 put("calculatedData.avgLemonPointsPrevented","Avg Panel Points Prevented");
-              
+                put("calculatedData.pushAbility","Push Ability");
+
 //              Teams
                 put("pitDriveTrainMotorType","Drive Train Motor Type");
                 put("pitNumDriveTrainMotors","Num. Drive Train Motors");
@@ -110,12 +111,7 @@ public class SpecificConstants extends Constants {
                 put("pitProgrammingLanguage", "Programming language");
                 put("pitClimbType", "Climb type");
                 put("pitHasCamera", "Has camera");
-                put("pitHasVision", "Has vision");
                 put("pitHasPid", "Has pid");
-                put("pitHasGyro", "Has gyro");
-                put("pitHasEncoders", "Has encoders");
-                put("pitSandstormNavigationType", "Sandstorm navigation");
-                put("pitHasOrangeShooter", "Has cargo shooter");
                 put("pitSEALsNotes", "SEALsNotes");
                 put("teamNumber", "Team #");
                 put("name", "Team name");

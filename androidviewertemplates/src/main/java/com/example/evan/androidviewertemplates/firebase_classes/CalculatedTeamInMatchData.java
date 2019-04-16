@@ -15,9 +15,6 @@ public class CalculatedTeamInMatchData extends Object {
     public Integer lemonSuccessAll;
     public Integer lemonSuccessDefended;
     public Integer lemonSuccessUndefended;
-    public Float pointsPrevented;
-    public Float orangePointsPrevented;
-    public Float lemonPointsPrevented;
     public Integer lemonSuccessL1;
     public Integer lemonSuccessL2;
     public Integer lemonSuccessL3;
@@ -46,6 +43,9 @@ public class CalculatedTeamInMatchData extends Object {
     public Integer orangesScoredSandstorm;
     public Integer totalFailedCyclesCaused;
 
+    public Float pointsPrevented;
+    public Float orangePointsPrevented;
+    public Float lemonPointsPrevented;
     public Float lemonCycleAll;
     public Float lemonCycleL1;
     public Float lemonCycleL2;
@@ -57,7 +57,6 @@ public class CalculatedTeamInMatchData extends Object {
     public Float timeIncap;
     public Float timeClimbing;
     public Float timeDefending;
-    public Float pointsPrevented;
 
     public Boolean isIncapEntireMatch;
 }
