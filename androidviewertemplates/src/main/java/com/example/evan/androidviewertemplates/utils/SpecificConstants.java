@@ -23,7 +23,7 @@ public class SpecificConstants extends Constants {
 
     //todo
     public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "Data Comparison", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Highlighting"};
-    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2019-avr-cacf9.firebaseio.com/";
+    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2019-cmp-d43a4.firebaseio.com/";
     public static String ROOT_FIREBASE_PATH = ORIGINAL_ROOT_FIREBASE_PATH;
     public static String MATCHES_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Matches";
     public static String TEAMS_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Teams";
@@ -97,6 +97,7 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.habLineAttemptsL2","HAB line attempts L2");
                 put("calculatedData.avgPointsPrevented","Avg Points Prevented");
                 put("calculateDData.orangeSuccessDefended","orangeSuccessDefended");
+                put("calculatedData.pointsPrevented","Points Prevented");
                 put("calculatedData.avgOrangePointsPrevented","Avg Cargo Points Prevented");
                 put("calculatedData.avgLemonPointsPrevented","Avg Panel Points Prevented");
                 put("calculatedData.pushAbility","Push Ability");
@@ -158,11 +159,11 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.lfmAvgLemonsScored", "Avg panel scored");
                 put("calculatedData.lfmAvgOrangesFouls", "Avg cargo fouls");
                 put("calculatedData.lfmLemonLoadSuccess", "Panel LS success");
-                put("calculatedData.lfmOrangeCycleAll", "Avg cargo RS");
+                put("calculatedData.lfmOrangeCycleAll", "Time cargo in RS");
                 put("lfmOrangeCycleL1", "Avg cargo L1 RS/CS");
                 put("lfmOrangeCycleL2", "Avg cargo L2 RS");
                 put("lfmOrangeCycleL3", "Avg cargo L3 RS");
-                put("calculatedData.lfmLemonCycleAll", "Avg panel RS");
+                put("calculatedData.lfmLemonCycleAll", "Time panels in RS");
                 put("lfmLemonCycleL1", "Avg panel L1 RS");
                 put("lfmLemonCycleL2", "Avg panel L2 RS");
                 put("lfmLemonCycleL3", "Avg panel L3 RS");
@@ -316,6 +317,12 @@ public class SpecificConstants extends Constants {
 //                put("calculatedData.habLineSuccessL1","crossedHabLine");
                 put("calculatedData.avgRankDefense","rankDefense");
                 put("calculatedData.avgCounterDefense","rankDefense");
+                put("calculatedData.failedCyclesCausedPerSecond","calculatedData.failedCyclesCaused");
+                put("calculatedData.failedCyclesCaused","calculatedData.totalFailedCyclesCaused");
+                put("calculatedData.avgTimeDefending","calculatedData.timeDefending");
+                put("calculatedData.totalTimeDefending","calculatedData.timeDefending");
+                put("calculatedData.avgFailedCyclesCaused","calculatedData.totalFailedCyclesCaused");
+                put("calculatedData.avgPointsPrevented","calculatedData.pointsPrevented");
             }
         };
 
