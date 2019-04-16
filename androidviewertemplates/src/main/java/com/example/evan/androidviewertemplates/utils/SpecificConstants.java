@@ -97,9 +97,10 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.habLineAttemptsL2","HAB line attempts L2");
                 put("calculatedData.avgPointsPrevented","Avg Points Prevented");
                 put("calculateDData.orangeSuccessDefended","orangeSuccessDefended");
+                put("calculatedData.pointsPrevented","Points Prevented");
                 put("calculatedData.avgOrangePointsPrevented","Avg Cargo Points Prevented");
                 put("calculatedData.avgLemonPointsPrevented","Avg Panel Points Prevented");
-
+              
 //              Teams
                 put("pitDriveTrainMotorType","Drive Train Motor Type");
                 put("pitNumDriveTrainMotors","Num. Drive Train Motors");
@@ -320,6 +321,12 @@ public class SpecificConstants extends Constants {
 //                put("calculatedData.habLineSuccessL1","crossedHabLine");
                 put("calculatedData.avgRankDefense","rankDefense");
                 put("calculatedData.avgCounterDefense","rankDefense");
+                put("calculatedData.failedCyclesCausedPerSecond","calculatedData.failedCyclesCaused");
+                put("calculatedData.failedCyclesCaused","calculatedData.totalFailedCyclesCaused");
+                put("calculatedData.avgTimeDefending","calculatedData.timeDefending");
+                put("calculatedData.totalTimeDefending","calculatedData.timeDefending");
+                put("calculatedData.avgFailedCyclesCaused","calculatedData.totalFailedCyclesCaused");
+                put("calculatedData.avgPointsPrevented","calculatedData.pointsPrevented");
             }
         };
 

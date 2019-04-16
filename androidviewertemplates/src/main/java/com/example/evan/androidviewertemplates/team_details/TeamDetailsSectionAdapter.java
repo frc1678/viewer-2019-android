@@ -125,6 +125,7 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "pitIsLemonSpecialist",
             "calculatedData.hasOrangeGroundIntake",
             "calculatedData.hasLemonGroundIntake",
+            "pitNumDriveTrainMotors"
     };
 
     static String[] createListOnClick = {
@@ -146,6 +147,7 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "calculatedData.habLineSuccessL1",
             "calculatedData.speedZScore",
             "calculatedData.agilityZScore",
+            "pitSEALsRampRanking",
     };
 
 
