@@ -22,7 +22,7 @@ public class SpecificConstants extends Constants {
     public static List<String> CATEGORY_LIST;
 
     //todo
-    public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "Data Comparison", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Highlighting"};
+    public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "Data Comparison", "First Pick", "Second Pick","Third Pick","Super Data", "Live Picklist", "Highlighting"};
     public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2019-cmp-d43a4.firebaseio.com/";
     public static String ROOT_FIREBASE_PATH = ORIGINAL_ROOT_FIREBASE_PATH;
     public static String MATCHES_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Matches";
@@ -142,8 +142,9 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.predictedSoloPoints", "Predicted points by team (alone)");
                 put("orangeAbility", "Cargo ability");
                 put("lemonAbility", "Panel ability");
-                put("firstPickAbility", "First pick ability");
-                put("secondPickAbility", "Second pick ability");
+                put("calculatedData.firstPickAbility", "First pick ability");
+                put("calculatedData.secondPickAbility", "Second pick ability");
+                put("calculatedData.thirdPickAbility","Third Pick Ability");
                 put("calculatedData.avgPinningFouls", "Avg pinning fouls");
                 put("calculatedData.avgLemonsScoredSandstorm", "Avg panels placed during Sandstorm");
                 put("calculatedData.avgOrangesScoredSandstorm", "Avg cargo placed during Sandstorm");

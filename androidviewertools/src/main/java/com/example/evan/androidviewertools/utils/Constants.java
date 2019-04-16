@@ -50,6 +50,7 @@ public class Constants {
     public static int teamRankStringCounter = 1;
     public static boolean sortByFirstPick = false;
     public static boolean sortBySecondPick = false;
+    public static boolean sortByThirdPick = false;
     public static boolean lastFourMatches = false;
     public static boolean highlightTeamSchedule = false;
     public static boolean sortByLfm = false;
