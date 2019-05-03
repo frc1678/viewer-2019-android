@@ -143,6 +143,7 @@ public class MainActivity extends ViewerActivity
                 fragment.setArguments(args2);
                 break;
             case 6:
+                Constants.highlightTeamSchedule = false;
                 fragment = new DataComparisonFragment();
                 break;
             case 7:
@@ -152,6 +153,7 @@ public class MainActivity extends ViewerActivity
             case 8:
                 Constants.highlightTeamSchedule = false;
                 fragment = new OverallSecondPickFragment();
+                break;
             case 9:
                 Constants.highlightTeamSchedule = false;
                 fragment = new ThirdPickFragment();
@@ -165,6 +167,7 @@ public class MainActivity extends ViewerActivity
                 fragment = new FirstPicklistFragment();
                 break;
             case 12:
+                Constants.highlightTeamSchedule = false;
                 fragment = new FunctionFragment();
                 break;
         }
