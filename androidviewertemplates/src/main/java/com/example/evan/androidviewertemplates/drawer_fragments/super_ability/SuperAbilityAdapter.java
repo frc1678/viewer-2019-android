@@ -21,7 +21,7 @@ public class SuperAbilityAdapter extends FragmentStatePagerAdapter {
             "calculatedData.speedZScore",
             "calculatedData.driverAbility",
             "calculatedData.avgRankDefense",
-            "calculatedData.avgCounterDefense",
+            "calculatedData.avgRankCounterDefense",
             "calculatedData.pushAbility",
     };
 
