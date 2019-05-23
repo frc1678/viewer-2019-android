@@ -22,6 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.evan.androidviewertemplates.drawer_fragments.ThirdPickFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.data_comparison.DataComparisonFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.FirstPickAbilityFragment;
 import com.example.evan.androidviewertemplates.drawer_fragments.FirstPicklistFragment;
@@ -151,16 +152,19 @@ public class MainActivity extends ViewerActivity
             case 8:
                 Constants.highlightTeamSchedule = false;
                 fragment = new OverallSecondPickFragment();
-                break;
             case 9:
                 Constants.highlightTeamSchedule = false;
-                fragment = new SuperAbilityFragment();
+                fragment = new ThirdPickFragment();
                 break;
             case 10:
                 Constants.highlightTeamSchedule = false;
-                fragment = new FirstPicklistFragment();
+                fragment = new SuperAbilityFragment();
                 break;
             case 11:
+                Constants.highlightTeamSchedule = false;
+                fragment = new FirstPicklistFragment();
+                break;
+            case 12:
                 fragment = new FunctionFragment();
                 break;
         }

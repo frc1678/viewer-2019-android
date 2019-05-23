@@ -17,28 +17,24 @@ public class TeamTemplate extends com.example.evan.androidviewertools.firebase_c
     //Make sure that all variables are public
     public Integer pitWidth;
     public Integer pitLength;
-    public Integer pitMinHeight;
-    public Integer pitMaxHeight;
     public Integer pitWeight;
     public Integer number;
     public Integer actualRPs;
     public Integer matchesPlayed;
     public Integer actualSeed;
+    public Integer pitNumDriveTrainMotors;
+    public Integer pitSEALsRampRanking;
 
     public String pitWheelDiameter;
     public String pitDrivetrain;
     public String pitProgrammingLanguage;
-    public String pitSandstormNavigationType;
     public String pitSEALsNotes;
+    public String pitDriveTrainMotorType;
+
 
     public Map<Object, Integer> pitClimbType;
 
     public Boolean pitHasCamera;
-    public Boolean pitHasVision;
     public Boolean pitHasPid;
-    public Boolean pitHasGyro;
-    public Boolean pitHasEncoders;
-    public Boolean pitCanBuddyStartLevel2;
-    public Boolean pitHasOrangeShooter;
     public Boolean pitIsLemonSpecialist;
 }

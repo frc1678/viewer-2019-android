@@ -33,6 +33,7 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "Matches",
             "Sandstorm",
             "Teleop",
+            "Defense",
             "End Game",
             "Status",
             "High Level",
@@ -43,18 +44,20 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
             {"matches", "VIEWER.matchesUntilNextMatchForTeam", "lfm"},
-            {"calculatedData.habLineSuccessL1", "calculatedData.habLineSuccessL2", "calculatedData.avgLemonsScoredSandstorm", "calculatedData.avgOrangesScoredSandstorm"},
-            {"calculatedData.avgOrangesScored", "calculatedData.avgLemonsScored", "calculatedData.avgLemonsSpilled", "calculatedData.avgOrangeFouls", "calculatedData.lemonLoadSuccess",
+            {"calculatedData.habLineSuccessL1", "calculatedData.habLineSuccessL2","calculatedData.habLineAttemptsL1","calculatedData.habLineAttemptsL2", "calculatedData.avgLemonsScoredSandstorm", "calculatedData.avgOrangesScoredSandstorm"},
+            {"calculatedData.avgPointsPrevented","calculatedData.avgOrangePointsPrevented","calculatedData.avgLemonPointsPrevented", "calculatedData.avgFailedCyclesCaused","calculatedData.avgOrangesScored", "calculatedData.avgLemonsScored", "calculatedData.avgPinningFouls", "calculatedData.avgOrangesFouls", "calculatedData.lemonLoadSuccess",
                     "calculatedData.orangeSuccessDefended", "calculatedData.orangeSuccessL2",
                     "calculatedData.orangeSuccessL3", "calculatedData.lemonSuccessDefended", "calculatedData.lemonSuccessL2", "calculatedData.lemonSuccessL3",
-                    "calculatedData.hasOrangeGroundIntake", "calculatedData.hasLemonGroundIntake",},
-            {"calculatedData.avgTimeClimbing", "calculatedData.climbSuccessL2", "calculatedData.climbSuccessL3", "calculatedData.pitSEALsRampRanking"},
-            {"calculatedData.avgTimeIncap", "calculatedData.avgTimeImpaired", "calculatedData.percentIncap", "calculatedData.percentImpaired", "calculatedData.percentNoShow",
+                    "calculatedData.hasOrangeGroundIntake", "calculatedData.hasLemonGroundIntake","calculatedData.totalTimeDefending","calculatedData.avgTimeDefending","calculatedData.failedCyclesCaused",
+                    "calculatedData.failedCyclesCausedPerSecond"},
+            {"calculatedData.avgLemonPointsPrevented","calculatedData.avgOrangePointsPrevented","calculatedData.avgPointsPrevented"},
+            {"calculatedData.avgTimeClimbing", "calculatedData.climbSuccessL2", "calculatedData.climbSuccessL3", "pitSEALsRampRanking"},
+            {"calculatedData.avgTimeIncap", "calculatedData.percentIncap", "calculatedData.percentNoShow",
                     "calculatedData.percentDysfunctional"},
             {"calculatedData.predictedSoloPoints", "calculatedData.sdAvgOrangesScored", "calculatedData.sdAvgLemonsScored"},
-            {"calculatedData.speedZScore", "calculatedData.agilityZScore", "calculatedData.driverAbility", "calculatedData.avgGoodDecisions", "calculatedData.avgBadDecisions"},
-            {"pitLength", "pitWidth", "pitWeight", "pitWheelDiameter", "pitDrivetrain", "pitProgrammingLanguage", "pitClimbType", "pitHasCamera", "pitHasVision",
-                    "pitHasGyro", "pitHasEncoders", "pitCanBuddyStartLevel2", "pitSandstormNavigationType", "pitSEALsNotes", "pitIsLemonSpecialist"}
+            {"calculatedData.avgRankDefense","calculatedData.avgCounterDefense","calculatedData.speedZScore", "calculatedData.agilityZScore", "calculatedData.driverAbility","calculatedData.pushAbility"},
+            {"pitWeight", "pitWheelDiameter", "pitDrivetrain", "pitProgrammingLanguage", "pitClimbType", "pitHasCamera",
+                    "pitSEALsNotes", "pitIsLemonSpecialist","pitDriveTrainMotorType","pitNumDriveTrainMotors"}
     };
 
     static String[] shouldDisplayAsPercentage = {
@@ -66,7 +69,6 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "VIEWER.matchesUntilNextMatchForTeam",
             "pitClimbType",
             "pitSEALsNotes",
-            "pitSandstormNavigationType",
             "pitWidth",
             "pitWeight",
             "pitWheelDiameter",
@@ -74,54 +76,49 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "pitProgrammingLanguage",
             "pitClimbType",
             "pitHasCamera",
-            "pitHasVision",
-            "pitHasGyro",
-            "pitHasEncoders",
             "pitCanBuddyStartLevel2",
-            "pitSandstormNavigationType",
             "pitSEALsNotes",
             "totalSuperNotes",
             "pitLength",
             "pitIsLemonSpecialist",
+            "pitDriveTrainMotorType",
+            "pitNumDriveTrainMotors"
     };
 
     static String[] shouldDisplayAsLongText = {
             //These variables should always be displayed as long text. These variables are non year specific variables
             "pitNotes",
-            "superNotes",
+            "notes",
             "pitClimbType",
             "pitSEALsNotes",
-            "calculatedData.sdAvgOrangesScored",
-            "calculatedData.sdAvgLemonsScored",
             "pitClimbType",
             "pitSEALsNotes",
-            "pitSandstormNavigationType",
-            "pitLength",
-            "pitWidth",
-            "pitWeight",
-            "pitWheelDiameter",
-            "pitDrivetrain",
-            "pitProgrammingLanguage",
             "pitClimbType",
-            "pitHasCamera",
-            "pitHasVision",
-            "pitHasGyro",
-            "pitHasEncoders",
-            "pitCanBuddyStartLevel2",
-            "pitSandstormNavigationType",
             "pitSEALsNotes",
             "pitIsLemonSpecialist",
     };
 
     static String[] shouldDisplayAsFurtherInformation = {
             "matches",
-            "superNotes",
+            "notes",
             "lfm"
-
     };
 
     static String[] notClickableFields = {
             "VIEWER.matchesUntilNextMatchForTeam",
+            "pitLength",
+            "pitWidth", "pitWeight",
+            "pitWheelDiameter",
+            "pitDrivetrain",
+            "pitProgrammingLanguage",
+            "pitClimbType",
+            "pitHasCamera",
+            "pitCanBuddyStartLevel2",
+            "pitSEALsNotes",
+            "pitIsLemonSpecialist",
+            "calculatedData.hasOrangeGroundIntake",
+            "calculatedData.hasLemonGroundIntake",
+            "pitNumDriveTrainMotors"
     };
 
     static String[] createListOnClick = {
@@ -130,11 +127,22 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     };
 
     static String[] rankInsteadOfGraph = {
-            "calculatedData.hasOrangeGroundIntake",
-            "calculatedData.hasLemonGroundIntake",
             "calculatedData.predictedSoloPoints",
             "calculatedData.avgGoodDecisions",
             "calculatedData.avgBadDecisions",
+            "calculatedData.sdAvgOrangesScored",
+            "calculatedData.sdAvgLemonsScored",
+            "calculatedData.predictedSoloPoints",
+            "calculatedData.driverAbility",
+            "calculatedData.pushAbility",
+            "calculatedData.climbSuccessL2",
+            "calculatedData.climbSuccessL3",
+            "calculatedData.habLineSuccessL2",
+            "calculatedData.habLineSuccessL1",
+            "calculatedData.speedZScore",
+            "calculatedData.agilityZScore",
+            "calculatedData.pushAbility",
+            "pitSEALsRampRanking",
     };
 
 

@@ -22,8 +22,8 @@ public class SpecificConstants extends Constants {
     public static List<String> CATEGORY_LIST;
 
     //todo
-    public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "Data Comparison", "First Pick", "Second Pick", "Super Data", "Live Picklist", "Settings"};
-    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2019-sac-2bdd7.firebaseio.com/";
+    public static final String[] DRAWER_TITLES = {"Schedule", "Upcoming Matches", "Recent Matches", "Starred Matches", "Our Schedule", "Seeding", "Data Comparison", "First Pick", "Second Pick","Third Pick","Super Data", "Live Picklist", "Highlighting"};
+    public static final String ORIGINAL_ROOT_FIREBASE_PATH = "https://scouting-2019-cmp-d43a4.firebaseio.com/";
     public static String ROOT_FIREBASE_PATH = ORIGINAL_ROOT_FIREBASE_PATH;
     public static String MATCHES_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Matches";
     public static String TEAMS_PATH = ORIGINAL_ROOT_FIREBASE_PATH + "Teams";
@@ -34,12 +34,15 @@ public class SpecificConstants extends Constants {
             {
                 put("matches", "Matches");
                 put("VIEWER.matchesUntilNextMatchForTeam", "Matches Until Next Match");
-//                    put("calculatedData.numMatchesPlayed", "Num. Matches Played");
+//                put("calculatedData.numMatchesPlayed", "Num. Matches Played");
                 put("lfm", "Last Four Matches");
                 put("matchNumber", "Match Number");
                 put("startingLevel","Starting level");
                 put("crossedHabLine","Crossed HAB line");
                 put("startingLocation","Starting location");
+                put("calculatedData.pointsPrevented", "Points prevented in the match");
+                put("calculatedData.orangePointsPrevented", "Cargo pts prevented in the match");
+                put("calculatedData.lemonPointsPrevented", "Panel pts prevented in the match");
                 put("preload","Preloaded game piece");
                 put("driverStation","Driver station ");
                 put("isNoShow","Did not show up to match");
@@ -68,38 +71,47 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.lemonSuccessL2","% panel success L2");
                 put("calculatedData.lemonSuccessL3","% panel success L3");
                 put("calculatedData.timeIncap","Time incap (% of match)");
-                put("calculatedData.timeImpaired","Time impaired (s)");
                 put("calculatedData.timeClimbing","Time climbing (s)");
-                put("calculatedData.lemonsSpilled","Panels spilled");
+                put("calculatedData.pinningFouls","Pinning Fouls");
                 put("calculatedData.selfClimbLevel","Climb Level");
-                put("superNotes","Super Notes");
+                put("notes","Super Notes");
                 put("calculatedData.robot1ClimbLevel","1st Robot Climb Level");
                 put("calculatedData.robot2ClimbLevel","2nd Robot Climb Level");
-                put("calculatedData.lvl_1_lemons_teleop","Lvl 1 panels placed");
-                put("calculatedData.lvl_2_lemons_teleop","Lvl 2 panels placed");
-                put("calculatedData.lvl_3_lemons_teleop","Lvl 3 panels placed");
-                put("calculatedData.lvl_1_oranges_teleop","Lvl 1 cargo placed");
-                put("calculatedData.lvl_2_oranges_teleop","Lvl 2 cargo placed");
-                put("calculatedData.lvl_3_oranges_teleop","Lvl 3 cargo placed");
+                put("calculatedData.lemonsScoredTeleL1","Lvl 1 panels placed");
+                put("calculatedData.lemonsScoredTeleL2","Lvl 2 panels placed");
+                put("calculatedData.lemonsScoredTeleL3","Lvl 3 panels placed");
+                put("calculatedData.orangesScoredTeleL1","Lvl 1 cargo placed");
+                put("calculatedData.orangesScoredTeleL2","Lvl 2 cargo placed");
+                put("calculatedData.orangesScoredTeleL3","Lvl 3 cargo placed");
+                put("calculatedData.totalFailedCyclesCaused","Total Cycles Defended");
+                put("calculatedData.avgRankDefense","Avg Rank Defense");
+                put("rankDefense","Rank Defense");
+                put("calculatedData.avgCounterDefense","Avg Counter Defense");
+                put("calculatedData.avgFailedCyclesCaused","Avg Cycles Defended");
+                put("calculatedData.timeDefending","Time defending");
+                put("calculatedData.totalTimeDefending","Total Time Defending");
+                put("calculatedData.avgTimeDefending","Avg Time Defending");
+                put("calculatedData.failedCyclesCaused","Cycles Defended");
+                put("calculatedData.failedCyclesCausedPerSecond","Cycles Defended Per Second");
+                put("calculatedData.habLineAttemptsL1","HAB line attempts L1");
+                put("calculatedData.habLineAttemptsL2","HAB line attempts L2");
+                put("calculatedData.avgPointsPrevented","Avg Points Prevented");
+                put("calculateDData.orangeSuccessDefended","orangeSuccessDefended");
+                put("calculatedData.pointsPrevented","Points Prevented");
+                put("calculatedData.avgOrangePointsPrevented","Avg Cargo Points Prevented");
+                put("calculatedData.avgLemonPointsPrevented","Avg Panel Points Prevented");
+                put("calculatedData.pushAbility","Push Ability");
 
 //              Teams
-                put("pitWidth", "Width");
-                put("pitLength", "Length");
-                put("pitMinHeight", "Min. height");
-                put("pitMaxHeight", "Max height");
+                put("pitDriveTrainMotorType","Drive Train Motor Type");
+                put("pitNumDriveTrainMotors","Num. Drive Train Motors");
                 put("pitWeight", "Weight");
                 put("pitWheelDiameter", "Wheel diameter");
                 put("pitDrivetrain", "Drive train");
                 put("pitProgrammingLanguage", "Programming language");
                 put("pitClimbType", "Climb type");
                 put("pitHasCamera", "Has camera");
-                put("pitHasVision", "Has vision");
                 put("pitHasPid", "Has pid");
-                put("pitHasGyro", "Has gyro");
-                put("pitHasEncoders", "Has encoders");
-                put("pitCanBuddyStartLevel2", "Can start with another robot L2");
-                put("pitSandstormNavigationType", "Sandstorm navigation");
-                put("pitHasOrangeShooter", "Has cargo shooter");
                 put("pitSEALsNotes", "SEALsNotes");
                 put("teamNumber", "Team #");
                 put("name", "Team name");
@@ -113,33 +125,30 @@ public class SpecificConstants extends Constants {
                 put("didPreloadLemon", "Preloaded lemon at least once");
                 put("calculatedData.avgOrangesScored", "Avg cargo scored");
                 put("calculatedData.avgLemonsScored", "Avg hatch scored");
-                put("calculatedData.avgOrangeFouls", "Avg cargo fouls out of field");
+                put("calculatedData.avgOrangesFouls", "Avg cargo fouls out of field");
                 put("lemonSuccessFromSide", "Far side RS or side CS placements");
                 put("calculatedData.habLineSuccessL1", "% HAB line from L1 success");
                 put("calculatedData.habLineSuccessL2", "% HAB line from L2 success");
-                put("calculatedData.avgGoodDecisions", "Avg good Decisions");
-                put("calculatedData.avgBadDecisions", "Avg bad decisions");
                 put("calculatedData.avgTimeIncap", "Avg incap time");
-                put("calculatedData.avgTimeImpaired", "Avg impaired time");
                 put("calculatedData.avgTimeClimbing", "Avg climbing time");
                 put("calculatedData.percentIncap", "% incap");
-                put("calculatedData.percentImpaired", "% impaired");
                 put("calculatedData.percentNoShow", "% no show");
                 put("predictedDedicatedLemonCycles", "Predicted only panel cycles");
                 put("predictedDedicatedOrangeCycles", "Predicted only cargo");
                 put("calculatedData.predictedSoloPoints", "Predicted points by team (alone)");
                 put("orangeAbility", "Cargo ability");
                 put("lemonAbility", "Panel ability");
-                put("firstPickAbility", "First pick ability");
-                put("secondPickAbility", "Second pick ability");
-                put("calculatedData.avgLemonsSpilled", "Avg panels spilled");
+                put("calculatedData.firstPickAbility", "First pick ability");
+                put("calculatedData.secondPickAbility", "Second pick ability");
+                put("calculatedData.thirdPickAbility","Third Pick Ability");
+                put("calculatedData.avgPinningFouls", "Avg pinning fouls");
                 put("calculatedData.avgLemonsScoredSandstorm", "Avg panels placed during Sandstorm");
                 put("calculatedData.avgOrangesScoredSandstorm", "Avg cargo placed during Sandstorm");
                 put("calculatedData.driverAbility", "Driver ability");
                 put("calculatedData.climbSuccessL1", "% Climb success for HAB L1");
                 put("calculatedData.climbSuccessL2", "% Climb success for HAB L2");
                 put("calculatedData.climbSuccessL3", "% Climb success for HAB L3");
-                put("calculatedData.pitSEALsRampRanking", "Ramp Ability");
+                put("pitSEALsRampRanking", "Ramp Ability");
                 put("calculatedData.climbAttemptsL1", "Climb Attempt L1");
                 put("calculatedData.climbAttemptsL2", "Climb Attempt L2");
                 put("calculatedData.climbAttemptsL3", "Climb Attempt L3");
@@ -149,13 +158,13 @@ public class SpecificConstants extends Constants {
                 //lfm
                 put("calculatedData.lfmAvgOrangesScored", "Avg cargo scored");
                 put("calculatedData.lfmAvgLemonsScored", "Avg panel scored");
-                put("calculatedData.lfmAvgOrangeFouls", "Avg cargo fouls");
+                put("calculatedData.lfmAvgOrangesFouls", "Avg cargo fouls");
                 put("calculatedData.lfmLemonLoadSuccess", "Panel LS success");
-                put("calculatedData.lfmOrangeCycleAll", "Avg cargo RS");
+                put("calculatedData.lfmOrangeCycleAll", "Time cargo in RS");
                 put("lfmOrangeCycleL1", "Avg cargo L1 RS/CS");
                 put("lfmOrangeCycleL2", "Avg cargo L2 RS");
                 put("lfmOrangeCycleL3", "Avg cargo L3 RS");
-                put("calculatedData.lfmLemonCycleAll", "Avg panel RS");
+                put("calculatedData.lfmLemonCycleAll", "Time panels in RS");
                 put("lfmLemonCycleL1", "Avg panel L1 RS");
                 put("lfmLemonCycleL2", "Avg panel L2 RS");
                 put("lfmLemonCycleL3", "Avg panel L3 RS");
@@ -174,19 +183,15 @@ public class SpecificConstants extends Constants {
                 put("lfmLemonSuccessFromSide", "Avg far side RS or side CS placement");
                 put("calculatedData.lfmHabLineSuccessL1", "HAB line success start from L1");
                 put("calculatedData.lfmHabLineSuccessL2", "HAB line success start from L2");
-                put("calculatedData.lfmAvgGoodDecisions", "Avg good decisions");
-                put("calculatedData.lfmAvgBadDecisions", "Avg bad decisions");
                 put("calculatedData.lfmAvgTimeIncap", "Avg time incap");
-                put("calculatedData.lfmAvgTimeImpaired", "Avg time impaired");
                 put("calculatedData.lfmAvgTimeClimbing", "Avg time climbing");
                 put("calculatedData.lfmPercentIncap", "% incap");
-                put("calculatedData.lfmPercentImpaired", "% impaired");
                 put("calculatedData.lfmPercentNoShow", "% no show");
-                put("lfmAvgLemonsSpilled", "Avg panels spilled");
+                put("lfmAvgPinningFouls", "Avg panels spilled");
                 //sd
                 put("calculatedData.sdAvgOrangesScored", "SD avg cargo scored");
                 put("calculatedData.sdAvgLemonsScored", "SD avg hatch scored");
-                put("sdAvgOrangeFouls", "Avg cargo fouls");
+                put("sdAvgOrangesFouls", "Avg cargo fouls");
                 put("sdLemonLoadSuccess", "Avg panel LS success");
                 put("sdOrangeCycleAll", "Avg cargo in RS/CS");
                 put("sdOrangeCycleL1", "Avg cargo in L1 RS/CS");
@@ -211,19 +216,15 @@ public class SpecificConstants extends Constants {
                 put("sdLemonSuccessFromSide", "Avg far side RS or side CS placement");
                 put("sdHabLineSuccessL1", "HAB line success start from L1");
                 put("sdHabLineSuccessL2", "HAB line success start from L2");
-                put("sdAvgGoodDecisions", "Avg good decisions");
-                put("sdAvgBadDecisions", "Avg bad decisions");
                 put("sdAvgTimeIncap", "Avg time incap");
-                put("sdAvgTimeImpaired", "Avg time impaired");
                 put("sdAvgTimeClimbing", "Avg time climbing");
                 put("sdPercentIncap", "% incap");
-                put("sdPercentImpaired", "% impaired");
                 put("sdPercentNoShow", "% no show");
-                put("sdAvgLemonsSpilled", "Avg panels spilled");
+                put("calculatedData.sdAvgPinningFouls", "Avg panels spilled");
                 //p75
                 put("p75avgOrangesScored", "Avg cargo scored");
                 put("calculatedData.p75avgLemonsScored", "Avg panels scored");
-                put("p75avgOrangeFouls", "Avg cargo foul out of field");
+                put("p75avgOrangesFouls", "Avg cargo foul out of field");
                 put("p75lemonLoadSuccess", "Panel LS success");
                 put("p75orangeCycleAll", "Avg cargo in RS/CS");
                 put("p75orangeCycleL1", "Avg cargo in L1 RS");
@@ -246,15 +247,11 @@ public class SpecificConstants extends Constants {
                 put("p75lemonSuccessFromSide", "Avg panel success from side");
                 put("p75habLineSuccessL1", "HAB line success start from L1");
                 put("p75habLineSuccessL2", "HAB line success start from L2");
-                put("p75avgGoodDecisions", "Avg good decisions");
-                put("p75avgBadDecisions", "Avg bad decisions");
                 put("p75avgTimeIncap", "Avg time incap");
-                put("p75avgTimeImpaired", "Avg time impaired");
                 put("p75avgTimeClimbing", "Avg time climbing");
                 put("p75percentIncap", "% incap");
-                put("p75percentImpaired", "% impaired");
                 put("p75percentNoShow", "% no show");
-                put("p75AvgLemonsSpilled", "Avg panels spilled");
+                put("p75AvgPinningFouls", "Avg panels spilled");
 //              Matches
                 put("cargoShipPreload", "Cargo ship preload");
                 put("blueTeams", "Blue alliance teams");
@@ -283,7 +280,6 @@ public class SpecificConstants extends Constants {
 //            SuperData
                 put("calculatedData.speedZScore", "Speed Z Score");
                 put("calculatedData.agilityZScore", "Agility Z Score");
-                put("calculatedData.defenseAbility", "Defense Ability");
 //                put("EXAMPLE_DATA_POINT", "EXAMPLE_DATA_TITLE");
 //                Look at past years' SpecificConstants for further formatting
             }
@@ -294,13 +290,40 @@ public class SpecificConstants extends Constants {
 //              put("DATA_POINT_TO_BE_GRAPHED","DATA_POINT_NEEDED_TO_GRAPH_PRIOR_DATA_POINT");
                 put("calculatedData.avgOrangesScored", "calculatedData.orangesScored");
                 put("calculatedData.avgLemonsScored", "calculatedData.lemonsScored");
-                put("calculatedData.avgOrangeFouls", "calculatedData.orangeFouls");
-                put("calculatedData.avgLemonsSpilled", "calculatedData.lemonsFouls");
+                put("calculatedData.avgOrangesFouls", "calculatedData.orangeFouls");
+                put("calculatedData.avgPinningFouls", "calculatedData.pinningFouls");
                 put("calculatedData.avgTimeClimbing", "calculatedData.timeClimbing");
                 put("calculatedData.avgTimeIncap", "calculatedData.timeIncap");
                 put("calculatedData.percentNoShow", "isNoShow");
                 put("calculatedData.percentIncap", "calculatedData.timeIncap");
                 put("calculatedData.percentImpaired", "calculatedData.timeImpaired");
+                put("calculatedData.avgLemonsScoredSandstorm","calculatedData.lemonsScoredSandstorm");
+                put("calculatedData.avgOrangesScoredSandstorm","calculatedData.orangesScoredSandstorm");
+                put("calculatedData.lemonLoadSuccess","calculatedData.lemonLoadSuccess");
+                put("calculatedData.orangeSuccessDefended","calculatedData.orangeSuccessDefended");
+                put("calculatedData.orangeSuccessL2","calculatedData.orangeSuccessL2");
+                put("calculatedData.orangeSuccessL3","calculatedData.orangeSuccessL3");
+                put("calculatedData.lemonSuccessDefended","calculatedData.lemonSuccessDefended");
+                put("calculatedData.lemonSuccessL2","calculatedData.lemonSuccessL2");
+                put("calculatedData.lemonSuccessL3","calculatedData.lemonSuccessL3");
+//                put("calculatedData.climbSuccessL2","calculatedData.selfClimbLevel");
+//                put("calculatedData.climbSuccessL3","calculatedData.selfClimbLevel");
+                put("calculatedData.habLineAttemptsL1", "calculatedData.habLineAttemptsL1");
+                put("calculatedData.habLineAttemptsL2", "calculatedData.habLineAttemptsL2");
+                put("calculatedData.avgPointsPrevented", "calculatedData.pointsPrevented");
+                put("calculatedData.avgOrangePointsPrevented", "calculatedData.orangePointsPrevented");
+                put("calculatedData.avgLemonPointsPrevented", "calculatedData.lemonPointsPrevented");
+                put("calculatedData.percentDysfunctional","calculatedData.timeIncap");
+//                put("calculatedData.habLineSuccessL2","crossedHabLine");
+//                put("calculatedData.habLineSuccessL1","crossedHabLine");
+                put("calculatedData.avgRankDefense","rankDefense");
+                put("calculatedData.avgCounterDefense","rankDefense");
+                put("calculatedData.failedCyclesCausedPerSecond","calculatedData.failedCyclesCaused");
+                put("calculatedData.failedCyclesCaused","calculatedData.totalFailedCyclesCaused");
+                put("calculatedData.avgTimeDefending","calculatedData.timeDefending");
+                put("calculatedData.totalTimeDefending","calculatedData.timeDefending");
+                put("calculatedData.avgFailedCyclesCaused","calculatedData.totalFailedCyclesCaused");
+                put("calculatedData.avgPointsPrevented","calculatedData.pointsPrevented");
             }
         };
 
@@ -308,7 +331,7 @@ public class SpecificConstants extends Constants {
             {
                 put("p75avgOrangesScored", "avg cargo scored");
                 put("p75avgLemonsScored", "avg panels scored");
-                put("p75avgOrangeFouls", "avg cargo foul out of field");
+                put("p75avgOrangesFouls", "avg cargo foul out of field");
                 put("p75lemonLoadSuccess", "panel LS success");
                 put("p75orangeCycleAll", "avg cargo in RS/CS");
                 put("p75orangeCycleL1", "avg cargo in L1 RS");
@@ -331,22 +354,18 @@ public class SpecificConstants extends Constants {
                 put("p75lemonSuccessFromSide", "avg panel success from side");
                 put("p75habLineSuccessL1", "HAB line success start from L1");
                 put("p75habLineSuccessL2", "HAB line success start from L2");
-                put("p75avgGoodDecisions", "avg good decisions");
-                put("p75avgBadDecisions", "avg bad decisions");
                 put("p75avgTimeIncap", "avg time incap");
-                put("p75avgTimeImpaired", "avg time impaired");
                 put("p75avgTimeClimbing", "avg time climbing");
                 put("p75percentIncap", "% incap");
-                put("p75percentImpaired", "% impaired");
                 put("p75percentNoShow", "% no show");
-                put("p75AvgLemonsSpilled", "avg panels spilled");
+                put("p75AvgPinningFouls", "avg panels spilled");
             }
         };
         Map<String, String> initialDataComparisonDatapointsTEAMSlfm = new HashMap<String, String>() {
             {
                 put("lfmAvgOrangesScored", "avg cargo scored");
                 put("lfmAvgLemonsScored", "avg panel scored");
-                put("lfmAvgOrangeFouls", "avg cargo fouls");
+                put("lfmAvgOrangesFouls", "avg cargo fouls");
                 put("lfmLemonLoadSuccess", "panel LS success");
                 put("lfmOrangeCycleAll", "avg cargo RS");
                 put("lfmOrangeCycleL1", "avg cargo L1 RS/CS");
@@ -371,22 +390,17 @@ public class SpecificConstants extends Constants {
                 put("lfmLemonSuccessFromSide", "avg far side RS or side CS placement");
                 put("lfmHabLineSuccessL1", "HAB line success start from L1");
                 put("lfmHabLineSuccessL2", "HAB line success start from L2");
-                put("lfmAvgGoodDecisions", "avg good decisions");
-                put("lfmAvgBadDecisions", "avg bad decisions");
                 put("lfmAvgTimeIncap", "avg time incap");
-                put("lfmAvgTimeImpaired", "avg time impaired");
                 put("lfmAvgTimeClimbing", "avg time climbing");
                 put("lfmPercentIncap", "% incap");
-                put("lfmPercentImpaired", "% impaired");
                 put("lfmPercentNoShow", "% no show");
-                put("lfmAvgLemonsSpilled", "avg panels spilled");
+                put("lfmAvgPinningFouls", "avg panels spilled");
             }
         };
         Map<String, String> initialDataComparisonDatapointsTEAMSnormal = new HashMap<String, String>() {
             {
                 put("actualRPs", "total # RP");
                 put("matchesPlayed", "matches played");
-                put("actualSeed", "seed");
                 put("predictedRPs", "predicted PRs");
                 put("predictedSeed", "predicted seed");
                 put("hasOrangeGroundIntake", "has cargo ground intake");
@@ -394,16 +408,13 @@ public class SpecificConstants extends Constants {
                 put("didPreloadLemon", "preloaded lemon at least once");
                 put("avgOrangesScored", "avg cargo scored");
                 put("avgLemonsScored", "avg hatch scored");
-                put("avgOrangeFouls", "avg cargo fouls out of field");
+                put("avgOrangesFouls", "avg cargo fouls out of field");
                 put("lemonSuccessFromSide", "Far side RS or side CS placements");
                 put("habLineSuccessL1", "% HAB line from L1 success");
                 put("habLineSuccessL2", "% HAB line from L2 success");
-                put("avgGoodDecisions", "avg Bad Decisions");
                 put("avgTimeIncap", "avg incap time");
-                put("avgTimeImpaired", "avg impaired time");
                 put("avgTimeClimbing", "avg climbing time");
                 put("percentIncap", "% incap");
-                put("percentImpaired", "% impaired");
                 put("percentNoShow", "% no show");
                 put("predictedDedicatedLemonCycles", "predicted only panel cycles");
                 put("predictedDedicatedOrangeCycles", "predicted only cargo");
@@ -412,14 +423,14 @@ public class SpecificConstants extends Constants {
                 put("lemonAbility", "panel ability");
                 put("firstPickAbility", "first pick ability");
                 put("secondPickAbility", "second pick ability");
-                put("calculatedData.avgLemonsSpilled", "avg panels spilled");
+                put("calculatedData.avgPinningFouls", "avg panels spilled");
             }
         };
         Map<String, String> initialDataComparisonDatapointsTEAMSsd = new HashMap<String, String>() {
             {
                 put("sdAvgOrangesScored", "avg cargo scored");
                 put("sdAvgLemonsScored", "avg hatch scored");
-                put("sdAvgOrangeFouls", "avg cargo fouls");
+                put("sdAvgOrangesFouls", "avg cargo fouls");
                 put("sdLemonLoadSuccess", "avg panel LS success");
                 put("sdOrangeCycleAll", "avg cargo in RS/CS");
                 put("sdOrangeCycleL1", "avg cargo in L1 RS/CS");
@@ -444,15 +455,11 @@ public class SpecificConstants extends Constants {
                 put("sdLemonSuccessFromSide", "avg far side RS or side CS placement");
                 put("sdHabLineSuccessL1", "HAB line success start from L1");
                 put("sdHabLineSuccessL2", "HAB line success start from L2");
-                put("sdAvgGoodDecisions", "avg good decisions");
-                put("sdAvgBadDecisions", "avg bad decisions");
                 put("sdAvgTimeIncap", "avg time incap");
-                put("sdAvgTimeImpaired", "avg time impaired");
                 put("sdAvgTimeClimbing", "avg time climbing");
                 put("sdPercentIncap", "% incap");
-                put("sdPercentImpaired", "% impaired");
                 put("sdPercentNoShow", "% no show");
-                put("sdAvgLemonsSpilled", "avg panels spilled");
+                put("sdAvgPinningFouls", "avg panels spilled");
             }
         };
         Map<String, String> initialDataComparisonDatapointsTIMD = new HashMap<String, String>() {
@@ -482,9 +489,8 @@ public class SpecificConstants extends Constants {
                 put("lemonSuccessL2", "% panel success L2");
                 put("lemonSuccessL3", "% panel success L3");
                 put("timeIncap", "time incap (% of match)");
-                put("timeImpaired", "time impaired (s)");
                 put("timeClimbing", "time climbing (s)");
-                put("lemonsSpilled", "panels spilled");
+                put("pinningFouls", "panels spilled");
             }
         };
         List<String> categoryList = Arrays.asList(

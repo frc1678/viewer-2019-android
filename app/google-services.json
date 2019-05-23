@@ -1,70 +1,80 @@
 {
   "project_info": {
-    "project_number": "590951349495",
-    "firebase_url": "https://scouting-2019-sac-2bdd7.firebaseio.com",
-    "project_id": "scouting-2019-sac-2bdd7",
-    "storage_bucket": "scouting-2019-sac-2bdd7.appspot.com"
+    "project_number": "354375974134",
+    "firebase_url": "https://scouting-2019-cmp-d43a4.firebaseio.com",
+    "project_id": "scouting-2019-cmp-d43a4",
+    "storage_bucket": "scouting-2019-cmp-d43a4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:590951349495:android:303d5cec6874cc19",
+        "mobilesdk_app_id": "1:354375974134:android:303d5cec6874cc19",
         "android_client_info": {
           "package_name": "com.example.sam.codebaseintegration"
         }
       },
       "oauth_client": [
         {
-          "client_id": "590951349495-eugf0j9dba3lepe873aqv11poktfj5he.apps.googleusercontent.com",
+          "client_id": "354375974134-ivrfhj3e12kbr6l3e0o9a2b3et6b3725.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAHmQsrjNA7ZsKPp6poUdG_HeILOOBzCBg"
+          "current_key": "AIzaSyCeR0ofxDgRkY-vw1-CAN_vmruh6P_k9XU"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354375974134-ivrfhj3e12kbr6l3e0o9a2b3et6b3725.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "354375974134-pskeh8h1svg54hl6b9pucs804uqm8h2r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.citrusciruits.ios-viewer"
+              }
+            }
+          ]
         }
       }
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:590951349495:android:a1bd959b93903331",
+        "mobilesdk_app_id": "1:354375974134:android:a1bd959b93903331",
         "android_client_info": {
           "package_name": "org.citruscircuits.qrflutter"
         }
       },
       "oauth_client": [
         {
-          "client_id": "590951349495-eugf0j9dba3lepe873aqv11poktfj5he.apps.googleusercontent.com",
+          "client_id": "354375974134-ivrfhj3e12kbr6l3e0o9a2b3et6b3725.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAHmQsrjNA7ZsKPp6poUdG_HeILOOBzCBg"
+          "current_key": "AIzaSyCeR0ofxDgRkY-vw1-CAN_vmruh6P_k9XU"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354375974134-ivrfhj3e12kbr6l3e0o9a2b3et6b3725.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "354375974134-pskeh8h1svg54hl6b9pucs804uqm8h2r.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.citrusciruits.ios-viewer"
+              }
+            }
+          ]
         }
       }
     }

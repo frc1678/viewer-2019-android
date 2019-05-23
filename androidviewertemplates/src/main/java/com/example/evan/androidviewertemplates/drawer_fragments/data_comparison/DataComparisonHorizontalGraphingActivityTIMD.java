@@ -379,6 +379,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
         List<Float> values = new ArrayList<>();
         //gets the datapointvalues of the team
         List<Float> datapointValues = getTeamInMatchDatapointValues(team);
+        if (datapointValues.isEmpty()) { barEntries.add(new BarEntry(1, (float) 0.00)); return barEntries; }
         values.addAll(datapointValues);
         for (int p = 0; p < datapointValues.size(); p++) {
             //if the value is 0.0, return 0.1 to be shown on graph
@@ -386,6 +387,8 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
                 barEntries.add(new BarEntry(p + 1, (float) 0.04));
             } else if (String.valueOf(values.get(p)).equals("0.0")) {
                 barEntries.add(new BarEntry(p + 1, (float) 0.2));
+            } else if (String.valueOf(values.get(p)).equals("10000.0")) {
+                barEntries.add(new BarEntry(p + 1, (float) 0.0));
             } else {
                 //else, add the value to barEntries
                 barEntries.add(new BarEntry(p + 1, (float) values.get(p)));
@@ -401,7 +404,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
         int zeroCount = 0;
         // displaying the occurrence of elements in the list
         for (Map.Entry<Float, Integer> val : hm.entrySet()) {
-            if (val.getKey() == 0.0 || val.getKey() == 5000.0) zeroCount += val.getValue();
+            if (val.getKey() == 0.0 || val.getKey() == 5000.0 || val.getKey() == 10000.0) zeroCount += val.getValue();
         }
         //if the amount of null values or 0.0 values is the same amount as the number of values in the team ...
         //AKA: if all of the values are 0
@@ -430,10 +433,30 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
     public List<Float> getValues(Integer teamNumber, String field) {
         String datapoint = field;
         List<Float> dataValues = new ArrayList<>();
+
+        if (field.equals("calculatedData.habLineAttemptsL1")) {
+            for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
+                if ((int) Utils.getObjectField(teamInMatchData, "startingLevel") == 2) {
+                    dataValues.add(10000.0f);
+                } else {
+                    dataValues.add((Boolean) Utils.getObjectField(teamInMatchData, "crossedHabLine") ? 5f : 1f);
+                }
+            }
+            return dataValues;
+        }
+        if (field.equals("calculatedData.habLineAttemptsL2")) {
+            for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
+                if ((int) Utils.getObjectField(teamInMatchData, "startingLevel") == 1) {
+                    dataValues.add(10000.0f);
+                } else {
+                    dataValues.add((Boolean) Utils.getObjectField(teamInMatchData, "crossedHabLine") ? 5f : 1f);
+                }
+            }
+            return dataValues;
+        }
         //gets the datapoint values of the given team
         for (TeamInMatchData teamInMatchData : Utils.getTeamInMatchDatasForTeamNumber(teamNumber)) {
             Object value = Utils.getObjectField(teamInMatchData, datapoint);
-
             //if integer
             if (value instanceof Integer) {
                 dataValues.add(((Integer) value).floatValue());
@@ -457,7 +480,7 @@ public class DataComparisonHorizontalGraphingActivityTIMD extends Fragment {
     public List<Float> getTeamInMatchDatapointValues(String team) {
         List<Float> values;
         //returns value of datapoint per team
-        values = getValues(Integer.valueOf(team), "calculatedData." + selectedDatapoint);
+        values = getValues(Integer.valueOf(team), selectedDatapoint);
         return values;
     }
 }

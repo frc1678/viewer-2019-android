@@ -28,5 +28,7 @@ public class TeamInMatchData extends com.example.evan.androidviewertools.firebas
 
     public String startingLocation;
     public String preload;
-    public String superNotes;
+    public String notes;
+
+    public Float rankDefense;
 }
