@@ -82,7 +82,7 @@ public abstract class MatchesAdapter extends SearchableFirebaseListAdapter<Match
         }
         try {
             Match match = (Match) getItem(position);
-            if (listIsReversed) match = (Match) getItem(Utils.getLastMatchPlayed() - 1 - position);
+            if (listIsReversed) match = (Match) getItem(filteredValues.size() - 1 - position);
 
             if (StarManager.isImportantMatch(match.matchNumber) && !Constants.highlightTeamSchedule) {
                 rowView.setBackgroundColor(Constants.STAR_COLOR);
