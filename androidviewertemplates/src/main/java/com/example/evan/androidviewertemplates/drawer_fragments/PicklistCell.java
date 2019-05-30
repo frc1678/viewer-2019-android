@@ -61,8 +61,8 @@ public class PicklistCell extends RelativeLayout {
 
     public String generateTeamNameAndSeed(String teamNumber) {
         Team team = FirebaseLists.teamsList.getFirebaseObjectByKey(teamNumber);
-        String teamRank = (Utils.fieldIsNotNull(team, "actualSeed") ? Utils.roundDataPoint(Utils.getObjectField(team, "actualSeed"), 2, "???") : "???");
-        String teamName = (Utils.fieldIsNotNull(team, "name") ? Utils.roundDataPoint(Utils.getObjectField(team, "name"), 2, "???") : "???");
+        String teamRank = (Utils.fieldIsNotNull(team, "actualSeed") ? Utils.roundDataPoint(Utils.getObjectField(team, "actualSeed"), 2, "?") : "?");
+        String teamName = (Utils.fieldIsNotNull(team, "name") ? Utils.roundDataPoint(Utils.getObjectField(team, "name"), 2, "?") : "?");
         String finalString = teamName + " | Rank: " + teamRank;
         return finalString;
     }

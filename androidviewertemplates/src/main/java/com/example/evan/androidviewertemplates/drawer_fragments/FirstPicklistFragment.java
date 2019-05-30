@@ -66,7 +66,6 @@ public class FirstPicklistFragment extends Fragment {
         final ListView listView = (ListView) myLayout.findViewById(R.id.listview);
         if (dref == null) {
             dataBase = FirebaseDatabase.getInstance();
-            dataBase.setPersistenceEnabled(true);
             dref = dataBase.getReference();
         }
         dref.child("constants").addValueEventListener(new ValueEventListener() {
