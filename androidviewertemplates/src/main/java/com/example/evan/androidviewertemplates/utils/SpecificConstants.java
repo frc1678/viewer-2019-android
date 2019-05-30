@@ -86,7 +86,7 @@ public class SpecificConstants extends Constants {
                 put("calculatedData.totalFailedCyclesCaused","Total Cycles Defended");
                 put("calculatedData.avgRankDefense","Avg Rank Defense");
                 put("rankDefense","Rank Defense");
-                put("calculatedData.avgCounterDefense","Avg Counter Defense");
+                put("calculatedData.avgRankCounterDefense","Avg Counter Defense");
                 put("calculatedData.avgFailedCyclesCaused","Avg Cycles Defended");
                 put("calculatedData.timeDefending","Time defending");
                 put("calculatedData.totalTimeDefending","Total Time Defending");
@@ -317,7 +317,7 @@ public class SpecificConstants extends Constants {
 //                put("calculatedData.habLineSuccessL2","crossedHabLine");
 //                put("calculatedData.habLineSuccessL1","crossedHabLine");
                 put("calculatedData.avgRankDefense","rankDefense");
-                put("calculatedData.avgCounterDefense","rankDefense");
+                put("calculatedData.avgRankCounterDefense","rankDefense");
                 put("calculatedData.failedCyclesCausedPerSecond","calculatedData.failedCyclesCaused");
                 put("calculatedData.failedCyclesCaused","calculatedData.totalFailedCyclesCaused");
                 put("calculatedData.avgTimeDefending","calculatedData.timeDefending");
