@@ -52,7 +52,6 @@ public abstract class StarManager extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.e("test", "Starting matches listener service");
 
         mNM = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         currentMatchNumber = Utils.getLastMatchPlayed();
@@ -69,7 +68,6 @@ public abstract class StarManager extends Service {
                     //this means child added event, we don't care
                     return;
                 }
-                Log.e("previousValue", previousValue.toString());
                 if (previousValue.matchNumber.equals(currentMatchNumber)) {
                     notifyOfNewMatchIfNeeded(previousValue);
                 }
@@ -182,7 +180,6 @@ public abstract class StarManager extends Service {
                 if (matchNumber != null && ((matchNumber < firstMatchNum) || (firstMatchNum == -1))) {
                     firstMatchNum = matchNumber;
                 }
-                Log.e("TEEE",String.valueOf(firstMatchNum));
                 addImportantMatchWithoutPreferences(matchNumber);
             }
             try {
@@ -194,7 +191,6 @@ public abstract class StarManager extends Service {
                     }
                 }.start();
             } catch (NullPointerException npe) {
-                Log.e("SHIT", "here again");
             }
         }
     }
@@ -263,7 +259,6 @@ public abstract class StarManager extends Service {
     }
 
     public void notifyOfNewMatchPlayed(Match match, Integer matchesFromNow) {
-        Log.i("NOTIFICATION", "NOW!");
         RemoteViews notificationRemoteViews = new RemoteViews(getApplicationContext().getPackageName(), R.layout.match_notification);
 
         if (matchesFromNow.equals(0)) {
@@ -323,6 +318,5 @@ public abstract class StarManager extends Service {
         NotificationManager mNotificationManager =
                 (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.notify(mId, mBuilder.build());
-        Log.e("notification", "built");
     }
 }

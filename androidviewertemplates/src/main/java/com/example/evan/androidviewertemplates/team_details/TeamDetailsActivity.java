@@ -66,13 +66,11 @@ public class TeamDetailsActivity extends TeamActivity {
 
 
     public void reloadTeamImage() {
-        Log.e("reload", "team image");
         try {
             File file = new File(getApplicationContext().getFilesDir(), "image_" + teamNumber.toString());
 
             Bitmap tmpBitmap = BitmapFactory.decodeStream(new FileInputStream(file));
             if (tmpBitmap == null) {
-                Log.e("Picture Error", "Failed to parse bitmap from file");
                 return;
             }
             DisplayMetrics metrics = new DisplayMetrics();
@@ -90,7 +88,7 @@ public class TeamDetailsActivity extends TeamActivity {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             headerPhotoLinearLayout.addView(imageView, params);
         } catch (Exception e) {
-            Log.e("test", "ERROR: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 

@@ -167,14 +167,13 @@ public class Utils {
 	public static List<Team> getTeamDatasForTeamNumber(Integer teamNumber) {
 		List<Team> teamDataList = new ArrayList<>();
 		for (Team teamData : FirebaseLists.teamsList.getValues()) {
-			Log.e("teamNumber", Integer.toString(teamNumber));
 			Integer number = (Integer) Utils.getObjectField(teamData,"teamNumber");
 			try {
 				if (number.equals(teamNumber)) {
 					teamDataList.add(teamData);
 				}
 			}catch (NullPointerException NPE){
-				Log.e("team Number", "NULL");
+				NPE.printStackTrace();
 			}
 		}
 
@@ -202,22 +201,15 @@ public class Utils {
 	//anyway this method is used to display data points that aren't on firebase.  Basically it calls a getter method for the field on the utils class
 	public static Object getViewerObjectField(Object object, String fieldName, Intent args, Class<?> viewerDataPointsClass) {
 		try {
-			Log.e("object", object.getClass().toString());
-			Log.e("methodName", "get" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1));
-			Log.e("className", viewerDataPointsClass.getName());
 			Method method = viewerDataPointsClass.getMethod("getMatchesUntilNextMatchForTeam", object.getClass(), Intent.class);
 			return method.invoke(viewerDataPointsClass.newInstance(), object, args);
 		} catch (NoSuchMethodException NSME) {
-			Log.e("Method", "ERROR");
 			return null;
 		}catch (InstantiationException ISE){
-			Log.e("Instantiation", "ERROR");
 			return null;
 		}catch (IllegalAccessException IAE){
-			Log.e("Illegal Access", "EXCEPTION");
 			return null;
 		}catch (InvocationTargetException ITE){
-			Log.e("Invocation", "TARGET EXCEPTION");
 			return null;
 		}
 	}
@@ -226,7 +218,6 @@ public class Utils {
 			Method method = viewerDataPointsClass.getMethod("get" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1) + "RankingsValue", Intent.class);
 			return (String)method.invoke(viewerDataPointsClass.newInstance(), args);
 		} catch (Exception e) {
-			Log.e("Method error", "Requested viewer object that doesn't exist!2");
 			return null;
 		}
 	}

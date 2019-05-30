@@ -48,8 +48,6 @@ public class PhotoSync extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.e("test", "Starting photos listener");
-
         SharedPreferences sharedPreferences = getSharedPreferences("sharedPreferences", Context.MODE_PRIVATE);
         String teamImageURLsAsString = sharedPreferences.getString("teamImageURLs", "{0 : \"\"}");
         try {
@@ -60,7 +58,7 @@ public class PhotoSync extends Service {
                 teamImageURLs.put(Integer.parseInt(key), urls.getString(key));
             }
         } catch (JSONException jsone) {
-            Log.e("test", "JSON Exception: " + jsone.getMessage());
+            jsone.printStackTrace();
         }
 
         LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(new BroadcastReceiver() {
@@ -72,7 +70,6 @@ public class PhotoSync extends Service {
                     if (selectedImageURLString != null) {
                         if (!selectedImageURLString.equals(teamImageURLs.get(teamNumber))) {
                             teamImageURLs.put(teamNumber, selectedImageURLString);
-                            Log.e("test", "STARTING ASYNC TASK for team " + teamNumber.toString());
                             PhotoAsyncTask photoAsyncTask = new PhotoAsyncTask();
                             photoAsyncTask.execute(teamNumber, selectedImageURLString);
                         }
@@ -91,7 +88,6 @@ public class PhotoSync extends Service {
     }
 
     public void saveTeamImage(Context context, Integer teamNumber, Bitmap bitmap, String selectedImageURLString) {
-        Log.e("test", "Saving image for team " + teamNumber.toString());
         File file = new File(context.getFilesDir(), "image_" + teamNumber.toString());
         saveBitmapToFile(file, bitmap);
 
@@ -108,7 +104,7 @@ public class PhotoSync extends Service {
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
             fileOutputStream.close();
         } catch (IOException ioe) {
-            Log.e("test", "ERROR: " + ioe.getMessage());
+            ioe.printStackTrace();
         }
     }
 
@@ -124,16 +120,14 @@ public class PhotoSync extends Service {
                 options.inSampleSize = 3;
                 Bitmap image = BitmapFactory.decodeStream(in, new Rect(0, 0, 0, 0), options);
                 if (image == null) {
-                    Log.i("Dropbox Error", "Failed to download image from dropbox");
                     throw new MalformedURLException();
                 }
                 in.close();
                 saveTeamImage(getApplicationContext(), (Integer)params[0], image, selectedImageURLString);
             } catch (MalformedURLException e) {
-                Log.e("test", "Trying to delete image file for team " + (params[0]).toString());
                 deleteTeamImage(getApplicationContext(), (Integer)params[0], selectedImageURLString);
             } catch (IOException ioe) {
-                Log.e("error", "IO Exception: " + ioe.getMessage());
+                ioe.printStackTrace();
             }
 
             return null;

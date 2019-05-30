@@ -23,7 +23,6 @@ public class RecentMatchesFragment extends MatchesFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Constants.isInSeedingFragment = false;
-        Log.e("Recent", "started");
         setListAdapter(new RecentMatchesAdapter(getActivity().getApplicationContext()));
     }
 

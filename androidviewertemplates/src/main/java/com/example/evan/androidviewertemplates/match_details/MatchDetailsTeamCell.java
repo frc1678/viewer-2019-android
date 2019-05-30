@@ -57,7 +57,6 @@ public class MatchDetailsTeamCell extends LinearLayout {
 
         @Override
         public void onClick(View v) {
-            Log.e("test", "CLICKED!");
             TextView teamNumberTextView = (TextView) v.findViewById(R.id.matchDetailsTeamCellTeamNumberTextView);
             String teamNumberText = teamNumberTextView.getText().toString();
             Integer teamNumber = Integer.parseInt(teamNumberText);
