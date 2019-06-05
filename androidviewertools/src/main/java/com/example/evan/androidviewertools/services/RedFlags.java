@@ -10,7 +10,7 @@ public class RedFlags {
 
     public static String[] RED_FLAG_DATAPOINT_NAMES = {
             "calculatedData.avgPinningFouls",
-            "calculatedData.avgOrangesFouls",
+            "calculatedData.avgCargoFouls",
             "calculatedData.percentNoShow",
 
     };

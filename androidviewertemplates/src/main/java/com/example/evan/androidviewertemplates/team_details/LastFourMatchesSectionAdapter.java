@@ -32,9 +32,9 @@ public class LastFourMatchesSectionAdapter extends TeamSectionAdapter {
 
     static String[] rankInsteadOfGraph = {
             "calculatedData.lfmHabLineSuccessL1", "calculatedData.lfmHabLineSuccessL2",
-            "calculatedData.lfmAvgOrangesScored", "calculatedData.lfmAvgLemonsScored", "calculatedData.lfmAvgOrangesFouls", "calculatedData.lfmLemonLoadSuccess",
-            "calculatedData.lfmOrangeCycleAll", "calculatedData.lfmLemonCycleAll", "calculatedData.lfmOrangeSuccessDefended", "calculatedData.lfmOrangeSuccessL2",
-            "calculatedData.lfmOrangeSuccessL3", "calculatedData.lfmLemonSuccessDefended", "calculatedData.lfmLemonSuccessL2", "calculatedData.lfmLemonSuccessL3",
+            "calculatedData.lfmAvgCargoScored", "calculatedData.lfmAvgLemonsScored", "calculatedData.lfmAvgCargoFouls", "calculatedData.lfmLemonLoadSuccess",
+            "calculatedData.lfmCargoCycleAll", "calculatedData.lfmLemonCycleAll", "calculatedData.lfmCargoSuccessDefended", "calculatedData.lfmCargoSuccessL2",
+            "calculatedData.lfmCargoSuccessL3", "calculatedData.lfmLemonSuccessDefended", "calculatedData.lfmLemonSuccessL2", "calculatedData.lfmLemonSuccessL3",
             "calculatedData.lfmAvgTimeClimbing",
             "calculatedData.lfmPercentIncap", "calculatedData.lfmAvgTimeIncap", "calculatedData.lfmPercentNoShow",
     };
@@ -70,7 +70,7 @@ public class LastFourMatchesSectionAdapter extends TeamSectionAdapter {
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
             {"calculatedData.lfmHabLineSuccessL1", "calculatedData.lfmHabLineSuccessL2",},
-            {"calculatedData.lfmAvgOrangesScored", "calculatedData.lfmAvgLemonsScored", "calculatedData.lfmAvgOrangesFouls", "calculatedData.lfmLemonLoadSuccess", "calculatedData.lfmOrangeCycleAll", "calculatedData.lfmLemonCycleAll", "calculatedData.lfmOrangeSuccessDefended", "calculatedData.lfmOrangeSuccessL2", "calculatedData.lfmOrangeSuccessL3", "calculatedData.lfmLemonSuccessDefended", "calculatedData.lfmLemonSuccessL2", "calculatedData.lfmLemonSuccessL3"},
+            {"calculatedData.lfmAvgCargoScored", "calculatedData.lfmAvgLemonsScored", "calculatedData.lfmAvgCargoFouls", "calculatedData.lfmLemonLoadSuccess", "calculatedData.lfmCargoCycleAll", "calculatedData.lfmLemonCycleAll", "calculatedData.lfmCargoSuccessDefended", "calculatedData.lfmCargoSuccessL2", "calculatedData.lfmCargoSuccessL3", "calculatedData.lfmLemonSuccessDefended", "calculatedData.lfmLemonSuccessL2", "calculatedData.lfmLemonSuccessL3"},
             {"calculatedData.lfmAvgTimeClimbing"},
             {"calculatedData.lfmPercentIncap", "calculatedData.lfmAvgTimeIncap", "calculatedData.lfmPercentNoShow",}
     };

@@ -29,7 +29,7 @@ public class MatchDetailsTeamCellAdapter extends BaseAdapter {
     //todo
     private String[] fields = {
             //format: "calculatedData.variable", "calculatedData.nextVariable",
-            "calculatedData.habLineSuccessL1", "calculatedData.avgLemonsScoredSandstorm", "calculatedData.avgLemonsScored", "calculatedData.avgOrangesScored",
+            "calculatedData.habLineSuccessL1", "calculatedData.avgLemonsScoredSandstorm", "calculatedData.avgLemonsScored", "calculatedData.avgCargoScored",
             "calculatedData.driverAbility", "calculatedData.pushAbility","calculatedData.climbSuccessL1", "calculatedData.climbSuccessL2", "calculatedData.climbSuccessL3", "calculatedData.avgTimeIncap"
     };
 
