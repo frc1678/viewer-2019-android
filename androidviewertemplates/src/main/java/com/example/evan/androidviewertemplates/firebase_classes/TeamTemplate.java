@@ -36,5 +36,5 @@ public class TeamTemplate extends com.example.evan.androidviewertools.firebase_c
 
     public Boolean pitHasCamera;
     public Boolean pitHasPid;
-    public Boolean pitIsLemonSpecialist;
+    public Boolean pitIsPanelSpecialist;
 }

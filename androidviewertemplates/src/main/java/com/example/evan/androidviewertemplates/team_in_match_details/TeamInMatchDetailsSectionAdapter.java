@@ -61,10 +61,10 @@ public class TeamInMatchDetailsSectionAdapter extends TeamSectionAdapter {
             //Each {}, below correlates to its sectionTitles above
             {"teamNumber", "matchNumber", "blueFoulPoints", "redFoulPoints"},
             {"startingLevel", "crossedHabLine", "startingLocation", "preload"},
-            {"calculatedData.pointsPrevented", "calculatedData.cargoPointsPrevented", "calculatedData.lemonPointsPrevented", "calculatedData.cargoSuccessDefended","calculatedData.totalFailedCyclesCaused","calculatedData.cargoScored", "calculatedData.lemonsScored", "calculatedData.cargoFouls", "calculatedData.lemonLoadSuccess",
+            {"calculatedData.pointsPrevented", "calculatedData.cargoPointsPrevented", "calculatedData.panelPointsPrevented", "calculatedData.cargoSuccessDefended","calculatedData.totalFailedCyclesCaused","calculatedData.cargoScored", "calculatedData.panelsScored", "calculatedData.cargoFouls", "calculatedData.panelLoadSuccess",
                     "calculatedData.cargoSuccessDefended", "calculatedData.cargoSuccessL2", "calculatedData.cargoSuccessL3",
-                    "calculatedData.lemonSuccessDefended", "calculatedData.lemonSuccessL2", "calculatedData.lemonSuccessL3", "calculatedData.pinningFouls",
-                    "calculatedData.lemonsScoredTeleL1", "calculatedData.lemonsScoredTeleL2", "calculatedData.lemonsScoredTeleL3",
+                    "calculatedData.panelSuccessDefended", "calculatedData.panelSuccessL2", "calculatedData.panelSuccessL3", "calculatedData.pinningFouls",
+                    "calculatedData.panelsScoredTeleL1", "calculatedData.panelsScoredTeleL2", "calculatedData.panelsScoredTeleL3",
                     "calculatedData.cargoScoredTeleL1", "calculatedData.cargoScoredTeleL1", "calculatedData.cargoScoredTeleL1","calculatedData.pointsPrevented",},
             {"calculatedData.selfClimbLevel", "calculatedData.robot1ClimbLevel", "calculatedData.robot2ClimbLevel","calculatedData.timeDefending"},
             {"calculatedData.timeIncap", "calculatedData.timeClimbing"},

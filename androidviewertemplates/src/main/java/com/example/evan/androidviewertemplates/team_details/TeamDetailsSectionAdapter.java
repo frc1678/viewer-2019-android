@@ -44,20 +44,20 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
     static String[][] fieldsToDisplay = {
             //Each {}, below correlates to its sectionTitles above
             {"matches", "VIEWER.matchesUntilNextMatchForTeam", "lfm"},
-            {"calculatedData.habLineSuccessL1", "calculatedData.habLineSuccessL2","calculatedData.habLineAttemptsL1","calculatedData.habLineAttemptsL2", "calculatedData.avgLemonsScoredSandstorm", "calculatedData.avgCargoScoredSandstorm"},
-            {"calculatedData.avgPointsPrevented","calculatedData.avgCargoPointsPrevented","calculatedData.avgLemonPointsPrevented", "calculatedData.avgFailedCyclesCaused","calculatedData.avgCargoScored", "calculatedData.avgLemonsScored", "calculatedData.avgPinningFouls", "calculatedData.avgCargoFouls", "calculatedData.lemonLoadSuccess",
+            {"calculatedData.habLineSuccessL1", "calculatedData.habLineSuccessL2","calculatedData.habLineAttemptsL1","calculatedData.habLineAttemptsL2", "calculatedData.avgPanelsScoredSandstorm", "calculatedData.avgCargoScoredSandstorm"},
+            {"calculatedData.avgPointsPrevented","calculatedData.avgCargoPointsPrevented","calculatedData.avgPanelPointsPrevented", "calculatedData.avgFailedCyclesCaused","calculatedData.avgCargoScored", "calculatedData.avgPanelsScored", "calculatedData.avgPinningFouls", "calculatedData.avgCargoFouls", "calculatedData.panelLoadSuccess",
                     "calculatedData.cargoSuccessDefended", "calculatedData.cargoSuccessL2",
-                    "calculatedData.cargoSuccessL3", "calculatedData.lemonSuccessDefended", "calculatedData.lemonSuccessL2", "calculatedData.lemonSuccessL3",
-                    "calculatedData.hasCargoGroundIntake", "calculatedData.hasLemonGroundIntake","calculatedData.totalTimeDefending","calculatedData.avgTimeDefending","calculatedData.failedCyclesCaused",
+                    "calculatedData.cargoSuccessL3", "calculatedData.panelSuccessDefended", "calculatedData.panelSuccessL2", "calculatedData.panelSuccessL3",
+                    "calculatedData.hasCargoGroundIntake", "calculatedData.hasPanelGroundIntake","calculatedData.totalTimeDefending","calculatedData.avgTimeDefending","calculatedData.failedCyclesCaused",
                     "calculatedData.failedCyclesCausedPerSecond"},
-            {"calculatedData.avgLemonPointsPrevented","calculatedData.avgCargoPointsPrevented","calculatedData.avgPointsPrevented"},
+            {"calculatedData.avgPanelPointsPrevented","calculatedData.avgCargoPointsPrevented","calculatedData.avgPointsPrevented"},
             {"calculatedData.avgTimeClimbing", "calculatedData.climbSuccessL2", "calculatedData.climbSuccessL3", "pitSEALsRampRanking"},
             {"calculatedData.avgTimeIncap", "calculatedData.percentIncap", "calculatedData.percentNoShow",
                     "calculatedData.percentDysfunctional"},
-            {"calculatedData.predictedSoloPoints", "calculatedData.sdAvgCargoScored", "calculatedData.sdAvgLemonsScored"},
+            {"calculatedData.predictedSoloPoints", "calculatedData.sdAvgCargoScored", "calculatedData.sdAvgPanelsScored"},
             {"calculatedData.avgRankDefense","calculatedData.avgRankCounterDefense","calculatedData.speedZScore", "calculatedData.agilityZScore", "calculatedData.driverAbility","calculatedData.pushAbility"},
             {"pitWeight", "pitWheelDiameter", "pitDrivetrain", "pitProgrammingLanguage", "pitClimbType", "pitHasCamera",
-                    "pitSEALsNotes", "pitIsLemonSpecialist","pitDriveTrainMotorType","pitNumDriveTrainMotors"}
+                    "pitSEALsNotes", "pitIsPanelSpecialist","pitDriveTrainMotorType","pitNumDriveTrainMotors"}
     };
 
     static String[] shouldDisplayAsPercentage = {
@@ -80,7 +80,7 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "pitSEALsNotes",
             "totalSuperNotes",
             "pitLength",
-            "pitIsLemonSpecialist",
+            "pitIsPanelSpecialist",
             "pitDriveTrainMotorType",
             "pitNumDriveTrainMotors"
     };
@@ -95,7 +95,7 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "pitSEALsNotes",
             "pitClimbType",
             "pitSEALsNotes",
-            "pitIsLemonSpecialist",
+            "pitIsPanelSpecialist",
     };
 
     static String[] shouldDisplayAsFurtherInformation = {
@@ -115,9 +115,9 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "pitHasCamera",
             "pitCanBuddyStartLevel2",
             "pitSEALsNotes",
-            "pitIsLemonSpecialist",
+            "pitIsPanelSpecialist",
             "calculatedData.hasCargoGroundIntake",
-            "calculatedData.hasLemonGroundIntake",
+            "calculatedData.hasPanelGroundIntake",
             "pitNumDriveTrainMotors"
     };
 
@@ -131,7 +131,7 @@ public class TeamDetailsSectionAdapter extends TeamSectionAdapter {
             "calculatedData.avgGoodDecisions",
             "calculatedData.avgBadDecisions",
             "calculatedData.sdAvgCargoScored",
-            "calculatedData.sdAvgLemonsScored",
+            "calculatedData.sdAvgPanelsScored",
             "calculatedData.predictedSoloPoints",
             "calculatedData.driverAbility",
             "calculatedData.pushAbility",
